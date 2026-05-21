@@ -1,1 +1,1 @@
-# Ctrl-Alt-Meet
+# Ctrl+Alt+Meet
