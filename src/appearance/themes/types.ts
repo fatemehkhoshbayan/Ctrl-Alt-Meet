@@ -1,0 +1,57 @@
+export type ThemeId = 'light' | 'dark';
+
+/** Material 3 semantic color roles — shared keys across all themes. */
+export type ColorTokens = {
+  background: string;
+  'error-container': string;
+  error: string;
+  'inverse-on-surface': string;
+  'inverse-primary': string;
+  'inverse-surface': string;
+  'on-background': string;
+  'on-error-container': string;
+  'on-error': string;
+  'on-primary-container': string;
+  'on-primary-fixed-variant': string;
+  'on-primary-fixed': string;
+  'on-primary': string;
+  'on-secondary-container': string;
+  'on-secondary-fixed-variant': string;
+  'on-secondary-fixed': string;
+  'on-secondary': string;
+  'on-surface-variant': string;
+  'on-surface': string;
+  'on-tertiary-container': string;
+  'on-tertiary-fixed-variant': string;
+  'on-tertiary-fixed': string;
+  'on-tertiary': string;
+  primary: string;
+  'primary-container': string;
+  'primary-fixed-dim': string;
+  'primary-fixed': string;
+  secondary: string;
+  'secondary-container': string;
+  'secondary-fixed-dim': string;
+  'secondary-fixed': string;
+  'surface-bright': string;
+  'surface-container-high': string;
+  'surface-container-highest': string;
+  'surface-container-low': string;
+  'surface-container-lowest': string;
+  'surface-container': string;
+  'surface-dim': string;
+  'surface-tint': string;
+  'surface-variant': string;
+  surface: string;
+  tertiary: string;
+  'tertiary-container': string;
+  'tertiary-fixed-dim': string;
+  'tertiary-fixed': string;
+  'outline-variant': string;
+  outline: string;
+};
+
+export type Theme = {
+  id: ThemeId;
+  colors: ColorTokens;
+};
