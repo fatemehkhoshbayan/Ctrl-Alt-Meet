@@ -21,7 +21,7 @@ export const darkTheme: Theme = {
     'on-secondary-fixed-variant': '#ffdea8',
     'on-secondary-fixed': '#ffdea8',
     'on-secondary': '#271900',
-    'on-surface-variant': '#ccc3d8',
+    'on-surface-variant': '#cbc3d7',
     'on-surface': '#e4e1ec',
     'on-tertiary-container': '#3d0600',
     'on-tertiary-fixed-variant': '#ffdad3',

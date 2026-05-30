@@ -68,7 +68,7 @@
   --spacing-container-padding-desktop: 40px;
   --spacing-unit: 8px;
   --spacing-stack-gap: 16px;
-  --spacing-gutter: 24px;
+  --spacing-gutter: 32px;
 
   /* ── Font families ── */
   --font-display: 'Lexend', sans-serif;
@@ -104,6 +104,18 @@
   --text-body-lg: 18px;
   --text-body-lg--line-height: 28px;
   --text-body-lg--font-weight: 400;
+
+  --text-body-xl: 24px;
+  --text-body-xl--line-height: 32px;
+  --text-body-xl--font-weight: 400;
+
+  --text-body-2xl: 28px;
+  --text-body-2xl--line-height: 36px;
+  --text-body-2xl--font-weight: 400;
+
+  --text-body-3xl: 32px;
+  --text-body-3xl--line-height: 40px;
+  --text-body-3xl--font-weight: 400;
 }
 
 /* ─── Light theme (default) ────────────────────────────────────────────────── */

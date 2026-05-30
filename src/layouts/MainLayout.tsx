@@ -1,24 +1,23 @@
 import { Outlet } from 'react-router-dom';
-import { useTheme } from '@hooks/useTheme';
+import { DesktopHeader, DesktopFooter } from './desktop';
+import { MobileFooter, MobileHeader } from './mobile';
+import { useMediaQuery, useTheme } from '@/hooks';
 
 export default function MainLayout() {
   const { theme, toggleTheme } = useTheme();
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
 
   return (
     <>
-      <header>
-        <button
-          type="button"
-          onClick={toggleTheme}
-          className="bg-primary px-unit py-unit text-on-primary rounded"
-        >
-          {theme === 'dark' ? 'Switch to light' : 'Switch to dark'}
-        </button>
-      </header>
-      <main className="mx-auto flex min-h-screen min-w-[80%] flex-col items-center justify-center">
+      {isDesktop ? (
+        <DesktopHeader theme={theme} toggleTheme={toggleTheme} />
+      ) : (
+        <MobileHeader theme={theme} toggleTheme={toggleTheme} />
+      )}
+      <main className="bg-background text-on-surface mx-auto flex min-h-screen min-w-[80%] flex-col items-center justify-center">
         <Outlet />
       </main>
-      <footer></footer>
+      {isDesktop ? <DesktopFooter /> : <MobileFooter />}
     </>
   );
 }
