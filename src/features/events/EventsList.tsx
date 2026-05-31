@@ -65,7 +65,7 @@ export default function EventsList() {
 
         {status === 'loading' && <LoadingState message="Loading events..." />}
 
-        {status === 'failed' && <ErrorState error={error} />}
+        {status === 'failed' && <ErrorState error={error ?? undefined} />}
 
         {status === 'succeeded' && items.length === 0 && (
           <EmptyState
