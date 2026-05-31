@@ -1,17 +1,15 @@
 import { cn } from '@/lib';
+import type { ButtonHTMLAttributes } from 'react';
 
-interface IIconButtonProps {
-  className?: string;
-  onClick?: () => void;
-  type?: 'button' | 'submit' | 'reset';
-  icon?: string;
+interface IIconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  icon: string;
 }
 
 export default function IconButton({ icon, className, onClick, type }: IIconButtonProps) {
   return (
     <button
       className={cn(
-        'text-body-xl text-primary p-2 transition-transform hover:scale-105',
+        'material-symbols-outlined text-body-xl text-primary items-center p-2 transition-transform hover:scale-105',
         className,
       )}
       type={type}
