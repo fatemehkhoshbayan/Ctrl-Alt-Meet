@@ -14,7 +14,7 @@ export default function MainLayout() {
       ) : (
         <MobileHeader theme={theme} toggleTheme={toggleTheme} />
       )}
-      <main className="bg-background text-on-surface mx-auto flex min-h-screen min-w-[80%] flex-col items-center justify-center">
+      <main className="bg-background text-on-surface flex min-w-[80%] flex-col items-center justify-center">
         <Outlet />
       </main>
       {isDesktop ? <DesktopFooter /> : <MobileFooter />}

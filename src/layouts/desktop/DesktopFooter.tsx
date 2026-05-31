@@ -7,7 +7,7 @@ export default function DesktopFooter() {
   const navigate = useNavigate();
 
   return (
-    <footer className="border-outline-variant/30 bg-surface-container p-container-padding-desktop sticky bottom-0 z-50 flex w-full items-center justify-between shadow-sm backdrop-blur-xl">
+    <footer className="border-outline-variant/30 bg-surface-container p-container-padding-desktop z-50 flex w-full items-center justify-between shadow-sm backdrop-blur-xl">
       <div className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-10 py-6">
         <div className="gap-stack-gap flex flex-col">
           <LogoWordMark onClick={() => navigate('/')} />
