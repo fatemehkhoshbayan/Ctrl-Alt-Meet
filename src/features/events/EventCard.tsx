@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { Calendar, MapPin } from 'lucide-react';
 import { cn } from '@/lib';
 import type { IEvent, TTicketTier } from '@/services';
 import { formatDateRange, getCategoryTheme } from '@/utils';
@@ -45,7 +46,7 @@ export default function EventCard({ event }: IEventCardProps) {
 
       <div className="p-6">
         <div className="text-secondary mb-2 flex items-center gap-2">
-          <span className="material-symbols-outlined text-[18px]">calendar_today</span>
+          <Calendar size={18} />
           <span className="font-label-sm text-label-sm">
             {formatDateRange(event.date, event.endDate)}
           </span>
@@ -61,7 +62,7 @@ export default function EventCard({ event }: IEventCardProps) {
         </h3>
 
         <div className="text-on-surface-variant font-body-md text-body-md mb-6 flex items-center gap-2">
-          <span className="material-symbols-outlined text-[18px]">location_on</span>
+          <MapPin size={18} />
           <span>
             {event.venue}, {event.city}
           </span>

@@ -1,3 +1,4 @@
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { cn } from '@/lib';
 import { buildPageRange } from '@/utils';
 import IconButton from './IconButton';
@@ -26,7 +27,7 @@ export default function Pagination({
       className={cn('gap-stack-gap mt-16 flex items-center justify-center', className)}
     >
       <IconButton
-        icon="chevron_left"
+        icon={<ChevronLeft size={20} />}
         aria-label="Previous page"
         disabled={currentPage === 1}
         className={cn(
@@ -64,7 +65,7 @@ export default function Pagination({
       )}
 
       <IconButton
-        icon="chevron_right"
+        icon={<ChevronRight size={20} />}
         aria-label="Next page"
         disabled={currentPage === totalPages}
         className={cn(

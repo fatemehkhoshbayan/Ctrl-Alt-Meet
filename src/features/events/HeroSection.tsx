@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Search } from 'lucide-react';
 import { SearchBar } from '@/ui';
 import { useAppDispatch } from '@/store/hooks';
 import { setFilters } from '@/store/events';
@@ -33,7 +34,7 @@ export default function HeroSection() {
             </p>
           </div>
           <SearchBar
-            icon="search"
+            icon={<Search size={18} />}
             placeholder="Find your next obsession..."
             value={searchQuery}
             onChange={setSearchQuery}

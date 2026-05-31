@@ -4,5 +4,4 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @import './appearance/styles/theme.css';
-@import './appearance/styles/fonts.css';
 @import './appearance/styles/utilities.css';

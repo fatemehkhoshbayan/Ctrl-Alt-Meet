@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib';
+import type { ReactNode } from 'react';
 
 interface IButtonProps extends VariantProps<typeof buttonVariants> {
   onClick: () => void;
@@ -11,9 +12,8 @@ interface IButtonProps extends VariantProps<typeof buttonVariants> {
   disabled?: boolean;
   loading?: boolean;
   type?: 'button' | 'submit' | 'reset';
-  icon?: string;
-  iconLeft?: boolean;
-  iconSize?: 'xs' | 'sm' | 'md' | 'lg';
+  icon?: ReactNode;
+  iconLeft?: ReactNode;
 }
 
 const buttonVariants = cva(
@@ -60,7 +60,6 @@ export default function Button({
   size = 'md',
   icon,
   iconLeft,
-  iconSize = 'md',
   onClick,
   BtnText,
   type = 'button',
@@ -71,9 +70,9 @@ export default function Button({
       type={type}
       className={cn(buttonVariants({ variant, color, size }), className)}
     >
-      {icon && <span className={cn('material-symbols-outlined', iconSize)}>{icon}</span>}
+      {icon}
       {BtnText}
-      {iconLeft && <span className={cn('material-symbols-outlined', iconSize)}>{icon}</span>}
+      {iconLeft}
     </button>
   );
 }
