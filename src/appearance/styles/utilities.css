@@ -32,6 +32,72 @@
   animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
+@utility hero-glow {
+  --hero-glow-opacity: 45%;
+  display: none;
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 70% 40%,
+    color-mix(in srgb, var(--theme-primary-container) var(--hero-glow-opacity), transparent),
+    transparent 70%
+  );
+}
+
+:root.dark .hero-glow {
+  display: block;
+}
+
+@utility hero-badge {
+  background: var(--theme-secondary-container);
+  color: var(--theme-on-secondary-container);
+}
+
+:root.dark .hero-badge {
+  background: color-mix(in srgb, var(--theme-primary) 15%, transparent);
+  color: var(--theme-secondary);
+}
+
+@utility hero-title {
+  color: var(--theme-on-surface);
+}
+
+:root.dark .hero-title {
+  color: var(--theme-primary);
+}
+
+@utility hero-blur-primary {
+  background: color-mix(in srgb, var(--theme-primary-container) 10%, transparent);
+}
+
+:root.dark .hero-blur-primary {
+  background: color-mix(in srgb, var(--theme-primary-container) 30%, transparent);
+}
+
+@utility hero-blur-secondary {
+  background: color-mix(in srgb, var(--theme-secondary-container) 10%, transparent);
+}
+
+:root.dark .hero-blur-secondary {
+  background: color-mix(in srgb, var(--theme-primary) 10%, transparent);
+}
+
+@utility search-bar {
+  border-color: color-mix(in srgb, var(--theme-outline-variant) 30%, transparent);
+  background-color: var(--theme-surface-container-lowest);
+  box-shadow:
+    0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+:root.dark .search-bar {
+  border-color: color-mix(in srgb, var(--theme-outline-variant) 40%, transparent);
+  background-color: color-mix(in srgb, var(--theme-surface-container-low) 60%, transparent);
+  box-shadow: none;
+  backdrop-filter: blur(4px);
+}
+
 @utility scribble-accent {
   position: relative;
 
@@ -43,8 +109,45 @@
     width: 100%;
     height: 8px;
     background: var(--theme-secondary-container);
-    opacity: 0.3;
+    opacity: 0.6;
     border-radius: 4px;
     z-index: -1;
   }
+}:root.dark .scribble-accent::after {
+  background: var(--theme-secondary);
+  opacity: 0.6;
+}
+
+
+@utility select {
+  border-color: color-mix(in srgb, var(--theme-outline-variant) 30%, transparent);
+  background-color: var(--theme-surface-container-lowest);
+  box-shadow:
+    0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+
+:root.dark .select {
+  border-color: color-mix(in srgb, var(--theme-outline-variant) 40%, transparent);
+  background-color: color-mix(in srgb, var(--theme-surface-container-low) 60%, transparent);
+  box-shadow: none;
+  backdrop-filter: blur(4px);
+}
+
+
+@utility select-option {
+  color: var(--theme-on-surface-variant);
+}
+
+:root.dark .select-option {
+  color: var(--theme-on-surface-variant);
+}
+
+@utility select-option-hover {
+  background-color: var(--theme-surface-variant);
+}
+
+:root.dark .select-option-hover {
+  background-color: var(--theme-surface-variant);
 }

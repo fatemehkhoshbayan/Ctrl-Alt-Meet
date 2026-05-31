@@ -1,0 +1,1033 @@
+{
+  "events": [
+    {
+      "id": "evt-001",
+      "title": "React Global Summit 2026",
+      "slug": "react-global-summit-2026",
+      "description": "The world's largest React conference returns for its 8th edition. Join 3,000+ engineers, designers, and PMs as we explore the future of the React ecosystem — Server Components, Concurrent Mode, and beyond. Featuring two days of talks, workshops, and hallway conversations that will change how you think about building for the web.",
+      "shortDescription": "The world's largest gathering of React engineers. Two days of deep-dives, workshops, and real-world war stories.",
+      "date": "2026-09-15",
+      "endDate": "2026-09-16",
+      "time": "09:00",
+      "endTime": "18:00",
+      "timezone": "PST",
+      "location": "Moscone Center, San Francisco, CA",
+      "venue": "Moscone Center",
+      "city": "San Francisco, CA",
+      "category": "Frontend",
+      "tags": ["React", "JavaScript", "Frontend", "Web"],
+      "imageUrl": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
+      "organizer": {
+        "name": "OpenJS Foundation",
+        "avatar": "OJ",
+        "email": "events@openjsf.org",
+        "website": "https://openjsf.org"
+      },
+      "speakers": ["spk-001", "spk-002", "spk-005"],
+      "isFeatured": true,
+      "isFavorite": false,
+      "attendeeCount": 2847,
+      "maxAttendees": 3000,
+      "ticketTiers": [
+        {
+          "id": "tier-001-ga",
+          "name": "General Admission",
+          "price": 399,
+          "description": "Full 2-day conference access, lunch included, swag bag",
+          "perks": ["All keynotes", "Workshop access", "Lunch both days", "Swag bag"],
+          "available": 153,
+          "total": 2500
+        },
+        {
+          "id": "tier-001-vip",
+          "name": "VIP Access",
+          "price": 799,
+          "description": "GA + speaker dinner, priority seating, exclusive after-party",
+          "perks": [
+            "Everything in GA",
+            "Speaker dinner",
+            "Priority seating",
+            "After-party",
+            "1:1 office hours"
+          ],
+          "available": 12,
+          "total": 100
+        },
+        {
+          "id": "tier-001-virtual",
+          "name": "Virtual Pass",
+          "price": 99,
+          "description": "Live-stream all tracks, recordings for 6 months",
+          "perks": ["Live stream", "6-month recordings", "Slack community"],
+          "available": 890,
+          "total": 1000
+        }
+      ],
+      "schedule": [
+        { "time": "09:00", "title": "Registration & Coffee", "type": "break" },
+        {
+          "time": "10:00",
+          "title": "Keynote: The React Compiler is Here",
+          "speaker": "spk-001",
+          "type": "keynote"
+        },
+        {
+          "time": "11:30",
+          "title": "Server Components in Production",
+          "speaker": "spk-002",
+          "type": "talk"
+        },
+        { "time": "13:00", "title": "Lunch Break", "type": "break" },
+        { "time": "14:00", "title": "Workshop: Migrating to React 19", "type": "workshop" },
+        { "time": "16:00", "title": "Lightning Talks", "type": "lightning" },
+        { "time": "17:30", "title": "Networking Happy Hour", "type": "social" }
+      ]
+    },
+    {
+      "id": "evt-002",
+      "title": "TypeScript Conf 2026",
+      "slug": "typescript-conf-2026",
+      "description": "TypeScript is eating the world — and this is where the language's power users come to share what they've learned. From complex type gymnastics to real-world DX improvements, TSConf brings together the sharpest minds in the TypeScript community for a day of talks, Q&A with the core team, and open-space sessions.",
+      "shortDescription": "Where TypeScript power users share arcane type wizardry and real-world DX wins.",
+      "date": "2026-10-03",
+      "endDate": "2026-10-03",
+      "time": "08:30",
+      "endTime": "17:00",
+      "timezone": "CST",
+      "location": "Palmer House Hilton, Chicago, IL",
+      "venue": "Palmer House Hilton",
+      "city": "Chicago, IL",
+      "category": "Languages",
+      "tags": ["TypeScript", "JavaScript", "DX", "Type Safety"],
+      "imageUrl": "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&q=80",
+      "organizer": {
+        "name": "TSConf Community",
+        "avatar": "TC",
+        "email": "hello@tsconf.io",
+        "website": "https://tsconf.io"
+      },
+      "speakers": ["spk-003", "spk-004"],
+      "isFeatured": false,
+      "isFavorite": true,
+      "attendeeCount": 890,
+      "maxAttendees": 1000,
+      "ticketTiers": [
+        {
+          "id": "tier-002-ga",
+          "name": "General Admission",
+          "price": 249,
+          "description": "Full day conference, lunch, and after-event mixer",
+          "perks": ["All talks", "Lunch", "After-event mixer", "Swag"],
+          "available": 110,
+          "total": 800
+        },
+        {
+          "id": "tier-002-vip",
+          "name": "VIP Access",
+          "price": 499,
+          "description": "GA + TypeScript team Q&A, early access, workshop",
+          "perks": ["Everything in GA", "TS team Q&A", "Early entry", "Workshop"],
+          "available": 5,
+          "total": 50
+        }
+      ],
+      "schedule": [
+        { "time": "08:30", "title": "Doors Open & Breakfast", "type": "break" },
+        {
+          "time": "09:30",
+          "title": "Keynote: TypeScript 6.0 What's New",
+          "speaker": "spk-003",
+          "type": "keynote"
+        },
+        { "time": "11:00", "title": "Advanced Generics Workshop", "type": "workshop" },
+        { "time": "13:00", "title": "Lunch", "type": "break" },
+        { "time": "14:00", "title": "Panel: Types in Large Codebases", "type": "panel" }
+      ]
+    },
+    {
+      "id": "evt-003",
+      "title": "KubeCon North America 2026",
+      "slug": "kubecon-na-2026",
+      "description": "KubeCon + CloudNativeCon is the flagship conference of the CNCF ecosystem. If you run things in containers and care about what happens after `kubectl apply`, this is your conference. Five days of deep technical content, SIG meetings, project updates, and the largest cloud-native community gathering on the continent.",
+      "shortDescription": "The cloud-native mega-conference. Where kubectl power users and SIG leads converge.",
+      "date": "2026-11-10",
+      "endDate": "2026-11-14",
+      "time": "08:00",
+      "endTime": "18:00",
+      "timezone": "EST",
+      "location": "Jacob K. Javits Center, New York, NY",
+      "venue": "Javits Center",
+      "city": "New York, NY",
+      "category": "Cloud & DevOps",
+      "tags": ["Kubernetes", "Cloud Native", "DevOps", "CNCF"],
+      "imageUrl": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80",
+      "organizer": {
+        "name": "CNCF",
+        "avatar": "CF",
+        "email": "events@cncf.io",
+        "website": "https://cncf.io"
+      },
+      "speakers": ["spk-005", "spk-006"],
+      "isFeatured": true,
+      "isFavorite": false,
+      "attendeeCount": 11200,
+      "maxAttendees": 12000,
+      "ticketTiers": [
+        {
+          "id": "tier-003-attendee",
+          "name": "Attendee",
+          "price": 1099,
+          "description": "5-day full access pass",
+          "perks": ["All sessions", "Expo hall", "Meals", "Social events"],
+          "available": 800,
+          "total": 10000
+        },
+        {
+          "id": "tier-003-co-located",
+          "name": "Co-located Events",
+          "price": 499,
+          "description": "Monday co-located event access only",
+          "perks": ["Day 1 events", "Networking lunch"],
+          "available": 200,
+          "total": 500
+        },
+        {
+          "id": "tier-003-virtual",
+          "name": "Virtual",
+          "price": 75,
+          "description": "Live stream and on-demand for 1 year",
+          "perks": ["Live stream", "1-year recordings"],
+          "available": 5000,
+          "total": 10000
+        }
+      ],
+      "schedule": []
+    },
+    {
+      "id": "evt-004",
+      "title": "AI/ML Summit: The Alignment Edition",
+      "slug": "aiml-summit-alignment-2026",
+      "description": "A practitioner-first AI conference focused on what it actually takes to ship reliable ML systems — not hype, not demos, but hard-won lessons from teams that have done it. Topics span evals methodology, RLHF at scale, fine-tuning strategies, and the thorny question of what alignment actually means in practice.",
+      "shortDescription": "Practical AI for engineers who are tired of being gaslit by benchmark leaderboards.",
+      "date": "2026-08-22",
+      "endDate": "2026-08-23",
+      "time": "09:00",
+      "endTime": "18:30",
+      "timezone": "GMT",
+      "location": "The Crystal, London, UK",
+      "venue": "The Crystal",
+      "city": "London, UK",
+      "category": "AI & ML",
+      "tags": ["AI", "Machine Learning", "LLMs", "Alignment"],
+      "imageUrl": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
+      "organizer": {
+        "name": "ML Collective UK",
+        "avatar": "ML",
+        "email": "summit@mlcollective.uk",
+        "website": "https://mlcollective.uk"
+      },
+      "speakers": ["spk-001", "spk-003", "spk-007"],
+      "isFeatured": true,
+      "isFavorite": false,
+      "attendeeCount": 1540,
+      "maxAttendees": 1800,
+      "ticketTiers": [
+        {
+          "id": "tier-004-ga",
+          "name": "General Admission",
+          "price": 349,
+          "description": "2-day full access, lunch, and workshop",
+          "perks": ["All talks", "Workshops", "Lunch", "Networking"],
+          "available": 260,
+          "total": 1500
+        },
+        {
+          "id": "tier-004-vip",
+          "name": "VIP Research Pass",
+          "price": 699,
+          "description": "GA + roundtable discussions, speaker dinner",
+          "perks": ["Everything in GA", "Research roundtables", "Speaker dinner"],
+          "available": 8,
+          "total": 100
+        }
+      ],
+      "schedule": []
+    },
+    {
+      "id": "evt-005",
+      "title": "Open Source Contributor Day",
+      "slug": "open-source-contributor-day-2026",
+      "description": "A free, community-organized day of sprinting, mentorship, and collaboration on open-source projects. Whether you're committing your first PR or maintaining a project with 10k+ stars, there's a track for you. Bring your laptop, pick a project, and ship something real by end of day.",
+      "shortDescription": "A free day of hacking, mentorship, and shipping PRs with the community.",
+      "date": "2026-09-27",
+      "endDate": "2026-09-27",
+      "time": "10:00",
+      "endTime": "17:00",
+      "timezone": "EST",
+      "location": "GitHub HQ, San Francisco, CA",
+      "venue": "GitHub HQ",
+      "city": "San Francisco, CA",
+      "category": "Open Source",
+      "tags": ["Open Source", "Community", "Hackathon", "GitHub"],
+      "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
+      "organizer": {
+        "name": "GitHub Community",
+        "avatar": "GH",
+        "email": "community@github.com",
+        "website": "https://github.com"
+      },
+      "speakers": ["spk-004", "spk-006"],
+      "isFeatured": false,
+      "isFavorite": false,
+      "attendeeCount": 420,
+      "maxAttendees": 500,
+      "ticketTiers": [
+        {
+          "id": "tier-005-free",
+          "name": "Free",
+          "price": 0,
+          "description": "Open to all. Just show up and hack.",
+          "perks": ["All sessions", "Pizza & drinks", "Stickers"],
+          "available": 80,
+          "total": 500
+        }
+      ],
+      "schedule": []
+    },
+    {
+      "id": "evt-006",
+      "title": "GraphQL & API Design Summit",
+      "slug": "graphql-api-design-summit-2026",
+      "description": "GraphQL turned 10 and it's still divisive — and that's what makes this conference interesting. We bring together the REST diehards, the GraphQL true believers, and the gRPC heretics for honest conversations about API design tradeoffs, schema evolution, federation, and what the next decade looks like.",
+      "shortDescription": "Honest conversations about API tradeoffs. REST, GraphQL, gRPC — all welcome, all scrutinized.",
+      "date": "2026-10-17",
+      "endDate": "2026-10-17",
+      "time": "09:00",
+      "endTime": "17:30",
+      "timezone": "PST",
+      "location": "The Inforum, San Francisco, CA",
+      "venue": "The Inforum",
+      "city": "San Francisco, CA",
+      "category": "Backend",
+      "tags": ["GraphQL", "API", "REST", "gRPC", "Backend"],
+      "imageUrl": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80",
+      "organizer": {
+        "name": "The Guild",
+        "avatar": "TG",
+        "email": "events@the-guild.dev",
+        "website": "https://the-guild.dev"
+      },
+      "speakers": ["spk-002", "spk-007"],
+      "isFeatured": false,
+      "isFavorite": true,
+      "attendeeCount": 650,
+      "maxAttendees": 700,
+      "ticketTiers": [
+        {
+          "id": "tier-006-ga",
+          "name": "General Admission",
+          "price": 199,
+          "description": "Full day access and lunch",
+          "perks": ["All talks", "Lunch", "Swag"],
+          "available": 50,
+          "total": 600
+        },
+        {
+          "id": "tier-006-workshop",
+          "name": "Workshop Bundle",
+          "price": 349,
+          "description": "GA + hands-on morning workshop",
+          "perks": ["Everything in GA", "Morning workshop", "Workshop materials"],
+          "available": 15,
+          "total": 60
+        }
+      ],
+      "schedule": []
+    },
+    {
+      "id": "evt-007",
+      "title": "DevSecOps World 2026",
+      "slug": "devsecops-world-2026",
+      "description": "Security is everyone's problem now. DevSecOps World brings together the people who've figured that out — engineers who've shifted security left, AppSec teams that learned to work at developer velocity, and security researchers who found bugs before the bad guys did. Two days of war stories, tools, and hard-won lessons.",
+      "shortDescription": "Security that ships with the code. War stories from engineers who've done it.",
+      "date": "2026-11-05",
+      "endDate": "2026-11-06",
+      "time": "09:00",
+      "endTime": "17:00",
+      "timezone": "EST",
+      "location": "Marriott Marquis, Washington D.C.",
+      "venue": "Marriott Marquis",
+      "city": "Washington D.C.",
+      "category": "Security",
+      "tags": ["Security", "DevSecOps", "AppSec", "Compliance"],
+      "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+      "organizer": {
+        "name": "DevSecOps Foundation",
+        "avatar": "DS",
+        "email": "info@devsecops.world",
+        "website": "https://devsecops.world"
+      },
+      "speakers": ["spk-006", "spk-007"],
+      "isFeatured": false,
+      "isFavorite": false,
+      "attendeeCount": 1100,
+      "maxAttendees": 1500,
+      "ticketTiers": [
+        {
+          "id": "tier-007-ga",
+          "name": "General Admission",
+          "price": 299,
+          "description": "2-day access, meals, and workshops",
+          "perks": ["All sessions", "Meals", "Workshops"],
+          "available": 400,
+          "total": 1200
+        },
+        {
+          "id": "tier-007-vip",
+          "name": "VIP Security Pass",
+          "price": 599,
+          "description": "GA + red team lab access, exclusive briefings",
+          "perks": ["Everything in GA", "Red team lab", "Exclusive briefings", "Cert exam voucher"],
+          "available": 40,
+          "total": 100
+        }
+      ],
+      "schedule": []
+    },
+    {
+      "id": "evt-008",
+      "title": "Rust Nation UK 2026",
+      "slug": "rust-nation-uk-2026",
+      "description": "Rust is winning. Systems programmers, web developers, and even data scientists are discovering what ownership, lifetimes, and zero-cost abstractions actually mean in practice. Rust Nation UK is the UK's premier Rust conference — two days of talks ranging from beginner-friendly to 'my brain is full' advanced.",
+      "shortDescription": "The UK's Rust conference. From battling the borrow checker to shipping production systems.",
+      "date": "2026-09-12",
+      "endDate": "2026-09-13",
+      "time": "09:30",
+      "endTime": "17:30",
+      "timezone": "GMT",
+      "location": "The Brewery, London, UK",
+      "venue": "The Brewery",
+      "city": "London, UK",
+      "category": "Languages",
+      "tags": ["Rust", "Systems", "WebAssembly", "Performance"],
+      "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+      "organizer": {
+        "name": "Rust Nation",
+        "avatar": "RN",
+        "email": "hello@rustnation.uk",
+        "website": "https://rustnation.uk"
+      },
+      "speakers": ["spk-003", "spk-005"],
+      "isFeatured": false,
+      "isFavorite": false,
+      "attendeeCount": 780,
+      "maxAttendees": 900,
+      "ticketTiers": [
+        {
+          "id": "tier-008-ga",
+          "name": "General Admission",
+          "price": 179,
+          "description": "2-day full access and lunch",
+          "perks": ["All talks", "Lunch", "Ferris the crab sticker pack"],
+          "available": 120,
+          "total": 800
+        },
+        {
+          "id": "tier-008-virtual",
+          "name": "Virtual",
+          "price": 29,
+          "description": "Live stream and recordings",
+          "perks": ["Live stream", "90-day recordings"],
+          "available": 2000,
+          "total": 2000
+        }
+      ],
+      "schedule": []
+    },
+    {
+      "id": "evt-009",
+      "title": "She Codes: Women in Tech Summit 2026",
+      "slug": "she-codes-women-in-tech-summit-2026",
+      "description": "A safe, energizing space for women and non-binary people in tech to connect, grow, and lead. From senior engineers sharing hard-won career wisdom to founders who raised their first round, She Codes Summit brings together voices the industry needs to amplify. Two days of panels, mentorship circles, workshops, and a hiring fair with companies that actually walk the talk on inclusion.",
+      "shortDescription": "A summit celebrating and empowering women and non-binary technologists — career stories, mentorship, and community.",
+      "date": "2026-06-23",
+      "endDate": "2026-06-24",
+      "time": "09:00",
+      "endTime": "17:30",
+      "timezone": "PST",
+      "location": "Adobe HQ, San Jose, CA",
+      "venue": "Adobe HQ",
+      "city": "San Jose, CA",
+      "category": "Women in Tech",
+      "tags": ["Women in Tech", "Diversity", "Inclusion", "Career", "Mentorship"],
+      "imageUrl": "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?w=800&q=80",
+      "organizer": {
+        "name": "She Codes Alliance",
+        "avatar": "SC",
+        "email": "hello@shecodesalliance.org",
+        "website": "https://shecodesalliance.org"
+      },
+      "speakers": ["spk-001", "spk-007"],
+      "isFeatured": true,
+      "isFavorite": false,
+      "attendeeCount": 1200,
+      "maxAttendees": 1500,
+      "ticketTiers": [
+        {
+          "id": "tier-009-ga",
+          "name": "General Admission",
+          "price": 149,
+          "description": "2-day full access, lunch, and mentorship fair",
+          "perks": ["All sessions", "Mentorship fair", "Lunch both days", "Swag bag"],
+          "available": 300,
+          "total": 1200
+        },
+        {
+          "id": "tier-009-ally",
+          "name": "Ally Pass",
+          "price": 199,
+          "description": "For allies. 25% of proceeds donated to coding bootcamps for underrepresented groups.",
+          "perks": ["All sessions", "Ally badge", "Donation receipt"],
+          "available": 200,
+          "total": 200
+        },
+        {
+          "id": "tier-009-virtual",
+          "name": "Virtual",
+          "price": 49,
+          "description": "Live stream all tracks with Q&A access",
+          "perks": ["Live stream", "Q&A access", "60-day recordings"],
+          "available": 2000,
+          "total": 2000
+        }
+      ],
+      "schedule": [
+        { "time": "09:00", "title": "Doors Open & Breakfast", "type": "break" },
+        {
+          "time": "10:00",
+          "title": "Keynote: Redefining Leadership in Tech",
+          "speaker": "spk-001",
+          "type": "keynote"
+        },
+        { "time": "11:30", "title": "Panel: From IC to Engineering Manager", "type": "panel" },
+        { "time": "13:00", "title": "Lunch & Networking", "type": "break" },
+        { "time": "14:00", "title": "Workshop: Negotiating Your Worth", "type": "workshop" },
+        { "time": "16:00", "title": "Mentorship Circles", "type": "social" },
+        { "time": "17:00", "title": "Closing Keynote", "speaker": "spk-007", "type": "keynote" }
+      ]
+    },
+    {
+      "id": "evt-010",
+      "title": "HackTheNorth 2026",
+      "slug": "hack-the-north-2026",
+      "description": "Canada's biggest hackathon is back. 1,000 hackers, 36 hours, and unlimited ambition. Whether you're building an AI agent that reads your emails so you don't have to, a hardware prototype held together with duct tape, or an app that might actually ship — this is the place to do it. Mentors from top tech companies roam the floor, swag flows freely, and the energy is unlike anything you've experienced.",
+      "shortDescription": "Canada's largest hackathon. 1,000 hackers, 36 hours, infinite possibilities.",
+      "date": "2026-09-19",
+      "endDate": "2026-09-21",
+      "time": "18:00",
+      "endTime": "21:00",
+      "timezone": "EST",
+      "location": "University of Waterloo, Waterloo, ON",
+      "venue": "E5 Engineering Building",
+      "city": "Waterloo, ON",
+      "category": "Hackathon",
+      "tags": ["Hackathon", "Students", "AI", "Hardware", "Community"],
+      "imageUrl": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80",
+      "organizer": {
+        "name": "Hack the North Team",
+        "avatar": "HN",
+        "email": "hello@hackthenorth.com",
+        "website": "https://hackthenorth.com"
+      },
+      "speakers": ["spk-004", "spk-006"],
+      "isFeatured": true,
+      "isFavorite": false,
+      "attendeeCount": 1000,
+      "maxAttendees": 1000,
+      "ticketTiers": [
+        {
+          "id": "tier-010-hacker",
+          "name": "Hacker (Free)",
+          "price": 0,
+          "description": "Full 36-hour hackathon access, meals, sleeping space, swag",
+          "perks": ["Meals & snacks", "Sleeping quarters", "API credits", "Swag", "Prizes"],
+          "available": 0,
+          "total": 1000
+        }
+      ],
+      "schedule": [
+        { "time": "18:00", "title": "Check-In & Opening Ceremony", "type": "keynote" },
+        { "time": "21:00", "title": "Hacking Begins", "type": "break" },
+        { "time": "09:00", "title": "Day 2: Workshops & Mentorship", "type": "workshop" },
+        { "time": "09:00", "title": "Day 3: Project Submissions", "type": "break" },
+        { "time": "13:00", "title": "Demos & Judging", "type": "talk" },
+        { "time": "18:00", "title": "Closing Ceremony & Awards", "type": "social" }
+      ]
+    },
+    {
+      "id": "evt-011",
+      "title": "Founder Zero: Early-Stage Startup Summit",
+      "slug": "founder-zero-2026",
+      "description": "Before the Series A. Before the term sheet. Before the press release. Founder Zero is for the founders who are still figuring it out — who are deciding between pivoting and persevering, writing their first job descriptions, or trying to close a pre-seed round. No unicorn success theater. Just founders being honest with each other about what it actually takes.",
+      "shortDescription": "A no-BS summit for pre-seed and seed-stage founders. Honest talks, real numbers, hard lessons.",
+      "date": "2026-10-09",
+      "endDate": "2026-10-10",
+      "time": "08:30",
+      "endTime": "17:00",
+      "timezone": "EST",
+      "location": "MaRS Discovery District, Toronto, ON",
+      "venue": "MaRS Discovery District",
+      "city": "Toronto, ON",
+      "category": "Founders",
+      "tags": ["Startups", "Founders", "VC", "Pre-seed", "Entrepreneurship"],
+      "imageUrl": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80",
+      "organizer": {
+        "name": "Founder Zero Community",
+        "avatar": "FZ",
+        "email": "team@founderzero.co",
+        "website": "https://founderzero.co"
+      },
+      "speakers": ["spk-003", "spk-004"],
+      "isFeatured": false,
+      "isFavorite": false,
+      "attendeeCount": 480,
+      "maxAttendees": 600,
+      "ticketTiers": [
+        {
+          "id": "tier-011-founder",
+          "name": "Founder Pass",
+          "price": 299,
+          "description": "2-day access for founders building companies. Verified at registration.",
+          "perks": ["All talks", "Investor office hours lottery", "Lunch", "Founder directory"],
+          "available": 120,
+          "total": 500
+        },
+        {
+          "id": "tier-011-investor",
+          "name": "Investor Pass",
+          "price": 799,
+          "description": "For angels, VCs, and scouts. Includes deal flow sessions.",
+          "perks": ["All talks", "Deal flow sessions", "Founder meeting scheduler", "Dinner"],
+          "available": 20,
+          "total": 60
+        }
+      ],
+      "schedule": [
+        { "time": "08:30", "title": "Breakfast & Intros", "type": "break" },
+        {
+          "time": "09:30",
+          "title": "Keynote: The Thing Nobody Tells You About Fundraising",
+          "type": "keynote"
+        },
+        { "time": "11:00", "title": "Panel: When to Pivot vs. Persist", "type": "panel" },
+        { "time": "13:00", "title": "Lunch", "type": "break" },
+        { "time": "14:00", "title": "Investor Office Hours", "type": "social" },
+        { "time": "16:00", "title": "Workshop: Legal Landmines for Founders", "type": "workshop" }
+      ]
+    },
+    {
+      "id": "evt-012",
+      "title": "Frontend Craft Workshop: Design Systems at Scale",
+      "slug": "frontend-craft-design-systems-2026",
+      "description": "A hands-on, single-day workshop for senior frontend engineers and design system leads who want to go deep. We're talking token architecture, component API design, accessibility auditing, and the politics of getting designers and engineers to actually share a language. Limited to 60 attendees so everyone gets real face time with the instructors.",
+      "shortDescription": "A small-batch, hands-on workshop on building and maintaining design systems that teams actually adopt.",
+      "date": "2026-11-14",
+      "endDate": "2026-11-14",
+      "time": "09:00",
+      "endTime": "17:00",
+      "timezone": "EST",
+      "location": "Shopify HQ, Toronto, ON",
+      "venue": "Shopify HQ",
+      "city": "Toronto, ON",
+      "category": "Workshops",
+      "tags": ["Design Systems", "Frontend", "CSS", "Accessibility", "Tokens"],
+      "imageUrl": "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&q=80",
+      "organizer": {
+        "name": "Frontend Craft",
+        "avatar": "FC",
+        "email": "workshops@frontendcraft.dev",
+        "website": "https://frontendcraft.dev"
+      },
+      "speakers": ["spk-002", "spk-001"],
+      "isFeatured": false,
+      "isFavorite": true,
+      "attendeeCount": 48,
+      "maxAttendees": 60,
+      "ticketTiers": [
+        {
+          "id": "tier-012-workshop",
+          "name": "Workshop Seat",
+          "price": 449,
+          "description": "Full-day hands-on workshop, lunch, and all materials",
+          "perks": ["All sessions", "Lunch", "Workshop materials", "Private Slack channel access"],
+          "available": 12,
+          "total": 60
+        }
+      ],
+      "schedule": [
+        {
+          "time": "09:00",
+          "title": "Intro & Token Architecture Deep Dive",
+          "speaker": "spk-002",
+          "type": "workshop"
+        },
+        {
+          "time": "11:00",
+          "title": "Component API Design Patterns",
+          "speaker": "spk-001",
+          "type": "workshop"
+        },
+        { "time": "13:00", "title": "Lunch", "type": "break" },
+        { "time": "14:00", "title": "Accessibility Auditing Lab", "type": "workshop" },
+        { "time": "15:30", "title": "The Politics of Design Systems", "type": "talk" },
+        { "time": "16:30", "title": "Q&A & Open Office Hours", "type": "social" }
+      ]
+    },
+    {
+      "id": "evt-013",
+      "title": "Distributed Systems Conference 2026",
+      "slug": "distributed-systems-conf-2026",
+      "description": "Consensus is hard. Clocks lie. Networks fail. DistSys Conf brings together the engineers and researchers who build reliable systems in an unreliable world. From CRDTs and Raft implementations to the real-world pain of eventual consistency, this is a conference for people who have read the Dynamo paper and still want to talk about it.",
+      "shortDescription": "For engineers who've read the Dynamo paper and still have questions. Consensus, replication, and distributed chaos.",
+      "date": "2026-12-04",
+      "endDate": "2026-12-05",
+      "time": "09:00",
+      "endTime": "18:00",
+      "timezone": "PST",
+      "location": "Computer History Museum, Mountain View, CA",
+      "venue": "Computer History Museum",
+      "city": "Mountain View, CA",
+      "category": "Backend",
+      "tags": ["Distributed Systems", "Backend", "Database", "Consensus", "Reliability"],
+      "imageUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+      "organizer": {
+        "name": "DistSys Community",
+        "avatar": "DC",
+        "email": "organizers@distsysconf.io",
+        "website": "https://distsysconf.io"
+      },
+      "speakers": ["spk-005", "spk-007"],
+      "isFeatured": false,
+      "isFavorite": false,
+      "attendeeCount": 620,
+      "maxAttendees": 800,
+      "ticketTiers": [
+        {
+          "id": "tier-013-ga",
+          "name": "General Admission",
+          "price": 379,
+          "description": "2-day full access, lunch, and workshop",
+          "perks": ["All talks", "Lunch", "Workshop access", "Proceedings PDF"],
+          "available": 180,
+          "total": 700
+        },
+        {
+          "id": "tier-013-virtual",
+          "name": "Virtual",
+          "price": 79,
+          "description": "Live stream and 1-year access to recordings",
+          "perks": ["Live stream", "1-year recordings", "Slack community"],
+          "available": 3000,
+          "total": 3000
+        }
+      ],
+      "schedule": [
+        { "time": "09:00", "title": "Coffee & Registration", "type": "break" },
+        {
+          "time": "10:00",
+          "title": "Keynote: What 20 Years of Distributed Systems Taught Us",
+          "speaker": "spk-005",
+          "type": "keynote"
+        },
+        { "time": "11:30", "title": "Talk: CRDTs in Production — The Ugly Parts", "type": "talk" },
+        { "time": "13:00", "title": "Lunch", "type": "break" },
+        { "time": "14:00", "title": "Workshop: Simulating Network Failures", "type": "workshop" },
+        { "time": "16:00", "title": "Panel: Database Tradeoffs in 2026", "type": "panel" },
+        { "time": "17:30", "title": "Lightning Talks", "type": "lightning" }
+      ]
+    },
+    {
+      "id": "evt-014",
+      "title": "VueConf Toronto 2026",
+      "slug": "vueconf-toronto-2026",
+      "description": "Vue's North American community comes home. VueConf Toronto brings together the builders, the maintainers, and the Vue-curious for a packed day of talks on Nuxt 4, Vue 3.5's new reactivity primitives, state management wars, and what the Vue team has planned next. The community here is genuinely one of the warmest in the frontend ecosystem.",
+      "shortDescription": "The Vue.js community's North American home. Nuxt, reactivity, and the future of the Vue ecosystem.",
+      "date": "2026-11-21",
+      "endDate": "2026-11-21",
+      "time": "08:30",
+      "endTime": "17:30",
+      "timezone": "EST",
+      "location": "MTCC South Building, Toronto, ON",
+      "venue": "MTCC South Building",
+      "city": "Toronto, ON",
+      "category": "Frontend",
+      "tags": ["Vue", "Nuxt", "JavaScript", "Frontend", "Community"],
+      "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
+      "organizer": {
+        "name": "VueConf TO Team",
+        "avatar": "VC",
+        "email": "hello@vueconf.ca",
+        "website": "https://vueconf.ca"
+      },
+      "speakers": ["spk-002", "spk-004"],
+      "isFeatured": false,
+      "isFavorite": false,
+      "attendeeCount": 540,
+      "maxAttendees": 700,
+      "ticketTiers": [
+        {
+          "id": "tier-014-ga",
+          "name": "General Admission",
+          "price": 219,
+          "description": "Full day conference, lunch, and after-party",
+          "perks": ["All talks", "Lunch", "After-party", "Swag"],
+          "available": 160,
+          "total": 600
+        },
+        {
+          "id": "tier-014-virtual",
+          "name": "Virtual",
+          "price": 39,
+          "description": "Live stream and 90-day recordings",
+          "perks": ["Live stream", "90-day recordings"],
+          "available": 1500,
+          "total": 1500
+        }
+      ],
+      "schedule": [
+        { "time": "08:30", "title": "Doors Open & Breakfast", "type": "break" },
+        {
+          "time": "09:30",
+          "title": "Keynote: The State of Vue in 2026",
+          "speaker": "spk-002",
+          "type": "keynote"
+        },
+        { "time": "11:00", "title": "Deep Dive: Vue 3.5 Reactivity Primitives", "type": "talk" },
+        { "time": "13:00", "title": "Lunch", "type": "break" },
+        { "time": "14:00", "title": "Workshop: Nuxt 4 Server Components", "type": "workshop" },
+        { "time": "16:00", "title": "Lightning Talks", "type": "lightning" },
+        { "time": "17:00", "title": "After-Party", "type": "social" }
+      ]
+    }
+  ],
+  "speakers": [
+    {
+      "id": "spk-001",
+      "name": "Anika Patel",
+      "avatar": "AP",
+      "title": "Principal Engineer",
+      "company": "Meta",
+      "bio": "Core contributor to the React Compiler and co-author of the Concurrent Mode RFC. Anika has spent the last 6 years working on React's internals and loves making complex concurrency concepts accessible to everyday developers.",
+      "talks": ["The React Compiler is Here", "Concurrent Mode in Production"],
+      "topics": ["React", "Compilers", "JavaScript", "Performance"],
+      "social": {
+        "twitter": "@anikapatel_dev",
+        "github": "anikapatel",
+        "website": "https://anikapatel.dev"
+      },
+      "events": ["evt-001", "evt-004"],
+      "avatarColor": "purple"
+    },
+    {
+      "id": "spk-002",
+      "name": "Marcus Chen",
+      "avatar": "MC",
+      "title": "Staff Engineer",
+      "company": "Vercel",
+      "bio": "Marcus helped build Next.js's App Router and has authored dozens of proposals for improving the React Server Components model. He's on a mission to make web performance boring (in the best way).",
+      "talks": ["Server Components in Production", "The Next.js App Router: A Year In"],
+      "topics": ["Next.js", "React", "Server Components", "Performance"],
+      "social": {
+        "twitter": "@marcuschen_eng",
+        "github": "mchen-vercel",
+        "website": "https://marcuschen.io"
+      },
+      "events": ["evt-001", "evt-006"],
+      "avatarColor": "teal"
+    },
+    {
+      "id": "spk-003",
+      "name": "Zara Okonkwo",
+      "avatar": "ZO",
+      "title": "TypeScript Team Lead",
+      "company": "Microsoft",
+      "bio": "Zara leads a sub-team on the TypeScript compiler with a focus on error messages people can actually understand. She's passionate about language design, DX, and ensuring TypeScript works as well for a 50-person startup as for a Fortune 500.",
+      "talks": ["TypeScript 6.0: What's New", "Writing Error Messages Humans Can Read"],
+      "topics": ["TypeScript", "Language Design", "Developer Experience"],
+      "social": {
+        "twitter": "@zaratype",
+        "github": "zokonkwo-ms",
+        "website": "https://zaratype.dev"
+      },
+      "events": ["evt-002", "evt-004", "evt-008"],
+      "avatarColor": "blue"
+    },
+    {
+      "id": "spk-004",
+      "name": "Luca Ferretti",
+      "avatar": "LF",
+      "title": "Open Source Engineer",
+      "company": "Red Hat",
+      "bio": "Luca maintains three widely-used open-source CLI tools and has merged PRs from contributors in 47 countries. He's deeply passionate about first-contributor experiences and has spoken at 12 conferences about sustainable OSS maintenance.",
+      "talks": ["First PRs That Actually Stick", "Sustainable Open Source Maintenance"],
+      "topics": ["Open Source", "CLI", "Community", "Contribution"],
+      "social": {
+        "twitter": "@lucaoss",
+        "github": "lferretti",
+        "website": "https://lucaferretti.io"
+      },
+      "events": ["evt-002", "evt-005"],
+      "avatarColor": "coral"
+    },
+    {
+      "id": "spk-005",
+      "name": "Priya Subramaniam",
+      "avatar": "PS",
+      "title": "Distinguished Engineer",
+      "company": "Google",
+      "bio": "Priya has been running Kubernetes in production since version 1.2. She led Google's internal effort to move 10,000+ services to GKE and now helps the community understand what enterprise-scale Kubernetes operations actually looks like day-to-day.",
+      "talks": ["10,000 Services and One Cluster", "Kubernetes Observability That Doesn't Lie"],
+      "topics": ["Kubernetes", "Cloud Native", "SRE", "Observability"],
+      "social": {
+        "twitter": "@priya_k8s",
+        "github": "psubramaniam",
+        "website": "https://priyasubramaniam.com"
+      },
+      "events": ["evt-001", "evt-003", "evt-008"],
+      "avatarColor": "amber"
+    },
+    {
+      "id": "spk-006",
+      "name": "Jordan Rivers",
+      "avatar": "JR",
+      "title": "Security Research Lead",
+      "company": "Trail of Bits",
+      "bio": "Jordan is a security researcher who specializes in finding vulnerabilities in developer tooling — CI pipelines, supply chain attacks, and the scary stuff hiding in your node_modules. They've disclosed 30+ CVEs and love making security understandable for non-security engineers.",
+      "talks": ["Your CI Pipeline is a Target", "Supply Chain Security in 2026"],
+      "topics": ["Security", "AppSec", "Supply Chain", "DevSecOps"],
+      "social": {
+        "twitter": "@jordanrivers_sec",
+        "github": "jrivers-tob",
+        "website": "https://jordanrivers.io"
+      },
+      "events": ["evt-003", "evt-005", "evt-007"],
+      "avatarColor": "pink"
+    },
+    {
+      "id": "spk-007",
+      "name": "Amara Diallo",
+      "avatar": "AD",
+      "title": "ML Platform Architect",
+      "company": "Hugging Face",
+      "bio": "Amara builds the systems that help ML researchers get models into production without losing their minds. She's co-authored three papers on model evaluation methodology and is one of the loudest voices arguing that benchmark leaderboards are actively harmful.",
+      "talks": ["Why Benchmarks Are Lying to You", "Evals That Actually Reflect Production"],
+      "topics": ["ML", "AI", "Evals", "Production ML", "LLMs"],
+      "social": {
+        "twitter": "@amaraml",
+        "github": "amaradiallo-hf",
+        "website": "https://amaradiallo.ai"
+      },
+      "events": ["evt-004", "evt-006", "evt-007"],
+      "avatarColor": "teal"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "bkg-001",
+      "userId": "user-001",
+      "eventId": "evt-001",
+      "eventTitle": "React Global Summit 2026",
+      "eventDate": "2026-09-15",
+      "eventLocation": "Moscone Center, San Francisco, CA",
+      "ticketTierId": "tier-001-ga",
+      "ticketTierName": "General Admission",
+      "quantity": 2,
+      "unitPrice": 399,
+      "totalPrice": 798,
+      "status": "confirmed",
+      "bookingReference": "CAM-R9X7-2026",
+      "bookedAt": "2026-07-14T10:22:00Z",
+      "attendees": [
+        { "name": "Alex Kim", "email": "alex@example.com", "phone": "+1 555 0101" },
+        { "name": "Sam Park", "email": "sam@example.com", "phone": "+1 555 0102" }
+      ]
+    },
+    {
+      "id": "bkg-002",
+      "userId": "user-001",
+      "eventId": "evt-004",
+      "eventTitle": "AI/ML Summit: The Alignment Edition",
+      "eventDate": "2026-08-22",
+      "eventLocation": "The Crystal, London, UK",
+      "ticketTierId": "tier-004-vip",
+      "ticketTierName": "VIP Research Pass",
+      "quantity": 1,
+      "unitPrice": 699,
+      "totalPrice": 699,
+      "status": "confirmed",
+      "bookingReference": "CAM-A3K1-2026",
+      "bookedAt": "2026-07-10T14:05:00Z",
+      "attendees": [{ "name": "Alex Kim", "email": "alex@example.com", "phone": "+1 555 0101" }]
+    },
+    {
+      "id": "bkg-003",
+      "userId": "user-001",
+      "eventId": "evt-002",
+      "eventTitle": "TypeScript Conf 2026",
+      "eventDate": "2026-10-03",
+      "eventLocation": "Palmer House Hilton, Chicago, IL",
+      "ticketTierId": "tier-002-ga",
+      "ticketTierName": "General Admission",
+      "quantity": 1,
+      "unitPrice": 249,
+      "totalPrice": 249,
+      "status": "cancelled",
+      "bookingReference": "CAM-T5M8-2026",
+      "bookedAt": "2026-06-28T09:15:00Z",
+      "attendees": [{ "name": "Alex Kim", "email": "alex@example.com", "phone": "+1 555 0101" }]
+    },
+    {
+      "id": "bkg-004",
+      "userId": "user-001",
+      "eventId": "evt-005",
+      "eventTitle": "Open Source Contributor Day",
+      "eventDate": "2026-09-27",
+      "eventLocation": "GitHub HQ, San Francisco, CA",
+      "ticketTierId": "tier-005-free",
+      "ticketTierName": "Free",
+      "quantity": 1,
+      "unitPrice": 0,
+      "totalPrice": 0,
+      "status": "confirmed",
+      "bookingReference": "CAM-O2P9-2026",
+      "bookedAt": "2026-07-20T16:40:00Z",
+      "attendees": [{ "name": "Alex Kim", "email": "alex@example.com", "phone": "+1 555 0101" }]
+    }
+  ],
+  "categories": [
+    { "id": "frontend", "name": "Frontend", "icon": "layout" },
+    { "id": "backend", "name": "Backend", "icon": "server" },
+    { "id": "women-in-tech", "name": "Women in Tech", "icon": "woman" },
+    { "id": "cloud", "name": "Cloud & DevOps", "icon": "cloud" },
+    { "id": "aiml", "name": "AI & ML", "icon": "brain" },
+    { "id": "workshops", "name": "Workshops", "icon": "work" },
+    { "id": "hackathon", "name": "Hackathon", "icon": "code" },
+    { "id": "opensource", "name": "Open Source", "icon": "heart" },
+    { "id": "founders", "name": "Founders", "icon": "person" },
+    { "id": "conference", "name": "Conference", "icon": "event" }
+  ],
+  "users": [
+    {
+      "id": "user-001",
+      "name": "Alex Kim",
+      "email": "alex@example.com",
+      "avatar": "AK"
+    },
+    {
+      "id": "user-002",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "avatar": "JD"
+    }
+  ]
+}

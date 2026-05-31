@@ -69,6 +69,7 @@
   --spacing-unit: 8px;
   --spacing-stack-gap: 16px;
   --spacing-gutter: 32px;
+  --spacing-stack-gutter: 40px;
 
   /* ── Font families ── */
   --font-display: 'Lexend', sans-serif;

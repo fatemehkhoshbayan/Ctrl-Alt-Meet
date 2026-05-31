@@ -1,3 +1,10 @@
+import { EventsPageHeroSection, EventsList } from '@/features';
+
 export default function Events() {
-  return <section></section>;
+  return (
+    <>
+      <EventsPageHeroSection />
+      <EventsList />
+    </>
+  );
 }

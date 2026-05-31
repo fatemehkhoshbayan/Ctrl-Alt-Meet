@@ -6,7 +6,7 @@ export default function MobileFooter() {
   const navigate = useNavigate();
 
   return (
-    <footer className="border-outline-variant/30 bg-surface-container gap-gutter text-body-lg font-body-md sticky bottom-0 z-50 mx-auto flex w-full flex-col items-center justify-center p-14 text-center shadow-sm backdrop-blur-xl">
+    <footer className="border-outline-variant/30 bg-surface-container gap-gutter text-body-lg font-body-md z-50 mx-auto flex w-full flex-col items-center justify-center p-14 text-center shadow-sm backdrop-blur-xl">
       <LogoWordMark onClick={() => navigate('/')} />
       <p className="text-on-surface-variant max-w-sm">
         Elevating the way tech communities gather, share, and grow. From local meetups to global
