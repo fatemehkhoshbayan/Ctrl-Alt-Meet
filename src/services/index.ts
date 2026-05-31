@@ -3,3 +3,5 @@ export * from './events/events.type';
 export * from './categories/categories.api';
 export * from './categories/categories.type';
 export * from './clients';
+export * from './speakers/speakers.api';
+export * from './speakers/speakers.type';
