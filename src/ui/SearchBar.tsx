@@ -1,7 +1,8 @@
+import type { ReactNode } from 'react';
 import { Button } from '.';
 
 interface ISearchBarProps {
-  icon?: string;
+  icon?: ReactNode;
   placeholder?: string;
   value?: string;
   onChange?: (value: string) => void;
@@ -20,7 +21,7 @@ export default function SearchBar({
   return (
     <div className="search-bar font-body text-body-md text-on-surface flex w-full max-w-2xl items-center rounded-full border px-4 py-2 duration-200">
       <div className="flex flex-1 items-center gap-3 px-6">
-        <span className="material-symbols-outlined text-primary">{icon}</span>
+        {icon && <span className="text-primary flex items-center">{icon}</span>}
         <input
           className="placeholder:text-on-surface-variant w-full bg-transparent outline-none"
           placeholder={placeholder}

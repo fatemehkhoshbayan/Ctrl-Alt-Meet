@@ -168,6 +168,7 @@
   --theme-tertiary-fixed: #ffdad3;
   --theme-outline-variant: #ccc3d8;
   --theme-outline: #7b7487;
+
 }
 
 /* ─── Dark theme ────────────────────────────────────────────────────────────── */
@@ -219,4 +220,7 @@
   --theme-tertiary-fixed: #3d0600;
   --theme-outline-variant: #4a4455;
   --theme-outline: #948fa0;
+  --theme-till: #4cd7f6;
+  --theme-till-container: #009eb9;
+  --theme-till-fixed: #acedff;
 }

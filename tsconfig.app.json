@@ -28,7 +28,8 @@
       "@appearance/*": ["./src/appearance/*"],
       "@services/*": ["./src/services/*"],
       "@store/*": ["./src/store/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/utils/*"],
+      "@shared/*": ["./src/shared/*"]
     },
 
     /* Linting */

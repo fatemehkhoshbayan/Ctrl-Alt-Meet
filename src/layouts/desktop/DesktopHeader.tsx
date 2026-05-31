@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
+import { Sun, Moon } from 'lucide-react';
 import { NAV_LINKS } from '../constant';
 import { LogoWordMark } from '../Logo';
 import { IconButton } from '@/ui';
@@ -31,9 +32,8 @@ export default function DesktopHeader({ theme, toggleTheme }: IDesktopHeaderProp
         {/* TODO: Add user profile */}
         <div className="flex items-center gap-4">
           <IconButton
-            icon={theme === 'dark' ? 'light_mode' : 'dark_mode'}
+            icon={theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             onClick={toggleTheme}
-            className="material-symbols-outlined"
             type="button"
             aria-label="Toggle theme"
           />

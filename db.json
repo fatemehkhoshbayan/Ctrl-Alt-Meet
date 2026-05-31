@@ -820,13 +820,14 @@
       "bio": "Core contributor to the React Compiler and co-author of the Concurrent Mode RFC. Anika has spent the last 6 years working on React's internals and loves making complex concurrency concepts accessible to everyday developers.",
       "talks": ["The React Compiler is Here", "Concurrent Mode in Production"],
       "topics": ["React", "Compilers", "JavaScript", "Performance"],
-      "social": {
-        "twitter": "@anikapatel_dev",
-        "github": "anikapatel",
-        "website": "https://anikapatel.dev"
-      },
+      "social": [
+        { "name": "twitter", "icon": "twitter", "url": "@anikapatel_dev" },
+        { "name": "github", "icon": "github", "url": "anikapatel" },
+        { "name": "website", "icon": "public", "url": "https://anikapatel.dev" }
+      ],
       "events": ["evt-001", "evt-004"],
-      "avatarColor": "purple"
+      "avatarColor": "purple",
+      "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80"
     },
     {
       "id": "spk-002",
@@ -836,14 +837,15 @@
       "company": "Vercel",
       "bio": "Marcus helped build Next.js's App Router and has authored dozens of proposals for improving the React Server Components model. He's on a mission to make web performance boring (in the best way).",
       "talks": ["Server Components in Production", "The Next.js App Router: A Year In"],
-      "topics": ["Next.js", "React", "Server Components", "Performance"],
-      "social": {
-        "twitter": "@marcuschen_eng",
-        "github": "mchen-vercel",
-        "website": "https://marcuschen.io"
-      },
+      "topics": ["Next.js", "React", "Kubernetes", "Performance"],
+      "social": [
+        { "name": "twitter", "icon": "twitter", "url": "@marcuschen_eng" },
+        { "name": "github", "icon": "github", "url": "mchen-vercel" },
+        { "name": "website", "icon": "public", "url": "https://marcuschen.io" }
+      ],
       "events": ["evt-001", "evt-006"],
-      "avatarColor": "teal"
+      "avatarColor": "teal",
+      "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
     },
     {
       "id": "spk-003",
@@ -853,14 +855,15 @@
       "company": "Microsoft",
       "bio": "Zara leads a sub-team on the TypeScript compiler with a focus on error messages people can actually understand. She's passionate about language design, DX, and ensuring TypeScript works as well for a 50-person startup as for a Fortune 500.",
       "talks": ["TypeScript 6.0: What's New", "Writing Error Messages Humans Can Read"],
-      "topics": ["TypeScript", "Language Design", "Developer Experience"],
-      "social": {
-        "twitter": "@zaratype",
-        "github": "zokonkwo-ms",
-        "website": "https://zaratype.dev"
-      },
+      "topics": ["TypeScript", "Python", "Developer Experience"],
+      "social": [
+        { "name": "twitter", "icon": "twitter", "url": "@zaratype" },
+        { "name": "github", "icon": "github", "url": "zokonkwo-ms" },
+        { "name": "website", "icon": "public", "url": "https://zaratype.dev" }
+      ],
       "events": ["evt-002", "evt-004", "evt-008"],
-      "avatarColor": "blue"
+      "avatarColor": "blue",
+      "imageUrl": "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=400&q=80"
     },
     {
       "id": "spk-004",
@@ -870,14 +873,15 @@
       "company": "Red Hat",
       "bio": "Luca maintains three widely-used open-source CLI tools and has merged PRs from contributors in 47 countries. He's deeply passionate about first-contributor experiences and has spoken at 12 conferences about sustainable OSS maintenance.",
       "talks": ["First PRs That Actually Stick", "Sustainable Open Source Maintenance"],
-      "topics": ["Open Source", "CLI", "Community", "Contribution"],
-      "social": {
-        "twitter": "@lucaoss",
-        "github": "lferretti",
-        "website": "https://lucaferretti.io"
-      },
+      "topics": ["Open Source", "Web3", "Community", "Contribution"],
+      "social": [
+        { "name": "twitter", "icon": "twitter", "url": "@lucaoss" },
+        { "name": "github", "icon": "github", "url": "lferretti" },
+        { "name": "website", "icon": "public", "url": "https://lucaferretti.io" }
+      ],
       "events": ["evt-002", "evt-005"],
-      "avatarColor": "coral"
+      "avatarColor": "coral",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80"
     },
     {
       "id": "spk-005",
@@ -887,14 +891,15 @@
       "company": "Google",
       "bio": "Priya has been running Kubernetes in production since version 1.2. She led Google's internal effort to move 10,000+ services to GKE and now helps the community understand what enterprise-scale Kubernetes operations actually looks like day-to-day.",
       "talks": ["10,000 Services and One Cluster", "Kubernetes Observability That Doesn't Lie"],
-      "topics": ["Kubernetes", "Cloud Native", "SRE", "Observability"],
-      "social": {
-        "twitter": "@priya_k8s",
-        "github": "psubramaniam",
-        "website": "https://priyasubramaniam.com"
-      },
+      "topics": ["Kubernetes", "Cloud Native", "SRE", "UX Design"],
+      "social": [
+        { "name": "twitter", "icon": "twitter", "url": "@priya_k8s" },
+        { "name": "github", "icon": "github", "url": "psubramaniam" },
+        { "name": "website", "icon": "public", "url": "https://priyasubramaniam.com" }
+      ],
       "events": ["evt-001", "evt-003", "evt-008"],
-      "avatarColor": "amber"
+      "avatarColor": "amber",
+      "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80"
     },
     {
       "id": "spk-006",
@@ -904,14 +909,15 @@
       "company": "Trail of Bits",
       "bio": "Jordan is a security researcher who specializes in finding vulnerabilities in developer tooling — CI pipelines, supply chain attacks, and the scary stuff hiding in your node_modules. They've disclosed 30+ CVEs and love making security understandable for non-security engineers.",
       "talks": ["Your CI Pipeline is a Target", "Supply Chain Security in 2026"],
-      "topics": ["Security", "AppSec", "Supply Chain", "DevSecOps"],
-      "social": {
-        "twitter": "@jordanrivers_sec",
-        "github": "jrivers-tob",
-        "website": "https://jordanrivers.io"
-      },
+      "topics": ["Security", "Supply Chain", "DevSecOps"],
+      "social": [
+        { "name": "twitter", "icon": "twitter", "url": "@jordanrivers_sec" },
+        { "name": "github", "icon": "github", "url": "jrivers-tob" },
+        { "name": "website", "icon": "public", "url": "https://jordanrivers.io" }
+      ],
       "events": ["evt-003", "evt-005", "evt-007"],
-      "avatarColor": "pink"
+      "avatarColor": "pink",
+      "imageUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
     },
     {
       "id": "spk-007",
@@ -921,14 +927,15 @@
       "company": "Hugging Face",
       "bio": "Amara builds the systems that help ML researchers get models into production without losing their minds. She's co-authored three papers on model evaluation methodology and is one of the loudest voices arguing that benchmark leaderboards are actively harmful.",
       "talks": ["Why Benchmarks Are Lying to You", "Evals That Actually Reflect Production"],
-      "topics": ["ML", "AI", "Evals", "Production ML", "LLMs"],
-      "social": {
-        "twitter": "@amaraml",
-        "github": "amaradiallo-hf",
-        "website": "https://amaradiallo.ai"
-      },
+      "topics": ["AI", "Evals", "Production ML", "LLMs"],
+      "social": [
+        { "name": "twitter", "icon": "twitter", "url": "@amaraml" },
+        { "name": "github", "icon": "github", "url": "amaradiallo-hf" },
+        { "name": "website", "icon": "public", "url": "https://amaradiallo.ai" }
+      ],
       "events": ["evt-004", "evt-006", "evt-007"],
-      "avatarColor": "teal"
+      "avatarColor": "teal",
+      "imageUrl": "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&q=80"
     }
   ],
   "bookings": [

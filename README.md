@@ -7,7 +7,9 @@ A React app for browsing events, viewing speaker details, and managing bookings.
 - **React 19** with TypeScript
 - **Vite** for dev server and builds
 - **React Router** for client-side routing
+- **Redux Toolkit** for global state management
 - **Tailwind CSS v4** for styling
+- **Lucide React** for icons
 - **ESLint** and **Prettier** for code quality
 
 ## Getting started
@@ -51,11 +53,16 @@ The dev server starts at `http://localhost:5173`.
 src/
 ├── appearance/     # Theme tokens, CSS variables, and light/dark themes
 ├── context/        # React context providers (e.g. theme)
-├── features/       # Feature-specific modules
+├── features/       # Feature-specific modules (events, speakers)
 ├── hooks/          # Shared custom hooks
 ├── layouts/        # App shell and layout components
+├── lib/            # Third-party library configuration
 ├── pages/          # Route-level page components
-└── ui/             # Reusable UI components
+├── services/       # API fetch functions (events, speakers, categories)
+├── shared/         # Reusable state components (EmptyState, LoadingState, ErrorState)
+├── store/          # Redux store, slices, and selectors
+├── ui/             # Reusable UI components
+└── utils/          # Utility functions
 ```
 
 ## Theming
@@ -78,12 +85,19 @@ Imports use path aliases configured in `vite.config.ts` and `tsconfig.app.json`:
 | --- | --- |
 | `@/*` | `src/*` |
 | `@appearance/*` | `src/appearance/*` |
+| `@assets/*` | `src/assets/*` |
 | `@context/*` | `src/context/*` |
 | `@features/*` | `src/features/*` |
 | `@hooks/*` | `src/hooks/*` |
+| `@layouts/*` | `src/layouts/*` |
+| `@lib/*` | `src/lib/*` |
 | `@pages/*` | `src/pages/*` |
+| `@services/*` | `src/services/*` |
+| `@shared/*` | `src/shared/*` |
+| `@store/*` | `src/store/*` |
 | `@ui/*` | `src/ui/*` |
+| `@utils/*` | `src/utils/*` |
 
 ## Status
 
-This project is in early development. Pages and features are scaffolded and ready to be built out.
+The events page is fully functional with filtering, sorting, and pagination. The speakers page is live with speaker cards and a hero section. Bookings is scaffolded and ready to be built out.

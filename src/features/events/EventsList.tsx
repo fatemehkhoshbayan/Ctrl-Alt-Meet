@@ -1,7 +1,16 @@
 import { useEffect } from 'react';
+import { SearchX, CalendarOff } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { Select, Pagination } from '@/ui';
-import { fetchEvents, selectFilteredEvents, setFilters, setPage, PER_PAGE } from '@/store/events';
+import { Select, Pagination, Button } from '@/ui';
+import { EmptyState, ErrorState, LoadingState } from '@/shared';
+import {
+  fetchEvents,
+  selectFilteredEvents,
+  setFilters,
+  setPage,
+  resetFilters,
+  PER_PAGE,
+} from '@/store/events';
 import SideBar from './SideBar';
 import EventCard from './EventCard';
 import { SORT_OPTIONS } from './constant';
@@ -12,7 +21,14 @@ export default function EventsList() {
   const error = useAppSelector(state => state.events.error);
   const currentPage = useAppSelector(state => state.events.currentPage);
   const { items, totalItems, totalPages } = useAppSelector(selectFilteredEvents);
-  const sortBy = useAppSelector(state => state.events.filters.sortBy);
+  const filters = useAppSelector(state => state.events.filters);
+  const sortBy = filters.sortBy;
+
+  const hasActiveFilters =
+    filters.searchQuery.trim() !== '' ||
+    filters.categories.length > 0 ||
+    filters.dateRange !== 'anytime' ||
+    filters.priceMax !== 2000;
 
   const rangeStart = totalItems === 0 ? 0 : (currentPage - 1) * PER_PAGE + 1;
   const rangeEnd = Math.min(currentPage * PER_PAGE, totalItems);
@@ -47,19 +63,38 @@ export default function EventsList() {
           />
         </div>
 
-        {status === 'loading' && (
-          <div className="flex items-center justify-center py-24">
-            <p className="text-on-surface-variant animate-pulse">Loading events...</p>
-          </div>
+        {status === 'loading' && <LoadingState message="Loading events..." />}
+
+        {status === 'failed' && <ErrorState error={error ?? undefined} />}
+
+        {status === 'succeeded' && items.length === 0 && (
+          <EmptyState
+            icon={
+              hasActiveFilters ? (
+                <SearchX size={48} className="text-primary" />
+              ) : (
+                <CalendarOff size={48} className="text-primary" />
+              )
+            }
+            title={hasActiveFilters ? 'No events match your filters' : 'No events yet'}
+            message={
+              hasActiveFilters
+                ? "Try adjusting your search or filters to find what you're looking for."
+                : 'Check back soon for upcoming tech events.'
+            }
+          >
+            {hasActiveFilters && (
+              <Button
+                variant="filled"
+                size="md"
+                BtnText="Clear filters"
+                onClick={() => dispatch(resetFilters())}
+              />
+            )}
+          </EmptyState>
         )}
 
-        {status === 'failed' && (
-          <div className="flex items-center justify-center py-24">
-            <p className="text-error">{error}</p>
-          </div>
-        )}
-
-        {status === 'succeeded' && (
+        {status === 'succeeded' && items.length > 0 && (
           <div className="gap-gutter grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
             {items.map(event => (
               <EventCard key={event.id} event={event} />

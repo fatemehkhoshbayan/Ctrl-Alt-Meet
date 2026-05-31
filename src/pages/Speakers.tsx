@@ -1,3 +1,10 @@
+import { SpeakersHeroSection, SpeakersList } from '@/features';
+
 export default function Speakers() {
-  return <div>Speakers</div>;
+  return (
+    <>
+      <SpeakersHeroSection />
+      <SpeakersList />
+    </>
+  );
 }

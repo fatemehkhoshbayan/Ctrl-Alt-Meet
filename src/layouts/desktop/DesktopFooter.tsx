@@ -1,3 +1,4 @@
+import { AtSign, MessageSquare } from 'lucide-react';
 import { IconButton } from '@/ui';
 import { LogoWordMark } from '../Logo';
 import { Link, useNavigate } from 'react-router-dom';
@@ -38,18 +39,8 @@ export default function DesktopFooter() {
           ))}
         </div>
         <div className="flex flex-col gap-4">
-          <IconButton
-            className="material-symbols-outlined"
-            icon="alternate_email"
-            type="button"
-            onClick={() => {}}
-          />
-          <IconButton
-            className="material-symbols-outlined"
-            icon="forum"
-            type="button"
-            onClick={() => {}}
-          />
+          <IconButton icon={<AtSign size={20} />} type="button" onClick={() => {}} />
+          <IconButton icon={<MessageSquare size={20} />} type="button" onClick={() => {}} />
         </div>
       </div>
     </footer>

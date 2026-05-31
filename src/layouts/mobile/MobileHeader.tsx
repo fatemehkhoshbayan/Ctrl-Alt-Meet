@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { Sun, Moon } from 'lucide-react';
 import { LogoWordMark } from '../Logo';
 import { IconButton } from '@/ui';
 
@@ -15,9 +16,8 @@ export default function MobileHeader({ theme, toggleTheme }: IMobileHeaderProps)
         <LogoWordMark onClick={() => navigate('/')} size={60} />
         <div className="flex items-center gap-8">
           <IconButton
-            icon={theme === 'dark' ? 'light_mode' : 'dark_mode'}
+            icon={theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             onClick={toggleTheme}
-            className="material-symbols-outlined"
             type="button"
             aria-label="Toggle theme"
           />
