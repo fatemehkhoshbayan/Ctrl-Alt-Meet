@@ -3,17 +3,30 @@ import { Button } from '.';
 interface ISearchBarProps {
   icon?: string;
   placeholder?: string;
+  value?: string;
+  onChange?: (value: string) => void;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   buttonOnClick?: () => void;
 }
 
-export default function SearchBar({ icon, placeholder, buttonOnClick }: ISearchBarProps) {
+export default function SearchBar({
+  icon,
+  placeholder,
+  value,
+  onChange,
+  onKeyDown,
+  buttonOnClick,
+}: ISearchBarProps) {
   return (
-    <div className="search-bar flex w-full max-w-2xl items-center rounded-full border px-4 py-2">
+    <div className="search-bar font-body text-body-md text-on-surface flex w-full max-w-2xl items-center rounded-full border px-4 py-2 duration-200">
       <div className="flex flex-1 items-center gap-3 px-6">
         <span className="material-symbols-outlined text-primary">{icon}</span>
         <input
-          className="font-body text-body-md text-on-surface placeholder:text-on-surface-variant w-full border-none bg-transparent focus:ring-0"
+          className="placeholder:text-on-surface-variant w-full bg-transparent outline-none"
           placeholder={placeholder}
+          value={value}
+          onChange={e => onChange?.(e.target.value)}
+          onKeyDown={onKeyDown}
           type="text"
         />
       </div>

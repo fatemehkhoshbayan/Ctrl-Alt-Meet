@@ -9,7 +9,14 @@ interface ISelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   onChangeOption: (value: string) => void;
 }
 
-export default function Select({ id, label, className, options, value, onChangeOption }: ISelectProps) {
+export default function Select({
+  id,
+  label,
+  className,
+  options,
+  value,
+  onChangeOption,
+}: ISelectProps) {
   return (
     <div className={cn('gap-stack-gap flex items-center', className)}>
       {label && (
@@ -20,7 +27,7 @@ export default function Select({ id, label, className, options, value, onChangeO
       <select
         id={id}
         value={value}
-        className="text-on-surface cursor-pointer border-none bg-transparent font-bold focus:ring-0"
+        className="text-on-surface cursor-pointer border-none bg-transparent font-bold outline-none"
         onChange={e => onChangeOption(e.target.value)}
       >
         {options.map(option => (
