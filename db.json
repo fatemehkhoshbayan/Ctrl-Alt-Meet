@@ -826,7 +826,8 @@
         "website": "https://anikapatel.dev"
       },
       "events": ["evt-001", "evt-004"],
-      "avatarColor": "purple"
+      "avatarColor": "purple",
+      "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80"
     },
     {
       "id": "spk-002",
@@ -843,7 +844,8 @@
         "website": "https://marcuschen.io"
       },
       "events": ["evt-001", "evt-006"],
-      "avatarColor": "teal"
+      "avatarColor": "teal",
+      "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
     },
     {
       "id": "spk-003",
@@ -860,7 +862,8 @@
         "website": "https://zaratype.dev"
       },
       "events": ["evt-002", "evt-004", "evt-008"],
-      "avatarColor": "blue"
+      "avatarColor": "blue",
+      "imageUrl": "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=400&q=80"
     },
     {
       "id": "spk-004",
@@ -877,7 +880,8 @@
         "website": "https://lucaferretti.io"
       },
       "events": ["evt-002", "evt-005"],
-      "avatarColor": "coral"
+      "avatarColor": "coral",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80"
     },
     {
       "id": "spk-005",
@@ -894,7 +898,8 @@
         "website": "https://priyasubramaniam.com"
       },
       "events": ["evt-001", "evt-003", "evt-008"],
-      "avatarColor": "amber"
+      "avatarColor": "amber",
+      "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80"
     },
     {
       "id": "spk-006",
@@ -911,7 +916,8 @@
         "website": "https://jordanrivers.io"
       },
       "events": ["evt-003", "evt-005", "evt-007"],
-      "avatarColor": "pink"
+      "avatarColor": "pink",
+      "imageUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
     },
     {
       "id": "spk-007",
@@ -928,7 +934,8 @@
         "website": "https://amaradiallo.ai"
       },
       "events": ["evt-004", "evt-006", "evt-007"],
-      "avatarColor": "teal"
+      "avatarColor": "teal",
+      "imageUrl": "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&q=80"
     }
   ],
   "bookings": [
