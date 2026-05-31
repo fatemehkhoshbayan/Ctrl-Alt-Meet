@@ -1,0 +1,5 @@
+export * from './events/events.api';
+export * from './events/events.type';
+export * from './categories/categories.api';
+export * from './categories/categories.type';
+export * from './clients';
