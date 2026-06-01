@@ -1,25 +1,83 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { bookingsApi } from '@/services';
-import type { IBooking } from '@/services';
+import { bookingsApi, eventsApi } from '@/services';
+import type { IEvent, IBooking, TBookingAttendee, TCreateBookingPayload } from '@/services';
+import { generateBookingReference } from '@/utils';
 
 interface BookingsState {
   items: IBooking[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  purchaseStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
+  bookingReference: string | null;
 }
 
 const initialState: BookingsState = {
   items: [],
   status: 'idle',
+  purchaseStatus: 'idle',
   error: null,
+  bookingReference: null,
+};
+
+export type PurchaseTicketPayload = {
+  event: IEvent;
+  tierId: string;
+  quantity: number;
+  attendees: TBookingAttendee[];
 };
 
 export const fetchBookings = createAsyncThunk('bookings/fetchAll', () => bookingsApi.getAll());
 
+export const purchaseTicket = createAsyncThunk(
+  'bookings/purchaseTicket',
+  async ({ event, tierId, quantity, attendees }: PurchaseTicketPayload) => {
+    const tier = event.ticketTiers.find(t => t.id === tierId);
+    if (!tier) {
+      throw new Error('Ticket tier not found');
+    }
+
+    const bookingReference = generateBookingReference();
+    const totalPrice = tier.price * quantity;
+
+    const bookingPayload: TCreateBookingPayload = {
+      userId: 'user-001',
+      eventId: event.id,
+      eventTitle: event.title,
+      eventDate: event.date,
+      eventLocation: `${event.venue}, ${event.city}, ${event.country}`,
+      ticketTierId: tier.id,
+      ticketTierName: tier.name,
+      quantity,
+      unitPrice: tier.price,
+      totalPrice,
+      status: 'confirmed',
+      bookingReference,
+      bookedAt: new Date().toISOString(),
+      attendees,
+    };
+
+    const updatedTiers = event.ticketTiers.map(t =>
+      t.id === tierId ? { ...t, available: Math.max(0, t.available - quantity) } : t,
+    );
+
+    const [updatedEvent, booking] = await Promise.all([
+      eventsApi.purchaseTicket(event.id, updatedTiers),
+      bookingsApi.create(bookingPayload),
+    ]);
+
+    return { event: updatedEvent, booking, bookingReference };
+  },
+);
+
 const bookingsSlice = createSlice({
   name: 'bookings',
   initialState,
-  reducers: {},
+  reducers: {
+    resetPurchaseStatus(state) {
+      state.purchaseStatus = 'idle';
+      state.bookingReference = null;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchBookings.pending, state => {
@@ -33,8 +91,22 @@ const bookingsSlice = createSlice({
       .addCase(fetchBookings.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message ?? 'Failed to load bookings';
+      })
+      .addCase(purchaseTicket.pending, state => {
+        state.purchaseStatus = 'loading';
+        state.error = null;
+      })
+      .addCase(purchaseTicket.fulfilled, (state, action) => {
+        state.purchaseStatus = 'succeeded';
+        state.bookingReference = action.payload.bookingReference;
+        state.items = [action.payload.booking, ...state.items];
+      })
+      .addCase(purchaseTicket.rejected, (state, action) => {
+        state.purchaseStatus = 'failed';
+        state.error = action.error.message ?? 'Booking failed';
       });
   },
 });
 
+export const { resetPurchaseStatus } = bookingsSlice.actions;
 export default bookingsSlice.reducer;

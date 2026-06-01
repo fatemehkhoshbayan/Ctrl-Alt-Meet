@@ -1,3 +1,11 @@
+export type TBookingAttendee = {
+  name: string;
+  email: string;
+  phone: string;
+};
+
+export type TBookingStatus = 'confirmed' | 'cancelled' | 'pending';
+
 export interface IBooking {
   id: string;
   userId: string;
@@ -11,3 +19,6 @@ export interface IBooking {
   unitPrice: number;
   totalPrice: number;
 }
+
+
+export type TCreateBookingPayload = Omit<IBooking, 'id'>;

@@ -4,7 +4,7 @@ import { EventDetailsHeroSection, HighlightsSection } from '@/features';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { fetchSpeakers, selectSpeakersByIds } from '@/store/speakers';
 import { fetchEventDetails } from '@/store/events/eventDetails.slice';
-import { SpeakersSection, AboutSection } from '@/features';
+import { SpeakersSection, AboutSection, BookingCard } from '@/features';
 
 export default function EventDetails() {
   const { id } = useParams<{ id: string }>();
@@ -28,6 +28,7 @@ export default function EventDetails() {
           <SpeakersSection speakers={speakers} />
           <HighlightsSection event={event} />
         </div>
+        <BookingCard event={event} />
       </section>
     </>
   );

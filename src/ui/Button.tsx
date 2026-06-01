@@ -11,8 +11,11 @@ interface IButtonProps
   variant?: 'filled' | 'outlined' | 'link';
   color?: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
   loading?: boolean;
+  'aria-label'?: string;
+  type?: 'button' | 'submit' | 'reset';
   icon?: ReactNode;
   iconLeft?: ReactNode;
+  children?: ReactNode;
 }
 
 const buttonVariants = cva(
@@ -61,6 +64,7 @@ export default function Button({
   iconLeft,
   BtnText,
   type = 'button',
+  children,
   ...rest
 }: IButtonProps) {
   return (
@@ -70,7 +74,8 @@ export default function Button({
       {...rest}
     >
       {icon}
-      {BtnText}
+      {BtnText && <span>{BtnText}</span>}
+      {children}
       {iconLeft}
     </button>
   );
