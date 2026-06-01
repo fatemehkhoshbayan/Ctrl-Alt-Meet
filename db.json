@@ -14,9 +14,11 @@
       "location": "Moscone Center, San Francisco, CA",
       "venue": "Moscone Center",
       "city": "San Francisco, CA",
+      "country": "United States",
       "category": "Frontend",
       "tags": ["React", "JavaScript", "Frontend", "Web"],
       "imageUrl": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
+      "venueImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
       "organizer": {
         "name": "OpenJS Foundation",
         "avatar": "OJ",
@@ -50,7 +52,7 @@
             "After-party",
             "1:1 office hours"
           ],
-          "available": 12,
+          "available": 11,
           "total": 100
         },
         {
@@ -63,8 +65,35 @@
           "total": 1000
         }
       ],
+      "highlights": [
+        {
+          "id": "hl-1",
+          "title": "React Compiler Keynote",
+          "description": "First look at the future of React performance.",
+          "icon": "sparkles",
+          "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80",
+          "featured": true
+        },
+        {
+          "id": "hl-2",
+          "title": "Hands-On Workshops",
+          "description": "Build real projects with React 19 experts.",
+          "icon": "code"
+        },
+        {
+          "id": "hl-3",
+          "title": "Networking Mixer",
+          "description": "Meet 3,000+ React developers and hiring teams.",
+          "icon": "users",
+          "accent": "primary"
+        }
+      ],
       "schedule": [
-        { "time": "09:00", "title": "Registration & Coffee", "type": "break" },
+        {
+          "time": "09:00",
+          "title": "Registration & Coffee",
+          "type": "break"
+        },
         {
           "time": "10:00",
           "title": "Keynote: The React Compiler is Here",
@@ -77,10 +106,26 @@
           "speaker": "spk-002",
           "type": "talk"
         },
-        { "time": "13:00", "title": "Lunch Break", "type": "break" },
-        { "time": "14:00", "title": "Workshop: Migrating to React 19", "type": "workshop" },
-        { "time": "16:00", "title": "Lightning Talks", "type": "lightning" },
-        { "time": "17:30", "title": "Networking Happy Hour", "type": "social" }
+        {
+          "time": "13:00",
+          "title": "Lunch Break",
+          "type": "break"
+        },
+        {
+          "time": "14:00",
+          "title": "Workshop: Migrating to React 19",
+          "type": "workshop"
+        },
+        {
+          "time": "16:00",
+          "title": "Lightning Talks",
+          "type": "lightning"
+        },
+        {
+          "time": "17:30",
+          "title": "Networking Happy Hour",
+          "type": "social"
+        }
       ]
     },
     {
@@ -98,8 +143,10 @@
       "venue": "Palmer House Hilton",
       "city": "Chicago, IL",
       "category": "Languages",
+      "country": "United States",
       "tags": ["TypeScript", "JavaScript", "DX", "Type Safety"],
       "imageUrl": "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&q=80",
+      "venueImage": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
       "organizer": {
         "name": "TSConf Community",
         "avatar": "TC",
@@ -131,17 +178,56 @@
           "total": 50
         }
       ],
+      "highlights": [
+        {
+          "id": "hl-ts-1",
+          "title": "TypeScript 6.0 Launch",
+          "description": "Hear directly from the TypeScript team about what's next.",
+          "icon": "file-code",
+          "featured": true,
+          "image": "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=1200&q=80"
+        },
+        {
+          "id": "hl-ts-2",
+          "title": "Advanced Generics Lab",
+          "description": "Master advanced typing patterns and compiler tricks.",
+          "icon": "brain"
+        },
+        {
+          "id": "hl-ts-3",
+          "title": "Core Team Q&A",
+          "description": "Ask questions directly to TypeScript maintainers.",
+          "icon": "message-circle",
+          "accent": "primary"
+        }
+      ],
       "schedule": [
-        { "time": "08:30", "title": "Doors Open & Breakfast", "type": "break" },
+        {
+          "time": "08:30",
+          "title": "Doors Open & Breakfast",
+          "type": "break"
+        },
         {
           "time": "09:30",
           "title": "Keynote: TypeScript 6.0 What's New",
           "speaker": "spk-003",
           "type": "keynote"
         },
-        { "time": "11:00", "title": "Advanced Generics Workshop", "type": "workshop" },
-        { "time": "13:00", "title": "Lunch", "type": "break" },
-        { "time": "14:00", "title": "Panel: Types in Large Codebases", "type": "panel" }
+        {
+          "time": "11:00",
+          "title": "Advanced Generics Workshop",
+          "type": "workshop"
+        },
+        {
+          "time": "13:00",
+          "title": "Lunch",
+          "type": "break"
+        },
+        {
+          "time": "14:00",
+          "title": "Panel: Types in Large Codebases",
+          "type": "panel"
+        }
       ]
     },
     {
@@ -158,9 +244,11 @@
       "location": "Jacob K. Javits Center, New York, NY",
       "venue": "Javits Center",
       "city": "New York, NY",
+      "country": "United States",
       "category": "Cloud & DevOps",
       "tags": ["Kubernetes", "Cloud Native", "DevOps", "CNCF"],
       "imageUrl": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80",
+      "venueImage": "https://images.unsplash.com/photo-1610465299996-30f240ac2b1c?w=800&q=80",
       "organizer": {
         "name": "CNCF",
         "avatar": "CF",
@@ -188,7 +276,7 @@
           "price": 499,
           "description": "Monday co-located event access only",
           "perks": ["Day 1 events", "Networking lunch"],
-          "available": 200,
+          "available": 198,
           "total": 500
         },
         {
@@ -197,8 +285,31 @@
           "price": 75,
           "description": "Live stream and on-demand for 1 year",
           "perks": ["Live stream", "1-year recordings"],
-          "available": 5000,
+          "available": 4995,
           "total": 10000
+        }
+      ],
+      "highlights": [
+        {
+          "id": "hl-kube-1",
+          "title": "Cloud Native Mega Event",
+          "description": "Five days of Kubernetes, CNCF, and cloud-native innovation.",
+          "icon": "cloud",
+          "featured": true,
+          "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80"
+        },
+        {
+          "id": "hl-kube-2",
+          "title": "SIG Meetups",
+          "description": "Connect with maintainers behind your favorite projects.",
+          "icon": "users"
+        },
+        {
+          "id": "hl-kube-3",
+          "title": "11,000+ Attendees",
+          "description": "The largest cloud-native gathering in North America.",
+          "icon": "rocket",
+          "accent": "primary"
         }
       ],
       "schedule": []
@@ -217,9 +328,11 @@
       "location": "The Crystal, London, UK",
       "venue": "The Crystal",
       "city": "London, UK",
+      "country": "United Kingdom",
       "category": "AI & ML",
       "tags": ["AI", "Machine Learning", "LLMs", "Alignment"],
       "imageUrl": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
+      "venueImage": "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80",
       "organizer": {
         "name": "ML Collective UK",
         "avatar": "ML",
@@ -251,6 +364,29 @@
           "total": 100
         }
       ],
+      "highlights": [
+        {
+          "id": "hl-ai-1",
+          "title": "Alignment & Evals",
+          "description": "Practical lessons for building trustworthy AI systems.",
+          "icon": "brain",
+          "featured": true,
+          "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&q=80"
+        },
+        {
+          "id": "hl-ai-2",
+          "title": "Research Roundtables",
+          "description": "Discuss the latest AI challenges with experts.",
+          "icon": "mic"
+        },
+        {
+          "id": "hl-ai-3",
+          "title": "Production ML",
+          "description": "Real-world strategies beyond benchmark leaderboards.",
+          "icon": "sparkles",
+          "accent": "primary"
+        }
+      ],
       "schedule": []
     },
     {
@@ -267,9 +403,11 @@
       "location": "GitHub HQ, San Francisco, CA",
       "venue": "GitHub HQ",
       "city": "San Francisco, CA",
+      "country": "United States",
       "category": "Open Source",
       "tags": ["Open Source", "Community", "Hackathon", "GitHub"],
       "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
+      "venueImage": "https://images.unsplash.com/photo-1497366412874-3415097a27e7?w=800&q=80",
       "organizer": {
         "name": "GitHub Community",
         "avatar": "GH",
@@ -292,6 +430,29 @@
           "total": 500
         }
       ],
+      "highlights": [
+        {
+          "id": "hl-os-1",
+          "title": "Ship Your First PR",
+          "description": "Contribute to real open-source projects in one day.",
+          "icon": "git-pull-request",
+          "featured": true,
+          "image": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80"
+        },
+        {
+          "id": "hl-os-2",
+          "title": "Mentorship Sessions",
+          "description": "Get guidance from experienced maintainers.",
+          "icon": "users"
+        },
+        {
+          "id": "hl-os-3",
+          "title": "Community Sprint",
+          "description": "Collaborate with contributors from around the world.",
+          "icon": "heart",
+          "accent": "primary"
+        }
+      ],
       "schedule": []
     },
     {
@@ -308,9 +469,11 @@
       "location": "The Inforum, San Francisco, CA",
       "venue": "The Inforum",
       "city": "San Francisco, CA",
+      "country": "United States",
       "category": "Backend",
       "tags": ["GraphQL", "API", "REST", "gRPC", "Backend"],
       "imageUrl": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80",
+      "venueImage": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80",
       "organizer": {
         "name": "The Guild",
         "avatar": "TG",
@@ -342,6 +505,29 @@
           "total": 60
         }
       ],
+      "highlights": [
+        {
+          "id": "hl-gql-1",
+          "title": "API Design Debates",
+          "description": "REST, GraphQL, and gRPC experts face off.",
+          "icon": "network",
+          "featured": true,
+          "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80"
+        },
+        {
+          "id": "hl-gql-2",
+          "title": "Schema Evolution",
+          "description": "Learn strategies for long-term API growth.",
+          "icon": "git-branch"
+        },
+        {
+          "id": "hl-gql-3",
+          "title": "Federation Workshop",
+          "description": "Build scalable APIs with modern patterns.",
+          "icon": "layers",
+          "accent": "primary"
+        }
+      ],
       "schedule": []
     },
     {
@@ -358,9 +544,11 @@
       "location": "Marriott Marquis, Washington D.C.",
       "venue": "Marriott Marquis",
       "city": "Washington D.C.",
+      "country": "United States",
       "category": "Security",
       "tags": ["Security", "DevSecOps", "AppSec", "Compliance"],
       "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+      "venueImage": "https://images.unsplash.com/photo-1551882547-ff40c4a49f45?w=800&q=80",
       "organizer": {
         "name": "DevSecOps Foundation",
         "avatar": "DS",
@@ -379,7 +567,7 @@
           "price": 299,
           "description": "2-day access, meals, and workshops",
           "perks": ["All sessions", "Meals", "Workshops"],
-          "available": 400,
+          "available": 397,
           "total": 1200
         },
         {
@@ -388,8 +576,31 @@
           "price": 599,
           "description": "GA + red team lab access, exclusive briefings",
           "perks": ["Everything in GA", "Red team lab", "Exclusive briefings", "Cert exam voucher"],
-          "available": 40,
+          "available": 38,
           "total": 100
+        }
+      ],
+      "highlights": [
+        {
+          "id": "hl-sec-1",
+          "title": "Security That Ships",
+          "description": "Real stories from teams scaling AppSec.",
+          "icon": "shield",
+          "featured": true,
+          "image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&q=80"
+        },
+        {
+          "id": "hl-sec-2",
+          "title": "Red Team Labs",
+          "description": "Hands-on offensive security exercises.",
+          "icon": "bug"
+        },
+        {
+          "id": "hl-sec-3",
+          "title": "Supply Chain Defense",
+          "description": "Protect your software from modern threats.",
+          "icon": "lock",
+          "accent": "primary"
         }
       ],
       "schedule": []
@@ -408,9 +619,11 @@
       "location": "The Brewery, London, UK",
       "venue": "The Brewery",
       "city": "London, UK",
+      "country": "United Kingdom",
       "category": "Languages",
       "tags": ["Rust", "Systems", "WebAssembly", "Performance"],
       "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+      "venueImage": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
       "organizer": {
         "name": "Rust Nation",
         "avatar": "RN",
@@ -442,6 +655,29 @@
           "total": 2000
         }
       ],
+      "highlights": [
+        {
+          "id": "hl-rust-1",
+          "title": "Rust in Production",
+          "description": "Learn how teams are adopting Rust at scale.",
+          "icon": "cpu",
+          "featured": true,
+          "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
+        },
+        {
+          "id": "hl-rust-2",
+          "title": "Systems Programming",
+          "description": "Performance, safety, and modern tooling.",
+          "icon": "terminal"
+        },
+        {
+          "id": "hl-rust-3",
+          "title": "WebAssembly Track",
+          "description": "Explore Rust beyond backend systems.",
+          "icon": "box",
+          "accent": "primary"
+        }
+      ],
       "schedule": []
     },
     {
@@ -458,9 +694,11 @@
       "location": "Adobe HQ, San Jose, CA",
       "venue": "Adobe HQ",
       "city": "San Jose, CA",
+      "country": "United States",
       "category": "Women in Tech",
       "tags": ["Women in Tech", "Diversity", "Inclusion", "Career", "Mentorship"],
       "imageUrl": "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?w=800&q=80",
+      "venueImage": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80",
       "organizer": {
         "name": "She Codes Alliance",
         "avatar": "SC",
@@ -501,19 +739,67 @@
           "total": 2000
         }
       ],
+      "highlights": [
+        {
+          "id": "hl-she-1",
+          "title": "Women Leading Tech",
+          "description": "Inspiring stories from engineering leaders and founders.",
+          "icon": "sparkles",
+          "featured": true,
+          "image": "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?w=1200&q=80"
+        },
+        {
+          "id": "hl-she-2",
+          "title": "Mentorship Circles",
+          "description": "Build relationships with experienced professionals.",
+          "icon": "users"
+        },
+        {
+          "id": "hl-she-3",
+          "title": "Hiring Fair",
+          "description": "Meet companies committed to inclusion.",
+          "icon": "briefcase",
+          "accent": "primary"
+        }
+      ],
       "schedule": [
-        { "time": "09:00", "title": "Doors Open & Breakfast", "type": "break" },
+        {
+          "time": "09:00",
+          "title": "Doors Open & Breakfast",
+          "type": "break"
+        },
         {
           "time": "10:00",
           "title": "Keynote: Redefining Leadership in Tech",
           "speaker": "spk-001",
           "type": "keynote"
         },
-        { "time": "11:30", "title": "Panel: From IC to Engineering Manager", "type": "panel" },
-        { "time": "13:00", "title": "Lunch & Networking", "type": "break" },
-        { "time": "14:00", "title": "Workshop: Negotiating Your Worth", "type": "workshop" },
-        { "time": "16:00", "title": "Mentorship Circles", "type": "social" },
-        { "time": "17:00", "title": "Closing Keynote", "speaker": "spk-007", "type": "keynote" }
+        {
+          "time": "11:30",
+          "title": "Panel: From IC to Engineering Manager",
+          "type": "panel"
+        },
+        {
+          "time": "13:00",
+          "title": "Lunch & Networking",
+          "type": "break"
+        },
+        {
+          "time": "14:00",
+          "title": "Workshop: Negotiating Your Worth",
+          "type": "workshop"
+        },
+        {
+          "time": "16:00",
+          "title": "Mentorship Circles",
+          "type": "social"
+        },
+        {
+          "time": "17:00",
+          "title": "Closing Keynote",
+          "speaker": "spk-007",
+          "type": "keynote"
+        }
       ]
     },
     {
@@ -530,9 +816,11 @@
       "location": "University of Waterloo, Waterloo, ON",
       "venue": "E5 Engineering Building",
       "city": "Waterloo, ON",
+      "country": "Canada",
       "category": "Hackathon",
       "tags": ["Hackathon", "Students", "AI", "Hardware", "Community"],
       "imageUrl": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80",
+      "venueImage": "https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80",
       "organizer": {
         "name": "Hack the North Team",
         "avatar": "HN",
@@ -555,13 +843,60 @@
           "total": 1000
         }
       ],
+      "highlights": [
+        {
+          "id": "hl-htn-1",
+          "title": "36 Hours of Hacking",
+          "description": "Build ambitious projects alongside 1,000 hackers.",
+          "icon": "code",
+          "featured": true,
+          "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80"
+        },
+        {
+          "id": "hl-htn-2",
+          "title": "Industry Mentors",
+          "description": "Get guidance from engineers at top companies.",
+          "icon": "users"
+        },
+        {
+          "id": "hl-htn-3",
+          "title": "Prizes & Swag",
+          "description": "Compete for awards, hardware, and opportunities.",
+          "icon": "trophy",
+          "accent": "primary"
+        }
+      ],
       "schedule": [
-        { "time": "18:00", "title": "Check-In & Opening Ceremony", "type": "keynote" },
-        { "time": "21:00", "title": "Hacking Begins", "type": "break" },
-        { "time": "09:00", "title": "Day 2: Workshops & Mentorship", "type": "workshop" },
-        { "time": "09:00", "title": "Day 3: Project Submissions", "type": "break" },
-        { "time": "13:00", "title": "Demos & Judging", "type": "talk" },
-        { "time": "18:00", "title": "Closing Ceremony & Awards", "type": "social" }
+        {
+          "time": "18:00",
+          "title": "Check-In & Opening Ceremony",
+          "type": "keynote"
+        },
+        {
+          "time": "21:00",
+          "title": "Hacking Begins",
+          "type": "break"
+        },
+        {
+          "time": "09:00",
+          "title": "Day 2: Workshops & Mentorship",
+          "type": "workshop"
+        },
+        {
+          "time": "09:00",
+          "title": "Day 3: Project Submissions",
+          "type": "break"
+        },
+        {
+          "time": "13:00",
+          "title": "Demos & Judging",
+          "type": "talk"
+        },
+        {
+          "time": "18:00",
+          "title": "Closing Ceremony & Awards",
+          "type": "social"
+        }
       ]
     },
     {
@@ -578,9 +913,11 @@
       "location": "MaRS Discovery District, Toronto, ON",
       "venue": "MaRS Discovery District",
       "city": "Toronto, ON",
+      "country": "Canada",
       "category": "Founders",
       "tags": ["Startups", "Founders", "VC", "Pre-seed", "Entrepreneurship"],
       "imageUrl": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80",
+      "venueImage": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
       "organizer": {
         "name": "Founder Zero Community",
         "avatar": "FZ",
@@ -612,17 +949,60 @@
           "total": 60
         }
       ],
+      "highlights": [
+        {
+          "id": "hl-founder-1",
+          "title": "Founder Stories",
+          "description": "Honest conversations about building startups.",
+          "icon": "rocket",
+          "featured": true,
+          "image": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80"
+        },
+        {
+          "id": "hl-founder-2",
+          "title": "Investor Office Hours",
+          "description": "Get feedback from experienced investors.",
+          "icon": "circle-dollar-sign"
+        },
+        {
+          "id": "hl-founder-3",
+          "title": "Startup Networking",
+          "description": "Meet founders, operators, and advisors.",
+          "icon": "users",
+          "accent": "primary"
+        }
+      ],
       "schedule": [
-        { "time": "08:30", "title": "Breakfast & Intros", "type": "break" },
+        {
+          "time": "08:30",
+          "title": "Breakfast & Intros",
+          "type": "break"
+        },
         {
           "time": "09:30",
           "title": "Keynote: The Thing Nobody Tells You About Fundraising",
           "type": "keynote"
         },
-        { "time": "11:00", "title": "Panel: When to Pivot vs. Persist", "type": "panel" },
-        { "time": "13:00", "title": "Lunch", "type": "break" },
-        { "time": "14:00", "title": "Investor Office Hours", "type": "social" },
-        { "time": "16:00", "title": "Workshop: Legal Landmines for Founders", "type": "workshop" }
+        {
+          "time": "11:00",
+          "title": "Panel: When to Pivot vs. Persist",
+          "type": "panel"
+        },
+        {
+          "time": "13:00",
+          "title": "Lunch",
+          "type": "break"
+        },
+        {
+          "time": "14:00",
+          "title": "Investor Office Hours",
+          "type": "social"
+        },
+        {
+          "time": "16:00",
+          "title": "Workshop: Legal Landmines for Founders",
+          "type": "workshop"
+        }
       ]
     },
     {
@@ -639,9 +1019,11 @@
       "location": "Shopify HQ, Toronto, ON",
       "venue": "Shopify HQ",
       "city": "Toronto, ON",
+      "country": "Canada",
       "category": "Workshops",
       "tags": ["Design Systems", "Frontend", "CSS", "Accessibility", "Tokens"],
       "imageUrl": "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&q=80",
+      "venueImage": "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=800&q=80",
       "organizer": {
         "name": "Frontend Craft",
         "avatar": "FC",
@@ -664,6 +1046,29 @@
           "total": 60
         }
       ],
+      "highlights": [
+        {
+          "id": "hl-design-1",
+          "title": "Design Systems Deep Dive",
+          "description": "Learn scalable component architecture.",
+          "icon": "layout-grid",
+          "featured": true,
+          "image": "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=1200&q=80"
+        },
+        {
+          "id": "hl-design-2",
+          "title": "Accessibility Lab",
+          "description": "Hands-on auditing and testing sessions.",
+          "icon": "accessibility"
+        },
+        {
+          "id": "hl-design-3",
+          "title": "Expert Office Hours",
+          "description": "Direct access to instructors and peers.",
+          "icon": "message-square",
+          "accent": "primary"
+        }
+      ],
       "schedule": [
         {
           "time": "09:00",
@@ -677,10 +1082,26 @@
           "speaker": "spk-001",
           "type": "workshop"
         },
-        { "time": "13:00", "title": "Lunch", "type": "break" },
-        { "time": "14:00", "title": "Accessibility Auditing Lab", "type": "workshop" },
-        { "time": "15:30", "title": "The Politics of Design Systems", "type": "talk" },
-        { "time": "16:30", "title": "Q&A & Open Office Hours", "type": "social" }
+        {
+          "time": "13:00",
+          "title": "Lunch",
+          "type": "break"
+        },
+        {
+          "time": "14:00",
+          "title": "Accessibility Auditing Lab",
+          "type": "workshop"
+        },
+        {
+          "time": "15:30",
+          "title": "The Politics of Design Systems",
+          "type": "talk"
+        },
+        {
+          "time": "16:30",
+          "title": "Q&A & Open Office Hours",
+          "type": "social"
+        }
       ]
     },
     {
@@ -697,9 +1118,11 @@
       "location": "Computer History Museum, Mountain View, CA",
       "venue": "Computer History Museum",
       "city": "Mountain View, CA",
+      "country": "United States",
       "category": "Backend",
       "tags": ["Distributed Systems", "Backend", "Database", "Consensus", "Reliability"],
       "imageUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+      "venueImage": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
       "organizer": {
         "name": "DistSys Community",
         "avatar": "DC",
@@ -731,19 +1154,66 @@
           "total": 3000
         }
       ],
+      "highlights": [
+        {
+          "id": "hl-dist-1",
+          "title": "Consensus & Reliability",
+          "description": "Explore the challenges of distributed systems.",
+          "icon": "database",
+          "featured": true,
+          "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80"
+        },
+        {
+          "id": "hl-dist-2",
+          "title": "Network Failure Labs",
+          "description": "Simulate and analyze real-world outages.",
+          "icon": "activity"
+        },
+        {
+          "id": "hl-dist-3",
+          "title": "Lightning Talks",
+          "description": "Rapid-fire insights from industry experts.",
+          "icon": "zap",
+          "accent": "primary"
+        }
+      ],
       "schedule": [
-        { "time": "09:00", "title": "Coffee & Registration", "type": "break" },
+        {
+          "time": "09:00",
+          "title": "Coffee & Registration",
+          "type": "break"
+        },
         {
           "time": "10:00",
           "title": "Keynote: What 20 Years of Distributed Systems Taught Us",
           "speaker": "spk-005",
           "type": "keynote"
         },
-        { "time": "11:30", "title": "Talk: CRDTs in Production — The Ugly Parts", "type": "talk" },
-        { "time": "13:00", "title": "Lunch", "type": "break" },
-        { "time": "14:00", "title": "Workshop: Simulating Network Failures", "type": "workshop" },
-        { "time": "16:00", "title": "Panel: Database Tradeoffs in 2026", "type": "panel" },
-        { "time": "17:30", "title": "Lightning Talks", "type": "lightning" }
+        {
+          "time": "11:30",
+          "title": "Talk: CRDTs in Production — The Ugly Parts",
+          "type": "talk"
+        },
+        {
+          "time": "13:00",
+          "title": "Lunch",
+          "type": "break"
+        },
+        {
+          "time": "14:00",
+          "title": "Workshop: Simulating Network Failures",
+          "type": "workshop"
+        },
+        {
+          "time": "16:00",
+          "title": "Panel: Database Tradeoffs in 2026",
+          "type": "panel"
+        },
+        {
+          "time": "17:30",
+          "title": "Lightning Talks",
+          "type": "lightning"
+        }
       ]
     },
     {
@@ -760,9 +1230,11 @@
       "location": "MTCC South Building, Toronto, ON",
       "venue": "MTCC South Building",
       "city": "Toronto, ON",
+      "country": "Canada",
       "category": "Frontend",
       "tags": ["Vue", "Nuxt", "JavaScript", "Frontend", "Community"],
       "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
+      "venueImage": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80",
       "organizer": {
         "name": "VueConf TO Team",
         "avatar": "VC",
@@ -794,19 +1266,66 @@
           "total": 1500
         }
       ],
+      "highlights": [
+        {
+          "id": "hl-vue-1",
+          "title": "State of Vue 2026",
+          "description": "The latest innovations in the Vue ecosystem.",
+          "icon": "sparkles",
+          "featured": true,
+          "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&q=80"
+        },
+        {
+          "id": "hl-vue-2",
+          "title": "Nuxt 4 Workshop",
+          "description": "Build modern applications with Nuxt.",
+          "icon": "code"
+        },
+        {
+          "id": "hl-vue-3",
+          "title": "Community After-Party",
+          "description": "Connect with developers and maintainers.",
+          "icon": "party-popper",
+          "accent": "primary"
+        }
+      ],
       "schedule": [
-        { "time": "08:30", "title": "Doors Open & Breakfast", "type": "break" },
+        {
+          "time": "08:30",
+          "title": "Doors Open & Breakfast",
+          "type": "break"
+        },
         {
           "time": "09:30",
           "title": "Keynote: The State of Vue in 2026",
           "speaker": "spk-002",
           "type": "keynote"
         },
-        { "time": "11:00", "title": "Deep Dive: Vue 3.5 Reactivity Primitives", "type": "talk" },
-        { "time": "13:00", "title": "Lunch", "type": "break" },
-        { "time": "14:00", "title": "Workshop: Nuxt 4 Server Components", "type": "workshop" },
-        { "time": "16:00", "title": "Lightning Talks", "type": "lightning" },
-        { "time": "17:00", "title": "After-Party", "type": "social" }
+        {
+          "time": "11:00",
+          "title": "Deep Dive: Vue 3.5 Reactivity Primitives",
+          "type": "talk"
+        },
+        {
+          "time": "13:00",
+          "title": "Lunch",
+          "type": "break"
+        },
+        {
+          "time": "14:00",
+          "title": "Workshop: Nuxt 4 Server Components",
+          "type": "workshop"
+        },
+        {
+          "time": "16:00",
+          "title": "Lightning Talks",
+          "type": "lightning"
+        },
+        {
+          "time": "17:00",
+          "title": "After-Party",
+          "type": "social"
+        }
       ]
     },
     {
@@ -880,9 +1399,21 @@
       "talks": ["The React Compiler is Here", "Concurrent Mode in Production"],
       "topics": ["React", "Compilers", "JavaScript", "Performance"],
       "social": [
-        { "name": "twitter", "icon": "twitter", "url": "@anikapatel_dev" },
-        { "name": "github", "icon": "github", "url": "anikapatel" },
-        { "name": "website", "icon": "public", "url": "https://anikapatel.dev" }
+        {
+          "name": "twitter",
+          "icon": "twitter",
+          "url": "@anikapatel_dev"
+        },
+        {
+          "name": "github",
+          "icon": "github",
+          "url": "anikapatel"
+        },
+        {
+          "name": "website",
+          "icon": "public",
+          "url": "https://anikapatel.dev"
+        }
       ],
       "events": ["evt-001", "evt-004"],
       "avatarColor": "purple",
@@ -898,9 +1429,21 @@
       "talks": ["Server Components in Production", "The Next.js App Router: A Year In"],
       "topics": ["Next.js", "React", "Kubernetes", "Performance"],
       "social": [
-        { "name": "twitter", "icon": "twitter", "url": "@marcuschen_eng" },
-        { "name": "github", "icon": "github", "url": "mchen-vercel" },
-        { "name": "website", "icon": "public", "url": "https://marcuschen.io" }
+        {
+          "name": "twitter",
+          "icon": "twitter",
+          "url": "@marcuschen_eng"
+        },
+        {
+          "name": "github",
+          "icon": "github",
+          "url": "mchen-vercel"
+        },
+        {
+          "name": "website",
+          "icon": "public",
+          "url": "https://marcuschen.io"
+        }
       ],
       "events": ["evt-001", "evt-006", "evt-015"],
       "avatarColor": "teal",
@@ -916,9 +1459,21 @@
       "talks": ["TypeScript 6.0: What's New", "Writing Error Messages Humans Can Read"],
       "topics": ["TypeScript", "Python", "Developer Experience"],
       "social": [
-        { "name": "twitter", "icon": "twitter", "url": "@zaratype" },
-        { "name": "github", "icon": "github", "url": "zokonkwo-ms" },
-        { "name": "website", "icon": "public", "url": "https://zaratype.dev" }
+        {
+          "name": "twitter",
+          "icon": "twitter",
+          "url": "@zaratype"
+        },
+        {
+          "name": "github",
+          "icon": "github",
+          "url": "zokonkwo-ms"
+        },
+        {
+          "name": "website",
+          "icon": "public",
+          "url": "https://zaratype.dev"
+        }
       ],
       "events": ["evt-002", "evt-004", "evt-008"],
       "avatarColor": "blue",
@@ -934,9 +1489,21 @@
       "talks": ["First PRs That Actually Stick", "Sustainable Open Source Maintenance"],
       "topics": ["Open Source", "Web3", "Community", "Contribution"],
       "social": [
-        { "name": "twitter", "icon": "twitter", "url": "@lucaoss" },
-        { "name": "github", "icon": "github", "url": "lferretti" },
-        { "name": "website", "icon": "public", "url": "https://lucaferretti.io" }
+        {
+          "name": "twitter",
+          "icon": "twitter",
+          "url": "@lucaoss"
+        },
+        {
+          "name": "github",
+          "icon": "github",
+          "url": "lferretti"
+        },
+        {
+          "name": "website",
+          "icon": "public",
+          "url": "https://lucaferretti.io"
+        }
       ],
       "events": ["evt-002", "evt-005"],
       "avatarColor": "coral",
@@ -952,9 +1519,21 @@
       "talks": ["10,000 Services and One Cluster", "Kubernetes Observability That Doesn't Lie"],
       "topics": ["Kubernetes", "Cloud Native", "SRE", "UX Design"],
       "social": [
-        { "name": "twitter", "icon": "twitter", "url": "@priya_k8s" },
-        { "name": "github", "icon": "github", "url": "psubramaniam" },
-        { "name": "website", "icon": "public", "url": "https://priyasubramaniam.com" }
+        {
+          "name": "twitter",
+          "icon": "twitter",
+          "url": "@priya_k8s"
+        },
+        {
+          "name": "github",
+          "icon": "github",
+          "url": "psubramaniam"
+        },
+        {
+          "name": "website",
+          "icon": "public",
+          "url": "https://priyasubramaniam.com"
+        }
       ],
       "events": ["evt-001", "evt-003", "evt-008", "evt-015"],
       "avatarColor": "amber",
@@ -970,13 +1549,25 @@
       "talks": ["Your CI Pipeline is a Target", "Supply Chain Security in 2026"],
       "topics": ["Security", "Supply Chain", "DevSecOps"],
       "social": [
-        { "name": "twitter", "icon": "twitter", "url": "@jordanrivers_sec" },
-        { "name": "github", "icon": "github", "url": "jrivers-tob" },
-        { "name": "website", "icon": "public", "url": "https://jordanrivers.io" }
+        {
+          "name": "twitter",
+          "icon": "twitter",
+          "url": "@jordanrivers_sec"
+        },
+        {
+          "name": "github",
+          "icon": "github",
+          "url": "jrivers-tob"
+        },
+        {
+          "name": "website",
+          "icon": "public",
+          "url": "https://jordanrivers.io"
+        }
       ],
       "events": ["evt-003", "evt-005", "evt-007"],
       "avatarColor": "pink",
-      "imageUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
+      "imageUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80"
     },
     {
       "id": "spk-007",
@@ -988,9 +1579,21 @@
       "talks": ["Why Benchmarks Are Lying to You", "Evals That Actually Reflect Production"],
       "topics": ["AI", "Evals", "Production ML", "LLMs"],
       "social": [
-        { "name": "twitter", "icon": "twitter", "url": "@amaraml" },
-        { "name": "github", "icon": "github", "url": "amaradiallo-hf" },
-        { "name": "website", "icon": "public", "url": "https://amaradiallo.ai" }
+        {
+          "name": "twitter",
+          "icon": "twitter",
+          "url": "@amaraml"
+        },
+        {
+          "name": "github",
+          "icon": "github",
+          "url": "amaradiallo-hf"
+        },
+        {
+          "name": "website",
+          "icon": "public",
+          "url": "https://amaradiallo.ai"
+        }
       ],
       "events": ["evt-004", "evt-006", "evt-007"],
       "avatarColor": "teal",
@@ -1014,8 +1617,16 @@
       "bookingReference": "CAM-R9X7-2026",
       "bookedAt": "2026-07-14T10:22:00Z",
       "attendees": [
-        { "name": "Alex Kim", "email": "alex@example.com", "phone": "+1 555 0101" },
-        { "name": "Sam Park", "email": "sam@example.com", "phone": "+1 555 0102" }
+        {
+          "name": "Alex Kim",
+          "email": "alex@example.com",
+          "phone": "+1 555 0101"
+        },
+        {
+          "name": "Sam Park",
+          "email": "sam@example.com",
+          "phone": "+1 555 0102"
+        }
       ]
     },
     {
@@ -1033,7 +1644,13 @@
       "status": "confirmed",
       "bookingReference": "CAM-A3K1-2026",
       "bookedAt": "2026-07-10T14:05:00Z",
-      "attendees": [{ "name": "Alex Kim", "email": "alex@example.com", "phone": "+1 555 0101" }]
+      "attendees": [
+        {
+          "name": "Alex Kim",
+          "email": "alex@example.com",
+          "phone": "+1 555 0101"
+        }
+      ]
     },
     {
       "id": "bkg-005",
@@ -1067,7 +1684,13 @@
       "status": "cancelled",
       "bookingReference": "CAM-T5M8-2026",
       "bookedAt": "2026-06-28T09:15:00Z",
-      "attendees": [{ "name": "Alex Kim", "email": "alex@example.com", "phone": "+1 555 0101" }]
+      "attendees": [
+        {
+          "name": "Alex Kim",
+          "email": "alex@example.com",
+          "phone": "+1 555 0101"
+        }
+      ]
     },
     {
       "id": "bkg-004",
@@ -1084,20 +1707,347 @@
       "status": "confirmed",
       "bookingReference": "CAM-O2P9-2026",
       "bookedAt": "2026-07-20T16:40:00Z",
-      "attendees": [{ "name": "Alex Kim", "email": "alex@example.com", "phone": "+1 555 0101" }]
+      "attendees": [
+        {
+          "name": "Alex Kim",
+          "email": "alex@example.com",
+          "phone": "+1 555 0101"
+        }
+      ]
+    },
+    {
+      "userId": "user-001",
+      "eventId": "evt-001",
+      "eventTitle": "React Global Summit 2026",
+      "eventDate": "2026-09-15",
+      "eventLocation": "Moscone Center, San Francisco, CA, United States",
+      "ticketTierId": "tier-001-vip",
+      "ticketTierName": "VIP Access",
+      "quantity": 1,
+      "unitPrice": 799,
+      "totalPrice": 799,
+      "status": "confirmed",
+      "bookingReference": "CAM-EKMP-2026",
+      "bookedAt": "2026-06-01T20:35:47.006Z",
+      "attendees": [
+        {
+          "name": "Fatemeh khoshbayan",
+          "email": "f.khoshbayan@gmail.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "GsO3UPxxXyM"
+    },
+    {
+      "userId": "user-001",
+      "eventId": "evt-007",
+      "eventTitle": "DevSecOps World 2026",
+      "eventDate": "2026-11-05",
+      "eventLocation": "Marriott Marquis, Washington D.C., United States",
+      "ticketTierId": "tier-007-ga",
+      "ticketTierName": "General Admission",
+      "quantity": 2,
+      "unitPrice": 299,
+      "totalPrice": 598,
+      "status": "confirmed",
+      "bookingReference": "CAM-7VSN-2026",
+      "bookedAt": "2026-06-01T20:38:33.417Z",
+      "attendees": [
+        {
+          "name": "Fatemeh khoshbayan",
+          "email": "f.khoshbayan@gmail.com",
+          "phone": "16477658594"
+        },
+        {
+          "name": "Reza",
+          "email": "Reaz@gmail.com",
+          "phone": "1876987654"
+        }
+      ],
+      "id": "vwVZYpu6Slk"
+    },
+    {
+      "userId": "user-001",
+      "eventId": "evt-007",
+      "eventTitle": "DevSecOps World 2026",
+      "eventDate": "2026-11-05",
+      "eventLocation": "Marriott Marquis, Washington D.C., United States",
+      "ticketTierId": "tier-007-vip",
+      "ticketTierName": "VIP Security Pass",
+      "quantity": 1,
+      "unitPrice": 599,
+      "totalPrice": 599,
+      "status": "confirmed",
+      "bookingReference": "CAM-RPLG-2026",
+      "bookedAt": "2026-06-01T20:40:24.477Z",
+      "attendees": [
+        {
+          "name": "Fatemeh khoshbayan",
+          "email": "f.khoshbayan@gmail.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "tjXJNcN5OOc"
+    },
+    {
+      "userId": "user-001",
+      "eventId": "evt-007",
+      "eventTitle": "DevSecOps World 2026",
+      "eventDate": "2026-11-05",
+      "eventLocation": "Marriott Marquis, Washington D.C., United States",
+      "ticketTierId": "tier-007-vip",
+      "ticketTierName": "VIP Security Pass",
+      "quantity": 1,
+      "unitPrice": 599,
+      "totalPrice": 599,
+      "status": "confirmed",
+      "bookingReference": "CAM-HEMW-2026",
+      "bookedAt": "2026-06-01T20:42:31.076Z",
+      "attendees": [
+        {
+          "name": "Fatemeh khoshbayan",
+          "email": "f.khoshbayan@gmail.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "PxkfLGmjFvk"
+    },
+    {
+      "userId": "user-001",
+      "eventId": "evt-007",
+      "eventTitle": "DevSecOps World 2026",
+      "eventDate": "2026-11-05",
+      "eventLocation": "Marriott Marquis, Washington D.C., United States",
+      "ticketTierId": "tier-007-ga",
+      "ticketTierName": "General Admission",
+      "quantity": 1,
+      "unitPrice": 299,
+      "totalPrice": 299,
+      "status": "confirmed",
+      "bookingReference": "CAM-KFP2-2026",
+      "bookedAt": "2026-06-01T20:42:53.286Z",
+      "attendees": [
+        {
+          "name": "Fatemeh khoshbayan",
+          "email": "f.khoshbayan@gmail.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "4d5Z59y7QRs"
+    },
+    {
+      "userId": "user-001",
+      "eventId": "evt-003",
+      "eventTitle": "KubeCon North America 2026",
+      "eventDate": "2026-11-10",
+      "eventLocation": "Javits Center, New York, NY, United States",
+      "ticketTierId": "tier-003-co-located",
+      "ticketTierName": "Co-located Events",
+      "quantity": 1,
+      "unitPrice": 499,
+      "totalPrice": 499,
+      "status": "confirmed",
+      "bookingReference": "CAM-QNDT-2026",
+      "bookedAt": "2026-06-01T20:53:25.329Z",
+      "attendees": [
+        {
+          "name": "Fatemeh khoshbayan",
+          "email": "f.khoshbayan@gmail.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "b7qBvmTetDo"
+    },
+    {
+      "userId": "user-001",
+      "eventId": "evt-003",
+      "eventTitle": "KubeCon North America 2026",
+      "eventDate": "2026-11-10",
+      "eventLocation": "Javits Center, New York, NY, United States",
+      "ticketTierId": "tier-003-co-located",
+      "ticketTierName": "Co-located Events",
+      "quantity": 1,
+      "unitPrice": 499,
+      "totalPrice": 499,
+      "status": "confirmed",
+      "bookingReference": "CAM-NHY6-2026",
+      "bookedAt": "2026-06-01T21:06:59.659Z",
+      "attendees": [
+        {
+          "name": "Fatemeh khoshbayan",
+          "email": "f.khoshbayan@gmail.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "GkN3yMH7V1M"
+    },
+    {
+      "userId": "user-001",
+      "eventId": "evt-003",
+      "eventTitle": "KubeCon North America 2026",
+      "eventDate": "2026-11-10",
+      "eventLocation": "Javits Center, New York, NY, United States",
+      "ticketTierId": "tier-003-virtual",
+      "ticketTierName": "Virtual",
+      "quantity": 1,
+      "unitPrice": 75,
+      "totalPrice": 75,
+      "status": "confirmed",
+      "bookingReference": "CAM-QD8W-2026",
+      "bookedAt": "2026-06-01T21:21:29.001Z",
+      "attendees": [
+        {
+          "name": "Fatemeh khoshbayan",
+          "email": "f.khoshbayan@gmail.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "F0KmV94enuQ"
+    },
+    {
+      "userId": "user-001",
+      "eventId": "evt-003",
+      "eventTitle": "KubeCon North America 2026",
+      "eventDate": "2026-11-10",
+      "eventLocation": "Javits Center, New York, NY, United States",
+      "ticketTierId": "tier-003-virtual",
+      "ticketTierName": "Virtual",
+      "quantity": 1,
+      "unitPrice": 75,
+      "totalPrice": 75,
+      "status": "confirmed",
+      "bookingReference": "CAM-8SLK-2026",
+      "bookedAt": "2026-06-01T21:36:34.116Z",
+      "attendees": [
+        {
+          "name": "Fatemeh khoshbayan",
+          "email": "f.khoshbayan@gmail.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "rUmzuN_aljk"
+    },
+    {
+      "userId": "user-001",
+      "eventId": "evt-003",
+      "eventTitle": "KubeCon North America 2026",
+      "eventDate": "2026-11-10",
+      "eventLocation": "Javits Center, New York, NY, United States",
+      "ticketTierId": "tier-003-virtual",
+      "ticketTierName": "Virtual",
+      "quantity": 1,
+      "unitPrice": 75,
+      "totalPrice": 75,
+      "status": "confirmed",
+      "bookingReference": "CAM-XVZM-2026",
+      "bookedAt": "2026-06-01T22:01:48.182Z",
+      "attendees": [
+        {
+          "name": "Fatemeh khoshbayan",
+          "email": "f.khoshbayan@gmail.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "1p-RIsmTgSA"
+    },
+    {
+      "userId": "user-001",
+      "eventId": "evt-003",
+      "eventTitle": "KubeCon North America 2026",
+      "eventDate": "2026-11-10",
+      "eventLocation": "Javits Center, New York, NY, United States",
+      "ticketTierId": "tier-003-virtual",
+      "ticketTierName": "Virtual",
+      "quantity": 1,
+      "unitPrice": 75,
+      "totalPrice": 75,
+      "status": "confirmed",
+      "bookingReference": "CAM-7W3U-2026",
+      "bookedAt": "2026-06-01T22:04:57.288Z",
+      "attendees": [
+        {
+          "name": "Fatemeh khoshbayan",
+          "email": "f.khoshbayan@gmail.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "ikoD7Cq7rE8"
+    },
+    {
+      "userId": "user-001",
+      "eventId": "evt-003",
+      "eventTitle": "KubeCon North America 2026",
+      "eventDate": "2026-11-10",
+      "eventLocation": "Javits Center, New York, NY, United States",
+      "ticketTierId": "tier-003-virtual",
+      "ticketTierName": "Virtual",
+      "quantity": 1,
+      "unitPrice": 75,
+      "totalPrice": 75,
+      "status": "confirmed",
+      "bookingReference": "CAM-KBE7-2026",
+      "bookedAt": "2026-06-01T22:08:02.987Z",
+      "attendees": [
+        {
+          "name": "Fatemeh khoshbayan",
+          "email": "f.khoshbayan@gmail.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "-tNRuc6NlZA"
     }
   ],
   "categories": [
-    { "id": "frontend", "name": "Frontend", "icon": "layout" },
-    { "id": "backend", "name": "Backend", "icon": "server" },
-    { "id": "women-in-tech", "name": "Women in Tech", "icon": "woman" },
-    { "id": "cloud", "name": "Cloud & DevOps", "icon": "cloud" },
-    { "id": "aiml", "name": "AI & ML", "icon": "brain" },
-    { "id": "workshops", "name": "Workshops", "icon": "work" },
-    { "id": "hackathon", "name": "Hackathon", "icon": "code" },
-    { "id": "opensource", "name": "Open Source", "icon": "heart" },
-    { "id": "founders", "name": "Founders", "icon": "person" },
-    { "id": "conference", "name": "Conference", "icon": "event" }
+    {
+      "id": "frontend",
+      "name": "Frontend",
+      "icon": "layout"
+    },
+    {
+      "id": "backend",
+      "name": "Backend",
+      "icon": "server"
+    },
+    {
+      "id": "women-in-tech",
+      "name": "Women in Tech",
+      "icon": "woman"
+    },
+    {
+      "id": "cloud",
+      "name": "Cloud & DevOps",
+      "icon": "cloud"
+    },
+    {
+      "id": "aiml",
+      "name": "AI & ML",
+      "icon": "brain"
+    },
+    {
+      "id": "workshops",
+      "name": "Workshops",
+      "icon": "work"
+    },
+    {
+      "id": "hackathon",
+      "name": "Hackathon",
+      "icon": "code"
+    },
+    {
+      "id": "opensource",
+      "name": "Open Source",
+      "icon": "heart"
+    },
+    {
+      "id": "founders",
+      "name": "Founders",
+      "icon": "person"
+    },
+    {
+      "id": "conference",
+      "name": "Conference",
+      "icon": "event"
+    }
   ],
   "users": [
     {
@@ -1112,5 +2062,6 @@
       "email": "john@example.com",
       "avatar": "JD"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

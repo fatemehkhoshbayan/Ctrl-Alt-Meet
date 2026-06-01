@@ -1,18 +1,17 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { eventsApi } from '@/services';
 import type { IEvent } from '@/services';
+import { purchaseTicket } from '../bookings/bookings.slice';
 
-interface EventsState {
+interface EventDetailsState {
   event: IEvent;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
-  purchaseStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
 }
 
-const initialState: EventsState = {
+const initialState: EventDetailsState = {
   event: {} as IEvent,
   status: 'idle',
-  purchaseStatus: 'idle',
   error: null,
 };
 
@@ -20,24 +19,10 @@ export const fetchEventDetails = createAsyncThunk('events/fetchDetails', (id: st
   eventsApi.getById(id),
 );
 
-export const purchaseTicket = createAsyncThunk(
-  'events/purchaseTicket',
-  async ({ event, tierId }: { event: IEvent; tierId: string }) => {
-    const updatedTiers = event.ticketTiers.map(t =>
-      t.id === tierId ? { ...t, available: Math.max(0, t.available - 1) } : t,
-    );
-    return eventsApi.purchaseTicket(event.id, updatedTiers);
-  },
-);
-
-const eventDefaultsSlice = createSlice({
+const eventDetailsSlice = createSlice({
   name: 'eventDetails',
   initialState,
-  reducers: {
-    resetPurchaseStatus(state) {
-      state.purchaseStatus = 'idle';
-    },
-  },
+  reducers: {},
   extraReducers: builder => {
     builder
       .addCase(fetchEventDetails.pending, state => {
@@ -52,18 +37,10 @@ const eventDefaultsSlice = createSlice({
         state.status = 'failed';
         state.error = action.error.message ?? 'Failed to load events';
       })
-      .addCase(purchaseTicket.pending, state => {
-        state.purchaseStatus = 'loading';
-      })
       .addCase(purchaseTicket.fulfilled, (state, action) => {
-        state.purchaseStatus = 'succeeded';
-        state.event = action.payload;
-      })
-      .addCase(purchaseTicket.rejected, state => {
-        state.purchaseStatus = 'failed';
+        state.event = action.payload.event;
       });
   },
 });
 
-export const { resetPurchaseStatus } = eventDefaultsSlice.actions;
-export default eventDefaultsSlice.reducer;
+export default eventDetailsSlice.reducer;
