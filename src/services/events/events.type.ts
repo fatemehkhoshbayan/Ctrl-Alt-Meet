@@ -22,6 +22,16 @@ export type TSchedule = {
   type: 'keynote' | 'workshop' | 'panel' | 'break' | 'talk' | 'lightning' | 'social';
 };
 
+export type TEventHighlight = {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  image?: string;
+  featured?: boolean;
+  accent?: 'primary' | 'secondary' | 'default';
+};
+
 export interface IPaginatedResponse<T> {
   first: number;
   prev: number | null;
@@ -46,10 +56,13 @@ export interface IEvent {
   location: string;
   venue: string;
   city: string;
+  country: string;
   category: string;
   tags: string[];
   imageUrl: string;
+  venueImage: string;
   organizer: TOrganizer;
+  highlights: TEventHighlight[];
   speakers: string[];
   isFeatured: boolean;
   isFavorite: boolean;

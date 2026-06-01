@@ -1,10 +1,19 @@
+import { useEffect } from 'react';
 import { UserSearch } from 'lucide-react';
-import { useSpeakers } from '@/services';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { fetchSpeakers } from '@/store/speakers';
 import { EmptyState, ErrorState, LoadingState } from '@/shared';
 import { SpeakerCard } from '.';
 
 export default function SpeakersList() {
-  const { speakers, status, error } = useSpeakers();
+  const dispatch = useAppDispatch();
+  const speakers = useAppSelector(state => state.speakers.items);
+  const status = useAppSelector(state => state.speakers.status);
+  const error = useAppSelector(state => state.speakers.error);
+
+  useEffect(() => {
+    if (status === 'idle') dispatch(fetchSpeakers());
+  }, [dispatch, status]);
 
   return (
     <section className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-6 py-16">

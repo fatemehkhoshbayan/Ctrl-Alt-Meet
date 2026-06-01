@@ -1,6 +1,6 @@
 import { clients } from '../clients';
-import type { IEvent, IPaginatedResponse } from './events.type';
-import type { EventFilters } from '@/store/events/eventsSlice';
+import type { IEvent, IPaginatedResponse, TTicketTier } from './events.type';
+import type { EventFilters } from '@/store/events/events.slice';
 
 function buildDateBounds(dateRange: string): { startDate?: string; endDate?: string } {
   const now = new Date();
@@ -50,4 +50,9 @@ export const eventsApi = {
 
     return clients<IPaginatedResponse<IEvent>>(`/events?${params.toString()}`, { method: 'GET' });
   },
+  purchaseTicket: (eventId: string, updatedTiers: TTicketTier[]) =>
+    clients<IEvent>(`/events/${eventId}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ ticketTiers: updatedTiers }),
+    }),
 };

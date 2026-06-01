@@ -1,6 +1,6 @@
 import type { RootState } from '@/store';
 import { createSelector } from '@reduxjs/toolkit';
-import { DEFAULT_FILTERS, PER_PAGE } from './eventsSlice';
+import { DEFAULT_FILTERS, PER_PAGE } from './events.slice';
 import { buildDateBounds } from '@/utils';
 
 const selectAllItems = (state: RootState) => state.events.allItems;

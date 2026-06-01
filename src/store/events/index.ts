@@ -1,4 +1,5 @@
-export { default as eventsReducer } from './eventsSlice';
+export { default as eventsReducer } from './events.slice';
+export { default as eventDetailsReducer } from './eventDetails.slice';
 export {
   fetchEvents,
   setFilters,
@@ -6,6 +7,6 @@ export {
   setPage,
   DEFAULT_FILTERS,
   PER_PAGE,
-} from './eventsSlice';
-export type { EventFilters } from './eventsSlice';
-export { selectFilteredEvents } from './eventsSelector';
+} from './events.slice';
+export type { EventFilters } from './events.slice';
+export { selectFilteredEvents } from './events.selector';
