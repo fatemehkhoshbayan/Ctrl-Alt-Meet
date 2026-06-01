@@ -17,6 +17,28 @@
   border: 1px solid color-mix(in srgb, var(--theme-outline-variant) 40%, transparent);
 }
 
+:root.dark .glass-card {
+  background: rgba(37, 35, 41, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(74, 68, 85, 0.7);
+}
+
+@utility accent-glow {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--theme-primary) 20%, transparent),
+    0 0 32px color-mix(in srgb, var(--theme-primary-container) 30%, transparent);
+}
+
+@utility hero-gradient {
+  background: linear-gradient(
+    to top,
+    rgba(20, 18, 24, 0.95) 0%,
+    rgba(20, 18, 24, 0.6) 40%,
+    rgba(20, 18, 24, 0.1) 70%,
+    transparent 100%
+  );
+}
+
 @utility soft-lift {
   transition:
     transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),

@@ -55,6 +55,9 @@
   --color-tertiary-fixed: var(--theme-tertiary-fixed);
   --color-outline-variant: var(--theme-outline-variant);
   --color-outline: var(--theme-outline);
+  --color-till: var(--theme-till);
+  --color-till-container: var(--theme-till-container);
+  --color-till-fixed: var(--theme-till-fixed);
 
   /* ── Border radius ── */
   --radius-sm: 0.5rem;
@@ -168,6 +171,9 @@
   --theme-tertiary-fixed: #ffdad3;
   --theme-outline-variant: #ccc3d8;
   --theme-outline: #7b7487;
+  --theme-till: #006877;
+  --theme-till-container: #97f0ff;
+  --theme-till-fixed: #acedff;
 
 }
 

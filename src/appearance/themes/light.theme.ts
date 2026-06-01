@@ -50,5 +50,8 @@ export const lightTheme: Theme = {
     'surface-variant': '#e4e1ec',
     'surface-container-lowest': '#ffffff',
     'on-primary-container': '#ede0ff',
+    till: '#006877',
+    'till-container': '#97f0ff',
+    'till-fixed': '#acedff',
   },
 };

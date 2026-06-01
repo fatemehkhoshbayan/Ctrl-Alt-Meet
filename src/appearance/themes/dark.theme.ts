@@ -51,5 +51,8 @@ export const darkTheme: Theme = {
     'tertiary-fixed': '#3d0600',
     'outline-variant': '#4a4455',
     outline: '#948fa0',
+    till: '#4cd7f6',
+    'till-container': '#009eb9',
+    'till-fixed': '#acedff',
   },
 };

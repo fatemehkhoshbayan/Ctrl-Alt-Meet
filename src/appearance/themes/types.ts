@@ -49,6 +49,9 @@ export type ColorTokens = {
   'tertiary-fixed': string;
   'outline-variant': string;
   outline: string;
+  till: string;
+  'till-container': string;
+  'till-fixed': string;
 };
 
 export type Theme = {
