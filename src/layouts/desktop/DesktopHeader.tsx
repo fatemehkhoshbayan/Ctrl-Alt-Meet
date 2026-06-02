@@ -38,7 +38,7 @@ export default function DesktopHeader({ theme, toggleTheme }: IDesktopHeaderProp
             aria-label="Toggle theme"
           />
           <div className="bg-primary text-on-primary flex h-10 w-10 items-center justify-center rounded-full font-bold">
-            JD
+            AK
           </div>
         </div>
       </nav>
