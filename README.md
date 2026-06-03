@@ -23,20 +23,31 @@ A React app for browsing events, viewing speaker details, and managing bookings.
 
 ```bash
 npm install
-npm run dev
+npm run dev:all
 ```
 
-The dev server starts at `http://localhost:5173`.
+The app starts at `http://localhost:5173` and the JSON API runs at `http://localhost:3001`.
 
 ### Other scripts
 
 | Command | Description |
 | --- | --- |
+| `npm run dev` | Start the Vite dev server |
+| `npm run server` | Start the JSON server API |
+| `npm run dev:all` | Start the app and JSON server together |
 | `npm run build` | Type-check and build for production |
 | `npm run preview` | Preview the production build locally |
 | `npm run lint` | Run ESLint |
 | `npm run prettier` | Format source files with Prettier |
 | `npm run check-format` | Check formatting without writing changes |
+
+## Features
+
+- Browse events with filtering, sorting, pagination, and event detail pages.
+- Explore speaker profiles with speaker cards and profile details.
+- View bookings in dedicated Upcoming and Past Events tabs.
+- See booking cards with event imagery, date, location, time, and ticket actions.
+- Distinguish completed bookings with a past-event card state and completed action label.
 
 ## Routes
 
@@ -53,12 +64,12 @@ The dev server starts at `http://localhost:5173`.
 src/
 ├── appearance/     # Theme tokens, CSS variables, and light/dark themes
 ├── context/        # React context providers (e.g. theme)
-├── features/       # Feature-specific modules (events, speakers)
+├── features/       # Feature-specific modules (events, speakers, bookings)
 ├── hooks/          # Shared custom hooks
 ├── layouts/        # App shell and layout components
 ├── lib/            # Third-party library configuration
 ├── pages/          # Route-level page components
-├── services/       # API fetch functions (events, speakers, categories)
+├── services/       # API fetch functions (events, speakers, categories, bookings)
 ├── shared/         # Reusable state components (EmptyState, LoadingState, ErrorState)
 ├── store/          # Redux store, slices, and selectors
 ├── ui/             # Reusable UI components
@@ -100,4 +111,4 @@ Imports use path aliases configured in `vite.config.ts` and `tsconfig.app.json`:
 
 ## Status
 
-The events page is fully functional with filtering, sorting, and pagination. The speakers page is live with speaker cards and a hero section. Bookings is scaffolded and ready to be built out.
+The events page is functional with filtering, sorting, and pagination. The speakers page is live with speaker cards and a hero section. The My Bookings page now loads booking data from the JSON API and displays upcoming and past bookings with tabbed navigation.
