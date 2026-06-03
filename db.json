@@ -808,6 +808,65 @@
         { "time": "16:00", "title": "Lightning Talks", "type": "lightning" },
         { "time": "17:00", "title": "After-Party", "type": "social" }
       ]
+    },
+    {
+      "id": "evt-015",
+      "title": "UI/UX Dreamers",
+      "slug": "ui-ux-dreamers-2025",
+      "description": "A one-day gathering for designers, researchers, and product folks who care about craft over trends. UI/UX Dreamers mixes portfolio reviews, lightning talks on research and prototyping, and hallway conversations about the messy reality of shipping interfaces teams actually use.",
+      "shortDescription": "A community day for designers and UX builders — talks, critiques, and real-world craft.",
+      "date": "2025-11-15",
+      "endDate": "2025-11-15",
+      "time": "09:30",
+      "endTime": "17:00",
+      "timezone": "EST",
+      "location": "BrainStation, Toronto, Canada",
+      "venue": "BrainStation",
+      "city": "Toronto, Canada",
+      "category": "Workshops",
+      "tags": ["UI", "UX", "Design", "Research", "Prototyping"],
+      "imageUrl": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
+      "organizer": {
+        "name": "UI/UX Dreamers Collective",
+        "avatar": "UD",
+        "email": "hello@uiuxdreamers.ca",
+        "website": "https://uiuxdreamers.ca"
+      },
+      "speakers": ["spk-005", "spk-002"],
+      "isFeatured": false,
+      "isFavorite": false,
+      "attendeeCount": 186,
+      "maxAttendees": 220,
+      "ticketTiers": [
+        {
+          "id": "tier-015-ga",
+          "name": "General Admission",
+          "price": 50,
+          "description": "Full-day access, coffee, and community lunch",
+          "perks": ["All sessions", "Coffee & snacks", "Community lunch", "Sticker pack"],
+          "available": 34,
+          "total": 220
+        }
+      ],
+      "schedule": [
+        { "time": "09:30", "title": "Doors Open & Coffee", "type": "break" },
+        {
+          "time": "10:00",
+          "title": "Keynote: Designing for Clarity Under Pressure",
+          "speaker": "spk-005",
+          "type": "keynote"
+        },
+        { "time": "11:30", "title": "Lightning Talks: Research in the Wild", "type": "lightning" },
+        { "time": "13:00", "title": "Community Lunch", "type": "break" },
+        {
+          "time": "14:00",
+          "title": "Workshop: Component Patterns That Scale",
+          "speaker": "spk-002",
+          "type": "workshop"
+        },
+        { "time": "15:30", "title": "Portfolio Critique Circles", "type": "social" },
+        { "time": "16:30", "title": "Closing & Networking", "type": "social" }
+      ]
     }
   ],
   "speakers": [
@@ -843,7 +902,7 @@
         { "name": "github", "icon": "github", "url": "mchen-vercel" },
         { "name": "website", "icon": "public", "url": "https://marcuschen.io" }
       ],
-      "events": ["evt-001", "evt-006"],
+      "events": ["evt-001", "evt-006", "evt-015"],
       "avatarColor": "teal",
       "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
     },
@@ -897,7 +956,7 @@
         { "name": "github", "icon": "github", "url": "psubramaniam" },
         { "name": "website", "icon": "public", "url": "https://priyasubramaniam.com" }
       ],
-      "events": ["evt-001", "evt-003", "evt-008"],
+      "events": ["evt-001", "evt-003", "evt-008", "evt-015"],
       "avatarColor": "amber",
       "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80"
     },
@@ -973,6 +1032,23 @@
       "totalPrice": 699,
       "status": "confirmed",
       "bookingReference": "CAM-A3K1-2026",
+      "bookedAt": "2026-07-10T14:05:00Z",
+      "attendees": [{ "name": "Alex Kim", "email": "alex@example.com", "phone": "+1 555 0101" }]
+    },
+    {
+      "id": "bkg-005",
+      "userId": "user-001",
+      "eventId": "evt-015",
+      "eventTitle": "UI/UX Dreamers",
+      "eventDate": "2025-11-15",
+      "eventLocation": "BrainStation, Toronto, Canada",
+      "ticketTierId": "tier-015-ga",
+      "ticketTierName": "General Admission",
+      "quantity": 1,
+      "unitPrice": 50,
+      "totalPrice": 50,
+      "status": "finished",
+      "bookingReference": "CAM-U1D5-2025",
       "bookedAt": "2026-07-10T14:05:00Z",
       "attendees": [{ "name": "Alex Kim", "email": "alex@example.com", "phone": "+1 555 0101" }]
     },
