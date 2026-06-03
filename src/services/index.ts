@@ -6,3 +6,5 @@ export * from './clients';
 export * from './speakers/speakers.api';
 export * from './speakers/speakers.type';
 export * from './speakers/speakers.hooks';
+export * from './bookings/bookings.api';
+export * from './bookings/bookings.type';

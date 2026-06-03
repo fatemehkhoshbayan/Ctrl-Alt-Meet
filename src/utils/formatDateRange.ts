@@ -1,21 +1,37 @@
-export default function formatDateRange(start: string, end: string): string {
-  const fmt = new Intl.DateTimeFormat('en-US', {
+export function formatDate(date: string | undefined): string {
+  if (!date) return '';
+
+  const parsed = new Date(date);
+
+  if (isNaN(parsed.getTime())) return '';
+
+  const formatter = new Intl.DateTimeFormat('en-US', {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
     timeZone: 'UTC',
   });
-  if (start === end) return fmt.format(new Date(start));
 
-  const s = new Date(start);
-  const e = new Date(end);
+  return formatter.format(parsed);
+}
+
+export default function formatDateRange(start: string, end: string): string {
+  if (!start || !end) return '';
+  if (start === end) return formatDate(start);
+
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+
+  if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) return '';
+
   const sameMonthYear =
-    s.getUTCMonth() === e.getUTCMonth() && s.getUTCFullYear() === e.getUTCFullYear();
+    startDate.getUTCMonth() === endDate.getUTCMonth() &&
+    startDate.getUTCFullYear() === endDate.getUTCFullYear();
 
   if (sameMonthYear) {
-    const month = s.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' });
-    return `${month} ${s.getUTCDate()}–${e.getUTCDate()}, ${s.getUTCFullYear()}`;
+    const month = startDate.toLocaleDateString('en-US', { month: 'short', timeZone: 'UTC' });
+    return `${month} ${startDate.getUTCDate()}–${endDate.getUTCDate()}, ${startDate.getUTCFullYear()}`;
   }
 
-  return `${fmt.format(s)} – ${fmt.format(e)}`;
+  return `${formatDate(start)} – ${formatDate(end)}`;
 }
