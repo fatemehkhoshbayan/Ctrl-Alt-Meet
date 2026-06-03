@@ -1,17 +1,16 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib';
-import type { ReactNode } from 'react';
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
-interface IButtonProps extends VariantProps<typeof buttonVariants> {
-  onClick: () => void;
+interface IButtonProps
+  extends
+    Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
+    VariantProps<typeof buttonVariants> {
   BtnText: string;
-  className?: string;
   size?: 'xs' | 'sm' | 'md' | 'lg';
   variant?: 'filled' | 'outlined' | 'link';
   color?: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
-  disabled?: boolean;
   loading?: boolean;
-  type?: 'button' | 'submit' | 'reset';
   icon?: ReactNode;
   iconLeft?: ReactNode;
 }
@@ -60,15 +59,15 @@ export default function Button({
   size = 'md',
   icon,
   iconLeft,
-  onClick,
   BtnText,
   type = 'button',
+  ...rest
 }: IButtonProps) {
   return (
     <button
-      onClick={onClick}
       type={type}
       className={cn(buttonVariants({ variant, color, size }), className)}
+      {...rest}
     >
       {icon}
       {BtnText}
