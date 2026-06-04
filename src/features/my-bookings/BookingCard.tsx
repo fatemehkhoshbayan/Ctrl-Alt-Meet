@@ -1,8 +1,9 @@
 import { BadgeCheck, CalendarClock, MapPin } from 'lucide-react';
+
 import { cn } from '@/lib';
 import type { IBooking, IEvent } from '@/services';
 import { formatDate } from '@/utils';
-import { Button } from '../../ui';
+import { TicketDetailsDialog } from '.';
 
 export type TBookingCardStatus = 'upcoming' | 'past';
 
@@ -75,9 +76,9 @@ export default function BookingCard({
           </div>
         </div>
 
-        <div className="mt-auto grid grid-cols-2 gap-4">
-          <Button BtnText={isPast ? 'View Details' : 'View Ticket'} />
-          <Button
+        <div className="mt-auto gap-4">
+          <TicketDetailsDialog booking={booking} event={event} />
+          {/* <Button
             className={cn(
               'transition-all active:scale-95',
               isPast
@@ -87,7 +88,7 @@ export default function BookingCard({
             disabled={isPast}
             BtnText={isPast ? 'Completed' : 'Manage'}
             variant="outlined"
-          />
+          /> */}
         </div>
       </div>
     </article>
