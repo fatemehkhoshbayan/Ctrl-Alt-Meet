@@ -1,6 +1,6 @@
 # Ctrl Alt Meet
 
-A React app for browsing events, viewing speaker details, and managing bookings. Built with TypeScript, Vite, and Tailwind CSS.
+Ctrl Alt Meet is a React event discovery app for browsing conferences, exploring speakers, viewing event details, and managing booked tickets. It uses a local JSON API during development and is built with TypeScript, Vite, Redux Toolkit, and Tailwind CSS.
 
 ## Tech stack
 
@@ -16,10 +16,20 @@ A React app for browsing events, viewing speaker details, and managing bookings.
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 20+
 - npm
 
-### Install and run
+### Environment variables
+
+Create a local `.env` file:
+
+```bash
+VITE_API_BASE_URL=http://localhost:3001
+```
+
+The app reads API requests from `VITE_API_BASE_URL`. In development, this should point to the local JSON server. In production, set the same variable in your hosting provider.
+
+### Install and run locally
 
 ```bash
 npm install
@@ -27,6 +37,18 @@ npm run dev:all
 ```
 
 The app starts at `http://localhost:5173` and the JSON API runs at `http://localhost:3001`.
+
+If you only need the frontend, run:
+
+```bash
+npm run dev
+```
+
+If you only need the mock API, run:
+
+```bash
+npm run server
+```
 
 ### Other scripts
 
@@ -43,11 +65,12 @@ The app starts at `http://localhost:5173` and the JSON API runs at `http://local
 
 ## Features
 
-- Browse events with filtering, sorting, pagination, and event detail pages.
-- Explore speaker profiles with speaker cards and profile details.
-- View bookings in dedicated Upcoming and Past Events tabs.
-- See booking cards with event imagery, date, location, time, and ticket actions.
-- Distinguish completed bookings with a past-event card state and completed action label.
+- Browse events with filtering, sorting, pagination, and detail pages.
+- Explore speaker profiles with reusable speaker cards.
+- View bookings in Upcoming and Past Events tabs.
+- Open ticket detail dialogs for booking information.
+- Manage responsive layouts with desktop and mobile navigation.
+- Switch between light and dark themes with persisted theme preference.
 
 ## Routes
 
@@ -75,6 +98,17 @@ src/
 ├── ui/             # Reusable UI components
 └── utils/          # Utility functions
 ```
+
+## Data source
+
+Local development uses `json-server` with `db.json`. The main resources are:
+
+| Resource | Purpose |
+| --- | --- |
+| `/events` | Event listings, event details, ticket tiers, schedules |
+| `/speakers` | Speaker profiles used by the speakers page and event details |
+| `/categories` | Event category metadata and filtering |
+| `/bookings` | User booking data for the My Bookings page |
 
 ## Theming
 
@@ -109,6 +143,22 @@ Imports use path aliases configured in `vite.config.ts` and `tsconfig.app.json`:
 | `@ui/*` | `src/ui/*` |
 | `@utils/*` | `src/utils/*` |
 
+## Build and deployment
+
+Run the production build locally before deploying:
+
+```bash
+npm run build
+```
+
+The build script runs TypeScript first and then Vite:
+
+```bash
+tsc -b && vite build
+```
+
+This means deployment can fail before Vite starts if TypeScript finds missing imports, unused values, or invalid types. Make sure `VITE_API_BASE_URL` is configured in the deployment environment.
+
 ## Status
 
-The events page is functional with filtering, sorting, and pagination. The speakers page is live with speaker cards and a hero section. The My Bookings page now loads booking data from the JSON API and displays upcoming and past bookings with tabbed navigation.
+The events, speakers, event details, and My Bookings pages are implemented. The app currently uses a JSON server API for data and can be deployed as a Vite static frontend when production API environment variables are configured.
