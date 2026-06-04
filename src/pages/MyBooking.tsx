@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+
 import { BookingCards, HeroSection, InspirationSection } from '@/features';
 import { LoadingState, ErrorState } from '@/shared';
 import { fetchBookings } from '@/store/bookings';

@@ -95,7 +95,7 @@ export default function EventsList() {
         )}
 
         {status === 'succeeded' && items.length > 0 && (
-          <div className="gap-gutter grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+          <div className="gap-gutter grid min-w-3xl grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
             {items.map(event => (
               <EventCard key={event.id} event={event} />
             ))}

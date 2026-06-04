@@ -1,4 +1,5 @@
 import { Inbox } from 'lucide-react';
+
 import { EmptyState } from '@/shared';
 import type { IBooking, IEvent } from '@/services';
 import BookingCard, { type TBookingCardStatus } from './BookingCard';
@@ -30,7 +31,7 @@ export default function BookingCards({
   }
 
   return (
-    <div className="gap-gutter mx-auto grid w-full max-w-7xl grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+    <div className="gap-gutter mx-auto grid w-full max-w-7xl min-w-7xl grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
       {bookingsWithEvents.map(({ booking, event }) => (
         <BookingCard key={booking.id} booking={booking} event={event} status={status} />
       ))}
