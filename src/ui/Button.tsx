@@ -6,7 +6,7 @@ interface IButtonProps
   extends
     Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
     VariantProps<typeof buttonVariants> {
-  BtnText: string;
+  BtnText?: string;
   size?: 'xs' | 'sm' | 'md' | 'lg';
   variant?: 'filled' | 'outlined' | 'link';
   color?: 'primary' | 'secondary' | 'tertiary' | 'quaternary';

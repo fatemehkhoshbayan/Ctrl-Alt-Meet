@@ -7,4 +7,3 @@ export * from './AlertDialog';
 export * from './Dialog';
 export * from './form';
 export { default as Card, type ICardProps } from './Card';
-export { default as Dialog } from './Dialog';
