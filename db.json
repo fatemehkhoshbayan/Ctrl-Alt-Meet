@@ -285,7 +285,7 @@
           "price": 75,
           "description": "Live stream and on-demand for 1 year",
           "perks": ["Live stream", "1-year recordings"],
-          "available": 4995,
+          "available": 4994,
           "total": 10000
         }
       ],
@@ -351,7 +351,7 @@
           "price": 349,
           "description": "2-day full access, lunch, and workshop",
           "perks": ["All talks", "Workshops", "Lunch", "Networking"],
-          "available": 260,
+          "available": 259,
           "total": 1500
         },
         {
@@ -360,7 +360,7 @@
           "price": 699,
           "description": "GA + roundtable discussions, speaker dinner",
           "perks": ["Everything in GA", "Research roundtables", "Speaker dinner"],
-          "available": 8,
+          "available": 7,
           "total": 100
         }
       ],
@@ -492,7 +492,7 @@
           "price": 199,
           "description": "Full day access and lunch",
           "perks": ["All talks", "Lunch", "Swag"],
-          "available": 50,
+          "available": 46,
           "total": 600
         },
         {
@@ -501,7 +501,7 @@
           "price": 349,
           "description": "GA + hands-on morning workshop",
           "perks": ["Everything in GA", "Morning workshop", "Workshop materials"],
-          "available": 15,
+          "available": 14,
           "total": 60
         }
       ],
@@ -735,7 +735,7 @@
           "price": 49,
           "description": "Live stream all tracks with Q&A access",
           "perks": ["Live stream", "Q&A access", "60-day recordings"],
-          "available": 2000,
+          "available": 1999,
           "total": 2000
         }
       ],
@@ -1368,23 +1368,43 @@
         }
       ],
       "schedule": [
-        { "time": "09:30", "title": "Doors Open & Coffee", "type": "break" },
+        {
+          "time": "09:30",
+          "title": "Doors Open & Coffee",
+          "type": "break"
+        },
         {
           "time": "10:00",
           "title": "Keynote: Designing for Clarity Under Pressure",
           "speaker": "spk-005",
           "type": "keynote"
         },
-        { "time": "11:30", "title": "Lightning Talks: Research in the Wild", "type": "lightning" },
-        { "time": "13:00", "title": "Community Lunch", "type": "break" },
+        {
+          "time": "11:30",
+          "title": "Lightning Talks: Research in the Wild",
+          "type": "lightning"
+        },
+        {
+          "time": "13:00",
+          "title": "Community Lunch",
+          "type": "break"
+        },
         {
           "time": "14:00",
           "title": "Workshop: Component Patterns That Scale",
           "speaker": "spk-002",
           "type": "workshop"
         },
-        { "time": "15:30", "title": "Portfolio Critique Circles", "type": "social" },
-        { "time": "16:30", "title": "Closing & Networking", "type": "social" }
+        {
+          "time": "15:30",
+          "title": "Portfolio Critique Circles",
+          "type": "social"
+        },
+        {
+          "time": "16:30",
+          "title": "Closing & Networking",
+          "type": "social"
+        }
       ]
     }
   ],
@@ -1667,7 +1687,13 @@
       "status": "finished",
       "bookingReference": "CAM-U1D5-2025",
       "bookedAt": "2026-07-10T14:05:00Z",
-      "attendees": [{ "name": "Alex Kim", "email": "alex@example.com", "phone": "+1 555 0101" }]
+      "attendees": [
+        {
+          "name": "Alex Kim",
+          "email": "alex@example.com",
+          "phone": "+1 555 0101"
+        }
+      ]
     },
     {
       "id": "bkg-003",
@@ -1714,287 +1740,6 @@
           "phone": "+1 555 0101"
         }
       ]
-    },
-    {
-      "userId": "user-001",
-      "eventId": "evt-001",
-      "eventTitle": "React Global Summit 2026",
-      "eventDate": "2026-09-15",
-      "eventLocation": "Moscone Center, San Francisco, CA, United States",
-      "ticketTierId": "tier-001-vip",
-      "ticketTierName": "VIP Access",
-      "quantity": 1,
-      "unitPrice": 799,
-      "totalPrice": 799,
-      "status": "confirmed",
-      "bookingReference": "CAM-EKMP-2026",
-      "bookedAt": "2026-06-01T20:35:47.006Z",
-      "attendees": [
-        {
-          "name": "Fatemeh khoshbayan",
-          "email": "f.khoshbayan@gmail.com",
-          "phone": "16477658594"
-        }
-      ],
-      "id": "GsO3UPxxXyM"
-    },
-    {
-      "userId": "user-001",
-      "eventId": "evt-007",
-      "eventTitle": "DevSecOps World 2026",
-      "eventDate": "2026-11-05",
-      "eventLocation": "Marriott Marquis, Washington D.C., United States",
-      "ticketTierId": "tier-007-ga",
-      "ticketTierName": "General Admission",
-      "quantity": 2,
-      "unitPrice": 299,
-      "totalPrice": 598,
-      "status": "confirmed",
-      "bookingReference": "CAM-7VSN-2026",
-      "bookedAt": "2026-06-01T20:38:33.417Z",
-      "attendees": [
-        {
-          "name": "Fatemeh khoshbayan",
-          "email": "f.khoshbayan@gmail.com",
-          "phone": "16477658594"
-        },
-        {
-          "name": "Reza",
-          "email": "Reaz@gmail.com",
-          "phone": "1876987654"
-        }
-      ],
-      "id": "vwVZYpu6Slk"
-    },
-    {
-      "userId": "user-001",
-      "eventId": "evt-007",
-      "eventTitle": "DevSecOps World 2026",
-      "eventDate": "2026-11-05",
-      "eventLocation": "Marriott Marquis, Washington D.C., United States",
-      "ticketTierId": "tier-007-vip",
-      "ticketTierName": "VIP Security Pass",
-      "quantity": 1,
-      "unitPrice": 599,
-      "totalPrice": 599,
-      "status": "confirmed",
-      "bookingReference": "CAM-RPLG-2026",
-      "bookedAt": "2026-06-01T20:40:24.477Z",
-      "attendees": [
-        {
-          "name": "Fatemeh khoshbayan",
-          "email": "f.khoshbayan@gmail.com",
-          "phone": "16477658594"
-        }
-      ],
-      "id": "tjXJNcN5OOc"
-    },
-    {
-      "userId": "user-001",
-      "eventId": "evt-007",
-      "eventTitle": "DevSecOps World 2026",
-      "eventDate": "2026-11-05",
-      "eventLocation": "Marriott Marquis, Washington D.C., United States",
-      "ticketTierId": "tier-007-vip",
-      "ticketTierName": "VIP Security Pass",
-      "quantity": 1,
-      "unitPrice": 599,
-      "totalPrice": 599,
-      "status": "confirmed",
-      "bookingReference": "CAM-HEMW-2026",
-      "bookedAt": "2026-06-01T20:42:31.076Z",
-      "attendees": [
-        {
-          "name": "Fatemeh khoshbayan",
-          "email": "f.khoshbayan@gmail.com",
-          "phone": "16477658594"
-        }
-      ],
-      "id": "PxkfLGmjFvk"
-    },
-    {
-      "userId": "user-001",
-      "eventId": "evt-007",
-      "eventTitle": "DevSecOps World 2026",
-      "eventDate": "2026-11-05",
-      "eventLocation": "Marriott Marquis, Washington D.C., United States",
-      "ticketTierId": "tier-007-ga",
-      "ticketTierName": "General Admission",
-      "quantity": 1,
-      "unitPrice": 299,
-      "totalPrice": 299,
-      "status": "confirmed",
-      "bookingReference": "CAM-KFP2-2026",
-      "bookedAt": "2026-06-01T20:42:53.286Z",
-      "attendees": [
-        {
-          "name": "Fatemeh khoshbayan",
-          "email": "f.khoshbayan@gmail.com",
-          "phone": "16477658594"
-        }
-      ],
-      "id": "4d5Z59y7QRs"
-    },
-    {
-      "userId": "user-001",
-      "eventId": "evt-003",
-      "eventTitle": "KubeCon North America 2026",
-      "eventDate": "2026-11-10",
-      "eventLocation": "Javits Center, New York, NY, United States",
-      "ticketTierId": "tier-003-co-located",
-      "ticketTierName": "Co-located Events",
-      "quantity": 1,
-      "unitPrice": 499,
-      "totalPrice": 499,
-      "status": "confirmed",
-      "bookingReference": "CAM-QNDT-2026",
-      "bookedAt": "2026-06-01T20:53:25.329Z",
-      "attendees": [
-        {
-          "name": "Fatemeh khoshbayan",
-          "email": "f.khoshbayan@gmail.com",
-          "phone": "16477658594"
-        }
-      ],
-      "id": "b7qBvmTetDo"
-    },
-    {
-      "userId": "user-001",
-      "eventId": "evt-003",
-      "eventTitle": "KubeCon North America 2026",
-      "eventDate": "2026-11-10",
-      "eventLocation": "Javits Center, New York, NY, United States",
-      "ticketTierId": "tier-003-co-located",
-      "ticketTierName": "Co-located Events",
-      "quantity": 1,
-      "unitPrice": 499,
-      "totalPrice": 499,
-      "status": "confirmed",
-      "bookingReference": "CAM-NHY6-2026",
-      "bookedAt": "2026-06-01T21:06:59.659Z",
-      "attendees": [
-        {
-          "name": "Fatemeh khoshbayan",
-          "email": "f.khoshbayan@gmail.com",
-          "phone": "16477658594"
-        }
-      ],
-      "id": "GkN3yMH7V1M"
-    },
-    {
-      "userId": "user-001",
-      "eventId": "evt-003",
-      "eventTitle": "KubeCon North America 2026",
-      "eventDate": "2026-11-10",
-      "eventLocation": "Javits Center, New York, NY, United States",
-      "ticketTierId": "tier-003-virtual",
-      "ticketTierName": "Virtual",
-      "quantity": 1,
-      "unitPrice": 75,
-      "totalPrice": 75,
-      "status": "confirmed",
-      "bookingReference": "CAM-QD8W-2026",
-      "bookedAt": "2026-06-01T21:21:29.001Z",
-      "attendees": [
-        {
-          "name": "Fatemeh khoshbayan",
-          "email": "f.khoshbayan@gmail.com",
-          "phone": "16477658594"
-        }
-      ],
-      "id": "F0KmV94enuQ"
-    },
-    {
-      "userId": "user-001",
-      "eventId": "evt-003",
-      "eventTitle": "KubeCon North America 2026",
-      "eventDate": "2026-11-10",
-      "eventLocation": "Javits Center, New York, NY, United States",
-      "ticketTierId": "tier-003-virtual",
-      "ticketTierName": "Virtual",
-      "quantity": 1,
-      "unitPrice": 75,
-      "totalPrice": 75,
-      "status": "confirmed",
-      "bookingReference": "CAM-8SLK-2026",
-      "bookedAt": "2026-06-01T21:36:34.116Z",
-      "attendees": [
-        {
-          "name": "Fatemeh khoshbayan",
-          "email": "f.khoshbayan@gmail.com",
-          "phone": "16477658594"
-        }
-      ],
-      "id": "rUmzuN_aljk"
-    },
-    {
-      "userId": "user-001",
-      "eventId": "evt-003",
-      "eventTitle": "KubeCon North America 2026",
-      "eventDate": "2026-11-10",
-      "eventLocation": "Javits Center, New York, NY, United States",
-      "ticketTierId": "tier-003-virtual",
-      "ticketTierName": "Virtual",
-      "quantity": 1,
-      "unitPrice": 75,
-      "totalPrice": 75,
-      "status": "confirmed",
-      "bookingReference": "CAM-XVZM-2026",
-      "bookedAt": "2026-06-01T22:01:48.182Z",
-      "attendees": [
-        {
-          "name": "Fatemeh khoshbayan",
-          "email": "f.khoshbayan@gmail.com",
-          "phone": "16477658594"
-        }
-      ],
-      "id": "1p-RIsmTgSA"
-    },
-    {
-      "userId": "user-001",
-      "eventId": "evt-003",
-      "eventTitle": "KubeCon North America 2026",
-      "eventDate": "2026-11-10",
-      "eventLocation": "Javits Center, New York, NY, United States",
-      "ticketTierId": "tier-003-virtual",
-      "ticketTierName": "Virtual",
-      "quantity": 1,
-      "unitPrice": 75,
-      "totalPrice": 75,
-      "status": "confirmed",
-      "bookingReference": "CAM-7W3U-2026",
-      "bookedAt": "2026-06-01T22:04:57.288Z",
-      "attendees": [
-        {
-          "name": "Fatemeh khoshbayan",
-          "email": "f.khoshbayan@gmail.com",
-          "phone": "16477658594"
-        }
-      ],
-      "id": "ikoD7Cq7rE8"
-    },
-    {
-      "userId": "user-001",
-      "eventId": "evt-003",
-      "eventTitle": "KubeCon North America 2026",
-      "eventDate": "2026-11-10",
-      "eventLocation": "Javits Center, New York, NY, United States",
-      "ticketTierId": "tier-003-virtual",
-      "ticketTierName": "Virtual",
-      "quantity": 1,
-      "unitPrice": 75,
-      "totalPrice": 75,
-      "status": "confirmed",
-      "bookingReference": "CAM-KBE7-2026",
-      "bookedAt": "2026-06-01T22:08:02.987Z",
-      "attendees": [
-        {
-          "name": "Fatemeh khoshbayan",
-          "email": "f.khoshbayan@gmail.com",
-          "phone": "16477658594"
-        }
-      ],
-      "id": "-tNRuc6NlZA"
     }
   ],
   "categories": [
