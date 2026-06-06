@@ -30,7 +30,7 @@ export default function TicketDetailsDialog({ booking, event }: ITicketDetailsDi
       <DialogTrigger asChild>
         <Button BtnText="View Ticket" className="w-full" />
       </DialogTrigger>
-      <DialogContent className="border-outline-variant/40 text-primary bg-surface-container-low flex max-h-[90vh] flex-col overflow-hidden p-0 sm:rounded-[2rem]">
+      <DialogContent className="border-outline-variant/40 text-primary bg-surface-container-low flex max-h-[70vh] flex-col overflow-hidden p-0 sm:rounded-[2rem]">
         <div className="relative h-44 shrink-0 overflow-hidden sm:h-56">
           <img className="h-full w-full object-cover" src={event.imageUrl} alt={event.title} />
           <div className="from-background/95 absolute inset-0 bg-linear-to-t via-transparent to-transparent" />
@@ -40,12 +40,12 @@ export default function TicketDetailsDialog({ booking, event }: ITicketDetailsDi
         </div>
 
         <div className="overflow-y-auto p-6 pt-8 sm:p-10 sm:pt-8">
-          <DialogHeader className="pr-10">
+          <DialogHeader className="text-primary">
             <DialogTitle className="text-headline-lg-mobile md:text-headline-lg">
               {event.title}
             </DialogTitle>
             <DialogDescription className="text-body-lg leading-relaxed">
-              {event.shortDescription || event.description}
+              {event.shortDescription}
             </DialogDescription>
           </DialogHeader>
 

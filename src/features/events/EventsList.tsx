@@ -45,7 +45,7 @@ export default function EventsList() {
 
   return (
     <section className="gap-gutter grid grid-cols-12 justify-center py-16">
-      <SideBar className="col-span-3" />
+      <SideBar className="col-span-3 min-w-80" />
 
       <div className="col-span-9">
         <div className="mb-8 flex items-end justify-between">
@@ -95,7 +95,7 @@ export default function EventsList() {
         )}
 
         {status === 'succeeded' && items.length > 0 && (
-          <div className="gap-gutter grid min-w-3xl grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+          <div className="gap-gutter grid min-w-3xl grid-cols-1 md:grid-cols-2">
             {items.map(event => (
               <EventCard key={event.id} event={event} />
             ))}
