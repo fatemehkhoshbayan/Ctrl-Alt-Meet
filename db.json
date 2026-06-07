@@ -285,7 +285,7 @@
           "price": 75,
           "description": "Live stream and on-demand for 1 year",
           "perks": ["Live stream", "1-year recordings"],
-          "available": 4994,
+          "available": 4991,
           "total": 10000
         }
       ],
@@ -567,7 +567,7 @@
           "price": 299,
           "description": "2-day access, meals, and workshops",
           "perks": ["All sessions", "Meals", "Workshops"],
-          "available": 397,
+          "available": 396,
           "total": 1200
         },
         {
