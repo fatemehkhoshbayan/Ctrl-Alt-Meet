@@ -27,8 +27,10 @@ DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
 const DialogContent = forwardRef<
   ComponentRef<typeof DialogPrimitive.Content>,
-  ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ className, children, ...props }, ref) => (
+  ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
+    onCloseClick?: () => void;
+  }
+>(({ className, children, onCloseClick, ...props }, ref) => (
   <DialogPortal>
     <DialogOverlay />
     <DialogPrimitive.Content
@@ -40,10 +42,21 @@ const DialogContent = forwardRef<
       {...props}
     >
       {children}
-      <DialogPrimitive.Close className="text-on-surface-variant hover:text-primary focus-visible:ring-primary absolute top-7 right-7 rounded-full p-1 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2">
-        <X className="h-6 w-6" />
-        <span className="sr-only">Close</span>
-      </DialogPrimitive.Close>
+      {onCloseClick ? (
+        <button
+          type="button"
+          onClick={onCloseClick}
+          className="bg-inverse-surface text-inverse-on-surface absolute top-7 right-7 flex h-7 w-7 items-center justify-center rounded-full transition-opacity hover:opacity-80"
+        >
+          <X className="h-4 w-4" />
+          <span className="sr-only">Close</span>
+        </button>
+      ) : (
+        <DialogPrimitive.Close className="bg-inverse-surface text-inverse-on-surface absolute top-7 right-7 flex h-7 w-7 items-center justify-center rounded-full transition-opacity hover:opacity-80">
+          <X className="h-4 w-4" />
+          <span className="sr-only">Close</span>
+        </DialogPrimitive.Close>
+      )}
     </DialogPrimitive.Content>
   </DialogPortal>
 ));

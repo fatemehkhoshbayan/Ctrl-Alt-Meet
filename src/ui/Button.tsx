@@ -6,13 +6,16 @@ interface IButtonProps
   extends
     Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
     VariantProps<typeof buttonVariants> {
-  BtnText: string;
+  BtnText?: string;
   size?: 'xs' | 'sm' | 'md' | 'lg';
   variant?: 'filled' | 'outlined' | 'link';
   color?: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
   loading?: boolean;
+  'aria-label'?: string;
+  type?: 'button' | 'submit' | 'reset';
   icon?: ReactNode;
   iconLeft?: ReactNode;
+  children?: ReactNode;
 }
 
 const buttonVariants = cva(
@@ -26,7 +29,7 @@ const buttonVariants = cva(
       },
       color: {
         primary: '',
-        secondary: 'bg-secondary text-gray-950 hover:bg-secondary/90',
+        secondary: 'bg-secondary text-on-secondary hover:bg-secondary/90',
         tertiary: 'bg-tertiary text-gray-500 hover:bg-tertiary/90',
         quaternary: 'bg-quaternary hover:bg-quaternary/90',
       },
@@ -61,6 +64,7 @@ export default function Button({
   iconLeft,
   BtnText,
   type = 'button',
+  children,
   ...rest
 }: IButtonProps) {
   return (
@@ -70,7 +74,8 @@ export default function Button({
       {...rest}
     >
       {icon}
-      {BtnText}
+      {BtnText && <span>{BtnText}</span>}
+      {children}
       {iconLeft}
     </button>
   );

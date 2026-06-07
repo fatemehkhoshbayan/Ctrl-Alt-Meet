@@ -1,2 +1,2 @@
-export { default as categoriesReducer } from './categoriesSlice';
-export { fetchCategories } from './categoriesSlice';
+export { default as categoriesReducer } from './categories.slice';
+export { fetchCategories } from './categories.slice';

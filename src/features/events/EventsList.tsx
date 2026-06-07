@@ -44,16 +44,18 @@ export default function EventsList() {
   }
 
   return (
-    <section className="gap-gutter grid grid-cols-12 justify-center py-16">
-      <SideBar className="col-span-3" />
+    <section className="gap-gutter grid grid-cols-12 justify-center px-20 py-16 lg:px-0">
+      <SideBar className="col-span-3 min-w-80" />
 
-      <div className="col-span-9">
-        <div className="mb-8 flex items-end justify-between">
-          <p className="font-body-md text-body-md text-on-surface-variant">
-            {status === 'succeeded'
-              ? `Showing ${rangeStart}–${rangeEnd} of ${totalItems} tech events`
-              : 'Loading events…'}
-          </p>
+      <div className="col-span-12 lg:col-span-9">
+        <div className="flex items-center justify-between gap-3 pb-8 lg:mb-0">
+          <div className="flex items-center justify-between gap-3">
+            <p className="font-body-md text-body-md text-on-surface-variant">
+              {status === 'succeeded'
+                ? `Showing ${rangeStart}–${rangeEnd} of ${totalItems} tech events`
+                : 'Loading events…'}
+            </p>
+          </div>
           <Select
             id="sorting"
             label="Sort by:"
@@ -95,7 +97,7 @@ export default function EventsList() {
         )}
 
         {status === 'succeeded' && items.length > 0 && (
-          <div className="gap-gutter grid min-w-3xl grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+          <div className="gap-gutter grid grid-cols-1 lg:min-w-3xl lg:grid-cols-2">
             {items.map(event => (
               <EventCard key={event.id} event={event} />
             ))}

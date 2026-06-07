@@ -1,4 +1,11 @@
-export default function buildPageRange(current: number, total: number): (number | '...')[] {
+export function toPascalCase(kebab: string): string {
+  return kebab
+    .split('-')
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('');
+}
+
+export function buildPageRange(current: number, total: number): (number | '...')[] {
   if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
 
   const pages: (number | '...')[] = [1];
