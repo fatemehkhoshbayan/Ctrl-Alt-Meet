@@ -38,7 +38,10 @@ const eventDetailsSlice = createSlice({
         state.error = action.error.message ?? 'Failed to load events';
       })
       .addCase(purchaseTicket.fulfilled, (state, action) => {
-        state.event = action.payload.event;
+        state.event = {
+          ...state.event,
+          ticketTiers: action.payload.event.ticketTiers,
+        };
       });
   },
 });

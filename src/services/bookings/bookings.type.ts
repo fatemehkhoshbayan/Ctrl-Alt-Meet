@@ -18,7 +18,10 @@ export interface IBooking {
   quantity: number;
   unitPrice: number;
   totalPrice: number;
+  status: TBookingStatus;
+  bookingReference: string;
+  bookedAt: string;
+  attendees: TBookingAttendee[];
 }
-
 
 export type TCreateBookingPayload = Omit<IBooking, 'id'>;

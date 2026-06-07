@@ -3,12 +3,20 @@ import { bookingsApi, eventsApi } from '@/services';
 import type { IEvent, IBooking, TBookingAttendee, TCreateBookingPayload } from '@/services';
 import { generateBookingReference } from '@/utils';
 
+export interface IBookingSuccess {
+  reference: string;
+  eventTitle: string;
+  tierName: string;
+  quantity: number;
+  totalAmount: number;
+}
+
 interface BookingsState {
   items: IBooking[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   purchaseStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
-  bookingReference: string | null;
+  bookingSuccess: IBookingSuccess | null;
 }
 
 const initialState: BookingsState = {
@@ -16,7 +24,7 @@ const initialState: BookingsState = {
   status: 'idle',
   purchaseStatus: 'idle',
   error: null,
-  bookingReference: null,
+  bookingSuccess: null,
 };
 
 export type PurchaseTicketPayload = {
@@ -75,7 +83,9 @@ const bookingsSlice = createSlice({
   reducers: {
     resetPurchaseStatus(state) {
       state.purchaseStatus = 'idle';
-      state.bookingReference = null;
+    },
+    clearBookingSuccess(state) {
+      state.bookingSuccess = null;
     },
   },
   extraReducers: builder => {
@@ -97,9 +107,16 @@ const bookingsSlice = createSlice({
         state.error = null;
       })
       .addCase(purchaseTicket.fulfilled, (state, action) => {
+        const { booking, bookingReference } = action.payload;
         state.purchaseStatus = 'succeeded';
-        state.bookingReference = action.payload.bookingReference;
-        state.items = [action.payload.booking, ...state.items];
+        state.items = [booking, ...state.items];
+        state.bookingSuccess = {
+          reference: bookingReference,
+          eventTitle: booking.eventTitle,
+          tierName: booking.ticketTierName,
+          quantity: booking.quantity,
+          totalAmount: booking.totalPrice,
+        };
       })
       .addCase(purchaseTicket.rejected, (state, action) => {
         state.purchaseStatus = 'failed';
@@ -108,5 +125,5 @@ const bookingsSlice = createSlice({
   },
 });
 
-export const { resetPurchaseStatus } = bookingsSlice.actions;
+export const { resetPurchaseStatus, clearBookingSuccess } = bookingsSlice.actions;
 export default bookingsSlice.reducer;
