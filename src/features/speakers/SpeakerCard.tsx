@@ -31,8 +31,9 @@ const SOCIAL_ICON_MAP: Record<string, LucideIcon> = {
 
 export default function SpeakerCard({ speaker }: ISpeakerCardProps) {
   return (
-    <article className="group border-outline-variant/20 bg-surface mx-auto flex flex-row overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
-      <div className="bg-surface-container-highest relative h-full w-96 overflow-hidden">
+    <article className="group border-outline-variant/20 bg-surface mx-auto flex flex-col overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-lg lg:flex-row">
+      {/* Image */}
+      <div className="bg-surface-container-highest relative h-200 w-full overflow-hidden lg:h-full lg:w-96 lg:shrink-0">
         {speaker.imageUrl ? (
           <img
             alt={speaker.name}
@@ -46,6 +47,7 @@ export default function SpeakerCard({ speaker }: ISpeakerCardProps) {
         )}
       </div>
 
+      {/* Content */}
       <div className="flex flex-1 flex-col gap-4 p-8">
         <div className="flex flex-wrap gap-2">
           {speaker.topics.map((topic, i) => (
@@ -62,12 +64,12 @@ export default function SpeakerCard({ speaker }: ISpeakerCardProps) {
           <h2 className="font-headline-lg text-headline-lg text-on-surface group-hover:text-primary transition-colors duration-300">
             {speaker.name}
           </h2>
-          <p className="text-on-surface-variant font-body-sm text-body-sm mt-0.5">
+          <p className="text-on-surface-variant font-body-md text-body-md mt-0.5">
             {speaker.title} at {speaker.company}
           </p>
         </div>
 
-        <p className="text-on-surface-variant font-body-sm text-body-sm leading-relaxed">
+        <p className="text-on-surface-variant font-body-lg text-body-lg leading-relaxed">
           {speaker.bio}
         </p>
 
@@ -75,7 +77,7 @@ export default function SpeakerCard({ speaker }: ISpeakerCardProps) {
           <div className="gap-stack-gap flex flex-col">
             <div className="text-primary flex items-center gap-1.5">
               <Mic size={16} />
-              <span className="font-label-sm text-label-sm tracking-widest uppercase">
+              <span className="font-body-md text-body-md tracking-widest uppercase">
                 Featured Talks
               </span>
             </div>

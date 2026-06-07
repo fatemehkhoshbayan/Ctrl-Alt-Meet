@@ -2,7 +2,7 @@ import { Sparkles } from 'lucide-react';
 
 export default function HeroSection() {
   return (
-    <section className="relative flex w-full flex-col overflow-hidden px-80 py-36">
+    <section className="relative flex w-full flex-col overflow-hidden p-20 lg:px-80 lg:py-36">
       <div aria-hidden className="hero-glow" />
       <div className="bg-primary/10 border-primary/20 text-primary font-label-sm text-label-sm mb-6 inline-flex w-fit animate-pulse items-center gap-2 rounded-full border px-4 py-1.5">
         <Sparkles size={14} />
