@@ -29,7 +29,7 @@ const buttonVariants = cva(
       },
       color: {
         primary: '',
-        secondary: 'bg-secondary text-gray-950 hover:bg-secondary/90',
+        secondary: 'bg-secondary text-on-secondary hover:bg-secondary/90',
         tertiary: 'bg-tertiary text-gray-500 hover:bg-tertiary/90',
         quaternary: 'bg-quaternary hover:bg-quaternary/90',
       },

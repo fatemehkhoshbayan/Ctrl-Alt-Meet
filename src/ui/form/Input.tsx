@@ -21,7 +21,7 @@ export default function Input<T extends FieldValues>({
 }: IInputProps<T>) {
   return (
     <div>
-      <label className="text-label-md mb-1 block font-medium text-white" htmlFor={id}>
+      <label className="text-on-surface-variant text-label-md mb-1 block font-medium" htmlFor={id}>
         {label}
       </label>
       <input
