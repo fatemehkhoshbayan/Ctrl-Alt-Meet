@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { BookingCards, HeroSection, InspirationSection } from '@/features';
+import { MyBookingCards, HeroSection, InspirationSection } from '@/features';
 import { LoadingState, ErrorState } from '@/shared';
 import { fetchBookings } from '@/store/bookings';
 import { fetchEvents } from '@/store/events';
@@ -15,6 +15,7 @@ export default function MyBooking() {
     status: bookingStatus,
     error: bookingError,
   } = useAppSelector(state => state.bookings);
+
   const {
     allItems: events,
     status: eventStatus,
@@ -47,13 +48,13 @@ export default function MyBooking() {
               id: 'upcoming',
               label: 'Upcoming',
               content: (
-                <BookingCards bookings={upcomingBookings} events={events} status="upcoming" />
+                <MyBookingCards bookings={upcomingBookings} events={events} status="upcoming" />
               ),
             },
             {
               id: 'past',
               label: 'Past Events',
-              content: <BookingCards bookings={pastBookings} events={events} status="past" />,
+              content: <MyBookingCards bookings={pastBookings} events={events} status="past" />,
             },
           ]}
         />
