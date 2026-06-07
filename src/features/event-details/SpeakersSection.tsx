@@ -14,7 +14,7 @@ export default function SpeakersSection({ speakers }: ISpeakersSectionProps) {
           Meet the Speakers
         </h3>
       </div>
-      <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
+      <div className="gap-gutter grid grid-cols-1 lg:grid-cols-3 lg:gap-8">
         {speakers.map(speaker => (
           <div key={speaker.id} className="group cursor-pointer">
             <div className="group-hover:border-secondary relative mb-4 aspect-square overflow-hidden rounded-xl border-2 border-transparent transition-all">

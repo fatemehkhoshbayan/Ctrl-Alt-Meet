@@ -1,6 +1,6 @@
 import { CalendarDays, MapPinned, UsersRound, Sparkles } from 'lucide-react';
 import { formatDate } from '@/utils';
-import type { IEventProps } from './types';
+import type { IEventProps } from '../types';
 
 export default function HeroSection({ event }: IEventProps) {
   return (

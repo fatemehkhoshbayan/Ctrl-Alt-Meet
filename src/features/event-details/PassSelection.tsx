@@ -1,32 +1,20 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { IdCardLanyard, Ticket } from 'lucide-react';
-import type { IEventProps } from './types';
 import type { TTicketTier } from '@/services';
 import { Button } from '@/ui';
 import { useAppDispatch } from '@/store/hooks';
 import { resetPurchaseStatus } from '@/store/bookings';
-import PassCard from './PassCard';
+import { PassCard } from '@/shared';
 import VenueCard from './VenueCard';
-import RegistrationForm from './RegistrationForm';
-import { useNavigate } from 'react-router-dom';
+import type { IEventProps } from '../types';
 
-export default function BookingCard({ event }: IEventProps) {
+export default function PassSelection({ event }: IEventProps) {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [selectedTier, setSelectedTier] = useState<TTicketTier | null>(null);
-  const [showForm, setShowForm] = useState(false);
 
   const tiers = event.ticketTiers ?? [];
-
-  const handleSuccess = () => {
-    setShowForm(false);
-    setSelectedTier(null);
-    navigate('/my-booking');
-  };
-
-  const handleCloseForm = () => {
-    setShowForm(false);
-  };
 
   return (
     <section className="lg:col-span-4">
@@ -55,7 +43,7 @@ export default function BookingCard({ event }: IEventProps) {
             size="lg"
             onClick={() => {
               dispatch(resetPurchaseStatus());
-              setShowForm(true);
+              navigate('/registration', { state: { event, selectedTier } });
             }}
             className="bg-primary text-on-primary gap-stack-gap mb-4 flex w-full font-bold transition-all active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:brightness-100 disabled:active:scale-100"
           />
@@ -67,15 +55,6 @@ export default function BookingCard({ event }: IEventProps) {
 
         <VenueCard event={event} />
       </div>
-
-      {showForm && (
-        <RegistrationForm
-          event={event}
-          initialTier={selectedTier}
-          onClose={handleCloseForm}
-          onSuccess={handleSuccess}
-        />
-      )}
     </section>
   );
 }

@@ -1,6 +1,6 @@
 import { Star, icons, type LucideIcon } from 'lucide-react';
 import type { TEventHighlight } from '@/services';
-import type { IEventProps } from './types';
+import type { IEventProps } from '../types';
 import { toPascalCase } from '@/utils';
 
 function HighlightIcon({
@@ -22,7 +22,7 @@ function renderHighlight(highlight: TEventHighlight) {
     return (
       <div
         key={highlight.id}
-        className="group relative col-span-4 row-span-2 overflow-hidden rounded-lg"
+        className="group relative h-96 overflow-hidden rounded-lg lg:col-span-4 lg:row-span-2 lg:h-auto"
       >
         <img
           alt={highlight.title}
@@ -43,7 +43,7 @@ function renderHighlight(highlight: TEventHighlight) {
     return (
       <div
         key={highlight.id}
-        className="bg-primary text-on-primary accent-glow col-span-2 row-span-1 flex flex-col justify-center rounded-lg p-6"
+        className="bg-primary text-on-primary accent-glow flex flex-col justify-center rounded-lg p-6 lg:col-span-2 lg:row-span-1"
       >
         <HighlightIcon name={highlight.icon} className="text-on-primary mb-2" />
         <h6 className="text-headline-sm font-headline-sm">{highlight.title}</h6>
@@ -55,7 +55,7 @@ function renderHighlight(highlight: TEventHighlight) {
   return (
     <div
       key={highlight.id}
-      className="glass-card col-span-2 row-span-1 flex flex-col justify-center rounded-lg p-6"
+      className="glass-card flex flex-col justify-center rounded-lg p-6 lg:col-span-2 lg:row-span-1"
     >
       <HighlightIcon name={highlight.icon} className="text-secondary mb-2" />
       <h6 className="text-headline-sm font-headline-sm text-white">{highlight.title}</h6>
@@ -71,7 +71,7 @@ export default function HighlightsSection({ event }: IEventProps) {
         <Star size={25} className="text-till" />
         Event Highlights
       </h3>
-      <div className="grid h-[500px] grid-cols-6 grid-rows-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 lg:h-[500px] lg:grid-cols-6 lg:grid-rows-2">
         {(event.highlights ?? []).map(renderHighlight)}
       </div>
     </div>

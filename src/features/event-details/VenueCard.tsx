@@ -1,5 +1,5 @@
 import { MapPin } from 'lucide-react';
-import type { IEventProps } from './types';
+import type { IEventProps } from '../types';
 
 export default function VenueCard({ event }: IEventProps) {
   return (

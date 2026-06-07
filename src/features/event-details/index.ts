@@ -1,7 +1,5 @@
 export { default as EventDetailsHeroSection } from './HeroSection';
-export { default as BookingCard } from './BookingCard';
-export { default as PassCard } from './PassCard';
-export { default as RegistrationForm } from './RegistrationForm';
+export { default as PassSelection } from './PassSelection';
 export { default as VenueCard } from './VenueCard';
 export { default as AboutSection } from './AboutSection';
 export { default as SpeakersSection } from './SpeakersSection';
