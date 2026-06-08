@@ -3,4 +3,5 @@ export { default as getCategoryTheme } from './getCategoryTheme';
 export { default as buildDateBounds } from './buildDateBounds';
 export { default as getAvailabilityBadge } from './getAvailabilityBadge';
 export { generateBookingReference } from './generateBookingReference';
+export { getInitials } from './getInitials';
 export * from './helper';
