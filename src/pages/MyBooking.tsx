@@ -32,7 +32,9 @@ function MyBookingContent() {
   }, [dispatch, user]);
 
   const today = new Date();
-  const upcomingBookings = bookings.filter(booking => new Date(booking.eventDate) >= today);
+  const upcomingBookings = bookings.filter(
+    booking => booking.status !== 'cancelled' && new Date(booking.eventDate) >= today,
+  );
   const pastBookings = bookings.filter(booking => new Date(booking.eventDate) < today);
 
   const isLoading = bookingStatus === 'loading' || eventStatus === 'loading';
