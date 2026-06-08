@@ -433,7 +433,7 @@
             "Research roundtables",
             "Speaker dinner"
           ],
-          "available": 7,
+          "available": 6,
           "total": 100
         }
       ],
@@ -2235,6 +2235,29 @@
         }
       ],
       "id": "XAoaYtcmcAE"
+    },
+    {
+      "userId": "BWCeeER-W1g",
+      "eventId": "evt-004",
+      "eventTitle": "AI/ML Summit: The Alignment Edition",
+      "eventDate": "2026-08-22",
+      "eventLocation": "The Crystal, London, UK, United Kingdom",
+      "ticketTierId": "tier-004-vip",
+      "ticketTierName": "VIP Research Pass",
+      "quantity": 1,
+      "unitPrice": 699,
+      "totalPrice": 699,
+      "status": "cancelled",
+      "bookingReference": "CAM-3JS2-2026",
+      "bookedAt": "2026-06-08T16:19:30.195Z",
+      "attendees": [
+        {
+          "name": "reza takhshid",
+          "email": "test@test.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "wybSSUIbrHM"
     }
   ],
   "categories": [
@@ -2325,6 +2348,11 @@
       "id": "fav-003",
       "userId": "user-002",
       "eventId": "evt-012"
+    },
+    {
+      "userId": "BWCeeER-W1g",
+      "eventId": "evt-003",
+      "id": "kSo1GgA4r9c"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
