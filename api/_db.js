@@ -12,8 +12,13 @@ const COLLECTIONS = ['events', 'bookings', 'favorites', 'users', 'speakers', 'ca
 
 let redis;
 let seedDb;
+let memoryDb;
 
 function getRedis() {
+  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+    return null;
+  }
+
   if (!redis) {
     redis = Redis.fromEnv();
   }
@@ -27,6 +32,13 @@ function getSeedDb() {
   return seedDb;
 }
 
+function getMemoryDb() {
+  if (!memoryDb) {
+    memoryDb = structuredClone(getSeedDb());
+  }
+  return memoryDb;
+}
+
 function collectionKey(name) {
   return `${KEY_PREFIX}:${name}`;
 }
@@ -38,28 +50,51 @@ function normalizeCollection(value) {
 }
 
 async function getCollection(name) {
-  const cached = await getRedis().get(collectionKey(name));
-  if (cached !== null && cached !== undefined) {
-    return normalizeCollection(cached);
+  const client = getRedis();
+
+  if (client) {
+    try {
+      const cached = await client.get(collectionKey(name));
+      if (cached !== null && cached !== undefined) {
+        return normalizeCollection(cached);
+      }
+
+      const seed = getSeedDb()[name] ?? [];
+      await client.set(collectionKey(name), seed);
+      return seed;
+    } catch {
+      // Keep the mock API usable if Redis is missing or temporarily unavailable.
+    }
   }
 
-  const seed = getSeedDb()[name] ?? [];
-  await getRedis().set(collectionKey(name), seed);
-  return seed;
+  return getMemoryDb()[name] ?? [];
 }
 
 async function setCollection(name, items) {
-  await getRedis().set(collectionKey(name), items);
+  const client = getRedis();
+
+  if (client) {
+    try {
+      await client.set(collectionKey(name), items);
+    } catch {
+      // Fall back to per-instance memory so writes still return the expected shape.
+    }
+  }
+
+  getMemoryDb()[name] = items;
   return items;
 }
 
 export async function seedDatabase() {
+  const client = getRedis();
+  if (!client) return;
+
   const db = getSeedDb();
   await Promise.all(
     COLLECTIONS.map(async collection => {
-      const existing = await getRedis().get(collectionKey(collection));
+      const existing = await client.get(collectionKey(collection));
       if (existing === null || existing === undefined) {
-        await getRedis().set(collectionKey(collection), db[collection] ?? []);
+        await client.set(collectionKey(collection), db[collection] ?? []);
       }
     }),
   );

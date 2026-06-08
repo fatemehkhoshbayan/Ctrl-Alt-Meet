@@ -1,7 +1,9 @@
 import { Inbox } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 import { EmptyState } from '@/shared';
 import type { IBooking, IEvent } from '@/services';
+import { Button } from '@/ui';
 import MyBookingCard, { type TBookingCardStatus } from './MyBookingCard';
 
 export default function BookingCards({
@@ -14,6 +16,7 @@ export default function BookingCards({
   status?: TBookingCardStatus;
 }) {
   const eventsById = new Map(events.map(event => [event.id, event]));
+  const navigate = useNavigate();
 
   const bookingsWithEvents = bookings.flatMap(booking => {
     const event = eventsById.get(booking.eventId);
@@ -26,7 +29,9 @@ export default function BookingCards({
         title="No bookings found"
         message="You haven't booked any events yet."
         icon={<Inbox size={48} className="text-primary" />}
-      />
+      >
+        <Button BtnText="Browse Events" onClick={() => navigate('/')} />
+      </EmptyState>
     );
   }
 
