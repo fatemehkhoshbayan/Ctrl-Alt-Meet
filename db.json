@@ -16,7 +16,12 @@
       "city": "San Francisco, CA",
       "country": "United States",
       "category": "Frontend",
-      "tags": ["React", "JavaScript", "Frontend", "Web"],
+      "tags": [
+        "React",
+        "JavaScript",
+        "Frontend",
+        "Web"
+      ],
       "imageUrl": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
       "venueImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
       "organizer": {
@@ -25,7 +30,11 @@
         "email": "events@openjsf.org",
         "website": "https://openjsf.org"
       },
-      "speakers": ["spk-001", "spk-002", "spk-005"],
+      "speakers": [
+        "spk-001",
+        "spk-002",
+        "spk-005"
+      ],
       "isFeatured": true,
       "isFavorite": false,
       "attendeeCount": 2847,
@@ -36,7 +45,12 @@
           "name": "General Admission",
           "price": 399,
           "description": "Full 2-day conference access, lunch included, swag bag",
-          "perks": ["All keynotes", "Workshop access", "Lunch both days", "Swag bag"],
+          "perks": [
+            "All keynotes",
+            "Workshop access",
+            "Lunch both days",
+            "Swag bag"
+          ],
           "available": 153,
           "total": 2500
         },
@@ -60,7 +74,11 @@
           "name": "Virtual Pass",
           "price": 99,
           "description": "Live-stream all tracks, recordings for 6 months",
-          "perks": ["Live stream", "6-month recordings", "Slack community"],
+          "perks": [
+            "Live stream",
+            "6-month recordings",
+            "Slack community"
+          ],
           "available": 890,
           "total": 1000
         }
@@ -144,7 +162,12 @@
       "city": "Chicago, IL",
       "category": "Languages",
       "country": "United States",
-      "tags": ["TypeScript", "JavaScript", "DX", "Type Safety"],
+      "tags": [
+        "TypeScript",
+        "JavaScript",
+        "DX",
+        "Type Safety"
+      ],
       "imageUrl": "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&q=80",
       "venueImage": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
       "organizer": {
@@ -153,7 +176,10 @@
         "email": "hello@tsconf.io",
         "website": "https://tsconf.io"
       },
-      "speakers": ["spk-003", "spk-004"],
+      "speakers": [
+        "spk-003",
+        "spk-004"
+      ],
       "isFeatured": false,
       "isFavorite": true,
       "attendeeCount": 890,
@@ -164,7 +190,12 @@
           "name": "General Admission",
           "price": 249,
           "description": "Full day conference, lunch, and after-event mixer",
-          "perks": ["All talks", "Lunch", "After-event mixer", "Swag"],
+          "perks": [
+            "All talks",
+            "Lunch",
+            "After-event mixer",
+            "Swag"
+          ],
           "available": 110,
           "total": 800
         },
@@ -173,7 +204,12 @@
           "name": "VIP Access",
           "price": 499,
           "description": "GA + TypeScript team Q&A, early access, workshop",
-          "perks": ["Everything in GA", "TS team Q&A", "Early entry", "Workshop"],
+          "perks": [
+            "Everything in GA",
+            "TS team Q&A",
+            "Early entry",
+            "Workshop"
+          ],
           "available": 5,
           "total": 50
         }
@@ -246,7 +282,12 @@
       "city": "New York, NY",
       "country": "United States",
       "category": "Cloud & DevOps",
-      "tags": ["Kubernetes", "Cloud Native", "DevOps", "CNCF"],
+      "tags": [
+        "Kubernetes",
+        "Cloud Native",
+        "DevOps",
+        "CNCF"
+      ],
       "imageUrl": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80",
       "venueImage": "https://images.unsplash.com/photo-1610465299996-30f240ac2b1c?w=800&q=80",
       "organizer": {
@@ -255,7 +296,10 @@
         "email": "events@cncf.io",
         "website": "https://cncf.io"
       },
-      "speakers": ["spk-005", "spk-006"],
+      "speakers": [
+        "spk-005",
+        "spk-006"
+      ],
       "isFeatured": true,
       "isFavorite": false,
       "attendeeCount": 11200,
@@ -266,7 +310,12 @@
           "name": "Attendee",
           "price": 1099,
           "description": "5-day full access pass",
-          "perks": ["All sessions", "Expo hall", "Meals", "Social events"],
+          "perks": [
+            "All sessions",
+            "Expo hall",
+            "Meals",
+            "Social events"
+          ],
           "available": 794,
           "total": 10000
         },
@@ -275,7 +324,10 @@
           "name": "Co-located Events",
           "price": 499,
           "description": "Monday co-located event access only",
-          "perks": ["Day 1 events", "Networking lunch"],
+          "perks": [
+            "Day 1 events",
+            "Networking lunch"
+          ],
           "available": 198,
           "total": 500
         },
@@ -284,7 +336,10 @@
           "name": "Virtual",
           "price": 75,
           "description": "Live stream and on-demand for 1 year",
-          "perks": ["Live stream", "1-year recordings"],
+          "perks": [
+            "Live stream",
+            "1-year recordings"
+          ],
           "available": 4991,
           "total": 10000
         }
@@ -330,7 +385,12 @@
       "city": "London, UK",
       "country": "United Kingdom",
       "category": "AI & ML",
-      "tags": ["AI", "Machine Learning", "LLMs", "Alignment"],
+      "tags": [
+        "AI",
+        "Machine Learning",
+        "LLMs",
+        "Alignment"
+      ],
       "imageUrl": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&q=80",
       "venueImage": "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80",
       "organizer": {
@@ -339,7 +399,11 @@
         "email": "summit@mlcollective.uk",
         "website": "https://mlcollective.uk"
       },
-      "speakers": ["spk-001", "spk-003", "spk-007"],
+      "speakers": [
+        "spk-001",
+        "spk-003",
+        "spk-007"
+      ],
       "isFeatured": true,
       "isFavorite": false,
       "attendeeCount": 1540,
@@ -350,7 +414,12 @@
           "name": "General Admission",
           "price": 349,
           "description": "2-day full access, lunch, and workshop",
-          "perks": ["All talks", "Workshops", "Lunch", "Networking"],
+          "perks": [
+            "All talks",
+            "Workshops",
+            "Lunch",
+            "Networking"
+          ],
           "available": 259,
           "total": 1500
         },
@@ -359,7 +428,11 @@
           "name": "VIP Research Pass",
           "price": 699,
           "description": "GA + roundtable discussions, speaker dinner",
-          "perks": ["Everything in GA", "Research roundtables", "Speaker dinner"],
+          "perks": [
+            "Everything in GA",
+            "Research roundtables",
+            "Speaker dinner"
+          ],
           "available": 7,
           "total": 100
         }
@@ -405,7 +478,12 @@
       "city": "San Francisco, CA",
       "country": "United States",
       "category": "Open Source",
-      "tags": ["Open Source", "Community", "Hackathon", "GitHub"],
+      "tags": [
+        "Open Source",
+        "Community",
+        "Hackathon",
+        "GitHub"
+      ],
       "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
       "venueImage": "https://images.unsplash.com/photo-1497366412874-3415097a27e7?w=800&q=80",
       "organizer": {
@@ -414,7 +492,10 @@
         "email": "community@github.com",
         "website": "https://github.com"
       },
-      "speakers": ["spk-004", "spk-006"],
+      "speakers": [
+        "spk-004",
+        "spk-006"
+      ],
       "isFeatured": false,
       "isFavorite": false,
       "attendeeCount": 420,
@@ -425,7 +506,11 @@
           "name": "Free",
           "price": 0,
           "description": "Open to all. Just show up and hack.",
-          "perks": ["All sessions", "Pizza & drinks", "Stickers"],
+          "perks": [
+            "All sessions",
+            "Pizza & drinks",
+            "Stickers"
+          ],
           "available": 80,
           "total": 500
         }
@@ -471,7 +556,13 @@
       "city": "San Francisco, CA",
       "country": "United States",
       "category": "Backend",
-      "tags": ["GraphQL", "API", "REST", "gRPC", "Backend"],
+      "tags": [
+        "GraphQL",
+        "API",
+        "REST",
+        "gRPC",
+        "Backend"
+      ],
       "imageUrl": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80",
       "venueImage": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80",
       "organizer": {
@@ -480,7 +571,10 @@
         "email": "events@the-guild.dev",
         "website": "https://the-guild.dev"
       },
-      "speakers": ["spk-002", "spk-007"],
+      "speakers": [
+        "spk-002",
+        "spk-007"
+      ],
       "isFeatured": false,
       "isFavorite": true,
       "attendeeCount": 650,
@@ -491,7 +585,11 @@
           "name": "General Admission",
           "price": 199,
           "description": "Full day access and lunch",
-          "perks": ["All talks", "Lunch", "Swag"],
+          "perks": [
+            "All talks",
+            "Lunch",
+            "Swag"
+          ],
           "available": 46,
           "total": 600
         },
@@ -500,7 +598,11 @@
           "name": "Workshop Bundle",
           "price": 349,
           "description": "GA + hands-on morning workshop",
-          "perks": ["Everything in GA", "Morning workshop", "Workshop materials"],
+          "perks": [
+            "Everything in GA",
+            "Morning workshop",
+            "Workshop materials"
+          ],
           "available": 14,
           "total": 60
         }
@@ -546,7 +648,12 @@
       "city": "Washington D.C.",
       "country": "United States",
       "category": "Security",
-      "tags": ["Security", "DevSecOps", "AppSec", "Compliance"],
+      "tags": [
+        "Security",
+        "DevSecOps",
+        "AppSec",
+        "Compliance"
+      ],
       "imageUrl": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
       "venueImage": "https://images.unsplash.com/photo-1551882547-ff40c4a49f45?w=800&q=80",
       "organizer": {
@@ -555,7 +662,10 @@
         "email": "info@devsecops.world",
         "website": "https://devsecops.world"
       },
-      "speakers": ["spk-006", "spk-007"],
+      "speakers": [
+        "spk-006",
+        "spk-007"
+      ],
       "isFeatured": false,
       "isFavorite": false,
       "attendeeCount": 1100,
@@ -566,8 +676,12 @@
           "name": "General Admission",
           "price": 299,
           "description": "2-day access, meals, and workshops",
-          "perks": ["All sessions", "Meals", "Workshops"],
-          "available": 396,
+          "perks": [
+            "All sessions",
+            "Meals",
+            "Workshops"
+          ],
+          "available": 395,
           "total": 1200
         },
         {
@@ -575,7 +689,12 @@
           "name": "VIP Security Pass",
           "price": 599,
           "description": "GA + red team lab access, exclusive briefings",
-          "perks": ["Everything in GA", "Red team lab", "Exclusive briefings", "Cert exam voucher"],
+          "perks": [
+            "Everything in GA",
+            "Red team lab",
+            "Exclusive briefings",
+            "Cert exam voucher"
+          ],
           "available": 38,
           "total": 100
         }
@@ -621,7 +740,12 @@
       "city": "London, UK",
       "country": "United Kingdom",
       "category": "Languages",
-      "tags": ["Rust", "Systems", "WebAssembly", "Performance"],
+      "tags": [
+        "Rust",
+        "Systems",
+        "WebAssembly",
+        "Performance"
+      ],
       "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
       "venueImage": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
       "organizer": {
@@ -630,7 +754,10 @@
         "email": "hello@rustnation.uk",
         "website": "https://rustnation.uk"
       },
-      "speakers": ["spk-003", "spk-005"],
+      "speakers": [
+        "spk-003",
+        "spk-005"
+      ],
       "isFeatured": false,
       "isFavorite": false,
       "attendeeCount": 780,
@@ -641,7 +768,11 @@
           "name": "General Admission",
           "price": 179,
           "description": "2-day full access and lunch",
-          "perks": ["All talks", "Lunch", "Ferris the crab sticker pack"],
+          "perks": [
+            "All talks",
+            "Lunch",
+            "Ferris the crab sticker pack"
+          ],
           "available": 120,
           "total": 800
         },
@@ -650,7 +781,10 @@
           "name": "Virtual",
           "price": 29,
           "description": "Live stream and recordings",
-          "perks": ["Live stream", "90-day recordings"],
+          "perks": [
+            "Live stream",
+            "90-day recordings"
+          ],
           "available": 2000,
           "total": 2000
         }
@@ -696,7 +830,13 @@
       "city": "San Jose, CA",
       "country": "United States",
       "category": "Women in Tech",
-      "tags": ["Women in Tech", "Diversity", "Inclusion", "Career", "Mentorship"],
+      "tags": [
+        "Women in Tech",
+        "Diversity",
+        "Inclusion",
+        "Career",
+        "Mentorship"
+      ],
       "imageUrl": "https://images.unsplash.com/photo-1573164574572-cb89e39749b4?w=800&q=80",
       "venueImage": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80",
       "organizer": {
@@ -705,7 +845,10 @@
         "email": "hello@shecodesalliance.org",
         "website": "https://shecodesalliance.org"
       },
-      "speakers": ["spk-001", "spk-007"],
+      "speakers": [
+        "spk-001",
+        "spk-007"
+      ],
       "isFeatured": true,
       "isFavorite": false,
       "attendeeCount": 1200,
@@ -716,7 +859,12 @@
           "name": "General Admission",
           "price": 149,
           "description": "2-day full access, lunch, and mentorship fair",
-          "perks": ["All sessions", "Mentorship fair", "Lunch both days", "Swag bag"],
+          "perks": [
+            "All sessions",
+            "Mentorship fair",
+            "Lunch both days",
+            "Swag bag"
+          ],
           "available": 300,
           "total": 1200
         },
@@ -725,7 +873,11 @@
           "name": "Ally Pass",
           "price": 199,
           "description": "For allies. 25% of proceeds donated to coding bootcamps for underrepresented groups.",
-          "perks": ["All sessions", "Ally badge", "Donation receipt"],
+          "perks": [
+            "All sessions",
+            "Ally badge",
+            "Donation receipt"
+          ],
           "available": 200,
           "total": 200
         },
@@ -734,7 +886,11 @@
           "name": "Virtual",
           "price": 49,
           "description": "Live stream all tracks with Q&A access",
-          "perks": ["Live stream", "Q&A access", "60-day recordings"],
+          "perks": [
+            "Live stream",
+            "Q&A access",
+            "60-day recordings"
+          ],
           "available": 1999,
           "total": 2000
         }
@@ -818,7 +974,13 @@
       "city": "Waterloo, ON",
       "country": "Canada",
       "category": "Hackathon",
-      "tags": ["Hackathon", "Students", "AI", "Hardware", "Community"],
+      "tags": [
+        "Hackathon",
+        "Students",
+        "AI",
+        "Hardware",
+        "Community"
+      ],
       "imageUrl": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80",
       "venueImage": "https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80",
       "organizer": {
@@ -827,7 +989,10 @@
         "email": "hello@hackthenorth.com",
         "website": "https://hackthenorth.com"
       },
-      "speakers": ["spk-004", "spk-006"],
+      "speakers": [
+        "spk-004",
+        "spk-006"
+      ],
       "isFeatured": true,
       "isFavorite": false,
       "attendeeCount": 1000,
@@ -838,7 +1003,13 @@
           "name": "Hacker (Free)",
           "price": 0,
           "description": "Full 36-hour hackathon access, meals, sleeping space, swag",
-          "perks": ["Meals & snacks", "Sleeping quarters", "API credits", "Swag", "Prizes"],
+          "perks": [
+            "Meals & snacks",
+            "Sleeping quarters",
+            "API credits",
+            "Swag",
+            "Prizes"
+          ],
           "available": 0,
           "total": 1000
         }
@@ -915,7 +1086,13 @@
       "city": "Toronto, ON",
       "country": "Canada",
       "category": "Founders",
-      "tags": ["Startups", "Founders", "VC", "Pre-seed", "Entrepreneurship"],
+      "tags": [
+        "Startups",
+        "Founders",
+        "VC",
+        "Pre-seed",
+        "Entrepreneurship"
+      ],
       "imageUrl": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80",
       "venueImage": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
       "organizer": {
@@ -924,7 +1101,10 @@
         "email": "team@founderzero.co",
         "website": "https://founderzero.co"
       },
-      "speakers": ["spk-003", "spk-004"],
+      "speakers": [
+        "spk-003",
+        "spk-004"
+      ],
       "isFeatured": false,
       "isFavorite": false,
       "attendeeCount": 480,
@@ -935,7 +1115,12 @@
           "name": "Founder Pass",
           "price": 299,
           "description": "2-day access for founders building companies. Verified at registration.",
-          "perks": ["All talks", "Investor office hours lottery", "Lunch", "Founder directory"],
+          "perks": [
+            "All talks",
+            "Investor office hours lottery",
+            "Lunch",
+            "Founder directory"
+          ],
           "available": 120,
           "total": 500
         },
@@ -944,7 +1129,12 @@
           "name": "Investor Pass",
           "price": 799,
           "description": "For angels, VCs, and scouts. Includes deal flow sessions.",
-          "perks": ["All talks", "Deal flow sessions", "Founder meeting scheduler", "Dinner"],
+          "perks": [
+            "All talks",
+            "Deal flow sessions",
+            "Founder meeting scheduler",
+            "Dinner"
+          ],
           "available": 20,
           "total": 60
         }
@@ -1021,7 +1211,13 @@
       "city": "Toronto, ON",
       "country": "Canada",
       "category": "Workshops",
-      "tags": ["Design Systems", "Frontend", "CSS", "Accessibility", "Tokens"],
+      "tags": [
+        "Design Systems",
+        "Frontend",
+        "CSS",
+        "Accessibility",
+        "Tokens"
+      ],
       "imageUrl": "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&q=80",
       "venueImage": "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=800&q=80",
       "organizer": {
@@ -1030,7 +1226,10 @@
         "email": "workshops@frontendcraft.dev",
         "website": "https://frontendcraft.dev"
       },
-      "speakers": ["spk-002", "spk-001"],
+      "speakers": [
+        "spk-002",
+        "spk-001"
+      ],
       "isFeatured": false,
       "isFavorite": true,
       "attendeeCount": 48,
@@ -1041,7 +1240,12 @@
           "name": "Workshop Seat",
           "price": 449,
           "description": "Full-day hands-on workshop, lunch, and all materials",
-          "perks": ["All sessions", "Lunch", "Workshop materials", "Private Slack channel access"],
+          "perks": [
+            "All sessions",
+            "Lunch",
+            "Workshop materials",
+            "Private Slack channel access"
+          ],
           "available": 12,
           "total": 60
         }
@@ -1120,7 +1324,13 @@
       "city": "Mountain View, CA",
       "country": "United States",
       "category": "Backend",
-      "tags": ["Distributed Systems", "Backend", "Database", "Consensus", "Reliability"],
+      "tags": [
+        "Distributed Systems",
+        "Backend",
+        "Database",
+        "Consensus",
+        "Reliability"
+      ],
       "imageUrl": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
       "venueImage": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80",
       "organizer": {
@@ -1129,7 +1339,10 @@
         "email": "organizers@distsysconf.io",
         "website": "https://distsysconf.io"
       },
-      "speakers": ["spk-005", "spk-007"],
+      "speakers": [
+        "spk-005",
+        "spk-007"
+      ],
       "isFeatured": false,
       "isFavorite": false,
       "attendeeCount": 620,
@@ -1140,7 +1353,12 @@
           "name": "General Admission",
           "price": 379,
           "description": "2-day full access, lunch, and workshop",
-          "perks": ["All talks", "Lunch", "Workshop access", "Proceedings PDF"],
+          "perks": [
+            "All talks",
+            "Lunch",
+            "Workshop access",
+            "Proceedings PDF"
+          ],
           "available": 180,
           "total": 700
         },
@@ -1149,7 +1367,11 @@
           "name": "Virtual",
           "price": 79,
           "description": "Live stream and 1-year access to recordings",
-          "perks": ["Live stream", "1-year recordings", "Slack community"],
+          "perks": [
+            "Live stream",
+            "1-year recordings",
+            "Slack community"
+          ],
           "available": 3000,
           "total": 3000
         }
@@ -1232,7 +1454,13 @@
       "city": "Toronto, ON",
       "country": "Canada",
       "category": "Frontend",
-      "tags": ["Vue", "Nuxt", "JavaScript", "Frontend", "Community"],
+      "tags": [
+        "Vue",
+        "Nuxt",
+        "JavaScript",
+        "Frontend",
+        "Community"
+      ],
       "imageUrl": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
       "venueImage": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80",
       "organizer": {
@@ -1241,7 +1469,10 @@
         "email": "hello@vueconf.ca",
         "website": "https://vueconf.ca"
       },
-      "speakers": ["spk-002", "spk-004"],
+      "speakers": [
+        "spk-002",
+        "spk-004"
+      ],
       "isFeatured": false,
       "isFavorite": false,
       "attendeeCount": 540,
@@ -1252,7 +1483,12 @@
           "name": "General Admission",
           "price": 219,
           "description": "Full day conference, lunch, and after-party",
-          "perks": ["All talks", "Lunch", "After-party", "Swag"],
+          "perks": [
+            "All talks",
+            "Lunch",
+            "After-party",
+            "Swag"
+          ],
           "available": 160,
           "total": 600
         },
@@ -1261,7 +1497,10 @@
           "name": "Virtual",
           "price": 39,
           "description": "Live stream and 90-day recordings",
-          "perks": ["Live stream", "90-day recordings"],
+          "perks": [
+            "Live stream",
+            "90-day recordings"
+          ],
           "available": 1500,
           "total": 1500
         }
@@ -1343,7 +1582,13 @@
       "venue": "BrainStation",
       "city": "Toronto, Canada",
       "category": "Workshops",
-      "tags": ["UI", "UX", "Design", "Research", "Prototyping"],
+      "tags": [
+        "UI",
+        "UX",
+        "Design",
+        "Research",
+        "Prototyping"
+      ],
       "imageUrl": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
       "organizer": {
         "name": "UI/UX Dreamers Collective",
@@ -1351,7 +1596,10 @@
         "email": "hello@uiuxdreamers.ca",
         "website": "https://uiuxdreamers.ca"
       },
-      "speakers": ["spk-005", "spk-002"],
+      "speakers": [
+        "spk-005",
+        "spk-002"
+      ],
       "isFeatured": false,
       "isFavorite": false,
       "attendeeCount": 186,
@@ -1362,7 +1610,12 @@
           "name": "General Admission",
           "price": 50,
           "description": "Full-day access, coffee, and community lunch",
-          "perks": ["All sessions", "Coffee & snacks", "Community lunch", "Sticker pack"],
+          "perks": [
+            "All sessions",
+            "Coffee & snacks",
+            "Community lunch",
+            "Sticker pack"
+          ],
           "available": 34,
           "total": 220
         }
@@ -1416,8 +1669,16 @@
       "title": "Principal Engineer",
       "company": "Meta",
       "bio": "Core contributor to the React Compiler and co-author of the Concurrent Mode RFC. Anika has spent the last 6 years working on React's internals and loves making complex concurrency concepts accessible to everyday developers.",
-      "talks": ["The React Compiler is Here", "Concurrent Mode in Production"],
-      "topics": ["React", "Compilers", "JavaScript", "Performance"],
+      "talks": [
+        "The React Compiler is Here",
+        "Concurrent Mode in Production"
+      ],
+      "topics": [
+        "React",
+        "Compilers",
+        "JavaScript",
+        "Performance"
+      ],
       "social": [
         {
           "name": "twitter",
@@ -1435,7 +1696,10 @@
           "url": "https://anikapatel.dev"
         }
       ],
-      "events": ["evt-001", "evt-004"],
+      "events": [
+        "evt-001",
+        "evt-004"
+      ],
       "avatarColor": "purple",
       "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80"
     },
@@ -1446,8 +1710,16 @@
       "title": "Staff Engineer",
       "company": "Vercel",
       "bio": "Marcus helped build Next.js's App Router and has authored dozens of proposals for improving the React Server Components model. He's on a mission to make web performance boring (in the best way).",
-      "talks": ["Server Components in Production", "The Next.js App Router: A Year In"],
-      "topics": ["Next.js", "React", "Kubernetes", "Performance"],
+      "talks": [
+        "Server Components in Production",
+        "The Next.js App Router: A Year In"
+      ],
+      "topics": [
+        "Next.js",
+        "React",
+        "Kubernetes",
+        "Performance"
+      ],
       "social": [
         {
           "name": "twitter",
@@ -1465,7 +1737,11 @@
           "url": "https://marcuschen.io"
         }
       ],
-      "events": ["evt-001", "evt-006", "evt-015"],
+      "events": [
+        "evt-001",
+        "evt-006",
+        "evt-015"
+      ],
       "avatarColor": "teal",
       "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
     },
@@ -1476,8 +1752,15 @@
       "title": "TypeScript Team Lead",
       "company": "Microsoft",
       "bio": "Zara leads a sub-team on the TypeScript compiler with a focus on error messages people can actually understand. She's passionate about language design, DX, and ensuring TypeScript works as well for a 50-person startup as for a Fortune 500.",
-      "talks": ["TypeScript 6.0: What's New", "Writing Error Messages Humans Can Read"],
-      "topics": ["TypeScript", "Python", "Developer Experience"],
+      "talks": [
+        "TypeScript 6.0: What's New",
+        "Writing Error Messages Humans Can Read"
+      ],
+      "topics": [
+        "TypeScript",
+        "Python",
+        "Developer Experience"
+      ],
       "social": [
         {
           "name": "twitter",
@@ -1495,7 +1778,11 @@
           "url": "https://zaratype.dev"
         }
       ],
-      "events": ["evt-002", "evt-004", "evt-008"],
+      "events": [
+        "evt-002",
+        "evt-004",
+        "evt-008"
+      ],
       "avatarColor": "blue",
       "imageUrl": "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=400&q=80"
     },
@@ -1506,8 +1793,16 @@
       "title": "Open Source Engineer",
       "company": "Red Hat",
       "bio": "Luca maintains three widely-used open-source CLI tools and has merged PRs from contributors in 47 countries. He's deeply passionate about first-contributor experiences and has spoken at 12 conferences about sustainable OSS maintenance.",
-      "talks": ["First PRs That Actually Stick", "Sustainable Open Source Maintenance"],
-      "topics": ["Open Source", "Web3", "Community", "Contribution"],
+      "talks": [
+        "First PRs That Actually Stick",
+        "Sustainable Open Source Maintenance"
+      ],
+      "topics": [
+        "Open Source",
+        "Web3",
+        "Community",
+        "Contribution"
+      ],
       "social": [
         {
           "name": "twitter",
@@ -1525,7 +1820,10 @@
           "url": "https://lucaferretti.io"
         }
       ],
-      "events": ["evt-002", "evt-005"],
+      "events": [
+        "evt-002",
+        "evt-005"
+      ],
       "avatarColor": "coral",
       "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80"
     },
@@ -1536,8 +1834,16 @@
       "title": "Distinguished Engineer",
       "company": "Google",
       "bio": "Priya has been running Kubernetes in production since version 1.2. She led Google's internal effort to move 10,000+ services to GKE and now helps the community understand what enterprise-scale Kubernetes operations actually looks like day-to-day.",
-      "talks": ["10,000 Services and One Cluster", "Kubernetes Observability That Doesn't Lie"],
-      "topics": ["Kubernetes", "Cloud Native", "SRE", "UX Design"],
+      "talks": [
+        "10,000 Services and One Cluster",
+        "Kubernetes Observability That Doesn't Lie"
+      ],
+      "topics": [
+        "Kubernetes",
+        "Cloud Native",
+        "SRE",
+        "UX Design"
+      ],
       "social": [
         {
           "name": "twitter",
@@ -1555,7 +1861,12 @@
           "url": "https://priyasubramaniam.com"
         }
       ],
-      "events": ["evt-001", "evt-003", "evt-008", "evt-015"],
+      "events": [
+        "evt-001",
+        "evt-003",
+        "evt-008",
+        "evt-015"
+      ],
       "avatarColor": "amber",
       "imageUrl": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80"
     },
@@ -1566,8 +1877,15 @@
       "title": "Security Research Lead",
       "company": "Trail of Bits",
       "bio": "Jordan is a security researcher who specializes in finding vulnerabilities in developer tooling — CI pipelines, supply chain attacks, and the scary stuff hiding in your node_modules. They've disclosed 30+ CVEs and love making security understandable for non-security engineers.",
-      "talks": ["Your CI Pipeline is a Target", "Supply Chain Security in 2026"],
-      "topics": ["Security", "Supply Chain", "DevSecOps"],
+      "talks": [
+        "Your CI Pipeline is a Target",
+        "Supply Chain Security in 2026"
+      ],
+      "topics": [
+        "Security",
+        "Supply Chain",
+        "DevSecOps"
+      ],
       "social": [
         {
           "name": "twitter",
@@ -1585,7 +1903,11 @@
           "url": "https://jordanrivers.io"
         }
       ],
-      "events": ["evt-003", "evt-005", "evt-007"],
+      "events": [
+        "evt-003",
+        "evt-005",
+        "evt-007"
+      ],
       "avatarColor": "pink",
       "imageUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80"
     },
@@ -1596,8 +1918,16 @@
       "title": "ML Platform Architect",
       "company": "Hugging Face",
       "bio": "Amara builds the systems that help ML researchers get models into production without losing their minds. She's co-authored three papers on model evaluation methodology and is one of the loudest voices arguing that benchmark leaderboards are actively harmful.",
-      "talks": ["Why Benchmarks Are Lying to You", "Evals That Actually Reflect Production"],
-      "topics": ["AI", "Evals", "Production ML", "LLMs"],
+      "talks": [
+        "Why Benchmarks Are Lying to You",
+        "Evals That Actually Reflect Production"
+      ],
+      "topics": [
+        "AI",
+        "Evals",
+        "Production ML",
+        "LLMs"
+      ],
       "social": [
         {
           "name": "twitter",
@@ -1615,7 +1945,11 @@
           "url": "https://amaradiallo.ai"
         }
       ],
-      "events": ["evt-004", "evt-006", "evt-007"],
+      "events": [
+        "evt-004",
+        "evt-006",
+        "evt-007"
+      ],
       "avatarColor": "teal",
       "imageUrl": "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&q=80"
     }
@@ -1867,7 +2201,7 @@
       "quantity": 1,
       "unitPrice": 1099,
       "totalPrice": 1099,
-      "status": "confirmed",
+      "status": "cancelled",
       "bookingReference": "CAM-X7V7-2026",
       "bookedAt": "2026-06-08T00:27:13.054Z",
       "attendees": [
@@ -1878,6 +2212,29 @@
         }
       ],
       "id": "sKkfdnqHG_k"
+    },
+    {
+      "userId": "BWCeeER-W1g",
+      "eventId": "evt-007",
+      "eventTitle": "DevSecOps World 2026",
+      "eventDate": "2026-11-05",
+      "eventLocation": "Marriott Marquis, Washington D.C., United States",
+      "ticketTierId": "tier-007-ga",
+      "ticketTierName": "General Admission",
+      "quantity": 1,
+      "unitPrice": 299,
+      "totalPrice": 299,
+      "status": "cancelled",
+      "bookingReference": "CAM-5BJQ-2026",
+      "bookedAt": "2026-06-08T02:21:01.802Z",
+      "attendees": [
+        {
+          "name": "reza takhshid",
+          "email": "test@test.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "XAoaYtcmcAE"
     }
   ],
   "categories": [

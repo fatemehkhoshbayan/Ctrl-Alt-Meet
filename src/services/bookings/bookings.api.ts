@@ -10,4 +10,9 @@ export const bookingsApi = {
       method: 'POST',
       body: JSON.stringify(payload),
     }),
+  cancel: (id: string) =>
+    clients<IBooking>(`/bookings/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ status: 'cancelled' }),
+    }),
 };
