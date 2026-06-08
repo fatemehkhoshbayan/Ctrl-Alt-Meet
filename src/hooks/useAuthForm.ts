@@ -6,7 +6,7 @@ import { toast } from 'sonner';
 
 import { useAuth } from '@/hooks';
 import { usersApi, type IEvent, type TTicketTier } from '@/services';
-import { authSchema, type TAuthFormValues } from '@/schemas/authSchema';
+import { authSchema, type TAuthFormValues } from '@/schemas';
 import { getInitials } from '@/utils';
 
 interface ILoginLocationState {

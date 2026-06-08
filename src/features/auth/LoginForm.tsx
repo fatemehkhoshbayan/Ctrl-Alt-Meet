@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useAuth, useAuthForm } from '@/hooks';
 import { Button, Input } from '@/ui';
-import type { TAuthFormValues } from '@/schemas/authSchema';
+import type { TAuthFormValues } from '@/schemas';
 
 function inputClass(hasError: boolean) {
   return [

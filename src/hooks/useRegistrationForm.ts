@@ -7,7 +7,7 @@ import { toast } from 'sonner';
 import { useAuth } from '@/hooks';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { purchaseTicket, resetPurchaseStatus } from '@/store/bookings';
-import { getPassSchema } from '@/schemas/getPassSchema';
+import { getPassSchema } from '@/schemas';
 import type { IEvent, TTicketTier } from '@/services';
 import type { TAttendeesFormValues, TBookingStep } from '@/features';
 
