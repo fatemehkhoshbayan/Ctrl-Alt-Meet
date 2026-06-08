@@ -2,7 +2,7 @@ import { Minus, Plus } from 'lucide-react';
 
 import { PassCard } from '@/shared';
 import { IconButton } from '@/ui';
-import type { ITicketSelectionStep } from '@/features/types';
+import type { ITicketSelectionStep } from '@/features';
 
 export default function TicketSelectionStep({
   tiers,
