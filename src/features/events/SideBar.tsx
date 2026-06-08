@@ -8,6 +8,66 @@ import { setFilters, resetFilters, DEFAULT_FILTERS } from '@/store/events';
 import { selectFilteredEvents } from '@/store/events';
 import { DATE_RANGE_OPTIONS } from './constant';
 
+const RANGE_THUMB_CLASS =
+  'accent-primary pointer-events-none absolute h-2 w-full appearance-none bg-transparent [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-primary [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary';
+
+function isPriceFilterActive(priceMin: number, priceMax: number) {
+  return priceMin > DEFAULT_FILTERS.priceMin || priceMax < DEFAULT_FILTERS.priceMax;
+}
+
+function formatPriceLabel(value: number) {
+  return value >= DEFAULT_FILTERS.priceMax ? `${DEFAULT_FILTERS.priceMax}+` : String(value);
+}
+
+interface IPriceRangeSliderProps {
+  priceMin: number;
+  priceMax: number;
+  onChange: (next: { priceMin?: number; priceMax?: number }) => void;
+}
+
+function PriceRangeSlider({ priceMin, priceMax, onChange }: IPriceRangeSliderProps) {
+  const ceiling = DEFAULT_FILTERS.priceMax;
+
+  return (
+    <div>
+      <div className="relative h-6">
+        <div className="bg-outline-variant absolute top-1/2 right-0 left-0 h-2 -translate-y-1/2 rounded-full" />
+        <input
+          aria-label="Minimum price"
+          className={RANGE_THUMB_CLASS}
+          type="range"
+          min={0}
+          max={ceiling}
+          value={priceMin}
+          onChange={e => {
+            const next = Math.min(Number(e.target.value), priceMax);
+            onChange({ priceMin: next });
+          }}
+        />
+        <input
+          aria-label="Maximum price"
+          className={RANGE_THUMB_CLASS}
+          type="range"
+          min={0}
+          max={ceiling}
+          value={priceMax}
+          onChange={e => {
+            const next = Math.max(Number(e.target.value), priceMin);
+            onChange({ priceMax: next });
+          }}
+        />
+      </div>
+      <div className="font-body-lg text-body-lg text-on-surface-variant mt-2 flex justify-between">
+        <span>${formatPriceLabel(priceMin)}</span>
+        <span>
+          ${priceMin} – ${formatPriceLabel(priceMax)}
+        </span>
+        <span>${formatPriceLabel(ceiling)}</span>
+      </div>
+    </div>
+  );
+}
+
 export default function SideBar({ className }: { className?: string }) {
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
@@ -19,7 +79,7 @@ export default function SideBar({ className }: { className?: string }) {
     (filters.searchQuery.trim() !== '' ? 1 : 0) +
     filters.categories.length +
     (filters.dateRange !== 'anytime' ? 1 : 0) +
-    (filters.priceMax !== DEFAULT_FILTERS.priceMax ? 1 : 0);
+    (isPriceFilterActive(filters.priceMin, filters.priceMax) ? 1 : 0);
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -86,23 +146,11 @@ export default function SideBar({ className }: { className?: string }) {
           <p className="font-label-lg text-label-lg text-secondary mb-4 tracking-widest uppercase">
             Price Range
           </p>
-          <input
-            className="accent-primary bg-outline-variant h-2 w-full appearance-none rounded-full"
-            type="range"
-            min={0}
-            max={DEFAULT_FILTERS.priceMax}
-            value={filters.priceMax}
-            onChange={e => dispatch(setFilters({ priceMax: Number(e.target.value) }))}
+          <PriceRangeSlider
+            priceMin={filters.priceMin}
+            priceMax={filters.priceMax}
+            onChange={next => dispatch(setFilters(next))}
           />
-          <div className="font-body-lg text-body-lg text-on-surface-variant mt-2 flex justify-between">
-            <span>$0</span>
-            <span>
-              $
-              {filters.priceMax >= DEFAULT_FILTERS.priceMax
-                ? `${DEFAULT_FILTERS.priceMax}+`
-                : filters.priceMax}
-            </span>
-          </div>
         </div>
 
         <Button size="sm" className="w-full" BtnText="Reset All" onClick={handleReset} />

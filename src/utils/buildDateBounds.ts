@@ -3,6 +3,9 @@ export default function buildDateBounds(dateRange: string): { start?: string; en
   const pad = (n: number) => String(n).padStart(2, '0');
   const toISO = (d: Date) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 
+  if (dateRange === 'upcoming') {
+    return { start: toISO(now) };
+  }
   if (dateRange === 'today') {
     const today = toISO(now);
     return { start: today, end: today };

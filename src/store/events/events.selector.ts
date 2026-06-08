@@ -33,10 +33,11 @@ export const selectFilteredEvents = createSelector(
       if (end) result = result.filter(event => event.date <= end);
     }
 
-    if (filters.priceMax < DEFAULT_FILTERS.priceMax) {
-      result = result.filter(event =>
-        event.ticketTiers.some(tier => tier.price <= filters.priceMax),
-      );
+    if (filters.priceMin > 0 || filters.priceMax < DEFAULT_FILTERS.priceMax) {
+      result = result.filter(event => {
+        const minPrice = Math.min(...event.ticketTiers.map(t => t.price));
+        return minPrice >= filters.priceMin && minPrice <= filters.priceMax;
+      });
     }
 
     result = [...result].sort((a, b) => {
