@@ -1,8 +1,11 @@
 import { CalendarDays, MapPinned, UsersRound, Sparkles } from 'lucide-react';
+import { FavoriteButton } from '@/features';
+import { useAuth } from '@/hooks';
 import { formatDate } from '@/utils';
 import type { IEventProps } from '../types';
 
 export default function HeroSection({ event }: IEventProps) {
+  const { user } = useAuth();
   return (
     <section className="relative h-[614px] w-full overflow-hidden">
       <img
@@ -13,7 +16,12 @@ export default function HeroSection({ event }: IEventProps) {
       />
       <div className="hero-gradient absolute inset-0"></div>
       <div className="absolute bottom-0 left-0 px-32 pb-12">
-        <div className="gap-stack-gap flex w-fit flex-col rounded-2xl bg-black/40 px-8 py-6 backdrop-blur-sm">
+        <div className="gap-stack-gap relative flex w-fit flex-col rounded-2xl bg-black/40 px-8 py-6 backdrop-blur-sm">
+          {user && (
+            <div className="absolute top-4 right-4">
+              <FavoriteButton eventId={event.id} size={24} className="text-white" />
+            </div>
+          )}
           <div className="gap-stack-gap bg-primary/50 border-primary-container/30 text-on-primary inline-flex w-fit items-center rounded-full border px-4 py-1">
             <Sparkles size={20} />
             <span className="font-label-sm text-label-sm tracking-wider uppercase">
