@@ -1,4 +1,4 @@
-import { CalendarDays, MapPinned, UsersRound, Sparkles } from 'lucide-react';
+import { Building2, CalendarDays, Clock, MapPinned, Sparkles, UsersRound } from 'lucide-react';
 import { FavoriteButton } from '@/features';
 import { useAuth } from '@/hooks';
 import { formatDate } from '@/utils';
@@ -36,6 +36,16 @@ export default function HeroSection({ event }: IEventProps) {
               <CalendarDays size={20} className="text-primary" />
               <span className="font-label-md text-label-md">{formatDate(event.date)}</span>
             </div>
+            {event.time && (
+              <div className="flex items-center gap-2">
+                <Clock size={20} className="text-secondary" />
+                <span className="font-label-md text-label-md">
+                  {event.time}
+                  {event.endTime ? ` – ${event.endTime}` : ''}
+                  {event.timezone ? ` ${event.timezone}` : ''}
+                </span>
+              </div>
+            )}
             <div className="flex items-center gap-2">
               <MapPinned size={20} className="text-till" />
               <span className="font-label-md text-label-md">
@@ -46,6 +56,12 @@ export default function HeroSection({ event }: IEventProps) {
               <UsersRound size={20} className="text-secondary" />
               <span className="font-label-md text-label-md">{event.attendeeCount}+ Attendees</span>
             </div>
+            {event.organizer?.name && (
+              <div className="flex items-center gap-2">
+                <Building2 size={20} className="text-primary" />
+                <span className="font-label-md text-label-md">{event.organizer.name}</span>
+              </div>
+            )}
           </div>
         </div>
       </div>

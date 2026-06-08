@@ -10,6 +10,7 @@ import {
   setPage,
   resetFilters,
   PER_PAGE,
+  DEFAULT_FILTERS,
 } from '@/store/events';
 import SideBar from './SideBar';
 import EventCard from './EventCard';
@@ -28,7 +29,8 @@ export default function EventsList() {
     filters.searchQuery.trim() !== '' ||
     filters.categories.length > 0 ||
     filters.dateRange !== 'anytime' ||
-    filters.priceMax !== 2000;
+    filters.priceMin > DEFAULT_FILTERS.priceMin ||
+    filters.priceMax < DEFAULT_FILTERS.priceMax;
 
   const rangeStart = totalItems === 0 ? 0 : (currentPage - 1) * PER_PAGE + 1;
   const rangeEnd = Math.min(currentPage * PER_PAGE, totalItems);
