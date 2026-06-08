@@ -8,6 +8,7 @@ export const PER_PAGE = 6;
 export interface EventFilters {
   categories: string[];
   dateRange: string;
+  priceMin: number;
   priceMax: number;
   sortBy: string;
   searchQuery: string;
@@ -16,6 +17,7 @@ export interface EventFilters {
 export const DEFAULT_FILTERS: EventFilters = {
   categories: [],
   dateRange: 'anytime',
+  priceMin: 0,
   priceMax: 2000,
   sortBy: 'most-popular',
   searchQuery: '',
