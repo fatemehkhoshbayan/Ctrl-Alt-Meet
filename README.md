@@ -15,6 +15,7 @@ Ctrl Alt Meet is a React event management platform for browsing conferences, fav
 - **Sonner** for toast notifications
 - **Lucide React** for icons
 - **json-server** for local mock API
+- **Upstash Redis** for persistent production data (via Vercel Marketplace)
 - **ESLint** and **Prettier** for code quality
 
 ## Getting started
@@ -35,8 +36,12 @@ VITE_API_BASE_URL=http://localhost:3001
 | Variable | Development | Production (Vercel) |
 | --- | --- | --- |
 | `VITE_API_BASE_URL` | `http://localhost:3001` | `/api` |
+| `UPSTASH_REDIS_REST_URL` | — | Auto-provisioned by Upstash integration |
+| `UPSTASH_REDIS_REST_TOKEN` | — | Auto-provisioned by Upstash integration |
 
 The app reads API requests from `VITE_API_BASE_URL`. In development, this points to json-server. In production, requests go through the `/api` serverless handlers defined in the `api/` folder.
+
+Production writes (favorites, bookings, ticket purchases) are stored in **Upstash Redis**. If Redis is not configured, the API falls back to in-memory data seeded from `db.json` — reads work, but writes may not persist across redeploys.
 
 ### Install and run locally
 
@@ -152,12 +157,21 @@ src/
 ├── ui/             # Button, Dialog, Input, Select, Tab, Pagination, SearchBar
 └── utils/          # formatDate, buildDateBounds, generateBookingReference, etc.
 
-api/                # Vercel serverless handlers (production mock API)
+api/                # Vercel serverless handlers (production API)
+├── _db.js          # Shared data layer (Upstash Redis + db.json fallback)
+├── events.js
+├── bookings.js
+├── favorites.js
+├── users.js
+├── speakers.js
+└── categories.js
 ```
 
 ## Data source
 
-Local development uses `json-server` with `db.json`. Production uses serverless handlers in `api/` (rewritten via `vercel.json`).
+Local development uses `json-server` with `db.json`. Production uses serverless handlers in `api/` (rewritten via `vercel.json`), backed by Upstash Redis via `api/_db.js`.
+
+On first request, each collection is seeded from `db.json` into Redis if the key does not exist yet. After that, Redis is the source of truth for writes.
 
 | Resource | Purpose | Methods |
 | --- | --- | --- |
@@ -231,8 +245,27 @@ The build script runs TypeScript first, then Vite:
 tsc -b && vite build
 ```
 
-Deploy to Vercel with `VITE_API_BASE_URL=/api`. The `vercel.json` rewrites route API calls to the serverless handlers in `api/`.
+### Deploy to Vercel
+
+1. Push the repo to GitHub and import the project in Vercel.
+2. Add **Upstash Redis** from Vercel **Storage** (Marketplace). Attach it to the project — this auto-injects `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN`.
+3. Set the frontend env var in **Project → Settings → Environment Variables**:
+
+   ```bash
+   VITE_API_BASE_URL=/api
+   ```
+
+   Apply it to **Production** (and Preview if you want preview deployments to work).
+
+4. Redeploy. The `vercel.json` rewrites route API calls to the serverless handlers in `api/`.
+
+### Verify after deploy
+
+- Events page loads (`GET /api/events`)
+- Star an event → star fills immediately (`POST /api/favorites`)
+- Purchase a ticket → no console errors, booking appears on My Bookings (`POST /api/bookings`, `PATCH /api/events/:id`)
+- Refresh the page → favorites and bookings still there (Redis persistence)
 
 ## Status
 
-Core platform features are implemented: events discovery, authentication, favorites, ticket booking, my bookings with cancellation, speakers, theming, and responsive layouts. The app uses json-server locally and Vercel serverless handlers in production.
+Core platform features are implemented: events discovery, authentication, favorites, ticket booking, my bookings with cancellation, speakers, theming, and responsive layouts. The app uses json-server locally and Vercel serverless handlers with Upstash Redis in production.
