@@ -1,26 +1,51 @@
-import { readFileSync } from 'fs';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import {
+  createFavorite,
+  deleteFavorite,
+  getFavoriteById,
+  getFavorites,
+  parseJsonBody,
+  setCorsHeaders,
+} from './_db.js';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const db = JSON.parse(readFileSync(join(__dirname, '../db.json'), 'utf8'));
+export default async function handler(req, res) {
+  setCorsHeaders(res, 'GET, POST, DELETE, OPTIONS');
 
-export default function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Content-Type', 'application/json');
-
-  const { id, userId } = req.query;
-
-  if (id) {
-    const favorite = db.favorites?.find(f => f.id === id);
-    if (!favorite) return res.status(404).json({ error: 'Favorite not found' });
-    return res.status(200).json(favorite);
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
   }
 
-  if (userId) {
-    const favorites = (db.favorites ?? []).filter(f => f.userId === userId);
-    return res.status(200).json(favorites);
-  }
+  try {
+    const { id, userId } = req.query;
 
-  res.status(200).json(db.favorites ?? []);
+    if (req.method === 'GET') {
+      if (id) {
+        const favorite = await getFavoriteById(id);
+        if (!favorite) return res.status(404).json({ error: 'Favorite not found' });
+        return res.status(200).json(favorite);
+      }
+
+      return res.status(200).json(await getFavorites(userId));
+    }
+
+    if (req.method === 'POST') {
+      const payload = parseJsonBody(req);
+      if (!payload.userId || !payload.eventId) {
+        return res.status(400).json({ error: 'userId and eventId are required' });
+      }
+
+      return res.status(201).json(await createFavorite(payload));
+    }
+
+    if (req.method === 'DELETE') {
+      if (!id) return res.status(400).json({ error: 'Favorite id is required' });
+
+      const favorite = await deleteFavorite(id);
+      if (!favorite) return res.status(404).json({ error: 'Favorite not found' });
+      return res.status(200).json(favorite);
+    }
+
+    return res.status(405).json({ error: 'Method not allowed' });
+  } catch (error) {
+    return res.status(500).json({ error: error.message ?? 'Internal server error' });
+  }
 }
