@@ -12,15 +12,15 @@ export default function handler(req, res) {
   const { id, userId } = req.query;
 
   if (id) {
-    const booking = db.bookings.find(b => b.id === id);
-    if (!booking) return res.status(404).json({ error: 'Booking not found' });
-    return res.status(200).json(booking);
+    const favorite = db.favorites?.find(f => f.id === id);
+    if (!favorite) return res.status(404).json({ error: 'Favorite not found' });
+    return res.status(200).json(favorite);
   }
 
   if (userId) {
-    const bookings = db.bookings.filter(b => b.userId === userId);
-    return res.status(200).json(bookings);
+    const favorites = (db.favorites ?? []).filter(f => f.userId === userId);
+    return res.status(200).json(favorites);
   }
 
-  res.status(200).json(db.bookings);
+  res.status(200).json(db.favorites ?? []);
 }
