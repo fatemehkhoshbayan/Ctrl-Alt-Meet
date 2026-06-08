@@ -1,15 +1,20 @@
 # Ctrl Alt Meet
 
-Ctrl Alt Meet is a React event discovery app for browsing conferences, exploring speakers, viewing event details, and managing booked tickets. It uses a local JSON API during development and is built with TypeScript, Vite, Redux Toolkit, and Tailwind CSS.
+Ctrl Alt Meet is a React event management platform for browsing conferences, favoriting events, booking tickets, and managing reservations. It uses a local JSON API during development (json-server) and Vercel serverless handlers in production. Built with TypeScript, Vite, Redux Toolkit, React Hook Form, and Tailwind CSS.
 
 ## Tech stack
 
 - **React 19** with TypeScript
 - **Vite** for dev server and builds
 - **React Router** for client-side routing
-- **Redux Toolkit** for global state management
+- **Redux Toolkit** for global state (events, bookings, favorites, speakers, categories)
+- **React Context** for theme and authentication
+- **React Hook Form** + **Zod** for form validation
 - **Tailwind CSS v4** for styling
+- **Radix UI** for accessible dialogs
+- **Sonner** for toast notifications
 - **Lucide React** for icons
+- **json-server** for local mock API
 - **ESLint** and **Prettier** for code quality
 
 ## Getting started
@@ -27,7 +32,11 @@ Create a local `.env` file:
 VITE_API_BASE_URL=http://localhost:3001
 ```
 
-The app reads API requests from `VITE_API_BASE_URL`. In development, this should point to the local JSON server. In production, set the same variable in your hosting provider.
+| Variable | Development | Production (Vercel) |
+| --- | --- | --- |
+| `VITE_API_BASE_URL` | `http://localhost:3001` | `/api` |
+
+The app reads API requests from `VITE_API_BASE_URL`. In development, this points to json-server. In production, requests go through the `/api` serverless handlers defined in the `api/` folder.
 
 ### Install and run locally
 
@@ -38,17 +47,19 @@ npm run dev:all
 
 The app starts at `http://localhost:5173` and the JSON API runs at `http://localhost:3001`.
 
-If you only need the frontend, run:
+If you only need the frontend:
 
 ```bash
 npm run dev
 ```
 
-If you only need the mock API, run:
+If you only need the mock API:
 
 ```bash
 npm run server
 ```
+
+> **Note:** If you add a new collection to `db.json` (e.g. `favorites`), restart json-server so it registers the new routes.
 
 ### Other scripts
 
@@ -65,59 +76,123 @@ npm run server
 
 ## Features
 
-- Browse events with filtering, sorting, pagination, and detail pages.
-- Explore speaker profiles with reusable speaker cards.
-- View bookings in Upcoming and Past Events tabs.
-- Open ticket detail dialogs for booking information.
-- Manage responsive layouts with desktop and mobile navigation.
-- Switch between light and dark themes with persisted theme preference.
+### Events
+
+- Card-based event listing with search, category filters, date range filters (Upcoming, This Week, This Month, etc.), dual-thumb price range slider, and sorting (date, price, popularity)
+- Pagination with empty, loading, and error states
+- Event detail pages with description, date, time, location, organizer, ticket tiers, venue info, speakers, and highlights
+- Favorite (star) button on event cards and event details hero (logged-in users)
+
+### Authentication
+
+- Unified login/register page at `/login` (email, password, name)
+- Existing users: password check; new users: auto-created via json-server
+- `AuthProvider` persists session in `localStorage`
+- Soft route guards: My Bookings, Registration, Favorites, and Book Tickets require login; guests are redirected to `/login` and returned after sign-in
+
+### Favorites
+
+- Per-user favorites stored in the `favorites` collection (not global `event.isFavorite` flags)
+- Toggle favorites from event cards and event details
+- Dedicated Favorites page with compact event grid and empty state
+
+### Ticket booking
+
+- 3-step registration flow: Select Tickets → Attendee Details → Confirmation
+- Real-time price calculation, Zod validation, progress indicator, back/next navigation
+- Booking reference generated on confirm; success toast with reference; redirects to My Bookings
+- Ticket availability updated on the event via PATCH
+
+### My Bookings
+
+- User-scoped bookings (`GET /bookings?userId=`)
+- Upcoming and Past Events tabs
+- Ticket details dialog (tier, quantity, total, schedule, attendees)
+- Cancel upcoming bookings via two-step confirmation dialog with success/error toasts
+
+### Speakers
+
+- Speaker listing page with profile cards
+- Speakers linked from event detail pages
+
+### UI and UX
+
+- Light and dark theme toggle with `localStorage` persistence
+- Responsive desktop header + mobile bottom navigation
+- Loading, error, and empty states across pages
+- Toast notifications for booking, cancellation, favorites, and auth actions
 
 ## Routes
 
-| Path | Page |
-| --- | --- |
-| `/` | Events |
-| `/events/:id` | Event details |
-| `/my-booking` | My booking |
-| `/speakers` | Speakers |
+| Path | Page | Auth |
+| --- | --- | --- |
+| `/` | Events | Open |
+| `/events/:id` | Event details | Open |
+| `/speakers` | Speakers | Open |
+| `/login` | Login / Register | Open |
+| `/favorites` | Favorites | Required |
+| `/my-booking` | My Bookings | Required |
+| `/registration` | Ticket booking | Required |
 
 ## Project structure
 
 ```
 src/
-├── appearance/     # Theme tokens, CSS variables, and light/dark themes
-├── context/        # React context providers (e.g. theme)
-├── features/       # Feature-specific modules (events, speakers, bookings)
-├── hooks/          # Shared custom hooks
-├── layouts/        # App shell and layout components
-├── lib/            # Third-party library configuration
+├── appearance/     # Theme tokens, CSS variables, light/dark themes
+├── context/        # ThemeProvider, AuthProvider
+├── features/       # Feature modules (auth, events, favorites, bookings, registration, speakers)
+├── hooks/          # useAuth, useAuthForm, useRegistrationForm, useTheme, useMediaQuery
+├── layouts/        # MainLayout, desktop/mobile headers, footers, nav
+├── lib/            # Utility helpers (e.g. cn)
 ├── pages/          # Route-level page components
-├── services/       # API fetch functions (events, speakers, categories, bookings)
-├── shared/         # Reusable state components (EmptyState, LoadingState, ErrorState)
-├── store/          # Redux store, slices, and selectors
-├── ui/             # Reusable UI components
-└── utils/          # Utility functions
+├── schemas/        # Zod schemas (auth, attendee details)
+├── services/       # API clients (events, speakers, categories, bookings, users, favorites)
+├── shared/         # EmptyState, LoadingState, ErrorState, PassCard
+├── store/          # Redux slices and selectors
+├── ui/             # Button, Dialog, Input, Select, Tab, Pagination, SearchBar
+└── utils/          # formatDate, buildDateBounds, generateBookingReference, etc.
+
+api/                # Vercel serverless handlers (production mock API)
 ```
 
 ## Data source
 
-Local development uses `json-server` with `db.json`. The main resources are:
+Local development uses `json-server` with `db.json`. Production uses serverless handlers in `api/` (rewritten via `vercel.json`).
 
-| Resource | Purpose |
-| --- | --- |
-| `/events` | Event listings, event details, ticket tiers, schedules |
-| `/speakers` | Speaker profiles used by the speakers page and event details |
-| `/categories` | Event category metadata and filtering |
-| `/bookings` | User booking data for the My Bookings page |
+| Resource | Purpose | Methods |
+| --- | --- | --- |
+| `/events` | Event listings, details, ticket tiers, schedules | GET, PATCH |
+| `/speakers` | Speaker profiles | GET |
+| `/categories` | Category metadata for filters | GET |
+| `/users` | User accounts for login/register | GET, POST |
+| `/bookings` | User bookings | GET, POST, PATCH |
+| `/favorites` | Per-user favorite events | GET, POST, DELETE |
+
+### Seed users (local demo)
+
+| Email | Password | Notes |
+| --- | --- | --- |
+| `alex@example.com` | (see db.json) | `user-001`, has bookings and favorites |
+| `john@example.com` | (see db.json) | `user-002` |
+
+## Authentication
+
+Auth state is provided by `AuthProvider` and accessed via `useAuth`:
+
+```tsx
+import { useAuth } from '@/hooks';
+
+const { user, login, logout } = useAuth();
+```
+
+Protected routes use the `RequireAuth` wrapper from `@/features`.
 
 ## Theming
 
-The app supports light and dark themes via a `ThemeProvider`. The active theme is persisted in `localStorage` and applied as a CSS class on the document root. Theme tokens live in `src/appearance/themes/` and are exposed as CSS custom properties for use with Tailwind utilities.
-
-Use the `useTheme` hook to read or toggle the current theme:
+The app supports light and dark themes via `ThemeProvider`. The active theme is persisted in `localStorage` and applied as a CSS class on the document root.
 
 ```tsx
-import { useTheme } from '@hooks/useTheme';
+import { useTheme } from '@/hooks';
 
 const { theme, setTheme, toggleTheme } = useTheme();
 ```
@@ -130,35 +205,34 @@ Imports use path aliases configured in `vite.config.ts` and `tsconfig.app.json`:
 | --- | --- |
 | `@/*` | `src/*` |
 | `@appearance/*` | `src/appearance/*` |
-| `@assets/*` | `src/assets/*` |
 | `@context/*` | `src/context/*` |
 | `@features/*` | `src/features/*` |
 | `@hooks/*` | `src/hooks/*` |
 | `@layouts/*` | `src/layouts/*` |
-| `@lib/*` | `src/lib/*` |
 | `@pages/*` | `src/pages/*` |
 | `@services/*` | `src/services/*` |
-| `@shared/*` | `src/shared/*` |
 | `@store/*` | `src/store/*` |
 | `@ui/*` | `src/ui/*` |
 | `@utils/*` | `src/utils/*` |
 
+Import from barrel paths where available (e.g. `@/features`, `@/hooks`, `@/context`) rather than deep subpaths.
+
 ## Build and deployment
 
-Run the production build locally before deploying:
+Run the production build locally:
 
 ```bash
 npm run build
 ```
 
-The build script runs TypeScript first and then Vite:
+The build script runs TypeScript first, then Vite:
 
 ```bash
 tsc -b && vite build
 ```
 
-This means deployment can fail before Vite starts if TypeScript finds missing imports, unused values, or invalid types. Make sure `VITE_API_BASE_URL` is configured in the deployment environment.
+Deploy to Vercel with `VITE_API_BASE_URL=/api`. The `vercel.json` rewrites route API calls to the serverless handlers in `api/`.
 
 ## Status
 
-The events, speakers, event details, and My Bookings pages are implemented. The app currently uses a JSON server API for data and can be deployed as a Vite static frontend when production API environment variables are configured.
+Core platform features are implemented: events discovery, authentication, favorites, ticket booking, my bookings with cancellation, speakers, theming, and responsive layouts. The app uses json-server locally and Vercel serverless handlers in production.
