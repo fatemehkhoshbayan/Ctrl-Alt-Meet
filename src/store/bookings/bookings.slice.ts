@@ -39,6 +39,10 @@ export const fetchBookings = createAsyncThunk('bookings/fetchAll', (userId: stri
   bookingsApi.getByUserId(userId),
 );
 
+export const cancelBooking = createAsyncThunk('bookings/cancel', (bookingId: string) =>
+  bookingsApi.cancel(bookingId),
+);
+
 export const purchaseTicket = createAsyncThunk(
   'bookings/purchaseTicket',
   async ({ event, tierId, quantity, attendees, userId }: PurchaseTicketPayload) => {
@@ -124,6 +128,15 @@ const bookingsSlice = createSlice({
       .addCase(purchaseTicket.rejected, (state, action) => {
         state.purchaseStatus = 'failed';
         state.error = action.error.message ?? 'Booking failed';
+      })
+      .addCase(cancelBooking.fulfilled, (state, action) => {
+        const index = state.items.findIndex(b => b.id === action.payload.id);
+        if (index !== -1) {
+          state.items[index] = action.payload;
+        }
+      })
+      .addCase(cancelBooking.rejected, (state, action) => {
+        state.error = action.error.message ?? 'Failed to cancel booking';
       });
   },
 });

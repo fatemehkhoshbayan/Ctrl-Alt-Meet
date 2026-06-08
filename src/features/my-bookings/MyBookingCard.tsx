@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { BadgeCheck, CalendarClock, MapPin } from 'lucide-react';
 
 import { cn } from '@/lib';
 import type { IBooking, IEvent } from '@/services';
 import { formatDate } from '@/utils';
-import { TicketDetailsDialog } from '.';
+import { Button } from '@/ui';
+import { CancelBookingDialog, TicketDetailsDialog } from '.';
 
 export type TBookingCardStatus = 'upcoming' | 'past';
 
@@ -17,6 +19,8 @@ export default function BookingCard({
   status?: TBookingCardStatus;
 }) {
   const isPast = status === 'past';
+  const [cancelOpen, setCancelOpen] = useState(false);
+  const canCancel = !isPast && booking.status === 'confirmed';
 
   return (
     <article
@@ -76,19 +80,25 @@ export default function BookingCard({
           </div>
         </div>
 
-        <div className="mt-auto gap-4">
+        <div className="mt-auto flex flex-col gap-3">
           <TicketDetailsDialog booking={booking} event={event} />
-          {/* <Button
-            className={cn(
-              'transition-all active:scale-95',
-              isPast
-                ? 'border-outline-variant text-on-surface-variant cursor-default'
-                : 'border-secondary text-secondary hover:bg-secondary/20',
-            )}
-            disabled={isPast}
-            BtnText={isPast ? 'Completed' : 'Manage'}
-            variant="outlined"
-          /> */}
+          {canCancel && (
+            <>
+              <Button
+                variant="outlined"
+                color="secondary"
+                className="w-full"
+                BtnText="Cancel Booking"
+                onClick={() => setCancelOpen(true)}
+              />
+              <CancelBookingDialog
+                booking={booking}
+                event={event}
+                open={cancelOpen}
+                onOpenChange={setCancelOpen}
+              />
+            </>
+          )}
         </div>
       </div>
     </article>
