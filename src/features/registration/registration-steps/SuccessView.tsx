@@ -1,6 +1,6 @@
 import { CheckCircle2 } from 'lucide-react';
 import { Button } from '@/ui';
-import type { ISuccessViewProps } from '@/features/types';
+import type { ISuccessViewProps } from '@/features';
 
 export default function SuccessView({
   bookingReference,

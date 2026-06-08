@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { MainLayout } from '@/layouts';
-import { Events, MyBooking, Speakers, EventDetails, Registration } from '@/pages';
+import { Events, MyBooking, Speakers, EventDetails, Registration, Login, Favorites } from '@/pages';
 import { ErrorState } from '@/shared';
 
 function App() {
@@ -12,6 +12,8 @@ function App() {
         <Route path="/my-booking" element={<MyBooking />} />
         <Route path="/speakers" element={<Speakers />} />
         <Route path="/registration" element={<Registration />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Route>
     </Routes>
   );

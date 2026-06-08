@@ -1,7 +1,8 @@
-import { CalendarDays, Ticket, UsersRound, type LucideIcon } from 'lucide-react';
+import { CalendarDays, Star, Ticket, UsersRound, type LucideIcon } from 'lucide-react';
 
 export const NAV_LINKS = [
   { label: 'Events', to: '/' },
+  { label: 'Favorites', to: '/favorites' },
   { label: 'Speakers', to: '/speakers' },
   { label: 'My Bookings', to: '/my-booking' },
 ];
@@ -15,6 +16,7 @@ interface INavItem {
 
 export const NAV_ITEMS: INavItem[] = [
   { label: 'Events', to: '/', icon: CalendarDays, end: true },
+  { label: 'Favorites', to: '/favorites', icon: Star },
   { label: 'Bookings', to: '/my-booking', icon: Ticket },
   { label: 'Speakers', to: '/speakers', icon: UsersRound },
 ];

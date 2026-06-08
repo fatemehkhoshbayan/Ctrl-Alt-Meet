@@ -9,12 +9,17 @@ export default function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Content-Type', 'application/json');
 
-  const { id } = req.query;
+  const { id, userId } = req.query;
 
   if (id) {
     const booking = db.bookings.find(b => b.id === id);
     if (!booking) return res.status(404).json({ error: 'Booking not found' });
     return res.status(200).json(booking);
+  }
+
+  if (userId) {
+    const bookings = db.bookings.filter(b => b.userId === userId);
+    return res.status(200).json(bookings);
   }
 
   res.status(200).json(db.bookings);

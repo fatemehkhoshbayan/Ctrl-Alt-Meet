@@ -267,7 +267,7 @@
           "price": 1099,
           "description": "5-day full access pass",
           "perks": ["All sessions", "Expo hall", "Meals", "Social events"],
-          "available": 800,
+          "available": 794,
           "total": 10000
         },
         {
@@ -1740,6 +1740,144 @@
           "phone": "+1 555 0101"
         }
       ]
+    },
+    {
+      "userId": "user-001",
+      "eventId": "evt-003",
+      "eventTitle": "KubeCon North America 2026",
+      "eventDate": "2026-11-10",
+      "eventLocation": "Javits Center, New York, NY, United States",
+      "ticketTierId": "tier-003-attendee",
+      "ticketTierName": "Attendee",
+      "quantity": 1,
+      "unitPrice": 1099,
+      "totalPrice": 1099,
+      "status": "confirmed",
+      "bookingReference": "CAM-LGKN-2026",
+      "bookedAt": "2026-06-07T23:33:50.956Z",
+      "attendees": [
+        {
+          "name": "Fatemeh khoshbayan",
+          "email": "f.khoshbayan@gmail.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "L6I-nZSS2HQ"
+    },
+    {
+      "userId": "user-001",
+      "eventId": "evt-003",
+      "eventTitle": "KubeCon North America 2026",
+      "eventDate": "2026-11-10",
+      "eventLocation": "Javits Center, New York, NY, United States",
+      "ticketTierId": "tier-003-attendee",
+      "ticketTierName": "Attendee",
+      "quantity": 1,
+      "unitPrice": 1099,
+      "totalPrice": 1099,
+      "status": "confirmed",
+      "bookingReference": "CAM-Z3WS-2026",
+      "bookedAt": "2026-06-07T23:44:44.804Z",
+      "attendees": [
+        {
+          "name": "Fatemeh khoshbayan",
+          "email": "f.khoshbayan@gmail.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "2XZ_bbSIMsE"
+    },
+    {
+      "userId": "user-001",
+      "eventId": "evt-003",
+      "eventTitle": "KubeCon North America 2026",
+      "eventDate": "2026-11-10",
+      "eventLocation": "Javits Center, New York, NY, United States",
+      "ticketTierId": "tier-003-attendee",
+      "ticketTierName": "Attendee",
+      "quantity": 1,
+      "unitPrice": 1099,
+      "totalPrice": 1099,
+      "status": "confirmed",
+      "bookingReference": "CAM-4VHV-2026",
+      "bookedAt": "2026-06-07T23:47:23.615Z",
+      "attendees": [
+        {
+          "name": "Fatemeh khoshbayan",
+          "email": "f.khoshbayan@gmail.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "zxrjJ4W_lzg"
+    },
+    {
+      "userId": "user-001",
+      "eventId": "evt-003",
+      "eventTitle": "KubeCon North America 2026",
+      "eventDate": "2026-11-10",
+      "eventLocation": "Javits Center, New York, NY, United States",
+      "ticketTierId": "tier-003-attendee",
+      "ticketTierName": "Attendee",
+      "quantity": 1,
+      "unitPrice": 1099,
+      "totalPrice": 1099,
+      "status": "confirmed",
+      "bookingReference": "CAM-T65T-2026",
+      "bookedAt": "2026-06-07T23:54:37.232Z",
+      "attendees": [
+        {
+          "name": "Fatemeh khoshbayan",
+          "email": "f.khoshbayan@gmail.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "WD_zYmfssgg"
+    },
+    {
+      "userId": "user-001",
+      "eventId": "evt-003",
+      "eventTitle": "KubeCon North America 2026",
+      "eventDate": "2026-11-10",
+      "eventLocation": "Javits Center, New York, NY, United States",
+      "ticketTierId": "tier-003-attendee",
+      "ticketTierName": "Attendee",
+      "quantity": 1,
+      "unitPrice": 1099,
+      "totalPrice": 1099,
+      "status": "confirmed",
+      "bookingReference": "CAM-P9NA-2026",
+      "bookedAt": "2026-06-07T23:56:18.075Z",
+      "attendees": [
+        {
+          "name": "Fatemeh khoshbayan",
+          "email": "f.khoshbayan@gmail.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "pV9noWzY-64"
+    },
+    {
+      "userId": "BWCeeER-W1g",
+      "eventId": "evt-003",
+      "eventTitle": "KubeCon North America 2026",
+      "eventDate": "2026-11-10",
+      "eventLocation": "Javits Center, New York, NY, United States",
+      "ticketTierId": "tier-003-attendee",
+      "ticketTierName": "Attendee",
+      "quantity": 1,
+      "unitPrice": 1099,
+      "totalPrice": 1099,
+      "status": "confirmed",
+      "bookingReference": "CAM-X7V7-2026",
+      "bookedAt": "2026-06-08T00:27:13.054Z",
+      "attendees": [
+        {
+          "name": "reza takhshid",
+          "email": "test@test.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "sKkfdnqHG_k"
     }
   ],
   "categories": [
@@ -1806,6 +1944,30 @@
       "name": "John Doe",
       "email": "john@example.com",
       "avatar": "JD"
+    },
+    {
+      "name": "reza takhshid",
+      "email": "test@test.com",
+      "password": "password",
+      "avatar": "RT",
+      "id": "BWCeeER-W1g"
+    }
+  ],
+  "favorites": [
+    {
+      "id": "fav-001",
+      "userId": "user-001",
+      "eventId": "evt-002"
+    },
+    {
+      "id": "fav-002",
+      "userId": "user-001",
+      "eventId": "evt-006"
+    },
+    {
+      "id": "fav-003",
+      "userId": "user-002",
+      "eventId": "evt-012"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

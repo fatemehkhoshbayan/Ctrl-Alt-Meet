@@ -1,6 +1,6 @@
 import { useFieldArray, useFormContext } from 'react-hook-form';
 import { Input } from '@/ui';
-import type { TAttendeesFormValues } from '@/features/types';
+import type { TAttendeesFormValues } from '@/features';
 
 function inputClass(hasError: boolean) {
   return [

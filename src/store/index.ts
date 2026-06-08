@@ -3,6 +3,7 @@ import { categoriesReducer } from './categories';
 import { bookingsReducer } from './bookings';
 import { eventDetailsReducer, eventsReducer } from './events';
 import { speakersReducer } from './speakers';
+import { favoritesReducer } from './favorites';
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     bookings: bookingsReducer,
     speakers: speakersReducer,
     eventDetails: eventDetailsReducer,
+    favorites: favoritesReducer,
   },
 });
 

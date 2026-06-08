@@ -1,10 +1,15 @@
 import { useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
-import { EventDetailsHeroSection, HighlightsSection } from '@/features';
+import {
+  EventDetailsHeroSection,
+  HighlightsSection,
+  SpeakersSection,
+  AboutSection,
+  PassSelection,
+} from '@/features';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { fetchSpeakers, selectSpeakersByIds } from '@/store/speakers';
 import { fetchEventDetails } from '@/store/events/eventDetails.slice';
-import { SpeakersSection, AboutSection, PassSelection } from '@/features';
 
 export default function EventDetails() {
   const { id } = useParams<{ id: string }>();

@@ -1,14 +1,22 @@
 import { useNavigate } from 'react-router-dom';
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, User } from 'lucide-react';
 import { LogoWordMark } from '../Logo';
 import { IconButton } from '@/ui';
+import type { IUser } from '@/services';
 
 interface IMobileHeaderProps {
   theme: 'light' | 'dark';
   toggleTheme: () => void;
+  user: IUser | null;
+  onAvatarClick: () => void;
 }
 
-export default function MobileHeader({ theme, toggleTheme }: IMobileHeaderProps) {
+export default function MobileHeader({
+  theme,
+  toggleTheme,
+  user,
+  onAvatarClick,
+}: IMobileHeaderProps) {
   const navigate = useNavigate();
   return (
     <header className="border-outline-variant/30 bg-surface-container sticky top-0 z-50 border-b shadow-sm backdrop-blur-xl">
@@ -21,9 +29,14 @@ export default function MobileHeader({ theme, toggleTheme }: IMobileHeaderProps)
             type="button"
             aria-label="Toggle theme"
           />
-          <div className="bg-primary text-headline-md text-on-primary flex h-12 w-12 items-center justify-center rounded-full font-bold">
-            JD
-          </div>
+          <button
+            type="button"
+            onClick={onAvatarClick}
+            aria-label={user ? `Signed in as ${user.name}` : 'Sign in'}
+            className="bg-primary text-headline-md text-on-primary hover:bg-primary/90 flex h-12 w-12 items-center justify-center rounded-full font-bold transition-colors"
+          >
+            {user ? user.avatar : <User size={24} />}
+          </button>
         </div>
       </nav>
     </header>

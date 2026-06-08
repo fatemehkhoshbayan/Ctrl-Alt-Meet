@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { IdCardLanyard, Ticket } from 'lucide-react';
 import type { TTicketTier } from '@/services';
 import { Button } from '@/ui';
+import { useAuth } from '@/hooks';
 import { useAppDispatch } from '@/store/hooks';
 import { resetPurchaseStatus } from '@/store/bookings';
 import { PassCard } from '@/shared';
@@ -12,6 +13,7 @@ import type { IEventProps } from '../types';
 export default function PassSelection({ event }: IEventProps) {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [selectedTier, setSelectedTier] = useState<TTicketTier | null>(null);
 
   const tiers = event.ticketTiers ?? [];
@@ -43,6 +45,12 @@ export default function PassSelection({ event }: IEventProps) {
             size="lg"
             onClick={() => {
               dispatch(resetPurchaseStatus());
+              if (!user) {
+                navigate('/login', {
+                  state: { from: '/registration', event, selectedTier },
+                });
+                return;
+              }
               navigate('/registration', { state: { event, selectedTier } });
             }}
             className="bg-primary text-on-primary gap-stack-gap mb-4 flex w-full font-bold transition-all active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:brightness-100 disabled:active:scale-100"

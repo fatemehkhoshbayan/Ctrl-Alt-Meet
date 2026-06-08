@@ -4,11 +4,12 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
+import { useAuth } from '@/hooks';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { purchaseTicket, resetPurchaseStatus } from '@/store/bookings';
 import { getPassSchema } from '@/schemas/getPassSchema';
 import type { IEvent, TTicketTier } from '@/services';
-import type { TAttendeesFormValues, TBookingStep } from '@/features/types';
+import type { TAttendeesFormValues, TBookingStep } from '@/features';
 
 // ─── Step config ────────────────────────────────────────────────────────────
 
@@ -35,6 +36,7 @@ export function useRegistrationForm({
 }: IUseRegistrationFormOptions) {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { user } = useAuth();
 
   const purchaseStatus = useAppSelector(bookingState => bookingState.bookings.purchaseStatus);
 
@@ -98,13 +100,14 @@ export function useRegistrationForm({
   };
 
   const onConfirmBooking = handleSubmit(async values => {
-    if (!selectedTier) return;
+    if (!selectedTier || !user) return;
     const result = await dispatch(
       purchaseTicket({
         event,
         tierId: selectedTier.id,
         quantity,
         attendees: values.attendees,
+        userId: user.id,
       }),
     );
     if (purchaseTicket.fulfilled.match(result)) {

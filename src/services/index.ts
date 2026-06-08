@@ -7,3 +7,7 @@ export * from './speakers/speakers.api';
 export * from './speakers/speakers.type';
 export * from './bookings/bookings.api';
 export * from './bookings/bookings.type';
+export * from './users/users.api';
+export * from './users/users.type';
+export * from './favorites/favorites.api';
+export * from './favorites/favorites.type';

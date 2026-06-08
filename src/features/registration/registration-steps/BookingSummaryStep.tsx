@@ -1,4 +1,4 @@
-import type { IBookingSummaryStep } from '@/features/types';
+import type { IBookingSummaryStep } from '@/features';
 
 export default function BookingSummaryStep({
   eventTitle,

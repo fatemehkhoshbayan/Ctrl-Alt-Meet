@@ -32,13 +32,16 @@ export type PurchaseTicketPayload = {
   tierId: string;
   quantity: number;
   attendees: TBookingAttendee[];
+  userId: string;
 };
 
-export const fetchBookings = createAsyncThunk('bookings/fetchAll', () => bookingsApi.getAll());
+export const fetchBookings = createAsyncThunk('bookings/fetchAll', (userId: string) =>
+  bookingsApi.getByUserId(userId),
+);
 
 export const purchaseTicket = createAsyncThunk(
   'bookings/purchaseTicket',
-  async ({ event, tierId, quantity, attendees }: PurchaseTicketPayload) => {
+  async ({ event, tierId, quantity, attendees, userId }: PurchaseTicketPayload) => {
     const tier = event.ticketTiers.find(t => t.id === tierId);
     if (!tier) {
       throw new Error('Ticket tier not found');
@@ -48,7 +51,7 @@ export const purchaseTicket = createAsyncThunk(
     const totalPrice = tier.price * quantity;
 
     const bookingPayload: TCreateBookingPayload = {
-      userId: 'user-001',
+      userId,
       eventId: event.id,
       eventTitle: event.title,
       eventDate: event.date,
