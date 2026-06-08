@@ -1,14 +1,16 @@
 import { useEffect } from 'react';
 
-import { MyBookingCards, HeroSection, InspirationSection } from '@/features';
+import { RequireAuth, MyBookingCards, HeroSection, InspirationSection } from '@/features';
 import { LoadingState, ErrorState } from '@/shared';
+import { useAuth } from '@/hooks';
 import { fetchBookings } from '@/store/bookings';
 import { fetchEvents } from '@/store/events';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { Tab } from '@/ui';
 
-export default function MyBooking() {
+function MyBookingContent() {
   const dispatch = useAppDispatch();
+  const { user } = useAuth();
 
   const {
     items: bookings,
@@ -23,9 +25,11 @@ export default function MyBooking() {
   } = useAppSelector(state => state.events);
 
   useEffect(() => {
-    dispatch(fetchBookings());
-    dispatch(fetchEvents());
-  }, [dispatch]);
+    if (user) {
+      dispatch(fetchBookings(user.id));
+      dispatch(fetchEvents());
+    }
+  }, [dispatch, user]);
 
   const today = new Date();
   const upcomingBookings = bookings.filter(booking => new Date(booking.eventDate) >= today);
@@ -62,5 +66,13 @@ export default function MyBooking() {
 
       <InspirationSection />
     </>
+  );
+}
+
+export default function MyBooking() {
+  return (
+    <RequireAuth>
+      <MyBookingContent />
+    </RequireAuth>
   );
 }
