@@ -1,15 +1,23 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Sun, Moon } from 'lucide-react';
+import { Sun, Moon, User } from 'lucide-react';
 import { NAV_LINKS } from '../constant';
 import { LogoWordMark } from '../Logo';
 import { IconButton } from '@/ui';
+import type { IUser } from '@/services';
 
 interface IDesktopHeaderProps {
   theme: 'light' | 'dark';
   toggleTheme: () => void;
+  user: IUser | null;
+  onAvatarClick: () => void;
 }
 
-export default function DesktopHeader({ theme, toggleTheme }: IDesktopHeaderProps) {
+export default function DesktopHeader({
+  theme,
+  toggleTheme,
+  user,
+  onAvatarClick,
+}: IDesktopHeaderProps) {
   const navigate = useNavigate();
   return (
     <header className="border-outline-variant/30 bg-surface-container sticky top-0 z-50 border-b shadow-sm backdrop-blur-xl">
@@ -29,7 +37,6 @@ export default function DesktopHeader({ theme, toggleTheme }: IDesktopHeaderProp
             </NavLink>
           ))}
         </div>
-        {/* TODO: Add user profile */}
         <div className="flex items-center gap-4">
           <IconButton
             icon={theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
@@ -37,9 +44,14 @@ export default function DesktopHeader({ theme, toggleTheme }: IDesktopHeaderProp
             type="button"
             aria-label="Toggle theme"
           />
-          <div className="bg-primary text-on-primary flex h-10 w-10 items-center justify-center rounded-full font-bold">
-            AK
-          </div>
+          <button
+            type="button"
+            onClick={onAvatarClick}
+            aria-label={user ? `Signed in as ${user.name}` : 'Sign in'}
+            className="bg-primary text-on-primary hover:bg-primary/90 flex h-10 w-10 items-center justify-center rounded-full font-bold transition-colors"
+          >
+            {user ? user.avatar : <User size={20} />}
+          </button>
         </div>
       </nav>
     </header>
