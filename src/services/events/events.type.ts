@@ -1,3 +1,12 @@
+export interface EventFilters {
+  categories: string[];
+  dateRange: string;
+  priceMin: number;
+  priceMax: number;
+  sortBy: string;
+  searchQuery: string;
+}
+
 export type TTicketTier = {
   id: string;
   name: string;
@@ -71,3 +80,22 @@ export interface IEvent {
   ticketTiers: TTicketTier[];
   schedule: TSchedule[];
 }
+
+export interface EventsState {
+  currentPage: number;
+  filters: EventFilters;
+}
+
+export type TPurchaseTicketPayload = {
+  event: IEvent;
+  tierId: string;
+  quantity: number;
+  attendees: import('../bookings/bookings.type').TBookingAttendee[];
+  userId: string;
+};
+
+export type TPurchaseTicketResult = {
+  event: IEvent;
+  booking: import('../bookings/bookings.type').IBooking;
+  bookingReference: string;
+};
