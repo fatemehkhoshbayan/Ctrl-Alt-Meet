@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { useForm, useFieldArray, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
+import { useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
 import { useAuth } from '@/hooks';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { purchaseTicket, resetPurchaseStatus } from '@/store/bookings';
+import { createRegistrationBooking, resetPurchaseStatus } from '@/store/bookings';
+import { queryKeys, usePurchaseTicketMutation } from '@/services';
 import { getPassSchema } from '@/schemas';
 import type { IEvent, TTicketTier } from '@/services';
 import type { TAttendeesFormValues, TBookingStep } from '@/features';
@@ -36,7 +38,10 @@ export function useRegistrationForm({
 }: IUseRegistrationFormOptions) {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const queryClient = useQueryClient();
   const { user } = useAuth();
+  const { mutateAsync: purchaseEventTickets, isPending: isUpdatingTickets } =
+    usePurchaseTicketMutation();
 
   const purchaseStatus = useAppSelector(bookingState => bookingState.bookings.purchaseStatus);
 
@@ -101,23 +106,33 @@ export function useRegistrationForm({
 
   const onConfirmBooking = handleSubmit(async values => {
     if (!selectedTier || !user) return;
-    const result = await dispatch(
-      purchaseTicket({
-        event,
-        tierId: selectedTier.id,
-        quantity,
-        attendees: values.attendees,
-        userId: user.id,
-      }),
+
+    const updatedTiers = event.ticketTiers.map(t =>
+      t.id === selectedTier.id ? { ...t, available: Math.max(0, t.available - quantity) } : t,
     );
-    if (purchaseTicket.fulfilled.match(result)) {
-      const { bookingReference, booking } = result.payload;
+
+    try {
+      await purchaseEventTickets({ eventId: event.id, updatedTiers });
+
+      const { booking, bookingReference } = await dispatch(
+        createRegistrationBooking({
+          event,
+          tierId: selectedTier.id,
+          quantity,
+          attendees: values.attendees,
+          userId: user.id,
+        }),
+      ).unwrap();
+
       toast.success('Booking Confirmed!', {
         description: `${booking.eventTitle} · ${booking.ticketTierName} · ${quantity} ticket${quantity > 1 ? 's' : ''} · $${booking.totalPrice.toLocaleString()} — Ref: ${bookingReference}`,
         duration: 8000,
       });
+      await queryClient.invalidateQueries({ queryKey: [queryKeys.GET_BOOKINGS_BY_USER_ID] });
       dispatch(resetPurchaseStatus());
       navigate('/my-bookings');
+    } catch {
+      // Event PATCH errors toast via usePurchaseTicketMutation; booking errors set purchaseStatus
     }
   });
 
@@ -139,7 +154,7 @@ export function useRegistrationForm({
     totalAmount,
     maxQuantity,
     isStep1Valid,
-    isLoading: purchaseStatus === 'loading',
+    isLoading: isUpdatingTickets || purchaseStatus === 'loading',
     purchaseStatus,
     // handlers
     handleSelectTier,
