@@ -1,13 +1,33 @@
-export * from './events/events.api';
-export * from './events/events.type';
-export * from './categories/categories.api';
-export * from './categories/categories.type';
 export * from './clients';
-export * from './speakers/speakers.api';
+export { default as queryKeys } from './enums';
+
+// events
+export { default as eventsServices } from './events/events.services';
+export * from './events/events.constants';
+export * from './events/events.hook';
+export * from './events/events.type';
+
+// categories
+export { default as categoriesServices } from './categories/categories.services';
+export * from './categories/categories.hook';
+export * from './categories/categories.type';
+
+// speakers
+export { default as speakersServices } from './speakers/speakers.services';
+export { getSpeakersByIds } from './speakers/helpers';
+export * from './speakers/speakers.hook';
 export * from './speakers/speakers.type';
-export * from './bookings/bookings.api';
+
+// bookings
+export { default as bookingsServices } from './bookings/bookings.services';
+export * from './bookings/bookings.constants';
+export * from './bookings/bookings.hook';
 export * from './bookings/bookings.type';
+
+// users
 export * from './users/users.api';
 export * from './users/users.type';
+
+// favorites
 export * from './favorites/favorites.api';
 export * from './favorites/favorites.type';

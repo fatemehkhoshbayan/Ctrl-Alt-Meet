@@ -1,17 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { categoriesReducer } from './categories';
 import { bookingsReducer } from './bookings';
-import { eventDetailsReducer, eventsReducer } from './events';
-import { speakersReducer } from './speakers';
+import { eventsReducer } from './events';
 import { favoritesReducer } from './favorites';
 
 export const store = configureStore({
   reducer: {
     events: eventsReducer,
-    categories: categoriesReducer,
     bookings: bookingsReducer,
-    speakers: speakersReducer,
-    eventDetails: eventDetailsReducer,
     favorites: favoritesReducer,
   },
 });
