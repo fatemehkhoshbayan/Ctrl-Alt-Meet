@@ -1,22 +1,8 @@
-import { Routes, Route } from 'react-router-dom';
-import { MainLayout } from '@/layouts';
-import { Events, MyBooking, Speakers, EventDetails, Registration, Login, Favorites } from '@/pages';
-import { ErrorState } from '@/shared';
+import { RouterProvider } from 'react-router-dom';
+import { router } from '@/routes';
 
 function App() {
-  return (
-    <Routes>
-      <Route element={<MainLayout />} errorElement={<ErrorState />}>
-        <Route path="/" element={<Events />} />
-        <Route path="/events/:id" element={<EventDetails />} />
-        <Route path="/my-booking" element={<MyBooking />} />
-        <Route path="/speakers" element={<Speakers />} />
-        <Route path="/registration" element={<Registration />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/favorites" element={<Favorites />} />
-      </Route>
-    </Routes>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

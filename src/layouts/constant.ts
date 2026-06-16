@@ -4,7 +4,7 @@ export const NAV_LINKS = [
   { label: 'Events', to: '/' },
   { label: 'Favorites', to: '/favorites' },
   { label: 'Speakers', to: '/speakers' },
-  { label: 'My Bookings', to: '/my-booking' },
+  { label: 'My Bookings', to: '/my-bookings' },
 ];
 
 interface INavItem {
@@ -17,7 +17,7 @@ interface INavItem {
 export const NAV_ITEMS: INavItem[] = [
   { label: 'Events', to: '/', icon: CalendarDays, end: true },
   { label: 'Favorites', to: '/favorites', icon: Star },
-  { label: 'Bookings', to: '/my-booking', icon: Ticket },
+  { label: 'Bookings', to: '/my-bookings', icon: Ticket },
   { label: 'Speakers', to: '/speakers', icon: UsersRound },
 ];
 
