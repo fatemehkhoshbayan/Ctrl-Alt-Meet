@@ -117,7 +117,7 @@ export function useRegistrationForm({
         duration: 8000,
       });
       dispatch(resetPurchaseStatus());
-      navigate('/my-booking');
+      navigate('/my-bookings');
     }
   });
 
