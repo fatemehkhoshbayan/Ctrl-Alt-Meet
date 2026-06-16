@@ -5,3 +5,10 @@
 
 @import './appearance/styles/theme.css';
 @import './appearance/styles/utilities.css';
+
+html,
+body,
+#root {
+  min-height: 100%;
+  background-color: var(--theme-background);
+}
