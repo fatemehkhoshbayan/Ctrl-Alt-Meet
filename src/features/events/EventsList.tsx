@@ -1,43 +1,36 @@
-import { useEffect } from 'react';
+import { useMemo } from 'react';
 import { SearchX, CalendarOff } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { getFilteredEvents, setFilters, setPage, resetFilters } from '@/store/events';
 import { Select, Pagination, Button } from '@/ui';
 import { EmptyState, ErrorState, LoadingState } from '@/shared';
-import {
-  fetchEvents,
-  selectFilteredEvents,
-  setFilters,
-  setPage,
-  resetFilters,
-  PER_PAGE,
-  DEFAULT_FILTERS,
-} from '@/store/events';
+import { useEventsQuery, EVENTS_PER_PAGE, DEFAULT_EVENT_FILTERS } from '@/services';
 import SideBar from './SideBar';
 import EventCard from './EventCard';
 import { SORT_OPTIONS } from './constant';
 
 export default function EventsList() {
   const dispatch = useAppDispatch();
-  const status = useAppSelector(state => state.events.status);
-  const error = useAppSelector(state => state.events.error);
   const currentPage = useAppSelector(state => state.events.currentPage);
-  const { items, totalItems, totalPages } = useAppSelector(selectFilteredEvents);
   const filters = useAppSelector(state => state.events.filters);
   const sortBy = filters.sortBy;
+
+  const { data: events = [], isLoading, isError, error, isSuccess } = useEventsQuery();
+
+  const { items, totalItems, totalPages } = useMemo(
+    () => getFilteredEvents(events, filters, currentPage),
+    [events, filters, currentPage],
+  );
 
   const hasActiveFilters =
     filters.searchQuery.trim() !== '' ||
     filters.categories.length > 0 ||
     filters.dateRange !== 'anytime' ||
-    filters.priceMin > DEFAULT_FILTERS.priceMin ||
-    filters.priceMax < DEFAULT_FILTERS.priceMax;
+    filters.priceMin > DEFAULT_EVENT_FILTERS.priceMin ||
+    filters.priceMax < DEFAULT_EVENT_FILTERS.priceMax;
 
-  const rangeStart = totalItems === 0 ? 0 : (currentPage - 1) * PER_PAGE + 1;
-  const rangeEnd = Math.min(currentPage * PER_PAGE, totalItems);
-
-  useEffect(() => {
-    dispatch(fetchEvents());
-  }, [dispatch]);
+  const rangeStart = totalItems === 0 ? 0 : (currentPage - 1) * EVENTS_PER_PAGE + 1;
+  const rangeEnd = Math.min(currentPage * EVENTS_PER_PAGE, totalItems);
 
   function goToPage(page: number) {
     if (page < 1 || page > totalPages) return;
@@ -53,7 +46,7 @@ export default function EventsList() {
         <div className="flex items-center justify-between gap-3 pb-8 lg:mb-0">
           <div className="flex items-center justify-between gap-3">
             <p className="font-body-md text-body-md text-on-surface-variant">
-              {status === 'succeeded'
+              {isSuccess
                 ? `Showing ${rangeStart}–${rangeEnd} of ${totalItems} tech events`
                 : 'Loading events…'}
             </p>
@@ -67,11 +60,11 @@ export default function EventsList() {
           />
         </div>
 
-        {status === 'loading' && <LoadingState message="Loading events..." />}
+        {isLoading && <LoadingState message="Loading events..." />}
 
-        {status === 'failed' && <ErrorState error={error ?? undefined} />}
+        {isError && <ErrorState error={error?.message} />}
 
-        {status === 'succeeded' && items.length === 0 && (
+        {isSuccess && items.length === 0 && (
           <EmptyState
             icon={
               hasActiveFilters ? (
@@ -98,7 +91,7 @@ export default function EventsList() {
           </EmptyState>
         )}
 
-        {status === 'succeeded' && items.length > 0 && (
+        {isSuccess && items.length > 0 && (
           <div className="gap-gutter grid grid-cols-1 lg:min-w-3xl lg:grid-cols-2">
             {items.map(event => (
               <EventCard key={event.id} event={event} />

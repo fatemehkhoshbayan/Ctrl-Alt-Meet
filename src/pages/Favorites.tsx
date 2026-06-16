@@ -1,10 +1,10 @@
-import { FavoritesHeroSection, FavoritesList, RequireAuth } from '@/features';
+import { FavoritesHeroSection, FavoritesList } from '@/features';
 
 export default function Favorites() {
   return (
-    <RequireAuth>
+    <>
       <FavoritesHeroSection />
       <FavoritesList />
-    </RequireAuth>
+    </>
   );
 }

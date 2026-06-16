@@ -2,10 +2,8 @@ import { useState } from 'react';
 import { AlertTriangle, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 
-import type { IBooking, IEvent } from '@/services';
+import { useCancelBookingMutation, type IBooking, type IEvent } from '@/services';
 import { formatDate } from '@/utils';
-import { useAppDispatch } from '@/store/hooks';
-import { cancelBooking } from '@/store/bookings';
 import {
   Button,
   Dialog,
@@ -29,9 +27,8 @@ export default function CancelBookingDialog({
   open,
   onOpenChange,
 }: ICancelBookingDialogProps) {
-  const dispatch = useAppDispatch();
+  const { mutateAsync: cancelBooking, isPending } = useCancelBookingMutation();
   const [step, setStep] = useState<1 | 2>(1);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   function handleOpenChange(next: boolean) {
     if (!next) setStep(1);
@@ -39,19 +36,12 @@ export default function CancelBookingDialog({
   }
 
   async function handleConfirmCancel() {
-    setIsSubmitting(true);
     try {
-      const result = await dispatch(cancelBooking(booking.id));
-      if (cancelBooking.fulfilled.match(result)) {
-        toast.success('Booking cancelled successfully');
-        handleOpenChange(false);
-      } else {
-        toast.error('Could not cancel booking. Please try again.');
-      }
+      await cancelBooking(booking.id);
+      toast.success('Booking cancelled successfully');
+      handleOpenChange(false);
     } catch {
       toast.error('Could not cancel booking. Please try again.');
-    } finally {
-      setIsSubmitting(false);
     }
   }
 
@@ -124,15 +114,15 @@ export default function CancelBookingDialog({
                 color="secondary"
                 BtnText="Go Back"
                 className="flex-1"
-                disabled={isSubmitting}
+                disabled={isPending}
                 onClick={() => setStep(1)}
               />
               <Button
                 color="secondary"
                 className="flex-1"
-                disabled={isSubmitting}
-                BtnText={isSubmitting ? 'Cancelling…' : 'Yes, Cancel Booking'}
-                icon={isSubmitting ? <Loader2 size={18} className="animate-spin" /> : undefined}
+                disabled={isPending}
+                BtnText={isPending ? 'Cancelling…' : 'Yes, Cancel Booking'}
+                icon={isPending ? <Loader2 size={18} className="animate-spin" /> : undefined}
                 onClick={handleConfirmCancel}
               />
             </DialogFooter>

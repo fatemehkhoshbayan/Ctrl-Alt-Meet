@@ -1,4 +1,3 @@
-import { useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import {
   EventDetailsHeroSection,
@@ -7,22 +6,33 @@ import {
   AboutSection,
   PassSelection,
 } from '@/features';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { fetchSpeakers, selectSpeakersByIds } from '@/store/speakers';
-import { fetchEventDetails } from '@/store/events/eventDetails.slice';
+import { EmptyState, ErrorState, FallbackPage } from '@/shared';
+import { useEventByIdQuery, useSpeakersByIdsQuery } from '@/services';
+import { CalendarOff } from 'lucide-react';
 
 export default function EventDetails() {
   const { id } = useParams<{ id: string }>();
-  const dispatch = useAppDispatch();
-  const event = useAppSelector(state => state.eventDetails.event);
 
-  const speakerSelector = useMemo(() => selectSpeakersByIds(event.speakers), [event.speakers]);
-  const speakers = useAppSelector(speakerSelector);
+  const { data: event, isLoading, isError, error } = useEventByIdQuery(id);
+  const { data: speakers = [] } = useSpeakersByIdsQuery(event?.speakers);
 
-  useEffect(() => {
-    if (id) dispatch(fetchEventDetails(id));
-    dispatch(fetchSpeakers());
-  }, [dispatch, id]);
+  if (isLoading) {
+    return <FallbackPage message="Loading event..." />;
+  }
+
+  if (isError) {
+    return <ErrorState error={error?.message ?? 'Failed to load event'} />;
+  }
+
+  if (!event) {
+    return (
+      <EmptyState
+        icon={<CalendarOff size={48} className="text-primary" />}
+        title="No event found"
+        message="The event you are looking for does not exist."
+      />
+    );
+  }
 
   return (
     <>

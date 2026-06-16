@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
-import { Outlet, useNavigate, useNavigation } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { Toaster } from 'sonner';
-import { LoadingState } from '@/shared';
 import { useAuth, useMediaQuery, useTheme } from '@/hooks';
 import { useAppDispatch } from '@/store/hooks';
 import { clearFavorites, fetchFavorites } from '@/store/favorites';
@@ -13,9 +12,7 @@ export default function MainLayout() {
   const { theme, toggleTheme } = useTheme();
   const { user } = useAuth();
   const navigate = useNavigate();
-  const navigation = useNavigation();
   const isDesktop = useMediaQuery('(min-width: 1024px)');
-  const isNavigating = navigation.state === 'loading';
 
   useEffect(() => {
     if (user) {
@@ -49,7 +46,7 @@ export default function MainLayout() {
       <main
         className={`bg-background text-on-surface flex min-w-[80%] flex-col items-center justify-center ${!isDesktop ? 'pb-20' : ''}`}
       >
-        {isNavigating ? <LoadingState message="Loading page..." /> : <Outlet />}
+        <Outlet />
       </main>
       {isDesktop ? <DesktopFooter /> : <MobileFooter />}
       {!isDesktop && <MobileBottomNav />}

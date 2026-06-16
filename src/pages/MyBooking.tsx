@@ -1,35 +1,25 @@
-import { useEffect } from 'react';
-
-import { RequireAuth, MyBookingCards, HeroSection, InspirationSection } from '@/features';
+import { MyBookingCards, HeroSection, InspirationSection } from '@/features';
 import { LoadingState, ErrorState } from '@/shared';
 import { useAuth } from '@/hooks';
-import { fetchBookings } from '@/store/bookings';
-import { fetchEvents } from '@/store/events';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { useBookingsByUserIdQuery, useEventsQuery } from '@/services';
 import { Tab } from '@/ui';
 
-function MyBookingContent() {
-  const dispatch = useAppDispatch();
+export default function MyBooking() {
   const { user } = useAuth();
 
   const {
-    items: bookings,
-    status: bookingStatus,
-    error: bookingError,
-  } = useAppSelector(state => state.bookings);
+    data: bookings = [],
+    isLoading: bookingsLoading,
+    isError: bookingsIsError,
+    error: bookingsError,
+  } = useBookingsByUserIdQuery(user?.id);
 
   const {
-    allItems: events,
-    status: eventStatus,
-    error: eventError,
-  } = useAppSelector(state => state.events);
-
-  useEffect(() => {
-    if (user) {
-      dispatch(fetchBookings(user.id));
-      dispatch(fetchEvents());
-    }
-  }, [dispatch, user]);
+    data: events = [],
+    isLoading: eventsLoading,
+    isError: eventsIsError,
+    error: eventsError,
+  } = useEventsQuery();
 
   const today = new Date();
   const upcomingBookings = bookings.filter(
@@ -37,8 +27,12 @@ function MyBookingContent() {
   );
   const pastBookings = bookings.filter(booking => new Date(booking.eventDate) < today);
 
-  const isLoading = bookingStatus === 'loading' || eventStatus === 'loading';
-  const error = bookingError || eventError;
+  const isLoading = bookingsLoading || eventsLoading;
+  const error = bookingsIsError
+    ? (bookingsError?.message ?? 'Failed to load bookings')
+    : eventsIsError
+      ? (eventsError?.message ?? 'Failed to load events')
+      : null;
 
   return (
     <>
@@ -47,7 +41,7 @@ function MyBookingContent() {
       {isLoading && <LoadingState message="Loading bookings..." />}
       {error && <ErrorState error={error} />}
 
-      {bookingStatus === 'succeeded' && eventStatus === 'succeeded' && (
+      {!isLoading && !error && (
         <Tab
           tabs={[
             {
@@ -68,13 +62,5 @@ function MyBookingContent() {
 
       <InspirationSection />
     </>
-  );
-}
-
-export default function MyBooking() {
-  return (
-    <RequireAuth>
-      <MyBookingContent />
-    </RequireAuth>
   );
 }
