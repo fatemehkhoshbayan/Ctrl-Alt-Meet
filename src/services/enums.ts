@@ -18,6 +18,11 @@ const queryKeys = {
   // speakers
   GET_SPEAKERS: 'getSpeakers',
 
+  // favorites
+  GET_FAVORITES_BY_USER_ID: 'getFavoritesByUserId',
+  ADD_FAVORITE: 'addFavorite',
+  REMOVE_FAVORITE: 'removeFavorite',
+
   // users
   USERS: 'users',
 };

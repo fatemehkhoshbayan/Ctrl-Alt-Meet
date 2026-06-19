@@ -29,5 +29,6 @@ export * from './users/users.api';
 export * from './users/users.type';
 
 // favorites
-export * from './favorites/favorites.api';
+export { default as favoritesServices } from './favorites/favorites.services';
+export * from './favorites/favorites.hook';
 export * from './favorites/favorites.type';
