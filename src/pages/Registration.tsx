@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { RequireAuth, RegistrationForm, RegistrationHeroSection } from '@/features';
+import { RegistrationForm, RegistrationHeroSection } from '@/features';
 import type { IEvent, TTicketTier } from '@/services';
 
 interface IRegistrationState {
@@ -8,7 +8,7 @@ interface IRegistrationState {
   selectedTier: TTicketTier | null;
 }
 
-function RegistrationContent() {
+export default function Registration() {
   const navigate = useNavigate();
   const { state } = useLocation() as { state: IRegistrationState | null };
 
@@ -30,13 +30,5 @@ function RegistrationContent() {
         <RegistrationForm event={event} initialTier={selectedTier} onClose={() => navigate(-1)} />
       </section>
     </>
-  );
-}
-
-export default function Registration() {
-  return (
-    <RequireAuth>
-      <RegistrationContent />
-    </RequireAuth>
   );
 }

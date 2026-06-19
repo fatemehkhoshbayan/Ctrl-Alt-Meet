@@ -1,3 +1,5 @@
+import type { IEvent } from '../events/events.type';
+
 export type TBookingAttendee = {
   name: string;
   email: string;
@@ -25,3 +27,30 @@ export interface IBooking {
 }
 
 export type TCreateBookingPayload = Omit<IBooking, 'id'>;
+
+export interface IBookingSuccess {
+  reference: string;
+  eventTitle: string;
+  tierName: string;
+  quantity: number;
+  totalAmount: number;
+}
+
+export interface BookingsState {
+  purchaseStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
+  error: string | null;
+  bookingSuccess: IBookingSuccess | null;
+}
+
+export type PurchaseTicketPayload = {
+  event: IEvent;
+  tierId: string;
+  quantity: number;
+  attendees: TBookingAttendee[];
+  userId: string;
+};
+
+export type MyBookingsLoaderData = {
+  events: IEvent[];
+  bookings: IBooking[];
+};

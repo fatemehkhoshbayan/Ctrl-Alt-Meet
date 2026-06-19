@@ -1,89 +1,39 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { SlidersHorizontal, X } from 'lucide-react';
 import { cn } from '@/lib';
 import { Button, IconButton, Select } from '@/ui';
+import { useCategories, DEFAULT_EVENT_FILTERS, type IEvent } from '@/services';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { fetchCategories } from '@/store/categories';
-import { setFilters, resetFilters, DEFAULT_FILTERS } from '@/store/events';
-import { selectFilteredEvents } from '@/store/events';
+import { getFilteredEvents, setFilters, resetFilters } from '@/store/events';
 import { DATE_RANGE_OPTIONS } from './constant';
-
-const RANGE_THUMB_CLASS =
-  'accent-primary pointer-events-none absolute h-2 w-full appearance-none bg-transparent [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-primary [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary';
+import PriceRangeSlider from './PriceRangeSlider';
 
 function isPriceFilterActive(priceMin: number, priceMax: number) {
-  return priceMin > DEFAULT_FILTERS.priceMin || priceMax < DEFAULT_FILTERS.priceMax;
+  return priceMin > DEFAULT_EVENT_FILTERS.priceMin || priceMax < DEFAULT_EVENT_FILTERS.priceMax;
 }
 
-function formatPriceLabel(value: number) {
-  return value >= DEFAULT_FILTERS.priceMax ? `${DEFAULT_FILTERS.priceMax}+` : String(value);
+interface ISideBarProps {
+  className?: string;
+  events: IEvent[];
 }
 
-interface IPriceRangeSliderProps {
-  priceMin: number;
-  priceMax: number;
-  onChange: (next: { priceMin?: number; priceMax?: number }) => void;
-}
-
-function PriceRangeSlider({ priceMin, priceMax, onChange }: IPriceRangeSliderProps) {
-  const ceiling = DEFAULT_FILTERS.priceMax;
-
-  return (
-    <div>
-      <div className="relative h-6">
-        <div className="bg-outline-variant absolute top-1/2 right-0 left-0 h-2 -translate-y-1/2 rounded-full" />
-        <input
-          aria-label="Minimum price"
-          className={RANGE_THUMB_CLASS}
-          type="range"
-          min={0}
-          max={ceiling}
-          value={priceMin}
-          onChange={e => {
-            const next = Math.min(Number(e.target.value), priceMax);
-            onChange({ priceMin: next });
-          }}
-        />
-        <input
-          aria-label="Maximum price"
-          className={RANGE_THUMB_CLASS}
-          type="range"
-          min={0}
-          max={ceiling}
-          value={priceMax}
-          onChange={e => {
-            const next = Math.max(Number(e.target.value), priceMin);
-            onChange({ priceMax: next });
-          }}
-        />
-      </div>
-      <div className="font-body-lg text-body-lg text-on-surface-variant mt-2 flex justify-between">
-        <span>${formatPriceLabel(priceMin)}</span>
-        <span>
-          ${priceMin} – ${formatPriceLabel(priceMax)}
-        </span>
-        <span>${formatPriceLabel(ceiling)}</span>
-      </div>
-    </div>
-  );
-}
-
-export default function SideBar({ className }: { className?: string }) {
+export default function SideBar({ className, events }: ISideBarProps) {
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
-  const categories = useAppSelector(state => state.categories.items);
+  const { data: categories = [] } = useCategories();
   const filters = useAppSelector(state => state.events.filters);
-  const { totalItems } = useAppSelector(selectFilteredEvents);
+  const currentPage = useAppSelector(state => state.events.currentPage);
+
+  const { totalItems } = useMemo(
+    () => getFilteredEvents(events, filters, currentPage),
+    [events, filters, currentPage],
+  );
 
   const activeFilterCount =
     (filters.searchQuery.trim() !== '' ? 1 : 0) +
     filters.categories.length +
     (filters.dateRange !== 'anytime' ? 1 : 0) +
     (isPriceFilterActive(filters.priceMin, filters.priceMax) ? 1 : 0);
-
-  useEffect(() => {
-    dispatch(fetchCategories());
-  }, [dispatch]);
 
   useEffect(() => {
     if (open) document.body.style.overflow = 'hidden';

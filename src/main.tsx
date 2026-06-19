@@ -1,8 +1,9 @@
 import { StrictMode } from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider, ThemeProvider } from '@/context';
+import { queryClient } from '@/lib';
 import { store } from './store';
 import './index.css';
 import App from './App.tsx';
@@ -10,13 +11,13 @@ import App from './App.tsx';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <AuthProvider>
-        <ThemeProvider>
-          <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <ThemeProvider>
             <App />
-          </BrowserRouter>
-        </ThemeProvider>
-      </AuthProvider>
+          </ThemeProvider>
+        </AuthProvider>
+      </QueryClientProvider>
     </Provider>
   </StrictMode>,
 );

@@ -33,11 +33,11 @@ Create a local `.env` file:
 VITE_API_BASE_URL=http://localhost:3001
 ```
 
-| Variable | Development | Production (Vercel) |
-| --- | --- | --- |
-| `VITE_API_BASE_URL` | `http://localhost:3001` | `/api` |
-| `UPSTASH_REDIS_REST_URL` | — | Auto-provisioned by Upstash integration |
-| `UPSTASH_REDIS_REST_TOKEN` | — | Auto-provisioned by Upstash integration |
+| Variable                   | Development             | Production (Vercel)                     |
+| -------------------------- | ----------------------- | --------------------------------------- |
+| `VITE_API_BASE_URL`        | `http://localhost:3001` | `/api`                                  |
+| `UPSTASH_REDIS_REST_URL`   | —                       | Auto-provisioned by Upstash integration |
+| `UPSTASH_REDIS_REST_TOKEN` | —                       | Auto-provisioned by Upstash integration |
 
 The app reads API requests from `VITE_API_BASE_URL`. In development, this points to json-server. In production, requests go through the `/api` serverless handlers defined in the `api/` folder.
 
@@ -68,15 +68,15 @@ npm run server
 
 ### Other scripts
 
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Start the Vite dev server |
-| `npm run server` | Start the JSON server API |
-| `npm run dev:all` | Start the app and JSON server together |
-| `npm run build` | Type-check and build for production |
-| `npm run preview` | Preview the production build locally |
-| `npm run lint` | Run ESLint |
-| `npm run prettier` | Format source files with Prettier |
+| Command                | Description                              |
+| ---------------------- | ---------------------------------------- |
+| `npm run dev`          | Start the Vite dev server                |
+| `npm run server`       | Start the JSON server API                |
+| `npm run dev:all`      | Start the app and JSON server together   |
+| `npm run build`        | Type-check and build for production      |
+| `npm run preview`      | Preview the production build locally     |
+| `npm run lint`         | Run ESLint                               |
+| `npm run prettier`     | Format source files with Prettier        |
 | `npm run check-format` | Check formatting without writing changes |
 
 ## Features
@@ -129,15 +129,15 @@ npm run server
 
 ## Routes
 
-| Path | Page | Auth |
-| --- | --- | --- |
-| `/` | Events | Open |
-| `/events/:id` | Event details | Open |
-| `/speakers` | Speakers | Open |
-| `/login` | Login / Register | Open |
-| `/favorites` | Favorites | Required |
-| `/my-booking` | My Bookings | Required |
-| `/registration` | Ticket booking | Required |
+| Path            | Page             | Auth     |
+| --------------- | ---------------- | -------- |
+| `/`             | Events           | Open     |
+| `/events/:id`   | Event details    | Open     |
+| `/speakers`     | Speakers         | Open     |
+| `/login`        | Login / Register | Open     |
+| `/favorites`    | Favorites        | Required |
+| `/my-bookings`  | My Bookings      | Required |
+| `/registration` | Ticket booking   | Required |
 
 ## Project structure
 
@@ -173,21 +173,21 @@ Local development uses `json-server` with `db.json`. Production uses serverless 
 
 On first request, each collection is seeded from `db.json` into Redis if the key does not exist yet. After that, Redis is the source of truth for writes.
 
-| Resource | Purpose | Methods |
-| --- | --- | --- |
-| `/events` | Event listings, details, ticket tiers, schedules | GET, PATCH |
-| `/speakers` | Speaker profiles | GET |
-| `/categories` | Category metadata for filters | GET |
-| `/users` | User accounts for login/register | GET, POST |
-| `/bookings` | User bookings | GET, POST, PATCH |
-| `/favorites` | Per-user favorite events | GET, POST, DELETE |
+| Resource      | Purpose                                          | Methods           |
+| ------------- | ------------------------------------------------ | ----------------- |
+| `/events`     | Event listings, details, ticket tiers, schedules | GET, PATCH        |
+| `/speakers`   | Speaker profiles                                 | GET               |
+| `/categories` | Category metadata for filters                    | GET               |
+| `/users`      | User accounts for login/register                 | GET, POST         |
+| `/bookings`   | User bookings                                    | GET, POST, PATCH  |
+| `/favorites`  | Per-user favorite events                         | GET, POST, DELETE |
 
 ### Seed users (local demo)
 
-| Email | Password | Notes |
-| --- | --- | --- |
+| Email              | Password      | Notes                                  |
+| ------------------ | ------------- | -------------------------------------- |
 | `alex@example.com` | (see db.json) | `user-001`, has bookings and favorites |
-| `john@example.com` | (see db.json) | `user-002` |
+| `john@example.com` | (see db.json) | `user-002`                             |
 
 ## Authentication
 
@@ -215,19 +215,19 @@ const { theme, setTheme, toggleTheme } = useTheme();
 
 Imports use path aliases configured in `vite.config.ts` and `tsconfig.app.json`:
 
-| Alias | Path |
-| --- | --- |
-| `@/*` | `src/*` |
+| Alias           | Path               |
+| --------------- | ------------------ |
+| `@/*`           | `src/*`            |
 | `@appearance/*` | `src/appearance/*` |
-| `@context/*` | `src/context/*` |
-| `@features/*` | `src/features/*` |
-| `@hooks/*` | `src/hooks/*` |
-| `@layouts/*` | `src/layouts/*` |
-| `@pages/*` | `src/pages/*` |
-| `@services/*` | `src/services/*` |
-| `@store/*` | `src/store/*` |
-| `@ui/*` | `src/ui/*` |
-| `@utils/*` | `src/utils/*` |
+| `@context/*`    | `src/context/*`    |
+| `@features/*`   | `src/features/*`   |
+| `@hooks/*`      | `src/hooks/*`      |
+| `@layouts/*`    | `src/layouts/*`    |
+| `@pages/*`      | `src/pages/*`      |
+| `@services/*`   | `src/services/*`   |
+| `@store/*`      | `src/store/*`      |
+| `@ui/*`         | `src/ui/*`         |
+| `@utils/*`      | `src/utils/*`      |
 
 Import from barrel paths where available (e.g. `@/features`, `@/hooks`, `@/context`) rather than deep subpaths.
 

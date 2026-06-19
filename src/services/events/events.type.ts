@@ -1,3 +1,14 @@
+import type { ISpeaker } from '../speakers/speakers.type';
+
+export interface EventFilters {
+  categories: string[];
+  dateRange: string;
+  priceMin: number;
+  priceMax: number;
+  sortBy: string;
+  searchQuery: string;
+}
+
 export type TTicketTier = {
   id: string;
   name: string;
@@ -32,16 +43,6 @@ export type TEventHighlight = {
   accent?: 'primary' | 'secondary' | 'default';
 };
 
-export interface IPaginatedResponse<T> {
-  first: number;
-  prev: number | null;
-  next: number | null;
-  last: number;
-  pages: number;
-  items: number;
-  data: T[];
-}
-
 export interface IEvent {
   id: string;
   title: string;
@@ -71,3 +72,31 @@ export interface IEvent {
   ticketTiers: TTicketTier[];
   schedule: TSchedule[];
 }
+
+export interface EventsState {
+  currentPage: number;
+  filters: EventFilters;
+}
+
+export type TPurchaseTicketPayload = {
+  event: IEvent;
+  tierId: string;
+  quantity: number;
+  attendees: import('../bookings/bookings.type').TBookingAttendee[];
+  userId: string;
+};
+
+export type TPurchaseTicketResult = {
+  event: IEvent;
+  booking: import('../bookings/bookings.type').IBooking;
+  bookingReference: string;
+};
+
+export type EventsLoaderData = {
+  events: IEvent[];
+};
+
+export type EventDetailsLoaderData = {
+  event: IEvent;
+  speakers: Promise<ISpeaker[]>;
+};

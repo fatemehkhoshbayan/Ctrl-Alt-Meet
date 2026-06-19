@@ -1,11 +1,9 @@
 import { Star } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { toast } from 'sonner';
 
 import { useAuth } from '@/hooks';
 import { cn } from '@/lib';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { toggleFavorite } from '@/store/favorites';
+import { useFavoritesByUserId, useAddFavorite, useRemoveFavorite } from '@/services';
 import { IconButton } from '@/ui';
 
 interface IFavoriteButtonProps {
@@ -15,13 +13,14 @@ interface IFavoriteButtonProps {
 }
 
 export default function FavoriteButton({ eventId, size = 20, className }: IFavoriteButtonProps) {
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const { user } = useAuth();
-  const isFavorite = useAppSelector(state =>
-    state.favorites.items.some(f => f.eventId === eventId),
-  );
+  const { data: favorites = [] } = useFavoritesByUserId(user?.id);
+  const { mutate: addFavorite } = useAddFavorite();
+  const { mutate: removeFavorite } = useRemoveFavorite();
+
+  const isFavorite = favorites.some(favorite => favorite.eventId === eventId);
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -32,13 +31,12 @@ export default function FavoriteButton({ eventId, size = 20, className }: IFavor
       return;
     }
 
-    dispatch(toggleFavorite({ userId: user.id, eventId })).then(result => {
-      if (toggleFavorite.fulfilled.match(result)) {
-        const message =
-          result.payload.action === 'added' ? 'Added to favorites' : 'Removed from favorites';
-        toast.success(message);
-      }
-    });
+    if (isFavorite) {
+      const favoriteId = favorites.find(favorite => favorite.eventId === eventId)?.id;
+      if (favoriteId) removeFavorite(favoriteId);
+    } else {
+      addFavorite({ userId: user.id, eventId });
+    }
   };
 
   return (

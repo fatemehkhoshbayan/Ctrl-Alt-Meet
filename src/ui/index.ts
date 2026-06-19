@@ -6,3 +6,4 @@ export { default as Tab } from './Tab';
 export * from './Dialog';
 export * from './form';
 export { default as Card, type ICardProps } from './Card';
+export { default as Link } from './Link';

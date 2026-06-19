@@ -6,7 +6,8 @@ import { toast } from 'sonner';
 
 import { useAuth } from '@/hooks';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { purchaseTicket, resetPurchaseStatus } from '@/store/bookings';
+import { resetPurchaseStatus, setPurchaseError, setPurchaseStatus } from '@/store/bookings';
+import { buildCreateBookingPayload, useCreateBooking, usePurchaseTicket } from '@/services';
 import { getPassSchema } from '@/schemas';
 import type { IEvent, TTicketTier } from '@/services';
 import type { TAttendeesFormValues, TBookingStep } from '@/features';
@@ -37,6 +38,8 @@ export function useRegistrationForm({
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { user } = useAuth();
+  const { mutate: purchaseEventTickets, isPending: isUpdatingTickets } = usePurchaseTicket();
+  const { mutate: createBooking, isPending: isCreatingBooking } = useCreateBooking();
 
   const purchaseStatus = useAppSelector(bookingState => bookingState.bookings.purchaseStatus);
 
@@ -101,23 +104,36 @@ export function useRegistrationForm({
 
   const onConfirmBooking = handleSubmit(async values => {
     if (!selectedTier || !user) return;
-    const result = await dispatch(
-      purchaseTicket({
+
+    const updatedTiers = event.ticketTiers.map(tier =>
+      tier.id === selectedTier.id
+        ? { ...tier, available: Math.max(0, tier.available - quantity) }
+        : tier,
+    );
+
+    dispatch(setPurchaseStatus('loading'));
+
+    try {
+      purchaseEventTickets({ eventId: event.id, updatedTiers });
+
+      const payload = buildCreateBookingPayload({
         event,
         tierId: selectedTier.id,
         quantity,
         attendees: values.attendees,
         userId: user.id,
-      }),
-    );
-    if (purchaseTicket.fulfilled.match(result)) {
-      const { bookingReference, booking } = result.payload;
+      });
+
+      createBooking(payload);
+
+      dispatch(setPurchaseStatus('idle'));
       toast.success('Booking Confirmed!', {
-        description: `${booking.eventTitle} · ${booking.ticketTierName} · ${quantity} ticket${quantity > 1 ? 's' : ''} · $${booking.totalPrice.toLocaleString()} — Ref: ${bookingReference}`,
+        description: `${event.title} · ${selectedTier.name} · ${quantity} ticket${quantity > 1 ? 's' : ''}`,
         duration: 8000,
       });
-      dispatch(resetPurchaseStatus());
-      navigate('/my-booking');
+      navigate('/my-bookings');
+    } catch (error) {
+      dispatch(setPurchaseError(error instanceof Error ? error.message : 'Booking failed'));
     }
   });
 
@@ -139,7 +155,7 @@ export function useRegistrationForm({
     totalAmount,
     maxQuantity,
     isStep1Valid,
-    isLoading: purchaseStatus === 'loading',
+    isLoading: isUpdatingTickets || isCreatingBooking || purchaseStatus === 'loading',
     purchaseStatus,
     // handlers
     handleSelectTier,

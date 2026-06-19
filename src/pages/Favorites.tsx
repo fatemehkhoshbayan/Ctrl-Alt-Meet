@@ -1,10 +1,18 @@
-import { FavoritesHeroSection, FavoritesList, RequireAuth } from '@/features';
+import { Suspense, use } from 'react';
+import { useLoaderData } from 'react-router-dom';
+import { FavoritesHeroSection, FavoritesList } from '@/features';
+import { LoadingState } from '@/shared';
+import type { FavoritesLoaderData } from '@/services';
 
 export default function Favorites() {
+  const { events, favorites } = useLoaderData() as FavoritesLoaderData;
+
   return (
-    <RequireAuth>
+    <>
       <FavoritesHeroSection />
-      <FavoritesList />
-    </RequireAuth>
+      <Suspense fallback={<LoadingState message="Loading favorites..." />}>
+        <FavoritesList events={events} favorites={use(favorites)} />
+      </Suspense>
+    </>
   );
 }
