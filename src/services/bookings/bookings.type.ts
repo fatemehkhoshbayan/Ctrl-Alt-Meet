@@ -49,3 +49,8 @@ export type PurchaseTicketPayload = {
   attendees: TBookingAttendee[];
   userId: string;
 };
+
+export type MyBookingsLoaderData = {
+  events: IEvent[];
+  bookings: IBooking[];
+};

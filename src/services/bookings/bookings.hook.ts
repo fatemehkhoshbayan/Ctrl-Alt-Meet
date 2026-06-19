@@ -3,6 +3,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import bookingsServices from './bookings.services';
 import queryKeys from '../enums';
 import type { TCreateBookingPayload } from './bookings.type';
+import { bookingsByUserIdQueryOptions } from './bookings.queries';
 
 const BOOKINGS_STALE_TIME = 60_000;
 
@@ -16,10 +17,8 @@ export function useBookingsQuery() {
 
 export function useBookingsByUserId(userId: string | undefined) {
   return useQuery({
-    queryKey: [queryKeys.GET_BOOKINGS_BY_USER_ID, userId],
-    queryFn: () => bookingsServices.getBookingsByUserId(userId!),
+    ...bookingsByUserIdQueryOptions(userId!),
     enabled: Boolean(userId),
-    staleTime: BOOKINGS_STALE_TIME,
   });
 }
 
@@ -37,8 +36,6 @@ export function useCreateBooking() {
       toast.error(`Failed to create booking: ${error.message ?? 'Unknown error'}`);
     },
   });
-
-  // return { mutate, isPending };
 }
 
 export function useCancelBooking() {
@@ -54,6 +51,4 @@ export function useCancelBooking() {
       toast.error(`Failed to cancel booking: ${error.message ?? 'Unknown error'}`);
     },
   });
-
-  // return { mutate, isPending };
 }
