@@ -1,19 +1,10 @@
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import type { IUser } from '@/services';
 import { AuthContext, AUTH_STORAGE_KEY } from './AuthContext';
-
-function readStoredUser(): IUser | null {
-  try {
-    const stored = localStorage.getItem(AUTH_STORAGE_KEY);
-    if (!stored) return null;
-    return JSON.parse(stored) as IUser;
-  } catch {
-    return null;
-  }
-}
+import { getStoredUser } from './getStoredUser';
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<IUser | null>(() => readStoredUser());
+  const [user, setUser] = useState<IUser | null>(() => getStoredUser());
 
   useEffect(() => {
     if (user) {
