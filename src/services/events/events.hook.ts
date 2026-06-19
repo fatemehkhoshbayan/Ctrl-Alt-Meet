@@ -2,16 +2,13 @@ import { toast } from 'sonner';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import eventsServices from './events.services';
 import queryKeys from '../enums';
-import type { EventFilters, TTicketTier } from './events.type';
+import type { TTicketTier } from './events.type';
+import { eventByIdQueryOptions, eventsQueryOptions } from './events.queries';
 
 const EVENTS_STALE_TIME = 30_000;
 
 export function useEvents() {
-  return useQuery({
-    queryKey: [queryKeys.GET_EVENTS],
-    queryFn: eventsServices.getEvents,
-    staleTime: EVENTS_STALE_TIME,
-  });
+  return useQuery(eventsQueryOptions());
 }
 
 export function useFeaturedEvents() {
@@ -24,18 +21,8 @@ export function useFeaturedEvents() {
 
 export function useEventById(id: string | undefined) {
   return useQuery({
-    queryKey: [queryKeys.GET_EVENT_DETAILS, id],
-    queryFn: () => eventsServices.getEventById(id!),
+    ...eventByIdQueryOptions(id!),
     enabled: Boolean(id),
-    staleTime: EVENTS_STALE_TIME,
-  });
-}
-
-export function usePaginatedEvents(page: number, perPage: number, filters?: EventFilters) {
-  return useQuery({
-    queryKey: [queryKeys.GET_PAGINATED_EVENTS, page, perPage, filters],
-    queryFn: () => eventsServices.getPaginated(page, perPage, filters),
-    staleTime: EVENTS_STALE_TIME,
   });
 }
 

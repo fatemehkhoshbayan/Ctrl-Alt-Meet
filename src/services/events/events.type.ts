@@ -1,3 +1,5 @@
+import type { ISpeaker } from '../speakers/speakers.type';
+
 export interface EventFilters {
   categories: string[];
   dateRange: string;
@@ -40,16 +42,6 @@ export type TEventHighlight = {
   featured?: boolean;
   accent?: 'primary' | 'secondary' | 'default';
 };
-
-export interface IPaginatedResponse<T> {
-  first: number;
-  prev: number | null;
-  next: number | null;
-  last: number;
-  pages: number;
-  items: number;
-  data: T[];
-}
 
 export interface IEvent {
   id: string;
@@ -98,4 +90,13 @@ export type TPurchaseTicketResult = {
   event: IEvent;
   booking: import('../bookings/bookings.type').IBooking;
   bookingReference: string;
+};
+
+export type EventsLoaderData = {
+  events: IEvent[];
+};
+
+export type EventDetailsLoaderData = {
+  event: IEvent;
+  speakers: Promise<ISpeaker[]>;
 };
