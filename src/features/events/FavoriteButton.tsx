@@ -32,7 +32,8 @@ export default function FavoriteButton({ eventId, size = 20, className }: IFavor
     }
 
     if (isFavorite) {
-      removeFavorite(favorites.find(favorite => favorite.eventId === eventId)?.id);
+      const favoriteId = favorites.find(favorite => favorite.eventId === eventId)?.id;
+      if (favoriteId) removeFavorite(favoriteId);
     } else {
       addFavorite({ userId: user.id, eventId });
     }

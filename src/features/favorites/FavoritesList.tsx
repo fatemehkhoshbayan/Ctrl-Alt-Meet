@@ -2,44 +2,26 @@ import { useMemo } from 'react';
 import { Star } from 'lucide-react';
 
 import { EventCard } from '@/features';
-import { EmptyState, ErrorState, LoadingState } from '@/shared';
+import { EmptyState } from '@/shared';
 import { useAuth } from '@/hooks';
-import { useEvents, useFavoritesByUserId } from '@/services';
+import type { IFavorite, IEvent } from '@/services';
 
-export default function FavoritesList() {
+interface IFavoritesListProps {
+  events: IEvent[];
+  favorites: IFavorite[];
+}
+
+export default function FavoritesList({ events, favorites }: IFavoritesListProps) {
   const { user } = useAuth();
-
-  const {
-    data: events = [],
-    isLoading: eventsLoading,
-    isError: eventsIsError,
-    error: eventsError,
-  } = useEvents();
-
-  const {
-    data: favorites = [],
-    isLoading: favoritesLoading,
-    isError: favoritesIsError,
-    error: favoritesError,
-  } = useFavoritesByUserId(user?.id);
 
   const favoriteEvents = useMemo(() => {
     const idSet = new Set(favorites.map(favorite => favorite.eventId));
     return events.filter(event => idSet.has(event.id));
   }, [events, favorites]);
 
-  const isLoading = eventsLoading || favoritesLoading;
-  const error = eventsIsError
-    ? (eventsError?.message ?? 'Failed to load events')
-    : favoritesIsError
-      ? (favoritesError?.message ?? 'Failed to load favorites')
-      : null;
-
   return (
     <section className="px-margin-mobile md:px-margin-desktop mx-auto max-w-7xl py-16">
-      {isLoading && <LoadingState message="Loading favorites..." />}
-      {error && <ErrorState error={error} />}
-      {!isLoading && !error && favoriteEvents.length === 0 && (
+      {favoriteEvents.length === 0 && (
         <EmptyState
           icon={<Star size={48} className="text-tertiary fill-tertiary" />}
           title="No favorites yet"
@@ -50,7 +32,7 @@ export default function FavoritesList() {
           }
         />
       )}
-      {!isLoading && !error && favoriteEvents.length > 0 && (
+      {favoriteEvents.length > 0 && (
         <>
           <p className="text-on-surface-variant font-body-md text-body-md mb-8">
             {favoriteEvents.length} saved event{favoriteEvents.length !== 1 ? 's' : ''}

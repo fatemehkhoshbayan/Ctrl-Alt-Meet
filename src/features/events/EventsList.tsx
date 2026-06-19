@@ -3,19 +3,21 @@ import { SearchX, CalendarOff } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { getFilteredEvents, setFilters, setPage, resetFilters } from '@/store/events';
 import { Select, Pagination, Button } from '@/ui';
-import { EmptyState, ErrorState, LoadingState } from '@/shared';
-import { useEvents, EVENTS_PER_PAGE, DEFAULT_EVENT_FILTERS } from '@/services';
+import { EmptyState } from '@/shared';
+import { EVENTS_PER_PAGE, DEFAULT_EVENT_FILTERS, type IEvent } from '@/services';
 import SideBar from './SideBar';
 import EventCard from './EventCard';
 import { SORT_OPTIONS } from './constant';
 
-export default function EventsList() {
+interface IEventsListProps {
+  events: IEvent[];
+}
+
+export default function EventsList({ events }: IEventsListProps) {
   const dispatch = useAppDispatch();
   const currentPage = useAppSelector(state => state.events.currentPage);
   const filters = useAppSelector(state => state.events.filters);
   const sortBy = filters.sortBy;
-
-  const { data: events = [], isLoading, isError, error, isSuccess } = useEvents();
 
   const { items, totalItems, totalPages } = useMemo(
     () => getFilteredEvents(events, filters, currentPage),
@@ -40,15 +42,13 @@ export default function EventsList() {
 
   return (
     <section className="gap-gutter grid grid-cols-12 justify-center px-20 py-16 lg:px-0">
-      <SideBar className="col-span-3 min-w-80" />
+      <SideBar className="col-span-3 min-w-80" events={events} />
 
       <div className="col-span-12 lg:col-span-9">
         <div className="flex items-center justify-between gap-3 pb-8 lg:mb-0">
           <div className="flex items-center justify-between gap-3">
             <p className="font-body-md text-body-md text-on-surface-variant">
-              {isSuccess
-                ? `Showing ${rangeStart}–${rangeEnd} of ${totalItems} tech events`
-                : 'Loading events…'}
+              {`Showing ${rangeStart}–${rangeEnd} of ${totalItems} tech events`}
             </p>
           </div>
           <Select
@@ -60,11 +60,7 @@ export default function EventsList() {
           />
         </div>
 
-        {isLoading && <LoadingState message="Loading events..." />}
-
-        {isError && <ErrorState error={error?.message} />}
-
-        {isSuccess && items.length === 0 && (
+        {items.length === 0 && (
           <EmptyState
             icon={
               hasActiveFilters ? (
@@ -91,7 +87,7 @@ export default function EventsList() {
           </EmptyState>
         )}
 
-        {isSuccess && items.length > 0 && (
+        {items.length > 0 && (
           <div className="gap-gutter grid grid-cols-1 lg:min-w-3xl lg:grid-cols-2">
             {items.map(event => (
               <EventCard key={event.id} event={event} />

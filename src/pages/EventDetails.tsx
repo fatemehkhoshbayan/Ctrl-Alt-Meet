@@ -1,4 +1,5 @@
-import { useParams } from 'react-router-dom';
+import { Suspense, use } from 'react';
+import { useLoaderData, useRouteLoaderData } from 'react-router-dom';
 import {
   EventDetailsHeroSection,
   HighlightsSection,
@@ -6,33 +7,21 @@ import {
   AboutSection,
   PassSelection,
 } from '@/features';
-import { EmptyState, ErrorState, FallbackPage } from '@/shared';
-import { useEventById, useSpeakersByEventIds } from '@/services';
-import { CalendarOff } from 'lucide-react';
+import { Link } from '@/ui';
+import { LoadingState } from '@/shared';
+import type { EventDetailsLoaderData, EventsLoaderData } from '@/services';
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 
 export default function EventDetails() {
-  const { id } = useParams<{ id: string }>();
+  const { event, speakers } = useLoaderData() as EventDetailsLoaderData;
+  const { events: catalogEvents } = useRouteLoaderData('events-root') as EventsLoaderData;
 
-  const { data: event, isLoading, isError, error } = useEventById(id);
-  const { data: speakers = [] } = useSpeakersByEventIds(event?.speakers);
-
-  if (isLoading) {
-    return <FallbackPage message="Loading event..." />;
-  }
-
-  if (isError) {
-    return <ErrorState error={error?.message ?? 'Failed to load event'} />;
-  }
-
-  if (!event) {
-    return (
-      <EmptyState
-        icon={<CalendarOff size={48} className="text-primary" />}
-        title="No event found"
-        message="The event you are looking for does not exist."
-      />
-    );
-  }
+  const catalogIndex = catalogEvents.findIndex(catalogEvent => catalogEvent.id === event.id);
+  const prevEvent = catalogIndex > 0 ? catalogEvents[catalogIndex - 1] : null;
+  const nextEvent =
+    catalogIndex >= 0 && catalogIndex < catalogEvents.length - 1
+      ? catalogEvents[catalogIndex + 1]
+      : null;
 
   return (
     <>
@@ -40,8 +29,18 @@ export default function EventDetails() {
       <section className="px-margin-mobile md:px-margin-desktop mx-auto grid grid-cols-1 gap-12 p-32 lg:grid-cols-12">
         <div className="space-y-16 lg:col-span-8">
           <AboutSection event={event} />
-          <SpeakersSection speakers={speakers} />
+          <Suspense fallback={<LoadingState message="Loading speakers..." />}>
+            <SpeakersSection speakers={use(speakers)} />
+          </Suspense>
           <HighlightsSection event={event} />
+          {(prevEvent || nextEvent) && (
+            <nav className="border-outline-variant flex justify-between gap-4 border-t pt-8">
+              {prevEvent ? <Link icon={<ArrowLeftIcon size={20} />} event={prevEvent} /> : <span />}
+              {nextEvent ? (
+                <Link icon={<ArrowRightIcon size={20} />} event={nextEvent} iconRight />
+              ) : null}
+            </nav>
+          )}
         </div>
         <PassSelection event={event} />
       </section>

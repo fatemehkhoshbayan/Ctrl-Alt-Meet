@@ -1,4 +1,4 @@
-import { createBrowserRouter, type RouteObject } from 'react-router-dom';
+import { createBrowserRouter, Outlet, type RouteObject } from 'react-router-dom';
 import { RequireAuthOutlet } from '@/features';
 import { MainLayout } from '@/layouts';
 import { FallbackPage, NotFoundState } from '@/shared';
@@ -15,16 +15,33 @@ const router = createBrowserRouter([
     ...routeErrorBoundary,
     children: [
       {
-        index: true,
-        hydrateFallbackElement: <FallbackPage message="Loading events..." />,
-        lazy: () => import('@/pages/Events').then(module => ({ Component: module.default })),
-        ...routeErrorBoundary,
-      },
-      {
-        path: 'events/:id',
-        hydrateFallbackElement: <FallbackPage message="Loading details event..." />,
-        lazy: () => import('@/pages/EventDetails').then(module => ({ Component: module.default })),
-        ...routeErrorBoundary,
+        id: 'events-root',
+        loader: async () => {
+          const { eventsLoader } = await import('@/services');
+          return eventsLoader();
+        },
+        element: <Outlet />,
+        children: [
+          {
+            index: true,
+            hydrateFallbackElement: <FallbackPage message="Loading events..." />,
+            lazy: () => import('@/pages/Events').then(module => ({ Component: module.default })),
+            ...routeErrorBoundary,
+          },
+          {
+            path: 'events/:id',
+            id: 'event-details',
+            hydrateFallbackElement: <FallbackPage message="Loading details event..." />,
+            lazy: async () => {
+              const [{ default: Component }, { eventDetailsLoader }] = await Promise.all([
+                import('@/pages/EventDetails'),
+                import('@/services'),
+              ]);
+              return { Component, loader: eventDetailsLoader };
+            },
+            ...routeErrorBoundary,
+          },
+        ],
       },
       {
         path: 'speakers',
@@ -39,16 +56,25 @@ const router = createBrowserRouter([
         ...routeErrorBoundary,
       },
       {
+        id: 'authenticated',
         element: <RequireAuthOutlet />,
         children: [
           {
             path: 'my-bookings',
+            id: 'my-bookings',
             hydrateFallbackElement: <FallbackPage message="Loading bookings..." />,
-            lazy: () => import('@/pages/MyBooking').then(module => ({ Component: module.default })),
+            lazy: async () => {
+              const [{ default: Component }, { myBookingsLoader }] = await Promise.all([
+                import('@/pages/MyBooking'),
+                import('@/services'),
+              ]);
+              return { Component, loader: myBookingsLoader };
+            },
             ...routeErrorBoundary,
           },
           {
             path: 'registration',
+            id: 'registration',
             hydrateFallbackElement: <FallbackPage message="Loading registration..." />,
             lazy: () =>
               import('@/pages/Registration').then(module => ({ Component: module.default })),
@@ -56,8 +82,15 @@ const router = createBrowserRouter([
           },
           {
             path: 'favorites',
+            id: 'favorites',
             hydrateFallbackElement: <FallbackPage message="Loading favorites..." />,
-            lazy: () => import('@/pages/Favorites').then(module => ({ Component: module.default })),
+            lazy: async () => {
+              const [{ default: Component }, { favoritesLoader }] = await Promise.all([
+                import('@/pages/Favorites'),
+                import('@/services'),
+              ]);
+              return { Component, loader: favoritesLoader };
+            },
             ...routeErrorBoundary,
           },
         ],

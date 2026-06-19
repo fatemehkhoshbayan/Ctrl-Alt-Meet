@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { SlidersHorizontal, X } from 'lucide-react';
 import { cn } from '@/lib';
 import { Button, IconButton, Select } from '@/ui';
-import { useCategories, useEvents, DEFAULT_EVENT_FILTERS } from '@/services';
+import { useCategories, DEFAULT_EVENT_FILTERS, type IEvent } from '@/services';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { getFilteredEvents, setFilters, resetFilters } from '@/store/events';
 import { DATE_RANGE_OPTIONS } from './constant';
@@ -12,13 +12,17 @@ function isPriceFilterActive(priceMin: number, priceMax: number) {
   return priceMin > DEFAULT_EVENT_FILTERS.priceMin || priceMax < DEFAULT_EVENT_FILTERS.priceMax;
 }
 
-export default function SideBar({ className }: { className?: string }) {
+interface ISideBarProps {
+  className?: string;
+  events: IEvent[];
+}
+
+export default function SideBar({ className, events }: ISideBarProps) {
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
   const { data: categories = [] } = useCategories();
   const filters = useAppSelector(state => state.events.filters);
   const currentPage = useAppSelector(state => state.events.currentPage);
-  const { data: events = [] } = useEvents();
 
   const { totalItems } = useMemo(
     () => getFilteredEvents(events, filters, currentPage),
