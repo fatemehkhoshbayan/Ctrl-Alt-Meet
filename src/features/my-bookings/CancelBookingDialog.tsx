@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { AlertTriangle, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 
-import { useCancelBookingMutation, type IBooking, type IEvent } from '@/services';
+import { useCancelBooking, type IBooking, type IEvent } from '@/services';
 import { formatDate } from '@/utils';
 import {
   Button,
@@ -27,7 +27,7 @@ export default function CancelBookingDialog({
   open,
   onOpenChange,
 }: ICancelBookingDialogProps) {
-  const { mutateAsync: cancelBooking, isPending } = useCancelBookingMutation();
+  const { mutate: cancelBooking, isPending } = useCancelBooking();
   const [step, setStep] = useState<1 | 2>(1);
 
   function handleOpenChange(next: boolean) {
@@ -103,8 +103,8 @@ export default function CancelBookingDialog({
               </DialogTitle>
               <DialogDescription className="text-body-lg leading-relaxed">
                 This action cannot be undone. Your tickets for{' '}
-                <span className="text-on-surface font-bold">{event.title}</span> will be released and
-                you will no longer have access to this event.
+                <span className="text-on-surface font-bold">{event.title}</span> will be released
+                and you will no longer have access to this event.
               </DialogDescription>
             </DialogHeader>
 

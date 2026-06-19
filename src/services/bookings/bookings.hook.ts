@@ -2,6 +2,7 @@ import { toast } from 'sonner';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import bookingsServices from './bookings.services';
 import queryKeys from '../enums';
+import type { TCreateBookingPayload } from './bookings.type';
 
 const BOOKINGS_STALE_TIME = 60_000;
 
@@ -13,7 +14,7 @@ export function useBookingsQuery() {
   });
 }
 
-export function useBookingsByUserIdQuery(userId: string | undefined) {
+export function useBookingsByUserId(userId: string | undefined) {
   return useQuery({
     queryKey: [queryKeys.GET_BOOKINGS_BY_USER_ID, userId],
     queryFn: () => bookingsServices.getBookingsByUserId(userId!),
@@ -22,12 +23,12 @@ export function useBookingsByUserIdQuery(userId: string | undefined) {
   });
 }
 
-export function useCreateBookingMutation() {
+export function useCreateBooking() {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationKey: [queryKeys.CREATE_BOOKING],
-    mutationFn: bookingsServices.createBooking,
+    mutationFn: (payload: TCreateBookingPayload) => bookingsServices.createBooking(payload),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [queryKeys.GET_BOOKINGS] });
       queryClient.invalidateQueries({ queryKey: [queryKeys.GET_BOOKINGS_BY_USER_ID] });
@@ -36,20 +37,23 @@ export function useCreateBookingMutation() {
       toast.error(`Failed to create booking: ${error.message ?? 'Unknown error'}`);
     },
   });
+
+  // return { mutate, isPending };
 }
 
-export function useCancelBookingMutation() {
+export function useCancelBooking() {
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationKey: [queryKeys.CANCEL_BOOKING],
-    mutationFn: bookingsServices.cancelBooking,
+    mutationFn: (id: string) => bookingsServices.cancelBooking(id),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [queryKeys.GET_BOOKINGS] });
       queryClient.invalidateQueries({ queryKey: [queryKeys.GET_BOOKINGS_BY_USER_ID] });
     },
     onError: error => {
       toast.error(`Failed to cancel booking: ${error.message ?? 'Unknown error'}`);
     },
   });
+
+  // return { mutate, isPending };
 }

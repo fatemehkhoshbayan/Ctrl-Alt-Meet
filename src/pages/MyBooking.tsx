@@ -1,7 +1,7 @@
 import { MyBookingCards, HeroSection, InspirationSection } from '@/features';
 import { LoadingState, ErrorState } from '@/shared';
 import { useAuth } from '@/hooks';
-import { useBookingsByUserIdQuery, useEventsQuery } from '@/services';
+import { useBookingsByUserId, useEvents } from '@/services';
 import { Tab } from '@/ui';
 
 export default function MyBooking() {
@@ -12,14 +12,14 @@ export default function MyBooking() {
     isLoading: bookingsLoading,
     isError: bookingsIsError,
     error: bookingsError,
-  } = useBookingsByUserIdQuery(user?.id);
+  } = useBookingsByUserId(user?.id);
 
   const {
     data: events = [],
     isLoading: eventsLoading,
     isError: eventsIsError,
     error: eventsError,
-  } = useEventsQuery();
+  } = useEvents();
 
   const today = new Date();
   const upcomingBookings = bookings.filter(

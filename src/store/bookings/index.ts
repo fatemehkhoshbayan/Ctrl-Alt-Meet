@@ -1,6 +1,7 @@
 export { default as bookingsReducer } from './bookings.slice';
 export {
-  createRegistrationBooking,
+  setPurchaseStatus,
+  setPurchaseError,
   resetPurchaseStatus,
   clearBookingSuccess,
 } from './bookings.slice';
