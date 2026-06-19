@@ -3,14 +3,12 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import favoritesServices from './favorites.services';
 import queryKeys from '../enums';
 import type { TCreateFavoritePayload } from './favorites.type';
+import { favoritesByUserIdQueryOptions } from './favorites.queries';
 
-const FAVORITES_STALE_TIME = 30_000;
-
-export function useFavoritesByUserId(userId: string) {
+export function useFavoritesByUserId(userId: string | undefined) {
   return useQuery({
-    queryKey: [queryKeys.GET_FAVORITES_BY_USER_ID, userId],
-    queryFn: () => favoritesServices.getFavoritesByUserId(userId),
-    staleTime: FAVORITES_STALE_TIME,
+    ...favoritesByUserIdQueryOptions(userId!),
+    enabled: Boolean(userId),
   });
 }
 
