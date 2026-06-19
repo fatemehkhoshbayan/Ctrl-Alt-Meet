@@ -1,26 +1,14 @@
-import { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Toaster } from 'sonner';
 import { useAuth, useMediaQuery, useTheme } from '@/hooks';
-import { useAppDispatch } from '@/store/hooks';
-import { clearFavorites, fetchFavorites } from '@/store/favorites';
 import { DesktopHeader, DesktopFooter } from './desktop';
 import { MobileFooter, MobileHeader, MobileBottomNav } from './mobile';
 
 export default function MainLayout() {
-  const dispatch = useAppDispatch();
   const { theme, toggleTheme } = useTheme();
   const { user } = useAuth();
   const navigate = useNavigate();
   const isDesktop = useMediaQuery('(min-width: 1024px)');
-
-  useEffect(() => {
-    if (user) {
-      dispatch(fetchFavorites(user.id));
-    } else {
-      dispatch(clearFavorites());
-    }
-  }, [dispatch, user]);
 
   const handleAvatarClick = () => {
     navigate('/login');

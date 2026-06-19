@@ -4,9 +4,7 @@ import { Star } from 'lucide-react';
 import { EventCard } from '@/features';
 import { EmptyState, ErrorState, LoadingState } from '@/shared';
 import { useAuth } from '@/hooks';
-import { useEventsQuery } from '@/services';
-import { useAppSelector } from '@/store/hooks';
-import { selectFavoriteEventIds } from '@/store/favorites';
+import { useEventsQuery, useFavoritesByUserId } from '@/services';
 
 export default function FavoritesList() {
   const { user } = useAuth();
@@ -18,19 +16,24 @@ export default function FavoritesList() {
     error: eventsError,
   } = useEventsQuery();
 
-  const { status: favoritesStatus, error: favoritesError } = useAppSelector(
-    state => state.favorites,
-  );
-
-  const favoriteEventIds = useAppSelector(selectFavoriteEventIds);
+  const {
+    data: favorites = [],
+    isLoading: favoritesLoading,
+    isError: favoritesIsError,
+    error: favoritesError,
+  } = useFavoritesByUserId(user?.id);
 
   const favoriteEvents = useMemo(() => {
-    const idSet = new Set(favoriteEventIds);
+    const idSet = new Set(favorites.map(favorite => favorite.eventId));
     return events.filter(event => idSet.has(event.id));
-  }, [events, favoriteEventIds]);
+  }, [events, favorites]);
 
-  const isLoading = eventsLoading || favoritesStatus === 'loading';
-  const error = eventsIsError ? (eventsError?.message ?? 'Failed to load events') : favoritesError;
+  const isLoading = eventsLoading || favoritesLoading;
+  const error = eventsIsError
+    ? (eventsError?.message ?? 'Failed to load events')
+    : favoritesIsError
+      ? (favoritesError?.message ?? 'Failed to load favorites')
+      : null;
 
   return (
     <section className="px-margin-mobile md:px-margin-desktop mx-auto max-w-7xl py-16">
