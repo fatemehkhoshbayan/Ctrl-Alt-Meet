@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { getFilteredEvents, setFilters, setPage, resetFilters } from '@/store/events';
 import { Select, Pagination, Button } from '@/ui';
 import { EmptyState, ErrorState, LoadingState } from '@/shared';
-import { useEventsQuery, EVENTS_PER_PAGE, DEFAULT_EVENT_FILTERS } from '@/services';
+import { useEvents, EVENTS_PER_PAGE, DEFAULT_EVENT_FILTERS } from '@/services';
 import SideBar from './SideBar';
 import EventCard from './EventCard';
 import { SORT_OPTIONS } from './constant';
@@ -15,7 +15,7 @@ export default function EventsList() {
   const filters = useAppSelector(state => state.events.filters);
   const sortBy = filters.sortBy;
 
-  const { data: events = [], isLoading, isError, error, isSuccess } = useEventsQuery();
+  const { data: events = [], isLoading, isError, error, isSuccess } = useEvents();
 
   const { items, totalItems, totalPages } = useMemo(
     () => getFilteredEvents(events, filters, currentPage),

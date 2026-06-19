@@ -20,6 +20,7 @@ export * from './speakers/speakers.type';
 
 // bookings
 export { default as bookingsServices } from './bookings/bookings.services';
+export { buildCreateBookingPayload } from './bookings/helpers';
 export * from './bookings/bookings.constants';
 export * from './bookings/bookings.hook';
 export * from './bookings/bookings.type';

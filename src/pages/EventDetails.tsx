@@ -7,14 +7,14 @@ import {
   PassSelection,
 } from '@/features';
 import { EmptyState, ErrorState, FallbackPage } from '@/shared';
-import { useEventByIdQuery, useSpeakersByIdsQuery } from '@/services';
+import { useEventById, useSpeakersByEventIds } from '@/services';
 import { CalendarOff } from 'lucide-react';
 
 export default function EventDetails() {
   const { id } = useParams<{ id: string }>();
 
-  const { data: event, isLoading, isError, error } = useEventByIdQuery(id);
-  const { data: speakers = [] } = useSpeakersByIdsQuery(event?.speakers);
+  const { data: event, isLoading, isError, error } = useEventById(id);
+  const { data: speakers = [] } = useSpeakersByEventIds(event?.speakers);
 
   if (isLoading) {
     return <FallbackPage message="Loading event..." />;

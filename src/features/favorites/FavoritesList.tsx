@@ -4,7 +4,7 @@ import { Star } from 'lucide-react';
 import { EventCard } from '@/features';
 import { EmptyState, ErrorState, LoadingState } from '@/shared';
 import { useAuth } from '@/hooks';
-import { useEventsQuery, useFavoritesByUserId } from '@/services';
+import { useEvents, useFavoritesByUserId } from '@/services';
 
 export default function FavoritesList() {
   const { user } = useAuth();
@@ -14,7 +14,7 @@ export default function FavoritesList() {
     isLoading: eventsLoading,
     isError: eventsIsError,
     error: eventsError,
-  } = useEventsQuery();
+  } = useEvents();
 
   const {
     data: favorites = [],

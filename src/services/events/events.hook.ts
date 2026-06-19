@@ -6,7 +6,7 @@ import type { EventFilters, TTicketTier } from './events.type';
 
 const EVENTS_STALE_TIME = 30_000;
 
-export function useEventsQuery() {
+export function useEvents() {
   return useQuery({
     queryKey: [queryKeys.GET_EVENTS],
     queryFn: eventsServices.getEvents,
@@ -14,7 +14,7 @@ export function useEventsQuery() {
   });
 }
 
-export function useFeaturedEventsQuery() {
+export function useFeaturedEvents() {
   return useQuery({
     queryKey: [queryKeys.GET_FEATURED_EVENTS],
     queryFn: eventsServices.getFeaturedEvents,
@@ -22,7 +22,7 @@ export function useFeaturedEventsQuery() {
   });
 }
 
-export function useEventByIdQuery(id: string | undefined) {
+export function useEventById(id: string | undefined) {
   return useQuery({
     queryKey: [queryKeys.GET_EVENT_DETAILS, id],
     queryFn: () => eventsServices.getEventById(id!),
@@ -31,7 +31,7 @@ export function useEventByIdQuery(id: string | undefined) {
   });
 }
 
-export function usePaginatedEventsQuery(page: number, perPage: number, filters?: EventFilters) {
+export function usePaginatedEvents(page: number, perPage: number, filters?: EventFilters) {
   return useQuery({
     queryKey: [queryKeys.GET_PAGINATED_EVENTS, page, perPage, filters],
     queryFn: () => eventsServices.getPaginated(page, perPage, filters),
@@ -39,7 +39,7 @@ export function usePaginatedEventsQuery(page: number, perPage: number, filters?:
   });
 }
 
-export function usePurchaseTicketMutation() {
+export function usePurchaseTicket() {
   const queryClient = useQueryClient();
 
   return useMutation({

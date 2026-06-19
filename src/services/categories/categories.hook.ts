@@ -4,7 +4,7 @@ import queryKeys from '../enums';
 
 const CATEGORIES_STALE_TIME = 60_000;
 
-export function useCategoriesQuery() {
+export function useCategories() {
   return useQuery({
     queryKey: [queryKeys.GET_CATEGORIES],
     queryFn: categoriesServices.getCategories,

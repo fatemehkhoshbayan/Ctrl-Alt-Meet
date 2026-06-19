@@ -17,6 +17,7 @@ const queryKeys = {
 
   // speakers
   GET_SPEAKERS: 'getSpeakers',
+  GET_SPEAKER_BY_ID: 'getSpeakerById',
 
   // favorites
   GET_FAVORITES_BY_USER_ID: 'getFavoritesByUserId',

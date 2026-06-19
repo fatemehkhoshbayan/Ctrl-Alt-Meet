@@ -2,13 +2,12 @@ import { useEffect, useState } from 'react';
 import { useForm, useFieldArray, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
-import { useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
 import { useAuth } from '@/hooks';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { createRegistrationBooking, resetPurchaseStatus } from '@/store/bookings';
-import { queryKeys, usePurchaseTicketMutation } from '@/services';
+import { resetPurchaseStatus, setPurchaseError, setPurchaseStatus } from '@/store/bookings';
+import { buildCreateBookingPayload, useCreateBooking, usePurchaseTicket } from '@/services';
 import { getPassSchema } from '@/schemas';
 import type { IEvent, TTicketTier } from '@/services';
 import type { TAttendeesFormValues, TBookingStep } from '@/features';
@@ -38,10 +37,9 @@ export function useRegistrationForm({
 }: IUseRegistrationFormOptions) {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const queryClient = useQueryClient();
   const { user } = useAuth();
-  const { mutateAsync: purchaseEventTickets, isPending: isUpdatingTickets } =
-    usePurchaseTicketMutation();
+  const { mutate: purchaseEventTickets, isPending: isUpdatingTickets } = usePurchaseTicket();
+  const { mutate: createBooking, isPending: isCreatingBooking } = useCreateBooking();
 
   const purchaseStatus = useAppSelector(bookingState => bookingState.bookings.purchaseStatus);
 
@@ -107,32 +105,35 @@ export function useRegistrationForm({
   const onConfirmBooking = handleSubmit(async values => {
     if (!selectedTier || !user) return;
 
-    const updatedTiers = event.ticketTiers.map(t =>
-      t.id === selectedTier.id ? { ...t, available: Math.max(0, t.available - quantity) } : t,
+    const updatedTiers = event.ticketTiers.map(tier =>
+      tier.id === selectedTier.id
+        ? { ...tier, available: Math.max(0, tier.available - quantity) }
+        : tier,
     );
 
+    dispatch(setPurchaseStatus('loading'));
+
     try {
-      await purchaseEventTickets({ eventId: event.id, updatedTiers });
+      purchaseEventTickets({ eventId: event.id, updatedTiers });
 
-      const { booking, bookingReference } = await dispatch(
-        createRegistrationBooking({
-          event,
-          tierId: selectedTier.id,
-          quantity,
-          attendees: values.attendees,
-          userId: user.id,
-        }),
-      ).unwrap();
+      const payload = buildCreateBookingPayload({
+        event,
+        tierId: selectedTier.id,
+        quantity,
+        attendees: values.attendees,
+        userId: user.id,
+      });
 
+      createBooking(payload);
+
+      dispatch(setPurchaseStatus('idle'));
       toast.success('Booking Confirmed!', {
-        description: `${booking.eventTitle} · ${booking.ticketTierName} · ${quantity} ticket${quantity > 1 ? 's' : ''} · $${booking.totalPrice.toLocaleString()} — Ref: ${bookingReference}`,
+        description: `${event.title} · ${selectedTier.name} · ${quantity} ticket${quantity > 1 ? 's' : ''}`,
         duration: 8000,
       });
-      await queryClient.invalidateQueries({ queryKey: [queryKeys.GET_BOOKINGS_BY_USER_ID] });
-      dispatch(resetPurchaseStatus());
       navigate('/my-bookings');
-    } catch {
-      // Event PATCH errors toast via usePurchaseTicketMutation; booking errors set purchaseStatus
+    } catch (error) {
+      dispatch(setPurchaseError(error instanceof Error ? error.message : 'Booking failed'));
     }
   });
 
@@ -154,7 +155,7 @@ export function useRegistrationForm({
     totalAmount,
     maxQuantity,
     isStep1Valid,
-    isLoading: isUpdatingTickets || purchaseStatus === 'loading',
+    isLoading: isUpdatingTickets || isCreatingBooking || purchaseStatus === 'loading',
     purchaseStatus,
     // handlers
     handleSelectTier,
