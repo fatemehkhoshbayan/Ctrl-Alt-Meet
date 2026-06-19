@@ -6,7 +6,7 @@ import queryKeys from '../enums';
 
 const SPEAKERS_STALE_TIME = 60_000;
 
-export function useSpeakersQuery() {
+export function useSpeakers() {
   return useQuery({
     queryKey: [queryKeys.GET_SPEAKERS],
     queryFn: speakersServices.getSpeakers,
@@ -14,10 +14,18 @@ export function useSpeakersQuery() {
   });
 }
 
-export function useSpeakersByIdsQuery(ids: string[] | undefined) {
-  const { data: speakers = [], ...query } = useSpeakersQuery();
+export function useSpeakersByEventIds(ids: string[] | undefined) {
+  const { data: speakers = [], ...query } = useSpeakers();
 
   const filteredSpeakers = useMemo(() => getSpeakersByIds(speakers, ids), [speakers, ids]);
 
   return { data: filteredSpeakers, ...query };
+}
+
+export function useSpeakerById(speakerId: string) {
+  return useQuery({
+    queryKey: [queryKeys.GET_SPEAKER_BY_ID, speakerId],
+    queryFn: () => speakersServices.getSpeakerById(speakerId),
+    staleTime: SPEAKERS_STALE_TIME,
+  });
 }

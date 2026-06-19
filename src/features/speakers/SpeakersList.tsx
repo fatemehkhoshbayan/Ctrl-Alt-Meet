@@ -1,11 +1,11 @@
 import { UserSearch } from 'lucide-react';
-import { useSpeakersQuery } from '@/services';
+import { useSpeakers } from '@/services';
 import { EmptyState, ErrorState, LoadingState } from '@/shared';
 import { SpeakerCard } from '.';
 
 export default function SpeakersList() {
   let content: React.ReactNode;
-  const { data: speakers = [], isLoading, isError, error, isSuccess } = useSpeakersQuery();
+  const { data: speakers = [], isLoading, isError, error, isSuccess } = useSpeakers();
 
   if (isLoading) {
     content = <LoadingState message="Loading speakers..." />;
