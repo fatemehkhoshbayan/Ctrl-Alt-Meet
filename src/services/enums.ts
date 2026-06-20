@@ -10,6 +10,7 @@ const queryKeys = {
   GET_FEATURED_EVENTS: 'getFeaturedEvents',
   GET_EVENT_DETAILS: 'getEventDetails',
   PURCHASE_TICKET: 'purchaseTicket',
+  CREATE_EVENT: 'createEvent',
   GET_PAGINATED_EVENTS: 'getPaginatedEvents',
 
   // categories

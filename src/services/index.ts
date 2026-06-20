@@ -7,6 +7,7 @@ export * from './events/events.constants';
 export * from './events/events.hook';
 export * from './events/events.type';
 export * from './events/events.loader';
+export { buildCreateEventPayload } from './events/helpers';
 
 // categories
 export { default as categoriesServices } from './categories/categories.services';

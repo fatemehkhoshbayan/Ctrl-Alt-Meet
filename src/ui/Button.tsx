@@ -9,7 +9,7 @@ interface IButtonProps
   BtnText?: string;
   size?: 'xs' | 'sm' | 'md' | 'lg';
   variant?: 'filled' | 'outlined' | 'link';
-  color?: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
+  color?: 'primary' | 'secondary' | 'tertiary' | 'quaternary' | 'till';
   loading?: boolean;
   'aria-label'?: string;
   type?: 'button' | 'submit' | 'reset';
@@ -24,27 +24,49 @@ const buttonVariants = cva(
     variants: {
       variant: {
         filled: '',
-        outlined: 'border-outline bg-transparent ring-1 ring-offset-0',
-        link: '!bg-transparent border-b border-b-transparent rounded-none hover:border-b-current focus:border-b-current !ring-0',
+        outlined: 'border bg-transparent ring-1 ring-offset-0',
+        link: '!bg-transparent border-0 border-b border-b-transparent rounded-none hover:border-b-current focus:border-b-current !ring-0',
       },
       color: {
-        primary: '',
-        secondary: 'bg-secondary text-on-secondary hover:bg-secondary/90',
-        tertiary: 'bg-tertiary text-gray-500 hover:bg-tertiary/90',
-        quaternary: 'bg-quaternary hover:bg-quaternary/90',
+        primary: 'border-primary text-primary hover:bg-primary/10',
+        secondary: 'border-secondary text-on-secondary hover:bg-secondary/10',
+        tertiary: 'border-tertiary text-gray-500 hover:bg-tertiary/10',
+        quaternary: 'border-quaternary hover:bg-quaternary/10',
+        till: 'border-till text-till hover:bg-till/10',
       },
       size: {
-        xs: 'px-4 py-2 w-9 h-9',
-        sm: 'px-6 py-2',
-        md: 'px-8 py-3',
-        lg: 'px-10 py-4',
+        xs: 'px-6 py-2 w-9 h-9',
+        sm: 'px-8 py-2',
+        md: 'px-10 py-3',
+        lg: 'px-12 py-4 text-body-lg',
       },
     },
     compoundVariants: [
       {
         variant: 'filled',
         color: 'primary',
-        className: 'bg-primary text-on-primary shadow-primary/25 shadow-lg hover:bg-primary/90',
+        className:
+          'border-transparent bg-primary text-on-primary shadow-primary/25 shadow-lg hover:bg-primary/90',
+      },
+      {
+        variant: 'filled',
+        color: 'secondary',
+        className: 'border-transparent bg-secondary text-on-secondary hover:bg-secondary/90',
+      },
+      {
+        variant: 'filled',
+        color: 'tertiary',
+        className: 'border-transparent bg-tertiary text-gray-500 hover:bg-tertiary/90',
+      },
+      {
+        variant: 'filled',
+        color: 'quaternary',
+        className: 'border-transparent bg-quaternary hover:bg-quaternary/90',
+      },
+      {
+        variant: 'filled',
+        color: 'till',
+        className: 'border-transparent bg-till text-on-primary hover:bg-till/90',
       },
     ],
     defaultVariants: {
@@ -74,7 +96,7 @@ export default function Button({
       {...rest}
     >
       {icon}
-      {BtnText && <span>{BtnText}</span>}
+      {BtnText && <p>{BtnText}</p>}
       {children}
       {iconLeft}
     </button>

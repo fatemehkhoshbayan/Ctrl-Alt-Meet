@@ -5,22 +5,22 @@ export default function AboutSection({ event }: IEventProps) {
   return (
     <section id="about">
       <h3 className="font-headline-lg text-headline-lg text-primary gap-stack-gap mb-6 flex items-center">
-        <BadgeInfo size={30} className="text-primary" />
+        <BadgeInfo size={40} className="text-primary" />
         About this event
       </h3>
-      <p className="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">
+      <p className="font-body-lg text-body-xl text-on-surface-variant mb-8 leading-relaxed">
         {event.description}
       </p>
       <div className="gap-gutter lg:gap-stack-gap grid grid-cols-1 lg:grid-cols-2">
         <div className="bg-surface-container border-outline-variant hover:border-primary/50 rounded-lg border p-6 transition-all duration-300">
-          <SquareTerminal size={30} className="text-primary mb-4" />
+          <SquareTerminal size={40} className="text-primary mb-4" />
           <h4 className="font-headline-md text-headline-md mb-2">Live Coding</h4>
           <p className="text-on-surface-variant text-body-lg">
             Watch industry leaders build production-ready systems from scratch on the main stage.
           </p>
         </div>
         <div className="bg-surface-container border-outline-variant hover:border-tertiary/50 rounded-lg border p-6 transition-all duration-300">
-          <Waypoints size={30} className="text-till mb-4" />
+          <Waypoints size={40} className="text-till mb-4" />
           <h4 className="font-headline-md text-headline-md mb-2">Architecture Panels</h4>
           <p className="text-on-surface-variant text-body-lg">
             Participate in heated debates about monolithic vs microservices and the future of

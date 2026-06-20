@@ -3,6 +3,7 @@ import { Search } from 'lucide-react';
 import { SearchBar } from '@/ui';
 import { useAppDispatch } from '@/store/hooks';
 import { setFilters } from '@/store/events';
+import { CreateEventHelper } from '@/shared';
 
 export default function HeroSection() {
   const dispatch = useAppDispatch();
@@ -17,7 +18,7 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative w-full overflow-hidden py-32">
+    <section className="relative w-full overflow-hidden py-40">
       <div aria-hidden className="hero-glow" />
       <div className="relative z-10">
         <div className="flex flex-col items-center space-y-8 text-center">
@@ -33,6 +34,7 @@ export default function HeroSection() {
               feel like home.
             </p>
           </div>
+          <CreateEventHelper />
           <SearchBar
             icon={<Search size={18} />}
             placeholder="Find your next obsession..."
