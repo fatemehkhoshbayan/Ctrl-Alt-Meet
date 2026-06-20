@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { Sun, Moon, User } from 'lucide-react';
 import { LogoWordMark } from '../Logo';
 import { IconButton } from '@/ui';
+import { UserAvatar } from '@/shared';
 import type { IUser } from '@/services';
 
 interface IMobileHeaderProps {
@@ -33,9 +34,15 @@ export default function MobileHeader({
             type="button"
             onClick={onAvatarClick}
             aria-label={user ? `Signed in as ${user.name}` : 'Sign in'}
-            className="bg-primary text-headline-md text-on-primary hover:bg-primary/90 flex h-12 w-12 items-center justify-center rounded-full font-bold transition-colors"
+            className="flex items-center justify-center transition-opacity hover:opacity-90"
           >
-            {user ? user.avatar : <User size={24} />}
+            {user ? (
+              <UserAvatar user={user} sizeClassName="h-12 w-12 text-headline-md" />
+            ) : (
+              <p className="bg-primary text-on-primary hover:bg-primary/90 flex h-12 w-12 items-center justify-center rounded-full transition-colors">
+                <User size={24} />
+              </p>
+            )}
           </button>
         </div>
       </nav>

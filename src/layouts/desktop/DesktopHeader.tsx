@@ -3,6 +3,7 @@ import { Sun, Moon, User } from 'lucide-react';
 import { NAV_LINKS } from '../constant';
 import { LogoWordMark } from '../Logo';
 import { IconButton } from '@/ui';
+import { UserAvatar } from '@/shared';
 import type { IUser } from '@/services';
 
 interface IDesktopHeaderProps {
@@ -48,9 +49,15 @@ export default function DesktopHeader({
             type="button"
             onClick={onAvatarClick}
             aria-label={user ? `Signed in as ${user.name}` : 'Sign in'}
-            className="bg-primary text-on-primary hover:bg-primary/90 flex h-10 w-10 items-center justify-center rounded-full font-bold transition-colors"
+            className="flex items-center justify-center transition-opacity hover:opacity-90"
           >
-            {user ? user.avatar : <User size={20} />}
+            {user ? (
+              <UserAvatar user={user} />
+            ) : (
+              <p className="bg-primary text-on-primary hover:bg-primary/90 flex h-10 w-10 items-center justify-center rounded-full transition-colors">
+                <User size={20} />
+              </p>
+            )}
           </button>
         </div>
       </nav>
