@@ -6,7 +6,8 @@ Ctrl Alt Meet is a React event management platform for browsing conferences, fav
 
 - **React 19** with TypeScript
 - **Vite** for dev server and builds
-- **React Router** for client-side routing
+- **React Router** for client-side routing with route loaders
+- **TanStack React Query** for server-state caching (`staleTime`, `gcTime`) and route loader prefetch
 - **Redux Toolkit** for global state (events, bookings, favorites, speakers, categories)
 - **React Context** for theme and authentication
 - **React Hook Form** + **Zod** for form validation
@@ -84,6 +85,7 @@ npm run server
 ### Events
 
 - Card-based event listing with search, category filters, date range filters (Upcoming, This Week, This Month, etc.), dual-thumb price range slider, and sorting (date, price, popularity)
+- Deferred search on the events hero: typing updates the input immediately while `useDeferredValue` dispatches filter changes so the list is not re-filtered on every keystroke; Enter or the Search button applies the current query immediately
 - Pagination with empty, loading, and error states
 - Event detail pages with description, date, time, location, organizer, ticket tiers, venue info, speakers, and highlights
 - Favorite (star) button on event cards and event details hero (logged-in users)
@@ -93,7 +95,7 @@ npm run server
 - Unified login/register page at `/login` (email, password, name)
 - Existing users: password check; new users: auto-created via json-server
 - `AuthProvider` persists session in `localStorage`
-- Soft route guards: My Bookings, Registration, Favorites, Profile, and Book Tickets require login; guests are redirected to `/login` and returned after sign-in
+- Soft route guards: My Bookings, Book Event, Favorites, Profile, and Book Tickets require login; guests are redirected to `/login` and returned after sign-in
 - Signed-in users see their avatar and name on the login page with a logout option
 - Header avatar links to `/profile` when authenticated
 
@@ -105,7 +107,9 @@ npm run server
 
 ### Ticket booking
 
-- 3-step book event flow: Select Tickets → Attendee Details → Confirmation
+- 3-step book event flow at `/book/:eventId`: Select Tickets → Attendee Details → Confirmation
+- Route loader (`bookingLoader`) prefetches event data via React Query before the page renders
+- Selected ticket tier is passed through navigation state from event details (or login redirect)
 - Real-time price calculation, Zod validation, progress indicator, back/next navigation
 - Booking reference generated on confirm; success toast with reference; redirects to My Bookings
 - Ticket availability updated on the event via PATCH
@@ -113,9 +117,10 @@ npm run server
 ### My Bookings
 
 - User-scoped bookings (`GET /bookings?userId=`)
-- Upcoming and Past Events tabs
+- Upcoming, Past Events, and Cancelled tabs (cancelled bookings are excluded from the other tabs)
 - Ticket details dialog (tier, quantity, total, schedule, attendees)
 - Cancel upcoming bookings via two-step confirmation dialog with success/error toasts
+- Bookings query cache uses matching `staleTime` and `gcTime` (60s) so cached data is retained after components unmount
 
 ### Profile
 
@@ -140,17 +145,17 @@ npm run server
 
 ## Routes
 
-| Path            | Page             | Auth     |
-| --------------- | ---------------- | -------- |
-| `/`             | Events           | Open     |
-| `/events/:id`   | Event details    | Open     |
-| `/speakers`     | Speakers         | Open     |
-| `/login`        | Login / Register | Open     |
-| `/favorites`    | Favorites        | Required |
-| `/my-bookings`  | My Bookings      | Required |
-| `/book-event`   | Ticket booking   | Required |
-| `/create-event` | Create event     | Required |
-| `/profile`      | Profile          | Required |
+| Path              | Page             | Auth     |
+| ----------------- | ---------------- | -------- |
+| `/`               | Events           | Open     |
+| `/events/:id`     | Event details    | Open     |
+| `/speakers`       | Speakers         | Open     |
+| `/login`          | Login / Register | Open     |
+| `/favorites`      | Favorites        | Required |
+| `/my-bookings`    | My Bookings      | Required |
+| `/book/:eventId`  | Book event       | Required |
+| `/create-event`   | Create event     | Required |
+| `/profile`        | Profile          | Required |
 
 ## Project structure
 
@@ -161,10 +166,10 @@ src/
 ├── features/       # Feature modules (auth, events, favorites, bookings, book-event, profile, speakers)
 ├── hooks/          # useAuth, useAuthForm, useProfileUpdate, useRegistrationForm, useTheme, useMediaQuery
 ├── layouts/        # MainLayout, desktop/mobile headers, footers, nav
-├── lib/            # Utility helpers (e.g. cn)
-├── pages/          # Route-level page components
+├── lib/            # Query client, utility helpers (e.g. cn)
+├── pages/          # Route-level page components (Events, BookEvent, MyBooking, etc.)
 ├── schemas/        # Zod schemas (auth, attendee details, profile)
-├── services/       # API clients (events, speakers, categories, bookings, users, favorites)
+├── services/       # API clients, React Query options, and route loaders (events, speakers, categories, bookings, users, favorites)
 ├── shared/         # EmptyState, LoadingState, ErrorState, PassCard, UserAvatar
 ├── store/          # Redux slices and selectors
 ├── ui/             # Button, Dialog, Input, Select, Tab, Pagination, SearchBar
@@ -246,6 +251,15 @@ Imports use path aliases configured in `vite.config.ts` and `tsconfig.app.json`:
 
 Import from barrel paths where available (e.g. `@/features`, `@/hooks`, `@/context`) rather than deep subpaths.
 
+## Data fetching
+
+Route loaders in `src/services/` prefetch data with `queryClient.ensureQueryData` before pages render. React Query caches results with configurable `staleTime` and `gcTime`:
+
+- Global defaults (`src/lib/queryClient.ts`): 30s stale time and gc time
+- Bookings queries: 60s stale time and gc time
+
+Hooks in `src/services/` use the same query options for mutations and client-side refetches.
+
 ## Build and deployment
 
 Run the production build locally:
@@ -284,4 +298,4 @@ tsc -b && vite build
 
 ## Status
 
-Core platform features are implemented: events discovery, authentication, favorites, ticket booking, my bookings with cancellation, user profile management, speakers, theming, and responsive layouts. The app uses json-server locally and Vercel serverless handlers with Upstash Redis in production.
+Core platform features are implemented: events discovery with deferred search, authentication, favorites, ticket booking with route loaders, my bookings with cancellation and a cancelled tab, user profile management, speakers, theming, and responsive layouts. The app uses json-server locally and Vercel serverless handlers with Upstash Redis in production.
