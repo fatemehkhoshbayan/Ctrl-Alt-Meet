@@ -4,3 +4,4 @@ export { default as useMediaQuery } from './useMediaQuery';
 export { useRegistrationForm } from './useRegistrationForm';
 export { useCreateEventForm } from './useCreateEventForm';
 export { useAuthForm } from './useAuthForm';
+export { useProfileUpdate } from './useProfileUpdate';
