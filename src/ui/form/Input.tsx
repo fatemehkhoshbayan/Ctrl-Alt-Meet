@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import type { FieldValues, Path, UseFormRegister } from 'react-hook-form';
 
 interface IInputProps<T extends FieldValues> {
@@ -19,13 +20,15 @@ export default function Input<T extends FieldValues>({
   register,
   className,
 }: IInputProps<T>) {
+  const inputId = useId();
+
   return (
     <div>
-      <label className="text-on-surface-variant text-label-md mb-1 block font-medium" htmlFor={id}>
+      <label className="text-on-surface-variant text-label-md mb-1 block font-medium" htmlFor={inputId}>
         {label}
       </label>
       <input
-        id={id}
+        id={inputId}
         type={type}
         placeholder={placeholder}
         {...register(id)}

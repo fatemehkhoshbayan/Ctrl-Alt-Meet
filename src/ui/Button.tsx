@@ -29,9 +29,9 @@ const buttonVariants = cva(
       },
       color: {
         primary: 'border-primary text-primary hover:bg-primary/10',
-        secondary: 'border-secondary text-on-secondary hover:bg-secondary/10',
-        tertiary: 'border-tertiary text-gray-500 hover:bg-tertiary/10',
-        quaternary: 'border-quaternary hover:bg-quaternary/10',
+        secondary: 'border-secondary text-secondary hover:bg-secondary/10',
+        tertiary: 'border-tertiary text-tertiary hover:bg-tertiary/10',
+        quaternary: 'border-quaternary text-quaternary hover:bg-quaternary/10',
         till: 'border-till text-till hover:bg-till/10',
       },
       size: {
