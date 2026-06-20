@@ -100,3 +100,7 @@ export type EventDetailsLoaderData = {
   event: IEvent;
   speakers: Promise<ISpeaker[]>;
 };
+
+export type BookingLoaderData = {
+  event: IEvent;
+};

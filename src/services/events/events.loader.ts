@@ -2,7 +2,11 @@ import type { LoaderFunctionArgs } from 'react-router-dom';
 import { queryClient } from '@/lib';
 import { speakersByEventIdsQueryOptions } from '../speakers/speakers.queries';
 import { eventByIdQueryOptions, eventsQueryOptions } from './events.queries';
-import type { EventDetailsLoaderData, EventsLoaderData } from './events.type';
+import type {
+  BookingLoaderData,
+  EventDetailsLoaderData,
+  EventsLoaderData,
+} from './events.type';
 
 export async function eventsLoader(): Promise<EventsLoaderData> {
   const events = await queryClient.ensureQueryData(eventsQueryOptions());
@@ -22,4 +26,11 @@ export async function eventDetailsLoader({
   const speakers = queryClient.ensureQueryData(speakersByEventIdsQueryOptions(event.speakers));
 
   return { event, speakers };
+}
+
+export async function bookingLoader({
+  params,
+}: LoaderFunctionArgs): Promise<BookingLoaderData> {
+  const event = await queryClient.ensureQueryData(eventByIdQueryOptions(params.eventId!));
+  return { event };
 }
