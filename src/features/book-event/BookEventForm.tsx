@@ -5,7 +5,7 @@ import { useRegistrationForm } from '@/hooks';
 import type { IRegistrationFormProps } from '../types';
 import { AttendeeDetailsStep, TicketSelectionStep, BookingSummaryStep, FormFooter } from '.';
 
-export default function RegistrationForm({
+export default function BookEventForm({
   event,
   initialTier = null,
   onClose,
@@ -85,7 +85,7 @@ export default function RegistrationForm({
           )}
 
           {optimisticBooking.status === 'confirming' && (
-            <p className="mt-4 rounded-lg bg-primary/10 px-4 py-3 text-sm text-primary">
+            <p className="bg-primary/10 text-primary mt-4 rounded-lg px-4 py-3 text-sm">
               Confirming your booking…
             </p>
           )}

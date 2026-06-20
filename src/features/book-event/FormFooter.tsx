@@ -62,7 +62,7 @@ export default function FormFooter({
 
         <Button
           onClick={isFirstStep ? onCancel : goBack}
-          aria-label={isFirstStep ? 'Cancel registration' : 'Go back to previous step'}
+          aria-label={isFirstStep ? 'Cancel book event' : 'Go back to previous step'}
           size="md"
           className="w-full sm:w-auto"
           color="secondary"
