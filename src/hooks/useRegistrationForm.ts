@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { startTransition, useEffect, useOptimistic, useReducer, useState } from 'react';
 import { useForm, useFieldArray, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
@@ -22,6 +22,25 @@ const STEP_TITLES: Record<TBookingStep, string> = {
   3: 'Confirmation',
 };
 
+type TWizardAction = { type: 'NEXT' } | { type: 'PREV' } | { type: 'RESET' };
+
+function wizardStepReducer(state: TBookingStep, action: TWizardAction): TBookingStep {
+  switch (action.type) {
+    case 'NEXT':
+      return state < TOTAL_STEPS ? ((state + 1) as TBookingStep) : state;
+    case 'PREV':
+      return state > 1 ? ((state - 1) as TBookingStep) : state;
+    case 'RESET':
+      return 1;
+    default:
+      return state;
+  }
+}
+
+export interface IOptimisticBooking {
+  status: 'idle' | 'confirming' | 'confirmed';
+}
+
 // ─── Hook ────────────────────────────────────────────────────────────────────
 
 export interface IUseRegistrationFormOptions {
@@ -38,15 +57,20 @@ export function useRegistrationForm({
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { user } = useAuth();
-  const { mutate: purchaseEventTickets, isPending: isUpdatingTickets } = usePurchaseTicket();
-  const { mutate: createBooking, isPending: isCreatingBooking } = useCreateBooking();
+  const { mutateAsync: purchaseEventTickets, isPending: isUpdatingTickets } = usePurchaseTicket();
+  const { mutateAsync: createBooking, isPending: isCreatingBooking } = useCreateBooking();
 
   const purchaseStatus = useAppSelector(bookingState => bookingState.bookings.purchaseStatus);
 
+  const [optimisticBooking, setOptimisticBooking] = useOptimistic<
+    IOptimisticBooking,
+    IOptimisticBooking
+  >({ status: 'idle' }, (_current, optimisticValue) => optimisticValue);
+
   // ── Step state ──────────────────────────────────────────────────────────
-  const [step, setStep] = useState<TBookingStep>(1);
-  const goToNextStep = () => setStep(s => (s < TOTAL_STEPS ? ((s + 1) as TBookingStep) : s));
-  const goToPreviousStep = () => setStep(s => (s > 1 ? ((s - 1) as TBookingStep) : s));
+  const [step, dispatchStep] = useReducer(wizardStepReducer, 1);
+  const goToNextStep = () => dispatchStep({ type: 'NEXT' });
+  const goToPreviousStep = () => dispatchStep({ type: 'PREV' });
   const isFirstStep = step === 1;
   const isLastStep = step === TOTAL_STEPS;
   const title = STEP_TITLES[step];
@@ -84,6 +108,8 @@ export function useRegistrationForm({
 
   const cancel = () => {
     dispatch(resetPurchaseStatus());
+    dispatchStep({ type: 'RESET' });
+    startTransition(() => setOptimisticBooking({ status: 'idle' }));
     onClose();
   };
 
@@ -112,9 +138,10 @@ export function useRegistrationForm({
     );
 
     dispatch(setPurchaseStatus('loading'));
+    startTransition(() => setOptimisticBooking({ status: 'confirming' }));
 
     try {
-      purchaseEventTickets({ eventId: event.id, updatedTiers });
+      await purchaseEventTickets({ eventId: event.id, updatedTiers });
 
       const payload = buildCreateBookingPayload({
         event,
@@ -124,8 +151,9 @@ export function useRegistrationForm({
         userId: user.id,
       });
 
-      createBooking(payload);
+      await createBooking(payload);
 
+      startTransition(() => setOptimisticBooking({ status: 'confirmed' }));
       dispatch(setPurchaseStatus('idle'));
       toast.success('Booking Confirmed!', {
         description: `${event.title} · ${selectedTier.name} · ${quantity} ticket${quantity > 1 ? 's' : ''}`,
@@ -133,9 +161,12 @@ export function useRegistrationForm({
       });
       navigate('/my-bookings');
     } catch (error) {
+      startTransition(() => setOptimisticBooking({ status: 'idle' }));
       dispatch(setPurchaseError(error instanceof Error ? error.message : 'Booking failed'));
     }
   });
+
+  const isConfirming = optimisticBooking.status === 'confirming';
 
   return {
     // form
@@ -155,7 +186,9 @@ export function useRegistrationForm({
     totalAmount,
     maxQuantity,
     isStep1Valid,
-    isLoading: isUpdatingTickets || isCreatingBooking || purchaseStatus === 'loading',
+    optimisticBooking,
+    isLoading:
+      isUpdatingTickets || isCreatingBooking || purchaseStatus === 'loading' || isConfirming,
     purchaseStatus,
     // handlers
     handleSelectTier,
