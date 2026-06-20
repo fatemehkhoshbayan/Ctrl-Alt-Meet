@@ -7,3 +7,4 @@ export * from './registration';
 export * from './auth';
 export * from './favorites';
 export * from './types';
+export * from './profile';
