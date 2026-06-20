@@ -7,7 +7,7 @@ import { formatDate } from '@/utils';
 import { Button } from '@/ui';
 import { CancelBookingDialog, TicketDetailsDialog } from '.';
 
-export type TBookingCardStatus = 'upcoming' | 'past';
+export type TBookingCardStatus = 'upcoming' | 'past' | 'cancelled';
 
 export default function BookingCard({
   booking,
@@ -19,21 +19,22 @@ export default function BookingCard({
   status?: TBookingCardStatus;
 }) {
   const isPast = status === 'past';
+  const isCancelled = status === 'cancelled';
   const [cancelOpen, setCancelOpen] = useState(false);
-  const canCancel = !isPast && booking.status === 'confirmed';
+  const canCancel = !isPast && !isCancelled && booking.status === 'confirmed';
 
   return (
     <article
       className={cn(
         'group bg-surface-container-low border-outline-variant/30 shadow-primary/10 flex h-full flex-col overflow-hidden rounded-[2rem] border shadow-2xl transition-all duration-300 hover:-translate-y-1',
-        isPast && 'opacity-85',
+        (isPast || isCancelled) && 'opacity-85',
       )}
     >
       <div className="relative h-64 overflow-hidden md:h-72">
         <img
           className={cn(
             'h-full w-full object-cover transition-transform duration-500 group-hover:scale-105',
-            isPast && 'grayscale',
+            (isPast || isCancelled) && 'grayscale',
           )}
           src={event.imageUrl}
           alt={event.title}
@@ -42,13 +43,15 @@ export default function BookingCard({
         <div
           className={cn(
             'font-label-md text-label-md absolute top-5 right-5 flex items-center gap-2 rounded-full px-5 py-2 font-bold shadow-lg',
-            isPast
-              ? 'bg-surface-container-high text-on-surface-variant'
-              : 'bg-secondary text-on-secondary',
+            isCancelled
+              ? 'bg-error-container text-on-error-container'
+              : isPast
+                ? 'bg-surface-container-high text-on-surface-variant'
+                : 'bg-secondary text-on-secondary',
           )}
         >
           <BadgeCheck size={22} />
-          {isPast ? 'Done' : "You're In!"}
+          {isCancelled ? 'Cancelled' : isPast ? 'Done' : "You're In!"}
         </div>
       </div>
 

@@ -47,11 +47,11 @@ export default function PassSelection({ event }: IEventProps) {
               dispatch(resetPurchaseStatus());
               if (!user) {
                 navigate('/login', {
-                  state: { from: '/registration', event, selectedTier },
+                  state: { from: `/book/${event.id}`, event, selectedTier },
                 });
                 return;
               }
-              navigate('/registration', { state: { event, selectedTier } });
+              navigate(`/book/${event.id}`, { state: { event, selectedTier } });
             }}
             className="gap-stack-gap flex w-full"
           />

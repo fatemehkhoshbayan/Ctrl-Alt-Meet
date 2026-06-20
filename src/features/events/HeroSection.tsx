@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useDeferredValue, useEffect } from 'react';
 import { Search } from 'lucide-react';
 import { SearchBar } from '@/ui';
 import { useAppDispatch } from '@/store/hooks';
@@ -8,6 +8,11 @@ import { CreateEventHelper } from '@/shared';
 export default function HeroSection() {
   const dispatch = useAppDispatch();
   const [searchQuery, setSearchQuery] = useState('');
+  const deferredSearchQuery = useDeferredValue(searchQuery);
+
+  useEffect(() => {
+    dispatch(setFilters({ searchQuery: deferredSearchQuery }));
+  }, [deferredSearchQuery, dispatch]);
 
   function handleSearch() {
     dispatch(setFilters({ searchQuery }));

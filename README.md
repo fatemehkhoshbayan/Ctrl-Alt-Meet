@@ -105,7 +105,7 @@ npm run server
 
 ### Ticket booking
 
-- 3-step registration flow: Select Tickets → Attendee Details → Confirmation
+- 3-step book event flow: Select Tickets → Attendee Details → Confirmation
 - Real-time price calculation, Zod validation, progress indicator, back/next navigation
 - Booking reference generated on confirm; success toast with reference; redirects to My Bookings
 - Ticket availability updated on the event via PATCH
@@ -148,7 +148,7 @@ npm run server
 | `/login`        | Login / Register | Open     |
 | `/favorites`    | Favorites        | Required |
 | `/my-bookings`  | My Bookings      | Required |
-| `/registration` | Ticket booking   | Required |
+| `/book-event`   | Ticket booking   | Required |
 | `/create-event` | Create event     | Required |
 | `/profile`      | Profile          | Required |
 
@@ -158,7 +158,7 @@ npm run server
 src/
 ├── appearance/     # Theme tokens, CSS variables, light/dark themes
 ├── context/        # ThemeProvider, AuthProvider
-├── features/       # Feature modules (auth, events, favorites, bookings, registration, profile, speakers)
+├── features/       # Feature modules (auth, events, favorites, bookings, book-event, profile, speakers)
 ├── hooks/          # useAuth, useAuthForm, useProfileUpdate, useRegistrationForm, useTheme, useMediaQuery
 ├── layouts/        # MainLayout, desktop/mobile headers, footers, nav
 ├── lib/            # Utility helpers (e.g. cn)
@@ -186,21 +186,21 @@ Local development uses `json-server` with `db.json`. Production uses serverless 
 
 On first request, each collection is seeded from `db.json` into Redis if the key does not exist yet. After that, Redis is the source of truth for writes.
 
-| Resource      | Purpose                                          | Methods           |
-| ------------- | ------------------------------------------------ | ----------------- |
-| `/events`     | Event listings, details, ticket tiers, schedules | GET, PATCH        |
-| `/speakers`   | Speaker profiles                                 | GET               |
-| `/categories` | Category metadata for filters                    | GET               |
-| `/users`      | User accounts for login, register, and profile updates | GET, POST, PATCH |
-| `/bookings`   | User bookings                                    | GET, POST, PATCH  |
-| `/favorites`  | Per-user favorite events                         | GET, POST, DELETE |
+| Resource      | Purpose                                                | Methods           |
+| ------------- | ------------------------------------------------------ | ----------------- |
+| `/events`     | Event listings, details, ticket tiers, schedules       | GET, PATCH        |
+| `/speakers`   | Speaker profiles                                       | GET               |
+| `/categories` | Category metadata for filters                          | GET               |
+| `/users`      | User accounts for login, register, and profile updates | GET, POST, PATCH  |
+| `/bookings`   | User bookings                                          | GET, POST, PATCH  |
+| `/favorites`  | Per-user favorite events                               | GET, POST, DELETE |
 
 ### Seed users (local demo)
 
-| Email              | Password      | Notes                                                       |
-| ------------------ | ------------- | ----------------------------------------------------------- |
-| `alex@example.com` | (see db.json) | `user-001`, has bookings, favorites, and a sample profile   |
-| `john@example.com` | (see db.json) | `user-002`                                                  |
+| Email              | Password      | Notes                                                     |
+| ------------------ | ------------- | --------------------------------------------------------- |
+| `alex@example.com` | (see db.json) | `user-001`, has bookings, favorites, and a sample profile |
+| `john@example.com` | (see db.json) | `user-002`                                                |
 
 ## Authentication
 

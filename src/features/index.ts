@@ -3,7 +3,7 @@ export * from './event-details';
 export * from './create-event';
 export * from './speakers';
 export * from './my-bookings';
-export * from './registration';
+export * from './book-event';
 export * from './auth';
 export * from './favorites';
 export * from './types';
