@@ -11,6 +11,11 @@ const eventsServices = {
       method: 'PATCH',
       body: JSON.stringify({ ticketTiers: updatedTiers }),
     }),
+  createEvent: (event: IEvent) =>
+    clients<IEvent>(eventsEndpoint.events, {
+      method: 'POST',
+      body: JSON.stringify(event),
+    }),
 };
 
 export default eventsServices;

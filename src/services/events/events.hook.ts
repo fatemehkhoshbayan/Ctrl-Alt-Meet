@@ -44,3 +44,20 @@ export function usePurchaseTicket() {
     },
   });
 }
+
+export function useCreateEvent() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationKey: [queryKeys.CREATE_EVENT],
+    mutationFn: eventsServices.createEvent,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [queryKeys.GET_EVENTS] });
+      queryClient.invalidateQueries({ queryKey: [queryKeys.GET_FEATURED_EVENTS] });
+      queryClient.invalidateQueries({ queryKey: [queryKeys.GET_PAGINATED_EVENTS] });
+    },
+    onError: error => {
+      toast.error(`Failed to create event: ${error.message ?? 'Unknown error'}`);
+    },
+  });
+}
