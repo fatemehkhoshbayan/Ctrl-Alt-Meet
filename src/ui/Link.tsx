@@ -15,7 +15,7 @@ export default function Link({ icon, event, iconRight = false }: ILinkProps) {
     >
       <div className="flex items-center justify-center gap-2 rounded-full border px-4 py-2">
         {!iconRight && icon}
-        <span>{event.title}</span>
+        <p>{event.title}</p>
         {iconRight && icon}
       </div>
     </RouterLink>
