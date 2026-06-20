@@ -57,7 +57,7 @@ export default function BookingCard({
           <span className="bg-primary/15 border-primary/20 text-primary font-label-md text-label-md rounded-full border px-5 py-2 font-bold">
             {event.category}
           </span>
-          <span className="text-on-surface-variant font-label-md text-label-md font-bold">
+          <span className="text-till font-label-md text-label-md font-bold">
             • {formatDate(booking.eventDate)}
           </span>
         </div>
@@ -68,12 +68,12 @@ export default function BookingCard({
 
         <div className="mb-8 flex flex-col gap-3">
           <div className="text-on-surface-variant text-body-lg flex items-center gap-4 font-bold">
-            <MapPin size={24} className="shrink-0" />
+            <MapPin size={24} className="text-till" />
             <span>{event.location}</span>
           </div>
 
           <div className="text-on-surface-variant text-body-lg flex items-center gap-4 font-bold">
-            <CalendarClock size={24} className="shrink-0" />
+            <CalendarClock size={24} className="text-secondary" />
             <span>
               {event.time} - {event.endTime}
             </span>
