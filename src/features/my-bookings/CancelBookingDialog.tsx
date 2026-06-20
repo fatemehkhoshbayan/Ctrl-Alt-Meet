@@ -35,14 +35,13 @@ export default function CancelBookingDialog({
     onOpenChange(next);
   }
 
-  async function handleConfirmCancel() {
-    try {
-      await cancelBooking(booking.id);
-      toast.success('Booking cancelled successfully');
-      handleOpenChange(false);
-    } catch {
-      toast.error('Could not cancel booking. Please try again.');
-    }
+  function handleConfirmCancel() {
+    cancelBooking(booking.id, {
+      onSuccess: () => {
+        toast.success('Booking cancelled successfully');
+        handleOpenChange(false);
+      },
+    });
   }
 
   return (

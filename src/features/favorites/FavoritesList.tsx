@@ -4,15 +4,15 @@ import { Star } from 'lucide-react';
 import { EventCard } from '@/features';
 import { EmptyState } from '@/shared';
 import { useAuth } from '@/hooks';
-import type { IFavorite, IEvent } from '@/services';
+import { useFavoritesByUserId, type IEvent } from '@/services';
 
 interface IFavoritesListProps {
   events: IEvent[];
-  favorites: IFavorite[];
 }
 
-export default function FavoritesList({ events, favorites }: IFavoritesListProps) {
+export default function FavoritesList({ events }: IFavoritesListProps) {
   const { user } = useAuth();
+  const { data: favorites = [] } = useFavoritesByUserId(user?.id);
 
   const favoriteEvents = useMemo(() => {
     const idSet = new Set(favorites.map(favorite => favorite.eventId));

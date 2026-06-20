@@ -27,6 +27,7 @@ export default function RegistrationForm({
     isLastStep,
     isLoading,
     purchaseStatus,
+    optimisticBooking,
     handleSelectTier,
     setQuantity,
     goBack,
@@ -81,6 +82,18 @@ export default function RegistrationForm({
               totalAmount={totalAmount}
               attendees={attendeeValues}
             />
+          )}
+
+          {optimisticBooking.status === 'confirming' && (
+            <p className="mt-4 rounded-lg bg-primary/10 px-4 py-3 text-sm text-primary">
+              Confirming your booking…
+            </p>
+          )}
+
+          {optimisticBooking.status === 'confirmed' && (
+            <p className="mt-4 rounded-lg bg-green-500/10 px-4 py-3 text-sm text-green-400">
+              Booking confirmed! Redirecting to your bookings…
+            </p>
           )}
 
           {purchaseStatus === 'failed' && (

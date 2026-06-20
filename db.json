@@ -2587,11 +2587,6 @@
       "userId": "BWCeeER-W1g",
       "eventId": "evt-010",
       "id": "D8sWGovqkXA"
-    },
-    {
-      "userId": "BWCeeER-W1g",
-      "eventId": "JxK2ygaiFd8",
-      "id": "NseDEMcy144"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
