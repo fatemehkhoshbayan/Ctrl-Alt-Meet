@@ -54,3 +54,9 @@ export interface IBookingSummaryStep {
   totalAmount: number;
   attendees: TAttendeeFormValues[];
 }
+
+export type TCreateEventStep = 1 | 2 | 3 | 4 | 5;
+
+export interface ICreateEventFormProps {
+  onCancel: () => void;
+}

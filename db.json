@@ -891,7 +891,7 @@
             "Q&A access",
             "60-day recordings"
           ],
-          "available": 1999,
+          "available": 1997,
           "total": 2000
         }
       ],
@@ -1659,6 +1659,194 @@
           "type": "social"
         }
       ]
+    },
+    {
+      "id": "GuyRVDUpUYI",
+      "title": "Ctrl Alt Meet Launch Night 2026",
+      "slug": "ctrl-alt-meet-launch-night-2026",
+      "description": "Join us for the official launch of Ctrl Alt Meet — a happy hour for builders, creators, and engineers. Expect lightning talks on side projects, live demos, mentor office hours, and plenty of time to meet people who actually ship things. Drinks and snacks included.",
+      "shortDescription": "An evening of demos, lightning talks, and high-fives for Toronto’s builder community.",
+      "date": "2026-11-14",
+      "endDate": "2026-11-14",
+      "time": "18:00",
+      "endTime": "22:00",
+      "timezone": "EST",
+      "location": "\t MaRS Discovery District, Toronto, ON, Canada",
+      "venue": "MaRS Discovery District",
+      "city": "Toronto, ON",
+      "country": "Canada",
+      "category": "Conference",
+      "tags": [
+        "Community",
+        "Networking",
+        "Lightning Talks",
+        "Toronto"
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80",
+      "venueImage": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80",
+      "organizer": {
+        "name": "reza takhshid",
+        "avatar": "RT",
+        "email": "test@test.com",
+        "website": ""
+      },
+      "highlights": [],
+      "speakers": [],
+      "isFeatured": false,
+      "isFavorite": false,
+      "attendeeCount": 0,
+      "maxAttendees": 150,
+      "ticketTiers": [
+        {
+          "id": "tier-new-1",
+          "name": "Early Bird",
+          "price": 0,
+          "description": "Free entry for the first 50 attendees — includes drinks and snacks",
+          "perks": [
+            "Drinks",
+            "Snacks",
+            "Lightning talks",
+            "Networking"
+          ],
+          "available": 50,
+          "total": 50
+        },
+        {
+          "id": "tier-new-2",
+          "name": "General Admission",
+          "price": 25,
+          "description": "Full evening access with drinks, talks, and networking",
+          "perks": [
+            "Drinks",
+            "Snacks",
+            "All talks",
+            "Mentor office hours"
+          ],
+          "available": 80,
+          "total": 80
+        },
+        {
+          "id": "tier-new-3",
+          "name": "VIP Builder Pass",
+          "price": 75,
+          "description": "Priority seating, speaker meet & greet, and exclusive swag",
+          "perks": [
+            "Everything in GA",
+            "Speaker meet & greet",
+            "VIP swag bag",
+            "Priority seating"
+          ],
+          "available": 20,
+          "total": 20
+        }
+      ],
+      "schedule": []
+    },
+    {
+      "id": "JxK2ygaiFd8",
+      "title": "Ctrl Alt Meet Launch Night 2026",
+      "slug": "ctrl-alt-meet-launch-night-2026",
+      "description": "Join us for the official launch of Ctrl Alt Meet — a happy hour for builders, creators, and engineers. Expect lightning talks on side projects, live demos, mentor office hours, and plenty of time to meet people who actually ship things. Drinks and snacks included.",
+      "shortDescription": "An evening of demos, lightning talks, and high-fives for Toronto’s builder community.",
+      "date": "2026-11-14",
+      "endDate": "2026-11-14",
+      "time": "17:00",
+      "endTime": "22:00",
+      "timezone": "EST",
+      "location": "MaRS Discovery District, Toronto, ON, Canada",
+      "venue": "MaRS Discovery District",
+      "city": "Toronto, ON",
+      "country": "Canada",
+      "category": "Conference",
+      "tags": [
+        "Community",
+        "Networking",
+        "Lightning Talks"
+      ],
+      "imageUrl": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80",
+      "venueImage": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80",
+      "organizer": {
+        "name": "reza takhshid",
+        "avatar": "RT",
+        "email": "test@test.com",
+        "website": ""
+      },
+      "highlights": [
+        {
+          "id": "hl-new-1",
+          "title": "Lightning Talks",
+          "description": "Five-minute demos from local builders shipping real side projects.",
+          "icon": "zap",
+          "accent": "primary"
+        },
+        {
+          "id": "hl-new-2",
+          "title": "Mentor Office Hours",
+          "description": "Book 15-minute slots with senior engineers for portfolio and career feedback.",
+          "icon": "users"
+        },
+        {
+          "id": "hl-new-3",
+          "title": "Launch Night Social",
+          "description": "Drinks, snacks, and high-fives to celebrate the Ctrl Alt Meet community.",
+          "icon": "sparkles",
+          "image": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=80",
+          "featured": true
+        }
+      ],
+      "speakers": [
+        "spk-005",
+        "spk-004"
+      ],
+      "isFeatured": false,
+      "isFavorite": false,
+      "attendeeCount": 0,
+      "maxAttendees": 150,
+      "ticketTiers": [
+        {
+          "id": "tier-new-1",
+          "name": "Early Bird",
+          "price": 0,
+          "description": "Free entry for the first 50 attendees — includes drinks and snacks",
+          "perks": [
+            "Drinks",
+            "Snacks",
+            "Lightning talks",
+            "Networking"
+          ],
+          "available": 50,
+          "total": 50
+        },
+        {
+          "id": "tier-new-2",
+          "name": "General Admission",
+          "price": 25,
+          "description": "Full evening access with drinks, talks, and networking",
+          "perks": [
+            "Drinks",
+            "Snacks",
+            "All talks",
+            "Mentor office hours"
+          ],
+          "available": 80,
+          "total": 80
+        },
+        {
+          "id": "tier-new-3",
+          "name": "VIP Builder Pass",
+          "price": 75,
+          "description": "Priority seating, speaker meet & greet, and exclusive swag",
+          "perks": [
+            "Everything in GA",
+            "Speaker meet & greet",
+            "VIP swag bag",
+            "Priority seating"
+          ],
+          "available": 20,
+          "total": 20
+        }
+      ],
+      "schedule": []
     }
   ],
   "speakers": [
@@ -2258,6 +2446,52 @@
         }
       ],
       "id": "wybSSUIbrHM"
+    },
+    {
+      "userId": "BWCeeER-W1g",
+      "eventId": "evt-009",
+      "eventTitle": "She Codes: Women in Tech Summit 2026",
+      "eventDate": "2026-06-23",
+      "eventLocation": "Adobe HQ, San Jose, CA, United States",
+      "ticketTierId": "tier-009-virtual",
+      "ticketTierName": "Virtual",
+      "quantity": 1,
+      "unitPrice": 49,
+      "totalPrice": 49,
+      "status": "cancelled",
+      "bookingReference": "CAM-8S4V-2026",
+      "bookedAt": "2026-06-19T20:08:27.795Z",
+      "attendees": [
+        {
+          "name": "reza takhshid",
+          "email": "test@test.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "60Mpo9A8S2I"
+    },
+    {
+      "userId": "BWCeeER-W1g",
+      "eventId": "evt-009",
+      "eventTitle": "She Codes: Women in Tech Summit 2026",
+      "eventDate": "2026-06-23",
+      "eventLocation": "Adobe HQ, San Jose, CA, United States",
+      "ticketTierId": "tier-009-virtual",
+      "ticketTierName": "Virtual",
+      "quantity": 1,
+      "unitPrice": 49,
+      "totalPrice": 49,
+      "status": "confirmed",
+      "bookingReference": "CAM-P42Q-2026",
+      "bookedAt": "2026-06-19T20:10:51.365Z",
+      "attendees": [
+        {
+          "name": "reza takhshid",
+          "email": "test@test.com",
+          "phone": "16477658594"
+        }
+      ],
+      "id": "k2hZMikmU-Q"
     }
   ],
   "categories": [
@@ -2351,8 +2585,13 @@
     },
     {
       "userId": "BWCeeER-W1g",
-      "eventId": "evt-003",
-      "id": "kSo1GgA4r9c"
+      "eventId": "evt-010",
+      "id": "D8sWGovqkXA"
+    },
+    {
+      "userId": "BWCeeER-W1g",
+      "eventId": "JxK2ygaiFd8",
+      "id": "NseDEMcy144"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
