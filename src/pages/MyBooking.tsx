@@ -12,7 +12,10 @@ export default function MyBooking() {
   const upcomingBookings = bookings.filter(
     booking => booking.status !== 'cancelled' && new Date(booking.eventDate) >= today,
   );
-  const pastBookings = bookings.filter(booking => new Date(booking.eventDate) < today);
+  const pastBookings = bookings.filter(
+    booking => booking.status !== 'cancelled' && new Date(booking.eventDate) < today,
+  );
+  const cancelledBookings = bookings.filter(booking => booking.status === 'cancelled');
 
   if (!user) return null;
 
@@ -33,6 +36,13 @@ export default function MyBooking() {
             id: 'past',
             label: 'Past Events',
             content: <MyBookingCards bookings={pastBookings} events={events} status="past" />,
+          },
+          {
+            id: 'cancelled',
+            label: 'Cancelled',
+            content: (
+              <MyBookingCards bookings={cancelledBookings} events={events} status="cancelled" />
+            ),
           },
         ]}
       />

@@ -73,11 +73,16 @@ const router = createBrowserRouter([
             ...routeErrorBoundary,
           },
           {
-            path: 'registration',
-            id: 'registration',
-            hydrateFallbackElement: <FallbackPage message="Loading registration..." />,
-            lazy: () =>
-              import('@/pages/Registration').then(module => ({ Component: module.default })),
+            path: 'book/:eventId',
+            id: 'book-event',
+            hydrateFallbackElement: <FallbackPage message="Loading book event form..." />,
+            lazy: async () => {
+              const [{ default: Component }, { bookingLoader }] = await Promise.all([
+                import('@/pages/BookEvent'),
+                import('@/services'),
+              ]);
+              return { Component, loader: bookingLoader };
+            },
             ...routeErrorBoundary,
           },
           {
