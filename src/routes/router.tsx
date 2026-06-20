@@ -93,6 +93,14 @@ const router = createBrowserRouter([
             },
             ...routeErrorBoundary,
           },
+          {
+            path: 'create-event',
+            id: 'create-event',
+            hydrateFallbackElement: <FallbackPage message="Creating event..." />,
+            lazy: () =>
+              import('@/pages/CreateEvent').then(module => ({ Component: module.default })),
+            ...routeErrorBoundary,
+          },
         ],
       },
       {
