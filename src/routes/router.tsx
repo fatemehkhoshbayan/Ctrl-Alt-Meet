@@ -101,6 +101,19 @@ const router = createBrowserRouter([
               import('@/pages/CreateEvent').then(module => ({ Component: module.default })),
             ...routeErrorBoundary,
           },
+          {
+            path: 'profile',
+            id: 'profile',
+            hydrateFallbackElement: <FallbackPage message="Loading profile..." />,
+            lazy: async () => {
+              const [{ default: Component }, { profileLoader }] = await Promise.all([
+                import('@/pages/Profile'),
+                import('@/services'),
+              ]);
+              return { Component, loader: profileLoader };
+            },
+            ...routeErrorBoundary,
+          },
         ],
       },
       {
