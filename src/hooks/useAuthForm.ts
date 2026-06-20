@@ -57,8 +57,8 @@ export function useAuthForm() {
       }
 
       const state = location.state as ILoginLocationState | null;
-      if (state?.from === '/registration' && state.event) {
-        navigate('/registration', {
+      if (state?.from === '/book-event' && state.event) {
+        navigate('/book-event', {
           state: { event: state.event, selectedTier: state.selectedTier ?? null },
         });
       } else if (state?.from) {
