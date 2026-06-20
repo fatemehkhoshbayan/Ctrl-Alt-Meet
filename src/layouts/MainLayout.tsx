@@ -11,7 +11,7 @@ export default function MainLayout() {
   const isDesktop = useMediaQuery('(min-width: 1024px)');
 
   const handleAvatarClick = () => {
-    navigate('/login');
+    navigate(user ? '/profile' : '/login');
   };
 
   return (

@@ -6,7 +6,7 @@ export default function InspirationSection() {
   const navigate = useNavigate();
   return (
     <section className="bg-surface-container-high gap-gutter border-primary/20 group relative my-24 flex w-[80%] flex-col items-center overflow-hidden rounded-xl border p-12 text-center">
-      <h2 className="font-display-lg text-display-lg">Want more inspiration?</h2>
+      <h2 className="font-display-lg text-tertiary text-display-lg">Want more inspiration?</h2>
       <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
         Our community is constantly creating new ways to connect. Don't miss out on the next big
         tech hangout or creative workshop.

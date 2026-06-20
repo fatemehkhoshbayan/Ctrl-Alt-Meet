@@ -21,7 +21,7 @@ export default function Textarea<T extends FieldValues>({
 }: ITextareaProps<T>) {
   return (
     <div>
-      <label className="text-on-surface-variant text-label-md mb-1 block font-medium" htmlFor={id}>
+      <label className="text-on-surface-variant text-label-lg mb-2 block font-medium" htmlFor={id}>
         {label}
       </label>
       <textarea

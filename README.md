@@ -1,6 +1,6 @@
 # Ctrl Alt Meet
 
-Ctrl Alt Meet is a React event management platform for browsing conferences, favoriting events, booking tickets, and managing reservations. It uses a local JSON API during development (json-server) and Vercel serverless handlers in production. Built with TypeScript, Vite, Redux Toolkit, React Hook Form, and Tailwind CSS.
+Ctrl Alt Meet is a React event management platform for browsing conferences, favoriting events, booking tickets, managing reservations, and updating your user profile. It uses a local JSON API during development (json-server) and Vercel serverless handlers in production. Built with TypeScript, Vite, Redux Toolkit, React Hook Form, and Tailwind CSS.
 
 ## Tech stack
 
@@ -93,7 +93,9 @@ npm run server
 - Unified login/register page at `/login` (email, password, name)
 - Existing users: password check; new users: auto-created via json-server
 - `AuthProvider` persists session in `localStorage`
-- Soft route guards: My Bookings, Registration, Favorites, and Book Tickets require login; guests are redirected to `/login` and returned after sign-in
+- Soft route guards: My Bookings, Registration, Favorites, Profile, and Book Tickets require login; guests are redirected to `/login` and returned after sign-in
+- Signed-in users see their avatar and name on the login page with a logout option
+- Header avatar links to `/profile` when authenticated
 
 ### Favorites
 
@@ -115,6 +117,15 @@ npm run server
 - Ticket details dialog (tier, quantity, total, schedule, attendees)
 - Cancel upcoming bookings via two-step confirmation dialog with success/error toasts
 
+### Profile
+
+- Profile page at `/profile` (auth required) with route loader for current user data
+- Edit display name, profile photo (image URL with initials fallback), and optional about me (max 500 characters)
+- Manage notification preferences: email notifications, event reminders, and preferred event category
+- `useProfileUpdate` hook syncs updates with the API, auth context, and toast feedback
+- Shared `UserAvatar` component for profile image or initials across profile, login, and headers
+- Log out directly from the profile page
+
 ### Speakers
 
 - Speaker listing page with profile cards
@@ -125,7 +136,7 @@ npm run server
 - Light and dark theme toggle with `localStorage` persistence
 - Responsive desktop header + mobile bottom navigation
 - Loading, error, and empty states across pages
-- Toast notifications for booking, cancellation, favorites, and auth actions
+- Toast notifications for booking, cancellation, favorites, profile updates, and auth actions
 
 ## Routes
 
@@ -138,6 +149,8 @@ npm run server
 | `/favorites`    | Favorites        | Required |
 | `/my-bookings`  | My Bookings      | Required |
 | `/registration` | Ticket booking   | Required |
+| `/create-event` | Create event     | Required |
+| `/profile`      | Profile          | Required |
 
 ## Project structure
 
@@ -145,14 +158,14 @@ npm run server
 src/
 ├── appearance/     # Theme tokens, CSS variables, light/dark themes
 ├── context/        # ThemeProvider, AuthProvider
-├── features/       # Feature modules (auth, events, favorites, bookings, registration, speakers)
-├── hooks/          # useAuth, useAuthForm, useRegistrationForm, useTheme, useMediaQuery
+├── features/       # Feature modules (auth, events, favorites, bookings, registration, profile, speakers)
+├── hooks/          # useAuth, useAuthForm, useProfileUpdate, useRegistrationForm, useTheme, useMediaQuery
 ├── layouts/        # MainLayout, desktop/mobile headers, footers, nav
 ├── lib/            # Utility helpers (e.g. cn)
 ├── pages/          # Route-level page components
-├── schemas/        # Zod schemas (auth, attendee details)
+├── schemas/        # Zod schemas (auth, attendee details, profile)
 ├── services/       # API clients (events, speakers, categories, bookings, users, favorites)
-├── shared/         # EmptyState, LoadingState, ErrorState, PassCard
+├── shared/         # EmptyState, LoadingState, ErrorState, PassCard, UserAvatar
 ├── store/          # Redux slices and selectors
 ├── ui/             # Button, Dialog, Input, Select, Tab, Pagination, SearchBar
 └── utils/          # formatDate, buildDateBounds, generateBookingReference, etc.
@@ -178,16 +191,16 @@ On first request, each collection is seeded from `db.json` into Redis if the key
 | `/events`     | Event listings, details, ticket tiers, schedules | GET, PATCH        |
 | `/speakers`   | Speaker profiles                                 | GET               |
 | `/categories` | Category metadata for filters                    | GET               |
-| `/users`      | User accounts for login/register                 | GET, POST         |
+| `/users`      | User accounts for login, register, and profile updates | GET, POST, PATCH |
 | `/bookings`   | User bookings                                    | GET, POST, PATCH  |
 | `/favorites`  | Per-user favorite events                         | GET, POST, DELETE |
 
 ### Seed users (local demo)
 
-| Email              | Password      | Notes                                  |
-| ------------------ | ------------- | -------------------------------------- |
-| `alex@example.com` | (see db.json) | `user-001`, has bookings and favorites |
-| `john@example.com` | (see db.json) | `user-002`                             |
+| Email              | Password      | Notes                                                       |
+| ------------------ | ------------- | ----------------------------------------------------------- |
+| `alex@example.com` | (see db.json) | `user-001`, has bookings, favorites, and a sample profile   |
+| `john@example.com` | (see db.json) | `user-002`                                                  |
 
 ## Authentication
 
@@ -196,8 +209,10 @@ Auth state is provided by `AuthProvider` and accessed via `useAuth`:
 ```tsx
 import { useAuth } from '@/hooks';
 
-const { user, login, logout } = useAuth();
+const { user, login, logout, updateUser } = useAuth();
 ```
+
+`updateUser` keeps the in-memory session in sync after profile edits.
 
 Protected routes use the `RequireAuth` wrapper from `@/features`.
 
@@ -265,7 +280,8 @@ tsc -b && vite build
 - Star an event → star fills immediately (`POST /api/favorites`)
 - Purchase a ticket → no console errors, booking appears on My Bookings (`POST /api/bookings`, `PATCH /api/events/:id`)
 - Refresh the page → favorites and bookings still there (Redis persistence)
+- Update profile name or photo on `/profile` → changes persist and reflect in the header (`PATCH /api/users/:id`)
 
 ## Status
 
-Core platform features are implemented: events discovery, authentication, favorites, ticket booking, my bookings with cancellation, speakers, theming, and responsive layouts. The app uses json-server locally and Vercel serverless handlers with Upstash Redis in production.
+Core platform features are implemented: events discovery, authentication, favorites, ticket booking, my bookings with cancellation, user profile management, speakers, theming, and responsive layouts. The app uses json-server locally and Vercel serverless handlers with Upstash Redis in production.

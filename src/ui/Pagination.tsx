@@ -53,7 +53,7 @@ export default function Pagination({
             aria-current={page === currentPage ? 'page' : undefined}
             aria-label={`Page ${page}`}
             className={cn(
-              'border-surface-variant',
+              'border-surface-variant p-5',
               page === currentPage ? 'bg-primary text-on-primary' : 'hover:bg-surface-variant',
             )}
             onClick={() => onPageChange(page)}

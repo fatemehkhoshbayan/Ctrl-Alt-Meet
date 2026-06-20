@@ -2551,20 +2551,38 @@
       "id": "user-001",
       "name": "Alex Kim",
       "email": "alex@example.com",
-      "avatar": "AK"
+      "avatar": "AK",
+      "about": "Frontend engineer who loves React conferences and late-night deploys.",
+      "imageUrl": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80",
+      "preferences": {
+        "emailNotifications": true,
+        "eventReminders": true,
+        "preferredCategory": "frontend"
+      }
     },
     {
       "id": "user-002",
       "name": "John Doe",
       "email": "john@example.com",
-      "avatar": "JD"
+      "avatar": "JD",
+      "about": "Backend developer exploring cloud-native events and meetups.",
+      "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80",
+      "preferences": {
+        "emailNotifications": true,
+        "eventReminders": false,
+        "preferredCategory": "backend"
+      }
     },
     {
-      "name": "reza takhshid",
+      "name": "Reza Takhshid",
       "email": "test@test.com",
       "password": "password",
       "avatar": "RT",
-      "id": "BWCeeER-W1g"
+      "id": "BWCeeER-W1g",
+      "preferences": {
+        "emailNotifications": true,
+        "eventReminders": false
+      }
     }
   ],
   "favorites": [
@@ -2587,6 +2605,11 @@
       "userId": "BWCeeER-W1g",
       "eventId": "evt-010",
       "id": "D8sWGovqkXA"
+    },
+    {
+      "userId": "BWCeeER-W1g",
+      "eventId": "evt-006",
+      "id": "JyZ3KFkHrjw"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

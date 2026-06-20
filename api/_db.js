@@ -199,6 +199,25 @@ export async function createUser(payload) {
   return user;
 }
 
+export async function updateUser(id, patch) {
+  const users = await getCollection('users');
+  const index = users.findIndex(user => user.id === id);
+  if (index === -1) return null;
+
+  const current = users[index];
+  const updated = {
+    ...current,
+    ...patch,
+    id: current.id,
+    preferences: patch.preferences
+      ? { ...(current.preferences ?? {}), ...patch.preferences }
+      : current.preferences,
+  };
+  users[index] = updated;
+  await setCollection('users', users);
+  return updated;
+}
+
 export async function getSpeakers() {
   return getCollection('speakers');
 }

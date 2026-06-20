@@ -31,7 +31,10 @@ export * from './bookings/bookings.loader';
 
 // users
 export * from './users/users.api';
+export { default as usersServices } from './users/users.services';
+export * from './users/users.hook';
 export * from './users/users.type';
+export * from './users/users.loader';
 
 // favorites
 export { default as favoritesServices } from './favorites/favorites.services';

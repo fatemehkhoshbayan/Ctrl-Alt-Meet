@@ -5,6 +5,7 @@ export type AuthContextValue = {
   user: IUser | null;
   login: (user: IUser) => void;
   logout: () => void;
+  updateUser: (user: IUser) => void;
 };
 
 export const AUTH_STORAGE_KEY = 'ctrl-alt-meet-user';
