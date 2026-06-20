@@ -27,6 +27,8 @@ const queryKeys = {
 
   // users
   USERS: 'users',
+  GET_USER_BY_ID: 'getUserById',
+  UPDATE_USER: 'updateUser',
 };
 
 export default queryKeys;
