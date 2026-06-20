@@ -20,14 +20,14 @@ export default function PassSelection({ event }: IEventProps) {
 
   return (
     <section className="lg:col-span-4">
-      <div className="sticky top-24 space-y-6">
+      <div className="gap-stack-gutter sticky top-24 flex flex-col">
         <div className="bg-surface-container rounded-lg p-8">
           <div className="mb-6 flex items-center gap-2">
-            <IdCardLanyard size={30} className="text-secondary" />
-            <h3 className="font-headline-sm text-headline-md text-secondary">Choose Your Pass</h3>
+            <IdCardLanyard size={40} className="text-secondary" />
+            <h3 className="font-headline-lg text-headline-lg text-secondary">Choose Your Pass</h3>
           </div>
 
-          <div className="mb-6 space-y-3" role="group" aria-label="Ticket tiers">
+          <div className="gap-stack-gap mb-6 flex flex-col" role="group" aria-label="Ticket tiers">
             {tiers.map(tier => (
               <PassCard
                 key={tier.id}
@@ -39,7 +39,7 @@ export default function PassSelection({ event }: IEventProps) {
           </div>
 
           <Button
-            icon={<Ticket size={20} />}
+            icon={<Ticket size={40} />}
             BtnText={selectedTier ? `Book ${selectedTier.name}` : 'Book Tickets'}
             disabled={tiers.length === 0}
             size="lg"
@@ -53,10 +53,10 @@ export default function PassSelection({ event }: IEventProps) {
               }
               navigate('/registration', { state: { event, selectedTier } });
             }}
-            className="bg-primary text-on-primary gap-stack-gap mb-4 flex w-full font-bold transition-all active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:brightness-100 disabled:active:scale-100"
+            className="gap-stack-gap flex w-full"
           />
 
-          <p className="text-label-sm text-outline text-center">
+          <p className="text-body-lg text-outline pt-6 text-center">
             No hidden fees. Full refund before Oct 1st.
           </p>
         </div>

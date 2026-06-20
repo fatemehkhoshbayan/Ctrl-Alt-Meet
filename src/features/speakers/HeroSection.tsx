@@ -1,4 +1,5 @@
 import { Sparkles } from 'lucide-react';
+import { CreateEventHelper } from '@/shared';
 
 export default function HeroSection() {
   return (
@@ -15,6 +16,7 @@ export default function HeroSection() {
         Meet the Visionaries, Founders, Engineers, and Designers redefining the boundaries of
         performance and scalability in the modern web ecosystem.
       </p>
+      <CreateEventHelper className="justify-start p-0" />
       <div className="hero-blur-primary absolute -top-24 -right-24 h-96 w-96 rounded-full blur-3xl" />
       <div className="hero-blur-secondary absolute top-1/2 -left-24 h-64 w-96 rounded-full blur-3xl" />
     </section>

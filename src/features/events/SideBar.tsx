@@ -3,6 +3,7 @@ import { SlidersHorizontal, X } from 'lucide-react';
 import { cn } from '@/lib';
 import { Button, IconButton, Select } from '@/ui';
 import { useCategories, DEFAULT_EVENT_FILTERS, type IEvent } from '@/services';
+import { CreateEventHelper } from '@/shared';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { getFilteredEvents, setFilters, resetFilters } from '@/store/events';
 import { DATE_RANGE_OPTIONS } from './constant';
@@ -55,57 +56,63 @@ export default function SideBar({ className, events }: ISideBarProps) {
   }
 
   const filterContent = (
-    <div className="bg-surface-container-low rounded-lg p-6">
-      <h3 className="font-headline-md text-headline-md mb-6 hidden lg:block">Filters</h3>
-      <div className="space-y-8">
-        <div>
-          <p className="font-label-lg text-label-lg text-secondary mb-4 tracking-widest uppercase">
-            Categories
-          </p>
-          <div className="space-y-3">
-            {categories.map(category => (
-              <label key={category.id} className="group flex cursor-pointer items-center gap-3">
-                <input
-                  checked={filters.categories.includes(category.name)}
-                  className="border-outline-variant text-primary focus:ring-primary/20 h-5 w-5 rounded"
-                  type="checkbox"
-                  onChange={() => toggleCategory(category.name)}
-                />
-                <span className="font-body-md group-hover:text-primary transition-colors">
-                  {category.name}
-                </span>
-              </label>
-            ))}
+    <>
+      <section className="bg-surface-container-low rounded-lg p-6">
+        <h3 className="font-headline-md text-headline-md mb-6 hidden lg:block">Filters</h3>
+        <div className="space-y-8">
+          <div>
+            <p className="font-label-lg text-label-lg text-secondary mb-4 tracking-widest uppercase">
+              Categories
+            </p>
+            <div className="space-y-3">
+              {categories.map(category => (
+                <label key={category.id} className="group flex cursor-pointer items-center gap-3">
+                  <input
+                    checked={filters.categories.includes(category.name)}
+                    className="border-outline-variant text-primary focus:ring-primary/20 h-5 w-5 rounded"
+                    type="checkbox"
+                    onChange={() => toggleCategory(category.name)}
+                  />
+                  <span className="font-body-md group-hover:text-primary transition-colors">
+                    {category.name}
+                  </span>
+                </label>
+              ))}
+            </div>
           </div>
-        </div>
 
-        <div>
-          <p className="font-label-lg text-label-lg text-secondary mb-4 tracking-widest uppercase">
-            Date Range
-          </p>
-          <Select
-            id="date-range"
-            className="select select-option border-outline-variant text-body-lg hover:border-primary flex w-full items-center justify-between rounded-full border px-4 py-2 text-left transition-colors"
-            options={DATE_RANGE_OPTIONS}
-            value={filters.dateRange}
-            onChangeOption={val => dispatch(setFilters({ dateRange: val }))}
-          />
-        </div>
+          <div>
+            <p className="font-label-lg text-label-lg text-secondary mb-4 tracking-widest uppercase">
+              Date Range
+            </p>
+            <Select
+              id="date-range"
+              className="select select-option border-outline-variant text-body-lg hover:border-primary flex w-full items-center justify-between rounded-full border px-4 py-2 text-left transition-colors"
+              options={DATE_RANGE_OPTIONS}
+              value={filters.dateRange}
+              onChangeOption={val => dispatch(setFilters({ dateRange: val }))}
+            />
+          </div>
 
-        <div>
-          <p className="font-label-lg text-label-lg text-secondary mb-4 tracking-widest uppercase">
-            Price Range
-          </p>
-          <PriceRangeSlider
-            priceMin={filters.priceMin}
-            priceMax={filters.priceMax}
-            onChange={next => dispatch(setFilters(next))}
-          />
-        </div>
+          <div>
+            <p className="font-label-lg text-label-lg text-secondary mb-4 tracking-widest uppercase">
+              Price Range
+            </p>
+            <PriceRangeSlider
+              priceMin={filters.priceMin}
+              priceMax={filters.priceMax}
+              onChange={next => dispatch(setFilters(next))}
+            />
+          </div>
 
-        <Button size="sm" className="w-full" BtnText="Reset All" onClick={handleReset} />
-      </div>
-    </div>
+          <Button size="sm" className="w-full" BtnText="Reset All" onClick={handleReset} />
+        </div>
+      </section>
+      <CreateEventHelper
+        className="shadow-primary/25 bg-surface-container-low flex max-w-80 flex-col gap-4 rounded-lg p-6 shadow-md"
+        description=" Want to bring the local dev community together? We can help."
+      />
+    </>
   );
 
   return (
@@ -164,7 +171,7 @@ export default function SideBar({ className, events }: ISideBarProps) {
 
       {/* Desktop sidebar */}
       <aside className={cn('hidden lg:block', className)}>
-        <div className="sticky top-32">{filterContent}</div>
+        <div className="sticky top-32 flex flex-col gap-6">{filterContent}</div>
       </aside>
     </>
   );
