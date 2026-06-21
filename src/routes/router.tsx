@@ -56,6 +56,25 @@ const router = createBrowserRouter([
         ...routeErrorBoundary,
       },
       {
+        path: 'code-of-conduct',
+        hydrateFallbackElement: <FallbackPage message="Loading page..." />,
+        lazy: () =>
+          import('@/pages/CodeOfConduct').then(module => ({ Component: module.default })),
+        ...routeErrorBoundary,
+      },
+      {
+        path: 'privacy',
+        hydrateFallbackElement: <FallbackPage message="Loading page..." />,
+        lazy: () => import('@/pages/Privacy').then(module => ({ Component: module.default })),
+        ...routeErrorBoundary,
+      },
+      {
+        path: 'support',
+        hydrateFallbackElement: <FallbackPage message="Loading page..." />,
+        lazy: () => import('@/pages/Support').then(module => ({ Component: module.default })),
+        ...routeErrorBoundary,
+      },
+      {
         id: 'authenticated',
         element: <RequireAuthOutlet />,
         children: [

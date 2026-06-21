@@ -1,4 +1,7 @@
+export { default as CodeOfConduct } from './CodeOfConduct';
 export { default as Events } from './Events';
+export { default as Privacy } from './Privacy';
+export { default as Support } from './Support';
 export { default as MyBooking } from './MyBooking';
 export { default as Speakers } from './Speakers';
 export { default as EventDetails } from './EventDetails';
