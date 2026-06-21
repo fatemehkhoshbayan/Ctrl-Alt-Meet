@@ -1,6 +1,6 @@
 # Ctrl Alt Meet
 
-Ctrl Alt Meet is a React event management platform for browsing conferences, favoriting events, booking tickets, managing reservations, and updating your user profile. It uses a local JSON API during development (json-server) and Vercel serverless handlers in production. Built with TypeScript, Vite, Redux Toolkit, React Hook Form, and Tailwind CSS.
+Ctrl Alt Meet is a React event management platform for browsing conferences, favoriting events, booking tickets, managing reservations, publishing new events, and updating your user profile. It uses a local JSON API during development (json-server) and Vercel serverless handlers in production. Built with TypeScript, Vite, Redux Toolkit, React Hook Form, and Tailwind CSS.
 
 ## Tech stack
 
@@ -95,7 +95,7 @@ npm run server
 - Unified login/register page at `/login` (email, password, name)
 - Existing users: password check; new users: auto-created via json-server
 - `AuthProvider` persists session in `localStorage`
-- Soft route guards: My Bookings, Book Event, Favorites, Profile, and Book Tickets require login; guests are redirected to `/login` and returned after sign-in
+- Nested route guards via `RequireAuthOutlet`: My Bookings, Book Event, Favorites, Create Event, and Profile require login; guests are redirected to `/login` and returned after sign-in
 - Signed-in users see their avatar and name on the login page with a logout option
 - Header avatar links to `/profile` when authenticated
 
@@ -136,6 +136,19 @@ npm run server
 - Speaker listing page with profile cards
 - Speakers linked from event detail pages
 
+### Create event
+
+- 5-step publish flow at `/create-event` (auth required): Event Details → Schedule & Location → Tickets & Capacity → Speakers & Highlights → Review & Publish
+- Per-step Zod validation via `useCreateEventForm`; progress indicator and back/next navigation
+- `CreateEventHelper` CTA on the events hero, sidebar, and speakers page links authenticated users into the flow
+- On publish, event is created via `POST /events` and the user is redirected to the new event details page with a success toast
+- Works locally with json-server; production `api/events.js` currently supports GET and PATCH only (POST is not yet implemented for deploys)
+
+### Content pages
+
+- Static informational pages built with the shared `ContentPage` layout: Code of Conduct, Privacy, and Support
+- Linked from desktop and mobile footers
+
 ### UI and UX
 
 - Light and dark theme toggle with `localStorage` persistence
@@ -145,17 +158,20 @@ npm run server
 
 ## Routes
 
-| Path              | Page             | Auth     |
-| ----------------- | ---------------- | -------- |
-| `/`               | Events           | Open     |
-| `/events/:id`     | Event details    | Open     |
-| `/speakers`       | Speakers         | Open     |
-| `/login`          | Login / Register | Open     |
-| `/favorites`      | Favorites        | Required |
-| `/my-bookings`    | My Bookings      | Required |
-| `/book/:eventId`  | Book event       | Required |
-| `/create-event`   | Create event     | Required |
-| `/profile`        | Profile          | Required |
+| Path                | Page             | Auth     |
+| ------------------- | ---------------- | -------- |
+| `/`                 | Events           | Open     |
+| `/events/:id`       | Event details    | Open     |
+| `/speakers`         | Speakers         | Open     |
+| `/login`            | Login / Register | Open     |
+| `/code-of-conduct`  | Code of Conduct  | Open     |
+| `/privacy`          | Privacy          | Open     |
+| `/support`          | Support          | Open     |
+| `/favorites`        | Favorites        | Required |
+| `/my-bookings`      | My Bookings      | Required |
+| `/book/:eventId`    | Book event       | Required |
+| `/create-event`     | Create event     | Required |
+| `/profile`          | Profile          | Required |
 
 ## Project structure
 
@@ -163,14 +179,14 @@ npm run server
 src/
 ├── appearance/     # Theme tokens, CSS variables, light/dark themes
 ├── context/        # ThemeProvider, AuthProvider
-├── features/       # Feature modules (auth, events, favorites, bookings, book-event, profile, speakers)
-├── hooks/          # useAuth, useAuthForm, useProfileUpdate, useRegistrationForm, useTheme, useMediaQuery
+├── features/       # Feature modules (auth, events, event-details, create-event, favorites, bookings, book-event, profile, speakers)
+├── hooks/          # useAuth, useAuthForm, useCreateEventForm, useProfileUpdate, useRegistrationForm, useTheme, useMediaQuery
 ├── layouts/        # MainLayout, desktop/mobile headers, footers, nav
 ├── lib/            # Query client, utility helpers (e.g. cn)
 ├── pages/          # Route-level page components (Events, BookEvent, MyBooking, etc.)
-├── schemas/        # Zod schemas (auth, attendee details, profile)
+├── schemas/        # Zod schemas (auth, attendee details, create event, profile)
 ├── services/       # API clients, React Query options, and route loaders (events, speakers, categories, bookings, users, favorites)
-├── shared/         # EmptyState, LoadingState, ErrorState, PassCard, UserAvatar
+├── shared/         # ContentPage, EmptyState, LoadingState, ErrorState, PassCard, CreateEventHelper, UserAvatar
 ├── store/          # Redux slices and selectors
 ├── ui/             # Button, Dialog, Input, Select, Tab, Pagination, SearchBar
 └── utils/          # formatDate, buildDateBounds, generateBookingReference, etc.
@@ -193,12 +209,14 @@ On first request, each collection is seeded from `db.json` into Redis if the key
 
 | Resource      | Purpose                                                | Methods           |
 | ------------- | ------------------------------------------------------ | ----------------- |
-| `/events`     | Event listings, details, ticket tiers, schedules       | GET, PATCH        |
+| `/events`     | Event listings, details, ticket tiers, schedules, create | GET, POST, PATCH  |
 | `/speakers`   | Speaker profiles                                       | GET               |
 | `/categories` | Category metadata for filters                          | GET               |
 | `/users`      | User accounts for login, register, and profile updates | GET, POST, PATCH  |
 | `/bookings`   | User bookings                                          | GET, POST, PATCH  |
 | `/favorites`  | Per-user favorite events                               | GET, POST, DELETE |
+
+> **Note:** `POST /events` (create event) is available via json-server locally. The production `api/events.js` handler currently exposes GET and PATCH only.
 
 ### Seed users (local demo)
 
@@ -219,7 +237,7 @@ const { user, login, logout, updateUser } = useAuth();
 
 `updateUser` keeps the in-memory session in sync after profile edits.
 
-Protected routes use the `RequireAuth` wrapper from `@/features`.
+Protected routes use `RequireAuthOutlet` (nested routes) or `RequireAuth` (inline children) from `@/features`.
 
 ## Theming
 
@@ -243,8 +261,10 @@ Imports use path aliases configured in `vite.config.ts` and `tsconfig.app.json`:
 | `@features/*`   | `src/features/*`   |
 | `@hooks/*`      | `src/hooks/*`      |
 | `@layouts/*`    | `src/layouts/*`    |
+| `@lib/*`        | `src/lib/*`        |
 | `@pages/*`      | `src/pages/*`      |
 | `@services/*`   | `src/services/*`   |
+| `@shared/*`     | `src/shared/*`     |
 | `@store/*`      | `src/store/*`      |
 | `@ui/*`         | `src/ui/*`         |
 | `@utils/*`      | `src/utils/*`      |
@@ -298,4 +318,4 @@ tsc -b && vite build
 
 ## Status
 
-Core platform features are implemented: events discovery with deferred search, authentication, favorites, ticket booking with route loaders, my bookings with cancellation and a cancelled tab, user profile management, speakers, theming, and responsive layouts. The app uses json-server locally and Vercel serverless handlers with Upstash Redis in production.
+Core platform features are implemented: events discovery with deferred search, authentication, favorites, ticket booking with route loaders, my bookings with cancellation and a cancelled tab, multi-step event creation, user profile management, speakers, static content pages (Code of Conduct, Privacy, Support), theming, and responsive layouts. The app uses json-server locally and Vercel serverless handlers with Upstash Redis in production.
