@@ -23,9 +23,9 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative w-full overflow-hidden py-40">
+    <section className="px-page-inline relative w-full overflow-hidden py-24 lg:py-32 xl:py-40">
       <div aria-hidden className="hero-glow" />
-      <div className="relative z-10">
+      <div className="relative z-10 mx-auto max-w-[1440px]">
         <div className="flex flex-col items-center space-y-8 text-center">
           <div className="space-y-stack-gutter">
             <span className="hero-badge font-body text-label-md inline-block rounded-full px-4 py-1 tracking-wider uppercase">

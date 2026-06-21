@@ -3,7 +3,7 @@ import { CreateEventHelper } from '@/shared';
 
 export default function HeroSection() {
   return (
-    <section className="relative flex w-full flex-col overflow-hidden p-20 lg:px-80 lg:py-36">
+    <section className="px-page-inline relative mx-auto flex w-full max-w-[1440px] flex-col overflow-hidden py-20 lg:py-28 xl:py-36">
       <div aria-hidden className="hero-glow" />
       <div className="bg-primary/10 border-primary/20 text-primary font-label-sm text-label-sm mb-6 inline-flex w-fit animate-pulse items-center gap-2 rounded-full border px-4 py-1.5">
         <Sparkles size={14} />

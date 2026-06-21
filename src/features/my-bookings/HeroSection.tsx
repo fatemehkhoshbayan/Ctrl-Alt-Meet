@@ -1,7 +1,7 @@
 export default function HeroSection() {
   return (
     <>
-      <section className="relative flex w-full flex-col overflow-hidden px-20 py-40 lg:px-60 lg:py-32">
+      <section className="px-page-inline relative mx-auto flex w-full max-w-[1440px] flex-col overflow-hidden py-24 lg:py-32">
         <h1 className="font-display-lg text-display-lg from-primary via-tertiary to-secondary mb-4 bg-linear-to-r bg-clip-text text-transparent">
           Your Awesome Journey So Far!
         </h1>

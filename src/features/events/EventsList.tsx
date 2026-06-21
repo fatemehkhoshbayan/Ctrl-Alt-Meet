@@ -41,16 +41,14 @@ export default function EventsList({ events }: IEventsListProps) {
   }
 
   return (
-    <section className="gap-gutter grid min-h-[35vh] grid-cols-12 justify-center px-20 py-16 lg:px-0">
-      <SideBar className="col-span-3 min-w-80" events={events} />
+    <section className="px-page-inline mx-auto grid min-h-[35vh] w-full max-w-[1440px] grid-cols-1 gap-gutter py-16 lg:grid-cols-[minmax(220px,260px)_minmax(0,1fr)] xl:grid-cols-[minmax(240px,280px)_minmax(0,1fr)]">
+      <SideBar events={events} />
 
-      <div className="col-span-12 lg:col-span-9">
-        <div className="flex items-center justify-between gap-3 pb-8 lg:mb-0">
-          <div className="flex items-center justify-between gap-3">
-            <p className="font-body-md text-body-md text-on-surface-variant">
-              {`Showing ${rangeStart}–${rangeEnd} of ${totalItems} tech events`}
-            </p>
-          </div>
+      <div className="min-w-0">
+        <div className="flex flex-col gap-4 pb-8 sm:flex-row sm:items-center sm:justify-between lg:mb-0">
+          <p className="font-body-md text-body-md text-on-surface-variant">
+            {`Showing ${rangeStart}–${rangeEnd} of ${totalItems} tech events`}
+          </p>
           <Select
             id="sorting"
             label="Sort by:"
@@ -88,7 +86,7 @@ export default function EventsList({ events }: IEventsListProps) {
         )}
 
         {items.length > 0 && (
-          <div className="gap-gutter grid grid-cols-1 lg:min-w-3xl lg:grid-cols-2">
+          <div className="gap-gutter grid grid-cols-1 xl:grid-cols-2">
             {items.map(event => (
               <EventCard key={event.id} event={event} />
             ))}

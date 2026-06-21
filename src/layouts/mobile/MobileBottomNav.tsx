@@ -20,11 +20,9 @@ export default function MobileBottomNav() {
                   isActive ? 'bg-primary/20' : 'bg-transparent'
                 }`}
               >
-                <Icon size={40} strokeWidth={isActive ? 2.5 : 1.75} />
+                <Icon size={50} strokeWidth={isActive ? 2.5 : 1.75} />
               </span>
-              <span className="text-headline-md md:text-label-xl font-medium tracking-wide">
-                {label}
-              </span>
+              <span className="text-headline-lg font-medium tracking-wide">{label}</span>
             </>
           )}
         </NavLink>

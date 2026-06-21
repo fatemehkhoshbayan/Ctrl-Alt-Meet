@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
 import { SlidersHorizontal, X } from 'lucide-react';
-import { cn } from '@/lib';
 import { Button, IconButton, Select } from '@/ui';
 import { useCategories, DEFAULT_EVENT_FILTERS, type IEvent } from '@/services';
 import { CreateEventHelper } from '@/shared';
@@ -14,11 +13,10 @@ function isPriceFilterActive(priceMin: number, priceMax: number) {
 }
 
 interface ISideBarProps {
-  className?: string;
   events: IEvent[];
 }
 
-export default function SideBar({ className, events }: ISideBarProps) {
+export default function SideBar({ events }: ISideBarProps) {
   const dispatch = useAppDispatch();
   const [open, setOpen] = useState(false);
   const { data: categories = [] } = useCategories();
@@ -109,7 +107,7 @@ export default function SideBar({ className, events }: ISideBarProps) {
         </div>
       </section>
       <CreateEventHelper
-        className="shadow-primary/25 bg-surface-container-low flex max-w-80 flex-col gap-4 rounded-lg p-6 shadow-md"
+        className="shadow-primary/25 bg-surface-container-low flex w-full flex-col gap-4 rounded-lg p-6 shadow-md"
         description=" Want to bring the local dev community together? We can help."
       />
     </>
@@ -153,7 +151,7 @@ export default function SideBar({ className, events }: ISideBarProps) {
             />
           </div>
 
-          <div className="text-body-xl flex-1 overflow-y-auto px-20 py-10 lg:px-0">
+          <div className="text-body-xl px-page-inline flex-1 overflow-y-auto py-10">
             {filterContent}
           </div>
 
@@ -170,7 +168,7 @@ export default function SideBar({ className, events }: ISideBarProps) {
       )}
 
       {/* Desktop sidebar */}
-      <aside className={cn('hidden lg:block', className)}>
+      <aside className="hidden min-w-0 lg:block">
         <div className="sticky top-32 flex flex-col gap-6">{filterContent}</div>
       </aside>
     </>

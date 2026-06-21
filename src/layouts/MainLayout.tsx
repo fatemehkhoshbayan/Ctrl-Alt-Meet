@@ -33,7 +33,7 @@ export default function MainLayout() {
         />
       )}
       <main
-        className={`bg-background text-on-surface flex min-w-[80%] flex-col items-center justify-center ${!isDesktop ? 'pb-20' : ''}`}
+        className={`bg-background text-on-surface flex w-full flex-col ${!isDesktop ? 'pb-20' : ''}`}
       >
         <Outlet />
       </main>

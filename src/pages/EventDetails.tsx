@@ -26,8 +26,8 @@ export default function EventDetails() {
   return (
     <>
       <EventDetailsHeroSection event={event} />
-      <section className="px-margin-mobile md:px-margin-desktop mx-auto grid min-h-[35vh] grid-cols-1 gap-12 p-32 lg:grid-cols-12">
-        <div className="space-y-16 lg:col-span-8">
+      <section className="px-page-inline mx-auto grid min-h-[35vh] w-full max-w-[1440px] grid-cols-1 gap-8 py-12 lg:grid-cols-12 lg:gap-12 lg:py-16 xl:py-20">
+        <div className="min-w-0 space-y-12 lg:col-span-8 xl:space-y-16">
           <AboutSection event={event} />
           <Suspense fallback={<LoadingState message="Loading speakers..." />}>
             <SpeakersSection speakers={use(speakers)} />

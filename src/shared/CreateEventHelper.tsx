@@ -17,7 +17,12 @@ export default function CreateEventHelper({
   const navigate = useNavigate();
   return (
     <>
-      <div className={cn('gap-stack-gutter flex w-full justify-center p-6', className)}>
+      <div
+        className={cn(
+          'gap-stack-gutter my-5 flex w-full flex-col flex-wrap items-center justify-center p-6 sm:flex-row',
+          className,
+        )}
+      >
         {!noTitle && (
           <div className="flex items-center gap-2">
             <CalendarHeart size={25} className="text-till" />
