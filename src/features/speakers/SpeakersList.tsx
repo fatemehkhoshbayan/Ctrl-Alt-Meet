@@ -24,6 +24,8 @@ export default function SpeakersList() {
   }
 
   return (
-    <section className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-6 py-16">{content}</section>
+    <section className="mx-auto grid min-h-[35vh] w-full max-w-4xl grid-cols-1 gap-6 py-16">
+      {content}
+    </section>
   );
 }

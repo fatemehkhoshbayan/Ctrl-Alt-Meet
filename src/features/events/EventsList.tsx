@@ -41,7 +41,7 @@ export default function EventsList({ events }: IEventsListProps) {
   }
 
   return (
-    <section className="gap-gutter grid grid-cols-12 justify-center px-20 py-16 lg:px-0">
+    <section className="gap-gutter grid min-h-[35vh] grid-cols-12 justify-center px-20 py-16 lg:px-0">
       <SideBar className="col-span-3 min-w-80" events={events} />
 
       <div className="col-span-12 lg:col-span-9">

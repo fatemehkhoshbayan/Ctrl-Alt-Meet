@@ -36,10 +36,10 @@ export default function BookingCards({
   }
 
   return (
-    <div className="gap-gutter mx-auto grid w-full max-w-7xl grid-cols-1 lg:min-w-7xl xl:grid-cols-3">
+    <section className="gap-gutter mx-auto grid min-h-[35vh] w-full max-w-7xl grid-cols-1 lg:min-w-7xl xl:grid-cols-3">
       {bookingsWithEvents.map(({ booking, event }) => (
         <MyBookingCard key={booking.id} booking={booking} event={event} status={status} />
       ))}
-    </div>
+    </section>
   );
 }

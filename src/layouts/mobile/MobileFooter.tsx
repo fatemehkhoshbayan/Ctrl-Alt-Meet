@@ -6,9 +6,9 @@ export default function MobileFooter() {
   const navigate = useNavigate();
 
   return (
-    <footer className="border-outline-variant/30 bg-surface-container gap-gutter text-body-lg font-body-md z-50 mx-auto flex w-full flex-col items-center justify-center p-14 pb-24 text-center shadow-sm backdrop-blur-xl">
+    <footer className="border-outline-variant/30 bg-surface-container gap-gutter text-body-lg font-body-md mx-auto flex w-full flex-col items-center justify-center py-20 text-center shadow-sm backdrop-blur-xl">
       <LogoWordMark onClick={() => navigate('/')} />
-      <p className="text-on-surface-variant max-w-sm">
+      <p className="text-on-surface-variant max-w-lg">
         Elevating the way tech communities gather, share, and grow. From local meetups to global
         stages.
       </p>
@@ -16,7 +16,7 @@ export default function MobileFooter() {
         © {new Date().getFullYear()} Ctrl+Alt+Meet. All rights reserved.
       </p>
       {FOOTER_LINKS.map(link => (
-        <div className="flex gap-8" key={link.label}>
+        <div className="flex gap-10" key={link.label}>
           {link.links.map(linkItem => (
             <Link
               key={linkItem.id}

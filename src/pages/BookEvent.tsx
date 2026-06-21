@@ -12,7 +12,7 @@ export default function BookEvent() {
     <>
       <BookEventHeroSection event={event} />
 
-      <section className="px-margin-mobile mx-auto py-12">
+      <section className="px-margin-mobile mx-auto min-h-[35vh] py-12">
         <BookEventForm event={event} initialTier={selectedTier} onClose={() => navigate(-1)} />
       </section>
     </>

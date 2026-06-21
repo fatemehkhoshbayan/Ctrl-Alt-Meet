@@ -26,7 +26,7 @@ export default function EventDetails() {
   return (
     <>
       <EventDetailsHeroSection event={event} />
-      <section className="px-margin-mobile md:px-margin-desktop mx-auto grid grid-cols-1 gap-12 p-32 lg:grid-cols-12">
+      <section className="px-margin-mobile md:px-margin-desktop mx-auto grid min-h-[35vh] grid-cols-1 gap-12 p-32 lg:grid-cols-12">
         <div className="space-y-16 lg:col-span-8">
           <AboutSection event={event} />
           <Suspense fallback={<LoadingState message="Loading speakers..." />}>

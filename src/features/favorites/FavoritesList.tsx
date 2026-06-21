@@ -20,7 +20,7 @@ export default function FavoritesList({ events }: IFavoritesListProps) {
   }, [events, favorites]);
 
   return (
-    <section className="px-margin-mobile md:px-margin-desktop mx-auto max-w-7xl py-16">
+    <section className="px-margin-mobile md:px-margin-desktop mx-auto min-h-[35vh] max-w-7xl py-16">
       {favoriteEvents.length === 0 && (
         <EmptyState
           icon={<Star size={48} className="text-tertiary fill-tertiary" />}

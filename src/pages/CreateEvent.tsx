@@ -7,7 +7,7 @@ export default function CreateEvent() {
   return (
     <>
       <CreateEventHeroSection />
-      <section className="px-margin-mobile mx-auto py-12">
+      <section className="px-margin-mobile mx-auto min-h-[35vh] py-12">
         <CreateEventForm onCancel={() => navigate('/')} />
       </section>
     </>

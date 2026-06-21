@@ -1,6 +1,7 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Toaster } from 'sonner';
 import { useAuth, useMediaQuery, useTheme } from '@/hooks';
+import { MOBILE_BOTTOM_NAV_SPACER } from './constant';
 import { DesktopHeader, DesktopFooter } from './desktop';
 import { MobileFooter, MobileHeader, MobileBottomNav } from './mobile';
 
@@ -15,7 +16,7 @@ export default function MainLayout() {
   };
 
   return (
-    <>
+    <div className="flex min-h-dvh flex-col">
       {isDesktop ? (
         <DesktopHeader
           theme={theme}
@@ -36,9 +37,16 @@ export default function MainLayout() {
       >
         <Outlet />
       </main>
-      {isDesktop ? <DesktopFooter /> : <MobileFooter />}
+      {isDesktop ? (
+        <DesktopFooter />
+      ) : (
+        <>
+          <MobileFooter />
+          <div aria-hidden className={MOBILE_BOTTOM_NAV_SPACER} />
+        </>
+      )}
       {!isDesktop && <MobileBottomNav />}
       <Toaster position="bottom-right" richColors expand duration={8000} />
-    </>
+    </div>
   );
 }

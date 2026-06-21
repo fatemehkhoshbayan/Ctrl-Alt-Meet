@@ -21,6 +21,9 @@ export const NAV_ITEMS: INavItem[] = [
   { label: 'Speakers', to: '/speakers', icon: UsersRound },
 ];
 
+/** Matches fixed mobile bottom nav height (icons + labels + padding). */
+export const MOBILE_BOTTOM_NAV_SPACER = 'h-32 shrink-0';
+
 export const FOOTER_LINKS = [
   // {
   //   label: 'Platform',
